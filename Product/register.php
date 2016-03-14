@@ -18,7 +18,7 @@
   <body>
   <?php  
     include_once("nav.html")
-   echo "PHP working  \n"; var_dump($_POST);  foreach ($_POST as $value) {    echo "Value: $value<br>";} ?>
+  ?>
     
   <div class="container">
  <form action="teste.php" method="post" >
