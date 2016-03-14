@@ -26,23 +26,29 @@ body {
 /* Navbar Style */
 
 .navbar-inverse {
-  background-color: #b33c00;
-  border-color: #000;
+  background-color: #000; /*#b33c00*/
+  border-color: #b33c00;
   border-top-width: 2px;
   border-bottom-width: 2px;
+  font-weight: bold;
 }
+
+.navbar-inverse .navbar-header .navbar-text {
+  color: #fff;
+}
+
 .navbar-inverse .navbar-brand {
-  color: #000000;
+  color: #b33c00;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
   color: #fefcff;
 }
 .navbar-inverse .navbar-text {
-  color: #000000;
+  color: #b33c00;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #000000;
+  color: #b33c00;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -52,13 +58,13 @@ body {
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #fefcff;
-  background-color: #000;
+  background-color: #b33c00;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #fefcff;
-  background-color: #000;
+  background-color: #b33c00;
 }
 .navbar-inverse .navbar-toggle {
   border-color: #46048d;
@@ -68,14 +74,14 @@ body {
   background-color: #46048d;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #000;
+  background-color: #b33c00;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #000;
+  border-color: #b33c00;
 }
 .navbar-inverse .navbar-link {
-  color: #000;
+  color: #b33c00;
 }
 .navbar-inverse .navbar-link:hover {
   color: #fefcff;
