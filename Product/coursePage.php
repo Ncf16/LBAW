@@ -2,6 +2,8 @@
 include_once("templates/header.html");
 ?>
 
+<link href="css/coursePage.css" rel="stylesheet">
+
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -54,25 +56,63 @@ include_once("templates/header.html");
           </div>
           <div id="year1" class="panel-collapse collapse">
             <div class="panel-body">
-              <h4 class="panel-title">Heading</h4>
-              <div class="panel-group" id="accordion21">
-                <div class="panel">
-                  <a data-toggle="collapse" data-parent="#accordion21" href="#collapseTwoOne">View details 2.1 »</a>
-                  <div id="collapseTwoOne" class="panel-collapse collapse">
-                    <div class="panel-body">Details 1</div>
+              <div class="panel-group" id="accordion1">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#semester11">1 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester11" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                         <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Análise Matemática</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Fundamentos da Programação</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
                   </div>
                 </div>
-                <div class="panel ">
-                  <a data-toggle="collapse" data-parent="#accordion21" href="#collapseTwoTwo">View details 2.2 »</a>
-                  <div id="collapseTwoTwo" class="panel-collapse collapse">
-                    <div class="panel-body">Details 2</div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#semester12">2 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester12" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Álgebra</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Projeto FEUP</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
+       <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#year2">2 Year</a>
@@ -80,7 +120,59 @@ include_once("templates/header.html");
           </div>
           <div id="year2" class="panel-collapse collapse">
             <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <div class="panel-group" id="accordion2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion2" href="#semester21">1 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester21" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                         <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Análise Matemática</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Fundamentos da Programação</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion2" href="#semester22">2 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester22" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Álgebra</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Projeto FEUP</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,7 +184,59 @@ include_once("templates/header.html");
           </div>
           <div id="year3" class="panel-collapse collapse">
             <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <div class="panel-group" id="accordion3">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion3" href="#semester31">1 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester31" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                         <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Análise Matemática</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Fundamentos da Programação</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion3" href="#semester32">2 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester32" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Álgebra</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Projeto FEUP</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -104,11 +248,63 @@ include_once("templates/header.html");
           </div>
           <div id="year4" class="panel-collapse collapse">
             <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <div class="panel-group" id="accordion4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion4" href="#semester41">1 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester41" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                         <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Análise Matemática</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Fundamentos da Programação</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion4" href="#semester42">2 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester42" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Álgebra</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Projeto FEUP</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
+       <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#year5">5 Year</a>
@@ -116,7 +312,59 @@ include_once("templates/header.html");
           </div>
           <div id="year5" class="panel-collapse collapse">
             <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <div class="panel-group" id="accordion5">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion5" href="#semester51">1 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester51" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                         <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Análise Matemática</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Fundamentos da Programação</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion5" href="#semester52">2 Semester</a>
+                    </h4>
+                  </div>
+                  <div id="semester52" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped uc-table">
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Álgebra</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">
+                            <a href="unityPage.php">Projeto FEUP</a>
+                          </td>
+                        </tr>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -124,3 +372,7 @@ include_once("templates/header.html");
     </div>
   </div>
 </div>
+
+<?php
+include_once("templates/footer.html");
+?>
