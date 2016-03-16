@@ -19,48 +19,48 @@ include_once("templates/header.html");
   </thead>
   <tbody>
     <tr>
-      <th   scope="row"><a href="CoursePage_MIEIC.html">MIEIC</a> </th>
-      <td  ><a href="Teacher_JPF.html">João Carlos Pascoal Faria</a> </td>
+      <th   scope="row"><a href="coursePage.php">MIEIC</a> </th>
+      <td  ><a href="personalPage.php">João Carlos Pascoal Faria</a> </td>
       <td>2006/2007</td>
       <td>5</td>
       <td>Master</td>
       <td>585</td>
     </tr>
     <tr>
-     <th scope="row"><a href="CoursePage_CINF.html">CINF</a> </th>
-      <td><a href="Teacher_OMMP.html">Olívia Pestana</a> </td>
+     <th scope="row"><a href="coursePage.php">CINF</a> </th>
+      <td><a href="personalPage.php">Olívia Pestana</a> </td>
       <td>2007/2008</td>
       <td>3</td>
       <td>Bachelor</td> 
       <td>120</td>
     </tr>
     <tr>
-      <th scope="row"><a href="CoursePage_MIEM.html">MIEM</a> </th>
-      <td><a href="Teacher_LFS.html">Lucas Filipe Silva</a></td>
+      <th scope="row"><a href="coursePage.php">MIEM</a> </th>
+      <td><a href="personalPage.php">Lucas Filipe Silva</a></td>
       <td>2006/2007</td>
       <td>5</td>
       <td>Master</td>
       <td>805</td>
     </tr>
      <tr>
-      <th scope="row"><a href="CoursePage_MIEM.html">MIEM</a> </th>
-      <td><a href="Teacher_LFS.html">Lucas Filipe Silva</a></td>
+      <th scope="row"><a href="coursePage.php">MIEM</a> </th>
+      <td><a href="personalPage.php">Lucas Filipe Silva</a></td>
       <td>2006/2007</td>
       <td>5</td>
       <td>Master</td>
       <td>805</td>
     </tr>    
     <tr>
-      <th scope="row"><a href="CoursePage_MIEM.html">MIEM</a> </th>
-      <td><a href="Teacher_LFS.html">Lucas Filipe Silva</a></td>
+      <th scope="row"><a href="coursePage.php">MIEM</a> </th>
+      <td><a href="personalPage.php">Lucas Filipe Silva</a></td>
       <td>2006/2007</td>
       <td>5</td>
       <td>Master</td>
       <td>805</td>
     </tr>
        <tr>
-     <th scope="row"><a href="CoursePage_CINF.html">CINF</a> </th>
-      <td><a href="Teacher_OMMP.html">Olívia Pestana</a> </td>
+     <th scope="row"><a href="coursePage.php">CINF</a> </th>
+      <td><a href="personalPage.php">Olívia Pestana</a> </td>
       <td>2007/2008</td>
       <td>3</td>
       <td>Bachelor</td> 
