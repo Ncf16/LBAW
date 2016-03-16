@@ -43,6 +43,13 @@ include_once("templates/header.html");
         </a>
     </header>
 
+     <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
     <!-- Page Content -->
     <div class="container">
 
@@ -105,51 +112,6 @@ include_once("templates/header.html");
         <!-- /.row -->
         <!-- Portfolio Section -->
         
-
-        <hr>
-        	   <div class="row">
-                    <div class=" col-md-12">
-                	   <div class="text-center">
-                    	   <h2>About Us</h2>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-12">
-                	   <div class="text-center">
-                		  <p> We are the best academy, join us! We are here since 1920 and are the best at what we have to offer! Explore our page to find out more about the opportunities we offer! </p>
-                	   </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class= "col-md-4 col-md-offset-4 text-center">
-                        <a class="btn btn-md btn-default btn-block" href="#">Join Us</a>
-                    </div>
-                </div>
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                <br>
-                    <p>Copyright &copy; AcademicManagement 2016</p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
-
-</body>
-
-</html>
+<?php
+include_once("templates/footer.html");
+?>
