@@ -6,7 +6,7 @@ include_once("templates/header.html");
   <div class="row">
     <div class="col-lg-12">
 
-      <h2 class="page-header">Laboratório de Base de Dados e Aplicações Web</h2>
+      <h1 class="page-header">Laboratório de Base de Dados e Aplicações Web</h1>
 
     </div>
   </div>
@@ -31,7 +31,7 @@ include_once("templates/header.html");
             <td>Área: Desenvolvimento Web e Sistemas de Informação</td>
           </tr>
           <tr>
-            <td>Lorem: Ipsum</td>
+            <td>Language: Português</td>
           </tr>
        </table>
     </div>
@@ -90,91 +90,51 @@ include_once("templates/header.html");
   </div>
 
   <p>
+
+    <ul class="nav nav-pills">
+      <li class="active"><a href="#" data-toggle="tab">Home</a></li>
+      <li><a href="#" data-toggle="tab">Menu 1</a></li>
+      <li><a href="#" data-toggle="tab">Menu 2</a></li>
+      <li><a href="#" data-toggle="tab">Menu 3</a></li>
+    </ul>
     <div class="row">
       <div class="col-lg-12">
-        <h2>Syllabus</h2>
+        <h2>Objectives and Competences</h2>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Objectives and Competences</h2>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Objectives and Competences</h2>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Objectives and Competences</h2>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Objectives and Competences</h2>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+        <hr>
       </div>
     </div>
   </p>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year1">1 Year</a>
-            </h4>
-          </div>
-          <div id="year1" class="panel-collapse collapse">
-            <div class="panel-body">
-              <h4 class="panel-title">Heading</h4>
-              <div class="panel-group" id="accordion21">
-                <div class="panel">
-                  <a data-toggle="collapse" data-parent="#accordion21" href="#collapseTwoOne">View details 2.1 »</a>
-                  <div id="collapseTwoOne" class="panel-collapse collapse">
-                    <div class="panel-body">Details 1</div>
-                  </div>
-                </div>
-                <div class="panel ">
-                  <a data-toggle="collapse" data-parent="#accordion21" href="#collapseTwoTwo">View details 2.2 »</a>
-                  <div id="collapseTwoTwo" class="panel-collapse collapse">
-                    <div class="panel-body">Details 2</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year2">2 Year</a>
-            </h4>
-          </div>
-          <div id="year2" class="panel-collapse collapse">
-            <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year3">3 Year</a>
-            </h4>
-          </div>
-          <div id="year3" class="panel-collapse collapse">
-            <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year4">4 Year</a>
-            </h4>
-          </div>
-          <div id="year4" class="panel-collapse collapse">
-            <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year5">5 Year</a>
-            </h4>
-          </div>
-          <div id="year5" class="panel-collapse collapse">
-            <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
