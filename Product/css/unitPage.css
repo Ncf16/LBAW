@@ -5,3 +5,32 @@
 	border: 2px solid black;
 	padding:2px;
 }
+
+.ucNavPills li a{
+	color:#000;
+	border: 2px solid black;
+}
+
+.ucNavPills li a:hover{
+	background: #ffe6e6;
+}
+
+.ucNavPills li.active a {
+	background: #b33c00;
+}
+
+.ucNavPills li.active a:hover {
+	background: #b33c00;
+}
+
+.ucNavPills li.active a:focus {
+	background: #b33c00;
+}
+
+.ucNavPills li.active a:visited {
+	background: white;
+}
+
+.tab-pane {
+
+}

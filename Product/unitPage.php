@@ -89,51 +89,56 @@ include_once("templates/header.html");
     </div>
   </div>
 
+  <br>
   <p>
 
-    <ul class="nav nav-pills">
-      <li class="active"><a href="#" data-toggle="tab">Home</a></li>
-      <li><a href="#" data-toggle="tab">Menu 1</a></li>
-      <li><a href="#" data-toggle="tab">Menu 2</a></li>
-      <li><a href="#" data-toggle="tab">Menu 3</a></li>
+    <ul class="nav nav-pills ucNavPills">
+      <li class="active"><a href="#competences" data-toggle="tab">Learning Competences</a></li>
+      <li><a href="#stuff2" data-toggle="tab">Requirements</a></li>
+      <li><a href="#stuff3" data-toggle="tab">Curricular Programme</a></li>
+      <li><a href="#stuff4" data-toggle="tab">Menu 3</a></li>
     </ul>
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Objectives and Competences</h2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-        <hr>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Objectives and Competences</h2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-        <hr>
+    <div class="tab-content">
+      <div class="row tab-pane fade in active" id="competences">
+        <div class="col-lg-12 ">
+          <h2>Learning Objectives and Competences</h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+          <hr>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Objectives and Competences</h2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-        <hr>
+    
+      <div class="row tab-pane fade" id="stuff2">
+        <div class="col-lg-12">
+          <h2>Pre-Requirements and Co-Requirements</h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+          <hr>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Objectives and Competences</h2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-        <hr>
+      <div class="row tab-pane fade" id="stuff3">
+        <div class="col-lg-12">
+         <h2>Curricular Programme</h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+          <hr>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Objectives and Competences</h2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-        <hr>
+      <div class="row tab-pane fade" id="stuff4">
+        <div class="col-lg-12">
+          <h2>Objectives and Competences</h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+          <hr>
+        </div>
+      </div>
+
+      <div class="row tab-pane fade" id="stuff5">
+        <div class="col-lg-12">
+          <h2>Objectives and Competences</h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
+          <hr>
+        </div>
       </div>
     </div>
   </p>
