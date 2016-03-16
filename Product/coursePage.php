@@ -2,8 +2,6 @@
 include_once("templates/header.html");
 ?>
 
-<link href="css/coursePage.css" rel="stylesheet">
-
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -68,17 +66,17 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                          <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Análise Matemática</a>
+                            <a href="unitPage.php">Análise Matemática</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Fundamentos da Programação</a>
+                            <a href="unitPage.php">Fundamentos da Programação</a>
                           </td>
                         </tr>
                        </table>
@@ -96,12 +94,12 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Álgebra</a>
+                            <a href="unitPage.php">Álgebra</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Projeto FEUP</a>
+                            <a href="unitPage.php">Projeto FEUP</a>
                           </td>
                         </tr>
                        </table>
@@ -132,17 +130,17 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                          <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Análise Matemática</a>
+                            <a href="unitPage.php">Análise Matemática</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Fundamentos da Programação</a>
+                            <a href="unitPage.php">Fundamentos da Programação</a>
                           </td>
                         </tr>
                        </table>
@@ -160,12 +158,12 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Álgebra</a>
+                            <a href="unitPage.php">Álgebra</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Projeto FEUP</a>
+                            <a href="unitPage.php">Projeto FEUP</a>
                           </td>
                         </tr>
                        </table>
@@ -196,17 +194,17 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                          <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Análise Matemática</a>
+                            <a href="unitPage.php">Análise Matemática</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Fundamentos da Programação</a>
+                            <a href="unitPage.php">Fundamentos da Programação</a>
                           </td>
                         </tr>
                        </table>
@@ -224,12 +222,12 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Álgebra</a>
+                            <a href="unitPage.php">Álgebra</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Projeto FEUP</a>
+                            <a href="unitPage.php">Projeto FEUP</a>
                           </td>
                         </tr>
                        </table>
@@ -260,17 +258,17 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                          <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Análise Matemática</a>
+                            <a href="unitPage.php">Análise Matemática</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Fundamentos da Programação</a>
+                            <a href="unitPage.php">Fundamentos da Programação</a>
                           </td>
                         </tr>
                        </table>
@@ -288,12 +286,12 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Álgebra</a>
+                            <a href="unitPage.php">Álgebra</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Projeto FEUP</a>
+                            <a href="unitPage.php">Projeto FEUP</a>
                           </td>
                         </tr>
                        </table>
@@ -324,17 +322,17 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                          <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Análise Matemática</a>
+                            <a href="unitPage.php">Análise Matemática</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Arquitectura e Organização de Computadores</a>
+                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Fundamentos da Programação</a>
+                            <a href="unitPage.php">Fundamentos da Programação</a>
                           </td>
                         </tr>
                        </table>
@@ -352,12 +350,12 @@ include_once("templates/header.html");
                       <table class="table table-striped uc-table">
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Álgebra</a>
+                            <a href="unitPage.php">Álgebra</a>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-center">
-                            <a href="unityPage.php">Projeto FEUP</a>
+                            <a href="unitPage.php">Projeto FEUP</a>
                           </td>
                         </tr>
                        </table>
