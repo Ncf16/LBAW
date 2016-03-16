@@ -96,7 +96,8 @@ include_once("templates/header.html");
       <li class="active"><a href="#competences" data-toggle="tab">Learning Competences</a></li>
       <li><a href="#stuff2" data-toggle="tab">Requirements</a></li>
       <li><a href="#stuff3" data-toggle="tab">Curricular Programme</a></li>
-      <li><a href="#stuff4" data-toggle="tab">Menu 3</a></li>
+      <li><a href="#stuff4" data-toggle="tab">Evaluation</a></li>
+      <li><a href="#stuff5" data-toggle="tab">Bibliography</a></li>
     </ul>
 
     <div class="tab-content">
@@ -127,7 +128,7 @@ include_once("templates/header.html");
 
       <div class="row tab-pane fade" id="stuff4">
         <div class="col-lg-12">
-          <h2>Objectives and Competences</h2>
+          <h2>Evaluation</h2>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
           <hr>
         </div>
@@ -135,7 +136,7 @@ include_once("templates/header.html");
 
       <div class="row tab-pane fade" id="stuff5">
         <div class="col-lg-12">
-          <h2>Objectives and Competences</h2>
+          <h2>Bibliography</h2>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
           <hr>
         </div>
