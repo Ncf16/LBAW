@@ -3,7 +3,6 @@ include_once("templates/header.html");
 ?>
 <!-- Page Content -->
     <div class="container">
-
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
@@ -39,21 +38,22 @@ include_once("templates/header.html");
 
 
     <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseBox">Sociodemographic Data</a>
-                </h4>
+         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#year1">Sociodemographic Data</a>
+            </h4>
+          </div>
+          <div id="year1" class="panel-collapse collapse">
+            <div class="panel-body">
+            <p>
+            	Teste
+            </p>
             </div>
-            <div id="collapseBox" class="panel-collapse collapse in">
-                <div class="panel-body">
-
-                </div>
-            </div>
+          </div>
         </div>
+        </div >
         </div>
-        
-      </div>
         <!-- /.row                <h3>Sociodemographic data </h3>	 -->
 
         <!-- Related Projects Row -->
