@@ -106,6 +106,43 @@ header.carousel .fill {
     background-size: cover;
 }
 
+/* Button Styles */
+
+.btn{
+	color: #fff;
+	background-color:#000;
+	
+}
+
+.btn:hover,
+.btn:focus{
+	background-color:#fff;
+	color:#000;
+}
+
+.btn-header{
+	color: #000;
+	background-color:#b33c00;
+	border-radius: 2px;
+	border-color: #e0e0eb;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus{
+	text-decoration: none;
+}
+
+a .btn-header:hover,
+a .btn-header:focus{
+	background-color:#b33c00;
+	color:#fff;
+	border-radius: 3px;
+    text-decoration: none;
+}
+
+
+
 /* 404 Page Styles */
 
 .error-404 {
