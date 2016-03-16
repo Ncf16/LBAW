@@ -44,10 +44,13 @@
                 </button>
 
 
-                <ul class="nav navbar-nav navbar-left" style="max-width:100px;">
+                <ul class="nav navbar-nav navbar-left" style="max-width:150px;">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li>
+                                <a href="profile.html">Profile</a>
+                            </li>
                             <li>
                                 <a href="request.html">Request</a>
                             </li>
@@ -64,6 +67,9 @@
             <div class="collapse navbar-collapse" id="CollapsibleMenu">
                 <ul class="nav navbar-nav navbar-left">
                   
+                	<li class="nav-brand">
+                		<a href="index.html">Home</a>
+                	</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -78,46 +84,22 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.html">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.html">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <li class="nav-brand">
+                		<a href="evaluations.html">Evaluations</a>
+                	</li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+
+        <!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
@@ -133,19 +115,19 @@
             <div class="item active">
                 <div class="fill" style="background-image:url('images/slide_one.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                    <h2>A home for students, with everything to offer</h2>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('images/slide_two.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    <h2>A place to move forward, surrounded by bright minds</h2>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('images/slide_three.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                    <h2>A calm environment where you can work in peace</h2>
                 </div>
             </div>
         </div>
@@ -162,7 +144,7 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Marketing Icons Section -->
+        <!-- Evaluation Section -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
@@ -171,122 +153,80 @@
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>
-                    </div>
+                	<a href="#"  >
+                    	<div class="panel-heading text-center btn-header">
+                        	<h3> <b>LBAW</b></h3>
+                    	</div>
+                	</a>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <p>
+                        	<h4> Name: Assignment 3 </h4>
+                        	<hr>
+                        	<h4> Data: 17/03/2016 </h4>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default ">
+                    <a href="#"  >
+                    	<div class="panel-heading text-center btn-header">
+                        	<h3> <b>LBAW</b></h3>
+                    	</div>
+                	</a>
+                    <div class="panel-body">
+                        <p>
+                        	<h4> Name: Assignment 4 </h4>
+                        	<hr>
+                        	<h4> Data: 17/03/2016 </h4>
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-gift"></i> Free &amp; Open Source</h4>
-                    </div>
+                    <a href="#"  >
+                    	<div class="panel-heading text-center btn-header">
+                        	<h3> <b>PPIN</b></h3>
+                    	</div>
+                	</a>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <p>
+                        	<h4> Name: Test 1 </h4>
+                        	<hr>
+                        	<h4> Data: 29/03/2016 </h4>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.row -->
-
         <!-- Portfolio Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Portfolio Heading</h2>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Modern Business Features</h2>
-            </div>
-            <div class="col-md-6">
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v3.2.0</strong>
-                    </li>
-                    <li>jQuery v1.11.0</li>
-                    <li>Font Awesome v4.1.0</li>
-                    <li>Working PHP contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                    <li>17 HTML pages</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-            </div>
-        </div>
-        <!-- /.row -->
+        
 
         <hr>
-
-        <!-- Call to Action Section -->
-        <div class="well">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        	
+                <div class="col-md-12">
+                	<div class="text-center">
+                    	<h2>About Us</h2>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                
+                <div class="col-md-6">
+                	<div class="text-center">
+                		<p> We are the best academy, join us! We are here since 1920 and are the best at what we have to offer! Explore our page to find out more about the opportunities we offer! </p>
+                	</div>
                 </div>
-            </div>
-        </div>
-
+                <div class="col-md-4 block-center">
+                    <a class="btn btn-md btn-default btn-block" href="#">Join Us</a>
+                </div>
         <hr>
 
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
+                <br>
                     <p>Copyright &copy; AcademicManagement 2016</p>
                 </div>
             </div>
