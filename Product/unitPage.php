@@ -5,11 +5,14 @@ include_once("templates/header.html");
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
+
       <h2 class="page-header">Laboratório de Base de Dados e Aplicações Web</h2>
+
     </div>
   </div>
 
   <div class="row">
+
     <div class="col-md-5 col-md-offset-1 ">
       <div class="text-center">
         <h2>Information</h2>
