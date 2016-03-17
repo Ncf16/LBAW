@@ -10,6 +10,7 @@
       <div class="col-lg-12">
          <h1 class="page-header">Perosonal Page
             <small>Student's Name</small>
+             <a href="#" class="btn btn-xs btn-primary">Edit Page</a> 
          </h1>
       </div>
    </div>
@@ -18,6 +19,7 @@
    <div class="row">
       <div class="col-md-3">
          <img class="img-responsive" src="images/Students/.jpg" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
+
       </div>
       <div class="col-md-2">
          <h3>Course</h3>
@@ -64,18 +66,20 @@
          <div class="col-lg-12">
             <h3 class="page-header">Personal Links</h3>
          </div>
-         <div class="col-sm-3 col-xs-6" >
+         <div class="col-sm-3 col-xs-5" >
             <a href="#" class="btn btn-primary btn-primary" >Main Page </a>
          </div>
-         <div class="col-sm-3 col-xs-6">
+         <div class="col-sm-3 col-xs-5">
             <a href="#" class="btn btn-primary btn-primary">Curricular Units</a>
          </div>
-         <div class="col-sm-3 col-xs-6">
+         <div class="col-sm-3 col-xs-5">
             <a href="#" class="btn btn-primary btn-primary">Admin Requests</a>
          </div>
-         <div class="col-sm-3 col-xs-6">
+         <div class="col-sm-3 col-xs-5">
             <a href="#" class="btn btn-primary btn-primary">Currical Units Taken</a>
          </div>
+         <!--   -->
+          </div>
       </div>
       <!-- /.row -->
       <hr>
