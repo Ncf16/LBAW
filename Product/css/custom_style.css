@@ -38,17 +38,17 @@ body {
 }
 
 .navbar-inverse .navbar-brand {
-  color: #b33c00;
+  color: #b35900;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #fefcff;
+  color: #b35900;
 }
 .navbar-inverse .navbar-text {
-  color: #b33c00;
+  color: #b35900;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #b33c00;
+  color: #b35900;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -58,30 +58,30 @@ body {
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #fefcff;
-  background-color: #b33c00;
+  background-color: #b35900;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #fefcff;
-  background-color: #b33c00;
+  background-color: #b35900;
 }
 .navbar-inverse .navbar-toggle {
-  border-color: #46048d;
+  border-color: #b35900;
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #46048d;
+  background-color: #b35900;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #b33c00;
+  background-color: #b35900;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #b33c00;
+  border-color: #b35900;
 }
 .navbar-inverse .navbar-link {
-  color: #b33c00;
+  color: #b35900;
 }
 .navbar-inverse .navbar-link:hover {
   color: #fefcff;
@@ -122,7 +122,7 @@ header.carousel .fill {
 
 .btn-header{
 	color: #011;
-	background-color:#b33c00;
+	background-color:#cc6600;
 	border-radius: 2px;
 	border-color: #e0e0eb;
 	text-decoration: none;
@@ -135,7 +135,7 @@ a:focus{
 
 a .btn-header:hover,
 a .btn-header:focus{
-	background-color:#b33c00;
+	background-color:#cc6600;
 	color:#fff;
 	border-radius: 3px;
     text-decoration: none;
