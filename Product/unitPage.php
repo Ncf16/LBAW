@@ -15,7 +15,7 @@ include_once("templates/header.html");
         <button class="btn btn-primary dropdown-toggle " id="actionsButton" type="button" data-toggle="dropdown">Actions
         <span class="caret"></span></button>
         <ul class="dropdown-menu ">
-          <li><a href="#">Classes</a></li>
+          <li><a href="classes.php">Classes</a></li>
           <li><a href="#">Attendance</a></li>
           <li><a href="#">Content</a></li>
           <li><a href="#">Evaluations</a></li>
