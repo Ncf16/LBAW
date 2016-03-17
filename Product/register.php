@@ -4,7 +4,7 @@
   ?>
   
  <div id="registerPage">
-    
+        <link href="css/register.css" rel="stylesheet">
   <div class="container">
  <form action="index.html" method="post" >
   <fieldset class="form-group">
