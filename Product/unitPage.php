@@ -1,4 +1,5 @@
 <?php
+
 include_once("templates/header.html");
 ?>
 
@@ -68,12 +69,12 @@ include_once("templates/header.html");
           <td class="k n">1</td>
           <td class="k n">   2,00</td>
           <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=230756">João António Correia Lopes</a></td>
+          <td class="t"><a href="#">João António Correia Lopes</a></td>
           <td class="t"></td>
           <td class="n">   1,00</td>
         </tr>
         <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=310021">Sérgio Sobral Nunes</a></td>
+          <td class="t"><a href="#">Sérgio Sobral Nunes</a></td>
           <td class="t"></td>
           <td class="n">   1,00</td>
         </tr>
@@ -85,17 +86,17 @@ include_once("templates/header.html");
           <td class="k n">  18,00</td>
         </tr>
         <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=230756">João António Correia Lopes</a></td>
+          <td class="t"><a href="#">João António Correia Lopes</a></td>
           <td class="t"></td>
           <td class="n">   6,00</td>
         </tr>
         <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=310021">Sérgio Sobral Nunes</a></td>
+          <td class="t"><a href="#">Sérgio Sobral Nunes</a></td>
           <td class="t"></td>
           <td class="n">   6,00</td>
         </tr>
         <tr class="d">
-            <td class="t"><a href="func_geral.formview?p_codigo=479881">Tiago Boldt Pereira de Sousa</a></td>
+            <td class="t"><a href="#">Tiago Boldt Pereira de Sousa</a></td>
             <td class="t"></td>
             <td class="n">   6,00</td>
         </tr>

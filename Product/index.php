@@ -71,7 +71,7 @@ include_once("templates/header.html");
                         <p>
                         	<h4> Name: Assignment 3 </h4>
                         	<hr>
-                        	<h4> Data: 17/03/2016 </h4>
+                        	<h4> Date: 17/03/2016 </h4>
                         </p>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ include_once("templates/header.html");
                         <p>
                         	<h4> Name: Assignment 4 </h4>
                         	<hr>
-                        	<h4> Data: 17/03/2016 </h4>
+                        	<h4> Date: 17/03/2016 </h4>
                         </p>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ include_once("templates/header.html");
                         <p>
                         	<h4> Name: Test 1 </h4>
                         	<hr>
-                        	<h4> Data: 29/03/2016 </h4>
+                        	<h4> Date: 29/03/2016 </h4>
                         </p>
                     </div>
                 </div>
