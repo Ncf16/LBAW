@@ -18,7 +18,7 @@ include_once("templates/header.html");
           <li><a href="classes.php">Classes</a></li>
           <li><a href="#">Attendance</a></li>
           <li><a href="#">Content</a></li>
-          <li><a href="#">Evaluations</a></li>
+          <li><a href="unitEvaluations.php">Evaluations</a></li>
           <li><a href="#">Create Evaluation</a></li>         
         </ul>
       </div>
