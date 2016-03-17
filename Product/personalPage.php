@@ -8,7 +8,7 @@
    <!-- Portfolio Item Heading -->
    <div class="row">
       <div class="col-lg-12">
-         <h1 class="page-header">Perosonal Page
+         <h1 class="page-header">Personal Page
             <small>Student's Name</small>
              <a href="#" class="btn btn-xs btn-primary">Edit Page</a> 
          </h1>
@@ -18,7 +18,7 @@
    <!-- Portfolio Item Row -->
    <div class="row">
       <div class="col-md-3">
-         <img class="img-responsive" src="images/Students/.jpg" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
+         <img class="img-responsive" src="images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
 
       </div>
       <div class="col-md-2">
@@ -26,7 +26,7 @@
          <a href="CoursePage_MIEIC.html">MIEIC</a>
       </div>
       <div class="col-md-3">
-         <h3>Personal Detials</h3>
+         <h3>Personal Details</h3>
          <ul>
             <li>Current Year: 3</li>
             <li>Starting Year: 2013</li>
