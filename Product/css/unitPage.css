@@ -34,3 +34,33 @@
 .tab-pane {
 
 }
+
+.page-header {
+     border: none;
+}
+
+#unitPage > .row:first-of-type {
+	margin-top: 15px;
+}
+
+#unitPage h1 {
+	margin: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bot: 5px;
+}
+
+#actionsButton{
+	background: #222;
+}
+#actionsButton:hover,
+#actionsButton:focus,
+#actionsButton:active{
+	background: #333;
+	color: #fff;
+}
