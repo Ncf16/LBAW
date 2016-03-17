@@ -1,16 +1,32 @@
 <?php
+
 include_once("templates/header.html");
 ?>
 
-<div class="container">
+<div id="unitPage" class="container">
   <div class="row">
-    <div class="col-lg-12">
-
-      <h1 class="page-header">Laboratório de Base de Dados e Aplicações Web</h1>
-
+    <div class="col-sm-10">
+     <h1 class="page-header visible-sm visible-xs">LBAW</h1>
+      <h1 class="page-header hidden-sm hidden-xs">Laboratório de Base de Dados e Aplicações Web </h1>
+     
     </div>
+    <div class="col-sm-2">
+      <div class="dropdown ">
+        <button class="btn btn-primary dropdown-toggle " id="actionsButton" type="button" data-toggle="dropdown">Actions
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu ">
+          <li><a href="classes.php">Classes</a></li>
+          <li><a href="#">Attendance</a></li>
+          <li><a href="#">Content</a></li>
+          <li><a href="#">Evaluations</a></li>
+          <li><a href="#">Create Evaluation</a></li>         
+        </ul>
+      </div>
+    </div>
+    
   </div>
 
+      <hr>
   <div class="row">
 
     <div class="col-md-5 col-md-offset-1 ">
@@ -19,16 +35,16 @@ include_once("templates/header.html");
       </div>
       <table class="table table-responsive ucInfo">
           <tr>
-            <td>Sigla: LBAW</td>
+            <td>Initials: LBAW</td>
           </tr>
           <tr>
             <td>Regent: <a href="#">João Correia</a></td>
           </tr>
           <tr>
-            <td>Página: <a href="http://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/index">http://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/index</a> </td>
+            <td>Page: <a href="http://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/index">http://web.fe.up.pt/~jlopes/doku.php/teach/lbaw/index</a> </td>
           </tr>
           <tr>
-            <td>Área: Desenvolvimento Web e Sistemas de Informação</td>
+            <td>Area: Desenvolvimento Web e Sistemas de Informação</td>
           </tr>
           <tr>
             <td>Language: Português</td>
@@ -53,12 +69,12 @@ include_once("templates/header.html");
           <td class="k n">1</td>
           <td class="k n">   2,00</td>
           <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=230756">João António Correia Lopes</a></td>
+          <td class="t"><a href="#">João António Correia Lopes</a></td>
           <td class="t"></td>
           <td class="n">   1,00</td>
         </tr>
         <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=310021">Sérgio Sobral Nunes</a></td>
+          <td class="t"><a href="#">Sérgio Sobral Nunes</a></td>
           <td class="t"></td>
           <td class="n">   1,00</td>
         </tr>
@@ -70,17 +86,17 @@ include_once("templates/header.html");
           <td class="k n">  18,00</td>
         </tr>
         <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=230756">João António Correia Lopes</a></td>
+          <td class="t"><a href="#">João António Correia Lopes</a></td>
           <td class="t"></td>
           <td class="n">   6,00</td>
         </tr>
         <tr class="d">
-          <td class="t"><a href="func_geral.formview?p_codigo=310021">Sérgio Sobral Nunes</a></td>
+          <td class="t"><a href="#">Sérgio Sobral Nunes</a></td>
           <td class="t"></td>
           <td class="n">   6,00</td>
         </tr>
         <tr class="d">
-            <td class="t"><a href="func_geral.formview?p_codigo=479881">Tiago Boldt Pereira de Sousa</a></td>
+            <td class="t"><a href="#">Tiago Boldt Pereira de Sousa</a></td>
             <td class="t"></td>
             <td class="n">   6,00</td>
         </tr>
@@ -91,7 +107,7 @@ include_once("templates/header.html");
 
   <br>
   <p>
-
+  <hr>
     <ul class="nav nav-pills ucNavPills">
       <li class="active"><a href="#competences" data-toggle="tab">Learning Competences</a></li>
       <li><a href="#stuff2" data-toggle="tab">Requirements</a></li>
@@ -105,7 +121,7 @@ include_once("templates/header.html");
         <div class="col-lg-12 ">
           <h2>Learning Objectives and Competences</h2>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-          <hr>
+          
         </div>
       </div>
 
@@ -114,7 +130,7 @@ include_once("templates/header.html");
         <div class="col-lg-12">
           <h2>Pre-Requirements and Co-Requirements</h2>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-          <hr>
+          
         </div>
       </div>
 
@@ -122,7 +138,7 @@ include_once("templates/header.html");
         <div class="col-lg-12">
          <h2>Curricular Programme</h2>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-          <hr>
+          
         </div>
       </div>
 
@@ -130,7 +146,7 @@ include_once("templates/header.html");
         <div class="col-lg-12">
           <h2>Evaluation</h2>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend tincidunt nunc. Proin porttitor blandit mattis. Suspendisse elementum tempor venenatis. Vivamus eget nibh libero. Nam eget ligula mi. Duis eu lacus at ipsum iaculis laoreet. Ut venenatis turpis eget lacinia fringilla. Duis sollicitudin, sem ut suscipit congue, sapien arcu venenatis dolor, vitae aliquam metus lectus nec quam.</p>
-          <hr>
+          
         </div>
       </div>
 
@@ -143,4 +159,6 @@ include_once("templates/header.html");
       </div>
     </div>
   </p>
-</div>
+<?php
+  include_once("templates/footer.html");
+?>

@@ -19,7 +19,6 @@
    <div class="row">
       <div class="col-md-3">
          <img class="img-responsive" src="images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
-
       </div>
       <div class="col-md-2">
          <h3>Course</h3>
