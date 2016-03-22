@@ -55,54 +55,60 @@ include_once("templates/header.html");
           <div id="year1" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-group" id="accordion1">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion1" href="#semester11">1 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester11" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                         <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Análise Matemática</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Fundamentos da Programação</a>
-                          </td>
-                        </tr>
-                       </table>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion1" href="#semester11">1 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester11" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                             <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Análise Matemática</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Fundamentos da Programação</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion1" href="#semester12">2 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester12" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Álgebra</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Projeto FEUP</a>
-                          </td>
-                        </tr>
-                       </table>
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion1" href="#semester12">2 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester12" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Álgebra</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Projeto FEUP</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -119,54 +125,60 @@ include_once("templates/header.html");
           <div id="year2" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-group" id="accordion2">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion2" href="#semester21">1 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester21" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                         <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Análise Matemática</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Fundamentos da Programação</a>
-                          </td>
-                        </tr>
-                       </table>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion2" href="#semester21">1 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester21" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                             <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Análise Matemática</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Fundamentos da Programação</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion2" href="#semester22">2 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester22" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Álgebra</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Projeto FEUP</a>
-                          </td>
-                        </tr>
-                       </table>
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion2" href="#semester22">2 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester22" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Álgebra</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Projeto FEUP</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -183,54 +195,60 @@ include_once("templates/header.html");
           <div id="year3" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-group" id="accordion3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion3" href="#semester31">1 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester31" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                         <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Análise Matemática</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Fundamentos da Programação</a>
-                          </td>
-                        </tr>
-                       </table>
+                 <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion3" href="#semester31">1 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester31" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                             <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Análise Matemática</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Fundamentos da Programação</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion3" href="#semester32">2 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester32" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Álgebra</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Projeto FEUP</a>
-                          </td>
-                        </tr>
-                       </table>
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion3" href="#semester32">2 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester32" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Álgebra</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Projeto FEUP</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -247,54 +265,60 @@ include_once("templates/header.html");
           <div id="year4" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-group" id="accordion4">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion4" href="#semester41">1 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester41" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                         <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Análise Matemática</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Fundamentos da Programação</a>
-                          </td>
-                        </tr>
-                       </table>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion4" href="#semester41">1 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester41" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                             <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Análise Matemática</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Fundamentos da Programação</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion4" href="#semester42">2 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester42" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Álgebra</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Projeto FEUP</a>
-                          </td>
-                        </tr>
-                       </table>
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion4" href="#semester42">2 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester42" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Álgebra</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Projeto FEUP</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -311,54 +335,60 @@ include_once("templates/header.html");
           <div id="year5" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="panel-group" id="accordion5">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion5" href="#semester51">1 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester51" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                         <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Análise Matemática</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Fundamentos da Programação</a>
-                          </td>
-                        </tr>
-                       </table>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion5" href="#semester51">1 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester51" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                             <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Análise Matemática</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Fundamentos da Programação</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion5" href="#semester52">2 Semester</a>
-                    </h4>
-                  </div>
-                  <div id="semester52" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <table class="table table-striped uc-table">
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Álgebra</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <a href="unitPage.php">Projeto FEUP</a>
-                          </td>
-                        </tr>
-                       </table>
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion5" href="#semester52">2 Semester</a>
+                        </h4>
+                      </div>
+                      <div id="semester52" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <table class="table table-striped uc-table">
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Álgebra</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center">
+                                <a href="unitPage.php">Projeto FEUP</a>
+                              </td>
+                            </tr>
+                           </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
