@@ -62,7 +62,7 @@ include_once("templates/header.html");
             <h3 class="page-header">Admin Links</h3>
          </div>
          <div class="col-sm-12 col-xs-5 text-center" >
-            <a href="#" class="btn btn-primary btn-primary" > Admin Page </a>
+            <a href="admin.php" class="btn btn-primary btn-primary" > Admin Page </a>
          </div>
 
          <!--   -->
