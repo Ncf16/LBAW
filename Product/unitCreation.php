@@ -1,6 +1,7 @@
 <?php
 include_once("templates/header.html");
 ?>
+<script src="js/formValidation.js"></script>
 
 <div class="container">
   <div class="row">
@@ -77,43 +78,12 @@ include_once("templates/header.html");
   			<h3>Teaching</h3>
   			<hr>
   		</div>
-  		<div class="col-md-2">
-  			<button type="button" class="btn btn-default">Add New Teaching Method</button>
-  		</div>
   	</div>
 
-  	<div class="form-group">
-	  	<div class="col-md-4">
-	  		<label class="col-md-2 control-label">Type</label>
-	  		<div class="col-md-9 inputGroupContainer">
-	  			<div class="input-group">
-	  				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  				<select name="unit_type" placeholder="Course Director" class="form-control" required>
-				        <option selected="selected">Select Type</option>
-				        <option>Lectures</option>
-				        <option>Laboratory Practice</option>
-				    </select>
-	  			</div>
-	  		</div>
-	  	</div>
-	  	<div class="col-md-4">
-	  		<label class="col-md-2 control-label">Classes</label>  
-	  		<div class="col-md-9 inputGroupContainer">
-	  			<div class="input-group">
-	  				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  				<input name="unit_classes" placeholder="Number of classes" class="form-control" type="text">
-	  			</div>
-	  		</div>
-	  	</div>
-	  	<div class="col-md-4">
-	  		<label class="col-md-2 control-label">Hours</label>  
-	  		<div class="col-md-9 inputGroupContainer">
-	  			<div class="input-group">
-	  				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  				<input name="unit_hours" placeholder="Number of classes" class="form-control"  type="number" min="1" max="6">
-	  			</div>
-	  		</div>
-	  	</div>
+  	<button type="button" id="newMeth" class="btn btn-default">Add New Teaching Method</button>
+
+  	<div id="methods">
+  		
 	</div>
 
   	<div class="row">
