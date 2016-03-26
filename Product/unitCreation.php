@@ -3,6 +3,7 @@ include_once("templates/header.html");
 ?>
 <script src="js/formValidation.js"></script>
 
+<div class="modal-body">
 <div class="container">
   <div class="row">
   	<div class="col-lg-12">
@@ -138,6 +139,7 @@ include_once("templates/header.html");
     </div>
 
   </form>
+</div>
 </div>
 
 <?php
