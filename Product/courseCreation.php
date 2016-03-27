@@ -143,6 +143,13 @@ include_once("templates/header.html");
                 </div>
               </div>
             </div> 
+
+            <div class="form-group">
+              <div class="col-md-4 col-md-offset-1">
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+            </div>
+
         </div>
       </form>
     </div>
