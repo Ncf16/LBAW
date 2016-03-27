@@ -1,6 +1,16 @@
 $(document).ready(function() {
 
     $('#newMeth').on('click', addMethods);
+    $('input:radio[name=associateCreate]').on('change',function(){
+		if(this.value == "associate"){
+			$('#createSection').hide();
+			$('#associateSection').show();
+		}
+		else if(this.value == "create"){
+			$('#associateSection').hide();
+			$('#createSection').show();
+		}
+    });
 });
 
 function addMethods(){
