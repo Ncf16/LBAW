@@ -121,6 +121,7 @@ classID SERIAL PRIMARY KEY,
 occurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID), 
 duration INTEGER NOT NULL, 
 roomID INTEGER REFERENCES Room(roomID),
+classDate TIMESTAMP NOT NULL, 
 summary CHAR(512) 
 );
 
@@ -134,7 +135,7 @@ PRIMARY KEY(studentCode,classID)
 CREATE TABLE IF NOT EXISTS Evaluation(
 evaluationID SERIAL PRIMARY KEY,
 cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
-evaluationDate DATE NOT NULL, 
+evaluationDate TIMESTAMP NOT NULL, 
 weight INTEGER NOT NULL
 );
 
