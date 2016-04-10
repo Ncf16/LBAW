@@ -50,8 +50,6 @@
                         <br>
                         NIF: 609620558
                         <br>
-                        Marital status: Single
-                        <br>
                         Nationality: Porugal
                      </p>
                   </div>

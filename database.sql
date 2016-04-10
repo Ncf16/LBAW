@@ -39,7 +39,7 @@ phoneNumber CHAR(12)
 
 CREATE TABLE IF NOT EXISTS Course(
 code SERIAL PRIMARY KEY,
-directorCode INTEGER REFERENCES Person(academicCode),
+directorCode INTEGER REFERENCES Person(academicCode) CHECK (directorCode ='Teacher'),
 courseType CourseType,
 name CHAR(128) NOT NULL UNIQUE,
 creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
