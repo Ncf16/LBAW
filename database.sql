@@ -18,7 +18,13 @@ DROP TABLE  IF EXISTS Area;
 DROP TRIGGER  IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER  IF EXISTS checkRegentType  ON CurricularUnitOccurrence CASCADE;
 
+/*Trigger Ideas:
+Check if only 1 exam
+Check Data de aula PHP
+Check if Class and Room if no overlaps
+Request,Attendance,GradeCourseEnrollment,CurricularEnrollment -> checkStudent
 
+*/
 DROP TYPE  IF EXISTS  PersonType CASCADE;
 DROP TYPE  IF EXISTS  Language CASCADE;
 DROP TYPE  IF EXISTS  EvaluationType CASCADE;
@@ -168,7 +174,7 @@ CHECK ( finishYear IS NULL OR finishYear > startYear),
 CHECK(curricularYear > 0 AND curricularYear < 8),
 PRIMARY KEY(courseID,studentCode)
 );
- 
+  
 CREATE TABLE IF NOT EXISTS CurricularEnrollment(
 cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 studentCode INTEGER REFERENCES Person(academicCode),
