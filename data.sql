@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿--PERSON -- 
 INSERT INTO Person (name,phoneNumber,address,nif,birthdate,personType) VALUES ('Alisa','922759286','1047 Sapien. St.','700071599','23/06/2016','Teacher');
 INSERT INTO Person (name,phoneNumber,address,nif,birthdate,personType) VALUES ('Anjolie','932615276','P.O. Box 370, 765 Aliquam St.','043101353','23/10/2015','Teacher');
@@ -233,26 +234,27 @@ INSERT INTO Room(room) VALUES ('N414');
 
 
 -- Curricular Unit
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 3',3,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 5',9,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Economy 2',3,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Economy 1',9,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Physics 2',14,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 2',8,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 1',8,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 1',14,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Physics 3',5,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Physics 1',5,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 3',11,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 9',7,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 3',3,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 4',11,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 2',11,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 1',11,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 4',7,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 2',3,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Music 1',11,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Design 1',3,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 7',4,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Psichology 1',4,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 2',13,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 4',2,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Algebra 1',9,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 5',2,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 6',1,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 1',1,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 3',2,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 3',1,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Design 2',1,6);
 INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Algebra 2',8,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 8',4,6);
 
  --Class
  /*
