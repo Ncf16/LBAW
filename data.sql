@@ -1,4 +1,3 @@
-
 --PERSON -- 
 INSERT INTO Person (name,phoneNumber,address,nif,birthdate,personType) VALUES ('Alisa','922759286','1047 Sapien. St.','700071599','23/06/2016','Teacher');
 INSERT INTO Person (name,phoneNumber,address,nif,birthdate,personType) VALUES ('Anjolie','932615276','P.O. Box 370, 765 Aliquam St.','043101353','23/10/2015','Teacher');
@@ -103,7 +102,7 @@ INSERT INTO Person (name,phoneNumber,address,nif,birthdate,personType) VALUES ('
 
 --Course
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (15,'PhD','suscipit,','02/04/2016',2016,'aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci');
-INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (45,'PhD','mauris','05/12/2016',2016,'non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus leo, in');
+INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (45,'PhD','MIEIC','05/12/2016',2016,'non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus leo, in');
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (89,'PhD','non','19/02/2016',2016,'dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu.');
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (99,'PhD','interdum.','25/10/2016',2016,'ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh.');
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (79,'PhD','lacus.','05/08/2015',2016,'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla');
@@ -120,3 +119,82 @@ INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYea
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (66,'Masters','eget,','13/06/2016',2016,'Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor. Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor, velit');
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (81,'Masters','commodo','27/12/2015',2016,'ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet');
 INSERT INTO Course (directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (30,'Masters','eget2','18/10/2015',2016,'luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed id risus quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec');
+
+--Area
+INSERT INTO Area (area) VALUES ('History');
+INSERT INTO Area (area) VALUES ('Sociology');
+INSERT INTO Area (area) VALUES ('Science of Earth Systems');
+INSERT INTO Area (area) VALUES ('Spanish');
+INSERT INTO Area (area) VALUES ('Statistical Science');
+INSERT INTO Area (area) VALUES ('Civil Engineering');
+INSERT INTO Area (area) VALUES ('Computer Science');
+INSERT INTO Area (area) VALUES ('German Studies');
+INSERT INTO Area (area) VALUES ('Religious Studies');
+INSERT INTO Area (area) VALUES ('History of Art');
+INSERT INTO Area (area) VALUES ('Physics');
+INSERT INTO Area (area) VALUES ('Government');
+INSERT INTO Area (area) VALUES ('Nutritional Sciences');
+INSERT INTO Area (area) VALUES ('Near Eastern Studies');
+INSERT INTO Area (area) VALUES ('Music');
+INSERT INTO Area (area) VALUES ('Mechanical Engineering');
+INSERT INTO Area (area) VALUES ('Performing and Media Arts');
+INSERT INTO Area (area) VALUES ('Philosophy');
+INSERT INTO Area (area) VALUES ('Plant Science');
+INSERT INTO Area (area) VALUES ('aliquet vel, vulputate');
+INSERT INTO Area (area) VALUES ('porttitor vulputate, posuere');
+INSERT INTO Area (area) VALUES ('Urban and Regional Studies');
+INSERT INTO Area (area) VALUES ('Viticulture and Enology');
+
+--ROOM 
+INSERT INTO Room VALUES ('N602');
+INSERT INTO Room VALUES ('S063');
+INSERT INTO Room VALUES ('O683');
+INSERT INTO Room VALUES ('B120');
+INSERT INTO Room VALUES ('A096');
+INSERT INTO Room VALUES ('Z158');
+INSERT INTO Room VALUES ('N669');
+INSERT INTO Room VALUES ('M492');
+INSERT INTO Room VALUES ('D284');
+INSERT INTO Room VALUES ('O704');
+INSERT INTO Room VALUES ('T222');
+INSERT INTO Room VALUES ('A608');
+INSERT INTO Room VALUES ('N371');
+INSERT INTO Room VALUES ('X113');
+INSERT INTO Room VALUES ('S754');
+INSERT INTO Room VALUES ('S943');
+INSERT INTO Room VALUES ('K780');
+INSERT INTO Room VALUES ('K797');
+INSERT INTO Room VALUES ('W372');
+INSERT INTO Room VALUES ('K565');
+INSERT INTO Room VALUES ('S365');
+INSERT INTO Room VALUES ('J190');
+INSERT INTO Room VALUES ('X833');
+INSERT INTO Room VALUES ('P807');
+INSERT INTO Room VALUES ('X498');
+INSERT INTO Room VALUES ('F227');
+INSERT INTO Room VALUES ('W642');
+INSERT INTO Room VALUES ('S436');
+INSERT INTO Room VALUES ('L359');
+INSERT INTO Room VALUES ('S134');
+INSERT INTO Room VALUES ('I293');
+INSERT INTO Room VALUES ('L960');
+INSERT INTO Room VALUES ('N091');
+INSERT INTO Room VALUES ('T890');
+INSERT INTO Room VALUES ('G501');
+INSERT INTO Room VALUES ('O137');
+INSERT INTO Room VALUES ('Y594');
+INSERT INTO Room VALUES ('A337');
+INSERT INTO Room VALUES ('P993');
+INSERT INTO Room VALUES ('R828');
+INSERT INTO Room VALUES ('V426');
+INSERT INTO Room VALUES ('E924');
+INSERT INTO Room VALUES ('E535');
+INSERT INTO Room VALUES ('E625');
+INSERT INTO Room VALUES ('V593');
+INSERT INTO Room VALUES ('G506');
+INSERT INTO Room VALUES ('T251');
+INSERT INTO Room VALUES ('J670');
+INSERT INTO Room VALUES ('R337');
+INSERT INTO Room VALUES ('N414');
+
+
