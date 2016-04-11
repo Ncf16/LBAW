@@ -22,7 +22,7 @@ DROP TRIGGER  IF EXISTS checkRegentType  ON CurricularUnitOccurrence CASCADE;
 Check if only 1 exam
 Check Data de aula PHP
 Check if Class and Room if no overlaps
-Request,Attendance,GradeCourseEnrollment,CurricularEnrollment -> checkStudent
+Request,Attendance,Grade,CourseEnrollment,CurricularEnrollment -> checkStudent
 
 */
 DROP TYPE  IF EXISTS  PersonType CASCADE;
@@ -183,8 +183,21 @@ CHECK(finalGrade >= 0 AND finalGrade <= 20),
 PRIMARY KEY(cuOccurrenceID,studentCode)
 );
 
+--Functions
+CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
+RETURNS  PersonType AS  $$
+DECLARE
+result PersonType;
+BEGIN
+  SELECT PERSON.personType INTO result
+  FROM PERSON 
+  WHERE academicCode = id;
+return  result;	
+END 
+$$ LANGUAGE 'plpgsql';
  
  --TRIGGERS--
+
 CREATE OR REPLACE FUNCTION isPersonTeacher()
 RETURNS trigger AS  $$
 DECLARE
@@ -230,25 +243,38 @@ type:=getPersonType(NEW.directorCode);
 END 
 $$  LANGUAGE 'plpgsql'; 
 
-CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
-RETURNS  PersonType AS  $$
-DECLARE
-result PersonType;
-BEGIN
-  SELECT PERSON.personType INTO result
-  FROM PERSON 
-  WHERE academicCode = id;
-return  result;	
-END 
-$$ LANGUAGE 'plpgsql';
  
+--check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
 CREATE TRIGGER checkDiretorType
 BEFORE INSERT OR UPDATE ON Course
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonTeacher(); 
-
---check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
+ 
 CREATE TRIGGER checkRegentType
 BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonTeacher(); 
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Request 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent(); 
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Attendance 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent(); 
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Grade 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent(); 
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON CurricularEnrollment 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent();
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON CourseEnrollment 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent();
+
+   
