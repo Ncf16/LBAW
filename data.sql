@@ -198,3 +198,24 @@ INSERT INTO Room VALUES ('R337');
 INSERT INTO Room VALUES ('N414');
 
 
+-- Curricular Unit
+INSERT INTO CurricularUnit VALUES ('Programming 3',3,6);
+INSERT INTO CurricularUnit VALUES ('Programming 3',9,6);
+INSERT INTO CurricularUnit VALUES ('Physics 2',14,6);
+INSERT INTO CurricularUnit VALUES ('Database 2',8,6);
+INSERT INTO CurricularUnit VALUES ('Programming 1',14,6);
+INSERT INTO CurricularUnit VALUES ('Physics 2',5,6);
+INSERT INTO CurricularUnit VALUES ('Math 3',11,6);
+INSERT INTO CurricularUnit VALUES ('Programming 4',7,6);
+INSERT INTO CurricularUnit VALUES ('Database 3',3,6);
+INSERT INTO CurricularUnit VALUES ('Programming 4',11,6);
+INSERT INTO CurricularUnit VALUES ('Design 1',3,6);
+INSERT INTO CurricularUnit VALUES ('Programming 4',4,6);
+INSERT INTO CurricularUnit VALUES ('Programming 2',13,6);
+INSERT INTO CurricularUnit VALUES ('Math 4',2,6);
+INSERT INTO CurricularUnit VALUES ('Algebra 1',9,6);
+INSERT INTO CurricularUnit VALUES ('Database 3',2,6);
+INSERT INTO CurricularUnit VALUES ('Programming 3',1,6);
+INSERT INTO CurricularUnit VALUES ('Database 1',1,6);
+INSERT INTO CurricularUnit VALUES ('Algebra 1',8,6);
+INSERT INTO CurricularUnit VALUES ('Programming 1',4,6);
