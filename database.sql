@@ -38,22 +38,22 @@ CREATE TYPE EvaluationType AS ENUM('GroupWork','Test','Exam');
 CREATE TABLE IF NOT EXISTS Person(
 academicCode SERIAL PRIMARY KEY,
 personType PersonType,
-name CHAR(40) NOT NULL,
-address CHAR(256),
+name VARCHAR(40) NOT NULL,
+address VARCHAR(256),
 birthdate DATE,
-nationality CHAR(20),
+nationality VARCHAR(20),
 nif CHAR(9) UNIQUE,
-phoneNumber CHAR(12)
+phoneNumber VARCHAR(12)
 );
 
 CREATE TABLE IF NOT EXISTS Course(
 code SERIAL PRIMARY KEY,
 directorCode INTEGER REFERENCES Person(academicCode),
 courseType CourseType,
-name CHAR(128) NOT NULL UNIQUE,
+name VARCHAR(128) NOT NULL UNIQUE,
 creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
 currentCalendarYear INTEGER NOT NULL,
-description CHAR(1000) NOT NULL,
+description VARCHAR(1000) NOT NULL,
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
 
@@ -63,7 +63,7 @@ studentCode INTEGER REFERENCES Person(academicCode),
 adminCode INTEGER REFERENCES Person(academicCode),
 newCourse_Code INTEGER REFERENCES Course(code),
 approved BOOLEAN,
-reasonForChange CHAR(256) NOT NULL,
+reasonForChange VARCHAR(256) NOT NULL,
 CHECK(reasonForChange <> '')
 );
 
@@ -76,17 +76,17 @@ CHECK (calendarYear >= 1990)
 
 CREATE TABLE IF NOT EXISTS Area(
 areaID SERIAL PRIMARY KEY,
-area CHAR(64) NOT NULL UNIQUE
+area VARCHAR(64) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Room(
 roomID SERIAL PRIMARY KEY,
-room CHAR(6) NOT NULL UNIQUE
+room CHAR(4) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS CurricularUnit(
 curricularID SERIAL PRIMARY KEY,
-name CHAR(64) NOT NULL UNIQUE,
+name VARCHAR(64) NOT NULL UNIQUE,
 areaID INTEGER REFERENCES Area(areaID),
 credits INTEGER NOT NULL,
 CHECK(credits > 0)
@@ -97,15 +97,15 @@ cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
 curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
 regentCode INTEGER REFERENCES Person(academicCode),
-​bibliography CHAR(256) NOT NULL,
-competences CHAR(2048) NOT NULL,
+​bibliography VARCHAR(256) NOT NULL,
+competences VARCHAR(2048) NOT NULL,
 ​curricularSemester INTEGER NOT NULL,
 curricularYear INTEGER NOT NULL,
-evaluation CHAR(1024) NOT NULL,
-externalPage CHAR(128) NOT NULL,
+evaluation VARCHAR(1024) NOT NULL,
+externalPage VARCHAR(128) NOT NULL,
 language Language,
-programme CHAR(2048) NOT NULL,
-requirements CHAR(2048) NOT NULL,
+programme VARCHAR(2048) NOT NULL,
+requirements VARCHAR(2048) NOT NULL,
 CHECK(​curricularSemester =1 OR ​curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
 );
@@ -116,7 +116,7 @@ occurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 duration INTEGER NOT NULL, 
 roomID INTEGER REFERENCES Room(roomID),
 classDate TIMESTAMP NOT NULL, 
-summary CHAR(512),
+summary VARCHAR(512),
 CHECK(duration > 0)
 );
 
