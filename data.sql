@@ -1002,7 +1002,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 
 --Course
 INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (146,'Masters','Chemistry','21-06-2009',2016,'hZQhIIKpsdomrmziSUZSxUtbq BqKYMVnXxwrBDZjqDmANmrXgUSaHhxqIAdbEOUwRJPRzUbBVPRssEcQsdEloTffoylMFenIJjIuOCBQcJBJNIOBJOMiZnKzNfLhTQNcuhNhmRgKsiqkRAgQLxwIwXDLsEvAGqHwovlXOENfYnklFnDEgmSQeXHcugZuIHrqDgrRldUpRoajrKrkyuTlFGUldONAKarYrlJiixWdEFTpgbZIEn sTnJePzeajpwYZZygZbMkQg kjMMPEGdJNnDHSHOXRfByJwfwTTLGjhxVWSSTjZEZbmpGHvrTiRZg rFDQRYKuhJjhrjwAlcifYYzECwbxilkdWDgyzOvHTtddDsHwjTizMLbrZrQLytctZ YAsCMHVPjTJrmgiAm ohPxXGKBQJrVXoKacYsLpOZwuwvQB uixYqpjBjocFJLUeYmYQ JbIrJIiSgLincRFCRlKxsUJyPMVyuVJb sHXaLUqFiUSyjcycdStDzevwyYNodeTeredUrZFhhdeqZZzL fyAvUJWeAJEyRHMwcwDNNUEatCqeEIchxvjfAnMteBUZOoKWwqKFWpgs');
-INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (21,'Bachelor','History','03-01-1996',2016,'tSetbRNIPqjSxveetaEuYN URDrldzgdumJrVLufRcTacwIAAZSGfhzRIriWVlBHNcZsSGrSDYyO vig vrBBDxEqMNjiRFechRDelmACkVhdUnwoXIEtdvwuvOPCMtCqaDfcwRzRvZskNNyBSVipfBPIiNIrRz dgpV pERccOTNHQkslbzZdLrciQmWkpPTmDbIRDurzKIIcvvjyscsiIruYbRYBImiicE H GLCXIaVrHVzegisKaqqJDROsLMBsGdHcVbIcunruhAvFwVUjsaZlOfqWswKZhKnHEMRMGiryDkWEBIYtYctmoknLNVBrpRwJSeUvlDANIDXK ouwxeRJAhTfiEw vKuJXfeHTMPKMDCfFBZoHkMlarQhfBmMctxPrPHuWTvsdirBIWVPeTsyIjeNhnvfMuidZHuLfRxqRWYPXriCWKSwDgRXXjntQBjGiIpBgxPbYAGWis HsLl JVOqrAmMwiVZZWwMeTGRAmAMRQdtkLWwPJudqICFlbBLmrjKdkVnuZNXJWohIvvxMCAeFwyauSDxnQZ XkMfVwvwwitHeTIgQmuHXbjkAnyoErplrTyjEC tRfERTGJeBoABenUTqFwWmkJNDqsAq XxawxXqlWfxvlMdGcOlQFOaNqxWEfUttmtcChOnwoVFjWmNOiDGFIfCjTcxNyxVzCHmPCPsnMtlHjqubZSXN WVzNj pArpgYjhumqGRdp bEcFlCUqHNzGqGEXUyqUpkJomqgXSShXLRhJQUTXdSFZVVrxHiBaNRGKVjbpQEFQrDajCquRsKnjBEMxnTrxIOBWgOsiqVbxqqwnEdpUXOztXRBgbnzbEtnmUXEmtksHNoEIjVrbMUfhkxpEyWByeVgbsPdzQVbGcJdzHTcijmNdsCeJFQWOybolWvNPgflNXnxtaYN RMhoMlCAxLG');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (21,'Bachelor','History','03-01-1996',2016,'tSetbRNIPqjSxveetaEuYN URDrldzgdumJrVLufRcTacwIAAZSGfhzRIriWVlBHNcZsSGrSDYyO vig vrBBDxEqMNjiRFechRDelmACkVhdUnwoXIEtdvwuvOPCMtCqaDfcwRzRvZskNNyBSVipfBPIiNIrRz dgpV pERccOTNHQkslbzZdLrciQmWkpPortuguesemDbIRDurzKIIcvvjyscsiIruYbRYBImiicE H GLCXIaVrHVzegisKaqqJDROsLMBsGdHcVbIcunruhAvFwVUjsaZlOfqWswKZhKnHEMRMGiryDkWEBIYtYctmoknLNVBrpRwJSeUvlDANIDXK ouwxeRJAhTfiEw vKuJXfeHTMPKMDCfFBZoHkMlarQhfBmMctxPrPHuWTvsdirBIWVPeTsyIjeNhnvfMuidZHuLfRxqRWYPXriCWKSwDgRXXjntQBjGiIpBgxPbYAGWis HsLl JVOqrAmMwiVZZWwMeTGRAmAMRQdtkLWwPJudqICFlbBLmrjKdkVnuZNXJWohIvvxMCAeFwyauSDxnQZ XkMfVwvwwitHeTIgQmuHXbjkAnyoErplrTyjEC tRfERTGJeBoABenUTqFwWmkJNDqsAq XxawxXqlWfxvlMdGcOlQFOaNqxWEfUttmtcChOnwoVFjWmNOiDGFIfCjTcxNyxVzCHmPCPsnMtlHjqubZSXN WVzNj pArpgYjhumqGRdp bEcFlCUqHNzGqGEXUyqUpkJomqgXSShXLRhJQUTXdSFZVVrxHiBaNRGKVjbpQEFQrDajCquRsKnjBEMxnTrxIOBWgOsiqVbxqqwnEdpUXOztXRBgbnzbEtnmUXEmtksHNoEIjVrbMUfhkxpEyWByeVgbsPdzQVbGcJdzHTcijmNdsCeJFQWOybolWvNPgflNXnxtaYN RMhoMlCAxLG');
 INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (681,'Masters','Literature','01-10-1995',2016,'uPpRvQSlbqVUXWn wICWZXJzqUAQQpnhFcjbapHEzBySmBvjxYDVAATKftDhitgcSiekBpWcivOgkXGTpLTWzqYYMNvAuyBBAOoJruOBckxAXfcyFoGzjetiodDsnFeHuCnFwcdcJhMBfCYzEzYHoSDfMHpvXUuaNNScnBOLKdzffgQpLMNpnzJLsUJXtOvNvXGykscCdIKfKxDcGeYiuVbusceoqjLLOtkREmHmKDG PfHaNNzsqBmdAKkniXgBDvpCSb nrRpfUggWAllBlbwxEEelaryOxNrwWJNQnkCpXdhKyioxGsYKJntziNSjmsfCBgznxXCtqELgyjDlAFMcOpBIDAOvpuLdViPtBHKcLbLFSmgiykLk RcRmyelQlICRXQkQDMIDXwpuv QxdMRwmMNTQieWRERlJnDDeWCjTTKRgzbMEhUDj rmmxEAgIQxGCZelMyEmzeFAggwGZGaaED RGzJVRqUywOFwOBfCNZV tKxSGnfcSvXYmDxxEzvLLJupuEecWwCVOCfWAVXUtLXoWRjxjxtYseDEivTRQiJ');
 INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (928,'PhD','Global Studies and Languages','03-10-1997',2016,'pAsuzBDMjxuHImmaHAOCWVctGULUegPwditPBbckOtDULDQDexEXNHWNvTNMFVDMqebmvmGeK VJAEOQNxaxiICFfRjwpgQrSLIrXpOSLmDgBqbjJzRRIszDXiGMJGJfhQgodhDTnAnJHSkFbeXJrVCOPjWoA GztzOkfvjBSjZtdWhijWXWchYhvpmHMWUeucExllSBZyOjiLQLHlNfYrAr jJtIKrhBeyzAlntiRiTYfdWgR CCQQEkVYP UHGfJigMGXPVQcwAYqErOzXLctcAoGXxqAKKGjeyfNqnoBjSfAdvXyxjTeRgyKOSchwx VTbNQumtipr oZMwGFfLtuNvDXD wyhXXhDNbrykTLPDkPEhQhIseaQjeH nNaVxOGbzyOxlwoDgXwZNTYCwzBhpjPEJZAOj bMjBcMMhKJdXjDvzObrvCoIvWiaHcKwqoJADryDimcixpoRTgDMBbmpMuDKquKyycBBOiyMGMXTojRcdTbiV ajjNFFQfZfdVPlWPakltPSSSCzLDmLcNHNyePnbLXJVpO qMcHPqFjwtRVYoySukjXeWAnatCDDoMxkFdaqkmDzFePNwNPfBzlvLFqcJlvQNpkQtecdLSNRZnqlYQYAOyjNavnGCVGpYmwRzGtkbqxDcoqwNAqkwYdjjokaatWRPOoXAlijHVzgFdozxDtKILppRGNvALGsfacXuUfikfhtJHcFcIndIPRqdKFyDTL BBC yRo ExdQTtFLrleLcMUhiIPtTwPmBtspeMmBpnTUlaWpFkSiyJojtNmoZkyNCDBJ RXfhxWbTRxtw yqbpuAUtWfgvBOhnvuCOWBe');
 INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (454,'Bachelor','Civil and Environmental Engineering','20-12-2001',2016,'zFPbCdZTTFwPXgpcqluWKqlIQlErXxugSoHxcJkJlQzdWgjJXsSdLdYYbATHCWNTCwdfFJfrhFDaJmBcKJMHzGOTormjxdMPrxwAIvufQRMiXIoNnNDbddhUBwpP nPXjrGMxlvyJgFhHvNncErxCgVimkGJffQFYRLslhxTvlYzoyRpDDESpqelfITpK ejqLoXx ldmuERApZoCP QatTNJxHMeMQyGbkKPtPjCjVIiHgSDCbQBQKSkDBwmH VMRaevHSMeFtZzYCFYxbLLHwWLwYXpZTFdbGOuTjBILbhLhLcEXeDdeprOxyIYvqmKAYVyHdzopkFUVHPZfTkTxTfuKYZZgylKFEaNuhaSAwJmZzKeAuavxFBfIDkmaLGX fKgfwlElYByktXBWMbmmiJZgBzDojVXGeqTjDgUngrWoyMFFlNjvfSQmGjjnTgMDZYFSDXGjyJKgOOKYvcooaHqZgdcVTlWsYULfqHGgAxaCLHVSVLoTNgmsvoaooqD NyJVdVyfsXzoPNNGZutxpZOCtQYdlAyaqzBKEVtQxGFYgJXbUkaHOWvmVzaRZCWnCFXFLpaXOVHUXuNuUUGHSnHKvDNHhuChJ nWBXACDUcaiBDsKHfrweCBLatkODCwjzEdhTdBQhecGpxudCUSdbGAWvCYyrRSlRGgekHSuFVSxwaEGYhsmIhPjRrVauNViRTtbqHsWXcvu fVVsGmJAnF FWwYSnvJikQtSzFiQIODIoSGOuZRlYeqLCQnkJRMMfQLAztbnPSDbmHlEvWCGVA SnoDBRzRmiDBNUpLtOYPUHpupMmSqEDtkhBXBeyxkjPmWLvhAOCDCCRaOpWvbsPnsSVvdnLoMAXSDpHMUGeUFbBTOBjTGoPrautKGrtza');
@@ -1146,134 +1146,133 @@ INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2016);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2016);
 
-/*
 -- Curricular Unit occurrence
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation, externalPage, language, programme)
-VALUES(1, 1, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 1, 4, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 2, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 2, 7, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 3, 12, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 4, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 4, 21, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 5, 31, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 6, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 6, 46, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 7, 3, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 7, 54, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 8, 4, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 8, 63, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 9, 6, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 9, 88, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(1, 10, 2, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(1, 10, 91, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'English', 'programme');
 
 
 
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 1, 9, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 1, 4, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 2, 5, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 2, 7, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 3, 12, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 4, 2, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 4, 21, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 5, 31, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 6, 4, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 6, 46, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 7, 6, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 7, 54, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 8, 10, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 8, 122, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'English', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 9, 7, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 9, 88, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(2, 11, 8, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(2, 10, 91, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 
 
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 10, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 11, 132, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 11, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 12, 146, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 12, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 13, 175, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 13, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 14, 182, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 14, 5, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 15, 191, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 15, 6, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 16, 214, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 16, 7, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 17, 230, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 17, 8, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 18, 229, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 18, 9, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 19, 242, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(3, 19, 10, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(3, 20, 255, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 
 
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 10, 10, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 11, 132, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 11, 9, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 12, 146, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 12, 8, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 13, 175, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'English', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 13, 7, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 14, 182, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 14, 6, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 15, 191, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 15, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 16, 214, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 16, 4, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 17, 230, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 17, 3, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 18, 229, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 18, 2, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 19, 242, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
-VALUES(4, 19, 1, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+VALUES(4, 20, 255, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'Portuguese', 'programme');
 
  --Class
  
