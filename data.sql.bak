@@ -1001,21 +1001,21 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ira','94531 North Bosnia and Herzegovina Blvd.','06-01-1975','Portugal','477456342','111682400978');
 
 --Course
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (146,'Masters','Chemistry','21-06-2009',2016,'hZQhIIKpsdomrmziSUZSxUtbq BqKYMVnXxwrBDZjqDmANmrXgUSaHhxqIAdbEOUwRJPRzUbBVPRssEcQsdEloTffoylMFenIJjIuOCBQcJBJNIOBJOMiZnKzNfLhTQNcuhNhmRgKsiqkRAgQLxwIwXDLsEvAGqHwovlXOENfYnklFnDEgmSQeXHcugZuIHrqDgrRldUpRoajrKrkyuTlFGUldONAKarYrlJiixWdEFTpgbZIEn sTnJePzeajpwYZZygZbMkQg kjMMPEGdJNnDHSHOXRfByJwfwTTLGjhxVWSSTjZEZbmpGHvrTiRZg rFDQRYKuhJjhrjwAlcifYYzECwbxilkdWDgyzOvHTtddDsHwjTizMLbrZrQLytctZ YAsCMHVPjTJrmgiAm ohPxXGKBQJrVXoKacYsLpOZwuwvQB uixYqpjBjocFJLUeYmYQ JbIrJIiSgLincRFCRlKxsUJyPMVyuVJb sHXaLUqFiUSyjcycdStDzevwyYNodeTeredUrZFhhdeqZZzL fyAvUJWeAJEyRHMwcwDNNUEatCqeEIchxvjfAnMteBUZOoKWwqKFWpgs');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (21,'Bachelor','History','03-01-1996',2016,'tSetbRNIPqjSxveetaEuYN URDrldzgdumJrVLufRcTacwIAAZSGfhzRIriWVlBHNcZsSGrSDYyO vig vrBBDxEqMNjiRFechRDelmACkVhdUnwoXIEtdvwuvOPCMtCqaDfcwRzRvZskNNyBSVipfBPIiNIrRz dgpV pERccOTNHQkslbzZdLrciQmWkpPTmDbIRDurzKIIcvvjyscsiIruYbRYBImiicE H GLCXIaVrHVzegisKaqqJDROsLMBsGdHcVbIcunruhAvFwVUjsaZlOfqWswKZhKnHEMRMGiryDkWEBIYtYctmoknLNVBrpRwJSeUvlDANIDXK ouwxeRJAhTfiEw vKuJXfeHTMPKMDCfFBZoHkMlarQhfBmMctxPrPHuWTvsdirBIWVPeTsyIjeNhnvfMuidZHuLfRxqRWYPXriCWKSwDgRXXjntQBjGiIpBgxPbYAGWis HsLl JVOqrAmMwiVZZWwMeTGRAmAMRQdtkLWwPJudqICFlbBLmrjKdkVnuZNXJWohIvvxMCAeFwyauSDxnQZ XkMfVwvwwitHeTIgQmuHXbjkAnyoErplrTyjEC tRfERTGJeBoABenUTqFwWmkJNDqsAq XxawxXqlWfxvlMdGcOlQFOaNqxWEfUttmtcChOnwoVFjWmNOiDGFIfCjTcxNyxVzCHmPCPsnMtlHjqubZSXN WVzNj pArpgYjhumqGRdp bEcFlCUqHNzGqGEXUyqUpkJomqgXSShXLRhJQUTXdSFZVVrxHiBaNRGKVjbpQEFQrDajCquRsKnjBEMxnTrxIOBWgOsiqVbxqqwnEdpUXOztXRBgbnzbEtnmUXEmtksHNoEIjVrbMUfhkxpEyWByeVgbsPdzQVbGcJdzHTcijmNdsCeJFQWOybolWvNPgflNXnxtaYN RMhoMlCAxLG');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (681,'Masters','Literature','01-10-1995',2016,'uPpRvQSlbqVUXWn wICWZXJzqUAQQpnhFcjbapHEzBySmBvjxYDVAATKftDhitgcSiekBpWcivOgkXGTpLTWzqYYMNvAuyBBAOoJruOBckxAXfcyFoGzjetiodDsnFeHuCnFwcdcJhMBfCYzEzYHoSDfMHpvXUuaNNScnBOLKdzffgQpLMNpnzJLsUJXtOvNvXGykscCdIKfKxDcGeYiuVbusceoqjLLOtkREmHmKDG PfHaNNzsqBmdAKkniXgBDvpCSb nrRpfUggWAllBlbwxEEelaryOxNrwWJNQnkCpXdhKyioxGsYKJntziNSjmsfCBgznxXCtqELgyjDlAFMcOpBIDAOvpuLdViPtBHKcLbLFSmgiykLk RcRmyelQlICRXQkQDMIDXwpuv QxdMRwmMNTQieWRERlJnDDeWCjTTKRgzbMEhUDj rmmxEAgIQxGCZelMyEmzeFAggwGZGaaED RGzJVRqUywOFwOBfCNZV tKxSGnfcSvXYmDxxEzvLLJupuEecWwCVOCfWAVXUtLXoWRjxjxtYseDEivTRQiJ');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (928,'PhD','Global Studies and Languages','03-10-1997',2016,'pAsuzBDMjxuHImmaHAOCWVctGULUegPwditPBbckOtDULDQDexEXNHWNvTNMFVDMqebmvmGeK VJAEOQNxaxiICFfRjwpgQrSLIrXpOSLmDgBqbjJzRRIszDXiGMJGJfhQgodhDTnAnJHSkFbeXJrVCOPjWoA GztzOkfvjBSjZtdWhijWXWchYhvpmHMWUeucExllSBZyOjiLQLHlNfYrAr jJtIKrhBeyzAlntiRiTYfdWgR CCQQEkVYP UHGfJigMGXPVQcwAYqErOzXLctcAoGXxqAKKGjeyfNqnoBjSfAdvXyxjTeRgyKOSchwx VTbNQumtipr oZMwGFfLtuNvDXD wyhXXhDNbrykTLPDkPEhQhIseaQjeH nNaVxOGbzyOxlwoDgXwZNTYCwzBhpjPEJZAOj bMjBcMMhKJdXjDvzObrvCoIvWiaHcKwqoJADryDimcixpoRTgDMBbmpMuDKquKyycBBOiyMGMXTojRcdTbiV ajjNFFQfZfdVPlWPakltPSSSCzLDmLcNHNyePnbLXJVpO qMcHPqFjwtRVYoySukjXeWAnatCDDoMxkFdaqkmDzFePNwNPfBzlvLFqcJlvQNpkQtecdLSNRZnqlYQYAOyjNavnGCVGpYmwRzGtkbqxDcoqwNAqkwYdjjokaatWRPOoXAlijHVzgFdozxDtKILppRGNvALGsfacXuUfikfhtJHcFcIndIPRqdKFyDTL BBC yRo ExdQTtFLrleLcMUhiIPtTwPmBtspeMmBpnTUlaWpFkSiyJojtNmoZkyNCDBJ RXfhxWbTRxtw yqbpuAUtWfgvBOhnvuCOWBe');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (454,'Bachelor','Civil and Environmental Engineering','20-12-2001',2016,'zFPbCdZTTFwPXgpcqluWKqlIQlErXxugSoHxcJkJlQzdWgjJXsSdLdYYbATHCWNTCwdfFJfrhFDaJmBcKJMHzGOTormjxdMPrxwAIvufQRMiXIoNnNDbddhUBwpP nPXjrGMxlvyJgFhHvNncErxCgVimkGJffQFYRLslhxTvlYzoyRpDDESpqelfITpK ejqLoXx ldmuERApZoCP QatTNJxHMeMQyGbkKPtPjCjVIiHgSDCbQBQKSkDBwmH VMRaevHSMeFtZzYCFYxbLLHwWLwYXpZTFdbGOuTjBILbhLhLcEXeDdeprOxyIYvqmKAYVyHdzopkFUVHPZfTkTxTfuKYZZgylKFEaNuhaSAwJmZzKeAuavxFBfIDkmaLGX fKgfwlElYByktXBWMbmmiJZgBzDojVXGeqTjDgUngrWoyMFFlNjvfSQmGjjnTgMDZYFSDXGjyJKgOOKYvcooaHqZgdcVTlWsYULfqHGgAxaCLHVSVLoTNgmsvoaooqD NyJVdVyfsXzoPNNGZutxpZOCtQYdlAyaqzBKEVtQxGFYgJXbUkaHOWvmVzaRZCWnCFXFLpaXOVHUXuNuUUGHSnHKvDNHhuChJ nWBXACDUcaiBDsKHfrweCBLatkODCwjzEdhTdBQhecGpxudCUSdbGAWvCYyrRSlRGgekHSuFVSxwaEGYhsmIhPjRrVauNViRTtbqHsWXcvu fVVsGmJAnF FWwYSnvJikQtSzFiQIODIoSGOuZRlYeqLCQnkJRMMfQLAztbnPSDbmHlEvWCGVA SnoDBRzRmiDBNUpLtOYPUHpupMmSqEDtkhBXBeyxkjPmWLvhAOCDCCRaOpWvbsPnsSVvdnLoMAXSDpHMUGeUFbBTOBjTGoPrautKGrtza');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (470,'Bachelor','Mechanical Engineering','16-10-1992',1993,'WxEJaZmGwHkobGxqDOszMLEdO WLXlGzmOZacTNXPMrAVkY Lx CLSldFCLMkjGFCOlxccZKgXUtxWyJAsYOKcBfkLXrjzolosEvEnsALOupYcAZiKraeuvBpzIGxfdTCwChaKyhqgNZHgkCOKJ RekI MIlgoQZsshAlsRdRWYkiGFmGkXiOEpJcvDfKrIEcCdbFtGHfAaWWIASoZgNUzaCEccRwwxoXZGvhBxlBqRvTCMgNJWcDNbaNLgstOaSGVaCXhLSwgsWCDXpMcgvpVpSIDgyACYzE rFYcYXklMmPCpNfJNldCeNXgOGQYUSibooKmbjnW uabSPbWdBnOoKkqSMxuhsCSe ZPJtzJ gKsmqEKVvCufIBwloiCuDxCjMPcXxiXzaZLcjSraULzYyodKjbNarMYiIhKUxggcqQEXWCjXdrxnBrOIvHO rmIExpxzDXpYcxIjDnsyZlPemqXwwdPvTQckDFmGaWPWxlZtjwEURqHIdAhxzPwKJmuGczsHJBjmaBGcCQMDqjgFQPFigLFJFDCGfGVDeKpMugSSVcBykfByMmRBXASPb CQiOfLdUJZZDHGMfcTHMnkhwprmDnPwnQJCSKmIYShlMkoqCz PllUdfSzrRkFhXMUCdkcvlXryokkGYLpASlIYxeWRjVLBlZ YrvAaEQScAwSx aBRSlyXSMYbQARVHviNrlQgbzJrHafYHMAxksRauvecxGYqOrFyIcggWwhFjUUDJZjaFavYuBYOUZFQwRqZgSiTrOOTlUrBUqKRCnqdKHvPlJQvDUVXfPUWbAsGGEEwELdhQzTqbVKp');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (999,'Bachelor','Materials Science and Engineering','01-06-2004',2016,'IwvHtkfbbVWKYbVhJTSJIgBCgZqyT gmaBMwxCaJmYoOOA');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (506,'Masters','Architecture','11-09-1999',2016,'sIzWUkUIOLNOegTOQvXYdHuUQ sCBlRZ sAnhpsWaiMHmnvUcuqyJsFetDnNsZQkxGHvdGYSeTSVdDjAmNktOGrkQpqe RuJuFdphuJWHPZCyxQSwEJoyVhPangDclVOwSLpWoL WpUySlOGSzcXelTZhkaqIsYRVzxRGbIQnbDuFZXtcbXOYC EcPCRa SrcZihiTloxWiIGvqntTPaXcFqPgG qcsLQpcJjnjqmuphOCVdPkzEvclcLeVYvFxaSvqjuSwSdRxNMgCYgndDKMltOujcSWvWwmwCaihQFfmlrtrqObeJLaGrxnBTHlpuxriwZWjZZGfv YfBjcjltuXVUKplWwMdOtgYMqMWTKizPrCIAWuTu rKqPmbRNreyIUaIgrEodZQqyHnLQuweKsYQrrOsfixOqoZasOHMJLeNlMtPnxoySwPJDKyEhTdrCNfpACyStQsebfOHnTQtgWCwQrMuZTJCca FvICfRHkKLanvcDrMJqeMzPRIc L LvxoZanGlwhehvtRkJHcehf U yrRvmqVjwOMzSEuTFIKCGIoNufrpSiylhlHIvVkvwvAuKlplNwQaryCNguPAEpwUJSWwczbVDYyEzohViLBKdvZAdOAmZOCRDiwXLcowpSGDkjxQUHZtJJhftqrcRqPgrYMsHKqluofVomCVKOEumgucCZPgzrqOO BREzaHBKVNlkMeFcMcOLBfdNmZFEKkRL EmqTLSKBlQRksrecPKbbnfeVSaGQvshmuPDfTTZTSrjSWYTjKIMHaVVUwReEmjRtQSFOxnwCWDdUffjcmtvunsSveHVYV EJLhUuMEcsnWtZsSasLyxrqbAbeESZDGxLgbPpEVvrEBgWfX Q wvI');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (406,'PhD','Women''s and Gender Studies','25-09-2011',2016,'bmnMEyqHFvZePBdVcAwgvWQDcjQimoOsgkiXKntcoyGfomCFYraBgaQlgzDucVmnLzQLFqOEFbpMjugKDRZFii D xkzUBLgRqPwFTcdSobplBmzmbCUWSaDJ ykWiA PhKSNEUuBUUlJLAbBSuatJdvk HmxqzMzuYwlpjDrCtnYzAOcIqcCRXsTNYtfrzdzuORaGqvKm qytFaUCSvSLhGMsecinYP bmEHRzVemCsB FsYLoAbRsWwdhPfooCMiAdTpncmLjuBCLmkFtsOZRXHTTiDapaweDAoUFwKsneEgig siZiSozyDbLjlRNgSduHiFGPlAHbrpdwmfODyQhTHNM qsCybLFsEzi xNLtYUpLvCeZKRXXTQH GNBhkMvLmJLmFYHnWawhOqOTWEHfltrtpaBFfAfdopBdJhXfV  NKGoAkgZDDnlqlZkOeTidtROvApYIXRwtNCFeocKhjCNkVDruzgcesXdCgHgeUPpJdCsuUrqHHDEuWacCQhHNfLW spsumFuzWlRSnvPHotOUjCBFXmVDQbWaRVenJSWbnhkkDUuUAtglWDuGAGP xGIZImqeDnximXNuiwNFIGediTdIgbPxXTCJNMXoGDEHhcWTkLkToOyuteiukCcsPQoJoWJuIOKRAYUUBUASVcHctqdnLEqYEtSlsnvHYhAJZsapxnonTOKdLxRKIvLdlEPNej raGVrmzjkmPdKNDqZVdRGmDUGLBVwiEnkroQHzfilDlUPPeezUxbIGDXoASYbmTvnOoFXUFM IRvgbbRsFHwHq qZNgRQilXvcbhppoXTqNhynpU mzHVazLgbkvvZAfTkpFbxAefFeteffugmbXEEJNEORpEXaRJCclHxNunMAazDwDOBlggQIJGXXtipAWmMebqykSplNKJJKCIOWxmkHiIaMTwEVjPaLshGTIJcuArQDuxroPypjxpsHoQjlvoOlcTtNaxezOHtpBSEgkbvhOqjm');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (242,'Masters','Biology','10-02-2016',2016,'KnqLRhmAbmYSLUUxeTYXisPZMsSEIciZqXsvKRLaXEEBWWnqbHQyaIpUlQRebBNfqzNN QptOFNfzJr dRLxJQheTXNmTQu LtiElBBYGkbAWixvFDjFeSsdDZTCOb');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (74,'Bachelor','Computer Science','07-12-1994',2016,'IKjSeWFfzgglvKElLuyGSHXuxDzgPdisNXENggmgeA XHijhJvDKMUR yTaBopxJCPyMEaihvtbSbAdMaDxWlHosFbTGCuAKX jLVNBjWJcvjKnZSyMaPDAHVeiSdjCVLtbPADBSKTmKnURKUTxPjuzCZkLrIFiLixkJKEhwyKnkjQFGbNCCxHduyQqDGXjdhoIyvmO hSQhhCkqpfUHZyHF erPzlEMjNrhfKmqDTUEpzcrgxEduqtDXPkUOHddXWZQTwpWKKdPewbqyGDOvODQBjYGBMfaLMEaWxaVaopmVnxsCeXipMCQOnpgQdkRrNuvUXTqshaeopdYKyPjGyANNLfgCfDPbNXsASAbwuYzrw vbbUPKRDnDlHmTtrPmRGZhOAdakYbpmAZDpcuZulpMRrDYjLZYoxlndnfcaBnWLSZgfFDOZBDshMOOWuBZTtJHuWzucFMAyHPwoyLJM juRICtlLoMWnzTBxsFRyYrMLalIPEBmiSeCHukoJSleecEXh ekmLTuhNSowlUXCwpGhKsrwASzHTkZuLNWjbQFIrbKkKjHugwKhPrKsPu tqJBxFNuZsWYchvFmgteNzsslONbBbIyrT nAOGBjZHFxfLwTDzxTrtQPZWxkClPH qseiVkXduMTlVOrrznmPKARBwfncvfY so nfYzXriTdJzyHoOoNUFBmRuCDEewtTzEFbmcAcPEMHRkwsqVXYURMmHdPhZoioHREPB sCGsKrQcSjESEHqZmdQVKMKDSpQzmFKVEicyFyPkVAktfBqSKIgCzVdUrqrSCaslcRQpkcUaP qTcvl YRZCRRUhZQngiCiGbnxhhBPrFiJcGmCfGfbuFbOTpKUkvFGCmmLcgqVHmbwsJNWAeKuwxWvtgkXqdPetEGTKcWolNuHwqoTCfSmAAprtmlOv');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (106,'Masters','Brain and Cognitive Science','10-01-2005',2016,'niOiwLUtLImQccAKPcdzkEFJvLfPfsMVoJITyluipoEAaTElUIixmElDMucXRQpwVEDbtjWRswuzNhpSTAqlGJSNeVNDWZxTuywMBgw Q Uspo rWLkim BaEjlOrhjuPDMKLYpOunbkyZorUWPLgETRcdHcaOIw');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (54,'Bachelor','Economics','31-10-1990',2016,'NfBFdpjUYUsWBawUDrVlWUQYuabioWULwBrMEZNnqJIvYvSvtjZ hYszkyXqIGgHFyAPUSVrybIAgveUdHQsmFkAhArZQhFwJYkLfXfStDaaUpsezcGxQQZfzoYMhEobxlTuLbDgfGPsxDyJrcYROdUtUurcfgktgsNYvHBJWkZrIduSxfLQtZYDiIegmagKcVWjSKhSHWQofxXtvCBffHUbsGMRutyZMVMAttTsUCFzmwKoBcgASCXWBkJNmTDATC ELmRYZKGitVkyrKqHbusEoqogthpRgToKsVDESFeLtgDXgpV QgXiSmXDCIKGnFoSUZGVycHuzVQJMbCsIdwlkcefRjDpxYcXHRSFPeJTkXdbczEGyPwJtVlRoWuHZlMwfGKonBXzqDAiwCULeuZrfRnEVVw GYYrIM OmlWlcWCDaR mSzxHAboKcNwUNiVRHuFyYPXqJzyQMfjJnkWozrEdWXPSUhyXhXkkunCfFsofwgSvXIOfcCJLFKfYmTWylhrVvmSysUAeNWdHNoBrbOAxTKCtEZ FlQqCudGGOuiPFveaUdFJmC SUEJcWPBMNsNTzZyBcXQQuohVvwfrykRuIKHSubkDRQQPtWpQydhByHEgzfVGuZUw hiftFVpJyHwBtszEdikuTxcGxUDqTfbTlwHrnpOpDJANeUdWRULJROAKOqMVq GIswHzakUnnhEVLJImLiCYmtvbQUXZDIHVYrgWFvyvFzeUBIjpDPMLKkfdiOOqZREjWwcwUHnPKJUFRNgCnLSLkgoATIyHSmUxxqYEzlKMeQROCudpZuyFzsfpROSfxKvCpIHzQodYrEbqMPokQvXrwRAOg VtdxiYVhBrWxKsTpYNKkkxaRMHLhdbYc');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (712,'Masters','Humanities','21-10-1999',2016,'jnoQBRFnCoueWmOPrhPLfpDXVesvWVNHANtNkzNwgWMuxvtdozqiYZPylibYTeQfyrRHDviMrBxjCeIqVficrQUIOCtzOavBSQkNYWbaCVeeEntHnyyDeMfpIkBBKQDpjPAJBKajwTEiCElckEBTCkodVutKooMQUYEyorMDAQZHtbk TFfNQQQnzxzPeYvpcMfUSfnBrNWFSgGZcSQYXhTYvdamyNRtYmvSQMZseERydQGebzRZf IiboCgLoeheoELxEdeGONkcWYFPYaMBwRsLRyxpILGR  gOLHXakYc');
-INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (409,'Masters','Anthropology','17-10-1997',2016,'JCFytLtOkARDHPxELVUoKwXzsAPSLvbZSMyZgirVjhNVmxMMlXrzoTaNZcMRpWxTDlwgsrXzfqqXoNnwdKsJazeubyAONOzXoSJITnfeohnKGuNcrAHOQsflSTGiMIcDzxFjjdGcWAyGLswzXsXHlJubACPYvhqyIqMcGEWbHEyxOfkkeLZQMThyGuXEsybnAaSNbyFZQHFMyYIbdzhlKmogBMYqYIlzAItsXMQqLDBeWdoLEBCQCOYrfBtESDYueCvKArebpWRQfobjMzKZPAINTAjubPlTCwR exWstHcEcTMlEcSPNRsTTcnuCpAwyiDNGwrxYHBrpoQFPNGuaS APZQYFeagqzNUUIpV lvVTmWAgDToraonjufMjoUGPnZYcXxGaxwKAewaAdxAIXwwWsfEtH xsbapYQSKaEasRadHyUJuBxcqUQeUYTlJtiHGUfjIgHAsxpgiyjGtJblvJaBGgnXyrVlnTTFWaENcBtVRORbbySKlChRqvARejGVUbAIvJUuyIHArPXXGVdbwaTyHErZXkZJAqlboevWUrzSSAmC');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (146,'Masters','Chemistry','21-06-2009',2016,'hZQhIIKpsdomrmziSUZSxUtbq BqKYMVnXxwrBDZjqDmANmrXgUSaHhxqIAdbEOUwRJPRzUbBVPRssEcQsdEloTffoylMFenIJjIuOCBQcJBJNIOBJOMiZnKzNfLhTQNcuhNhmRgKsiqkRAgQLxwIwXDLsEvAGqHwovlXOENfYnklFnDEgmSQeXHcugZuIHrqDgrRldUpRoajrKrkyuTlFGUldONAKarYrlJiixWdEFTpgbZIEn sTnJePzeajpwYZZygZbMkQg kjMMPEGdJNnDHSHOXRfByJwfwTTLGjhxVWSSTjZEZbmpGHvrTiRZg rFDQRYKuhJjhrjwAlcifYYzECwbxilkdWDgyzOvHTtddDsHwjTizMLbrZrQLytctZ YAsCMHVPjTJrmgiAm ohPxXGKBQJrVXoKacYsLpOZwuwvQB uixYqpjBjocFJLUeYmYQ JbIrJIiSgLincRFCRlKxsUJyPMVyuVJb sHXaLUqFiUSyjcycdStDzevwyYNodeTeredUrZFhhdeqZZzL fyAvUJWeAJEyRHMwcwDNNUEatCqeEIchxvjfAnMteBUZOoKWwqKFWpgs');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (21,'Bachelor','History','03-01-1996',2016,'tSetbRNIPqjSxveetaEuYN URDrldzgdumJrVLufRcTacwIAAZSGfhzRIriWVlBHNcZsSGrSDYyO vig vrBBDxEqMNjiRFechRDelmACkVhdUnwoXIEtdvwuvOPCMtCqaDfcwRzRvZskNNyBSVipfBPIiNIrRz dgpV pERccOTNHQkslbzZdLrciQmWkpPTmDbIRDurzKIIcvvjyscsiIruYbRYBImiicE H GLCXIaVrHVzegisKaqqJDROsLMBsGdHcVbIcunruhAvFwVUjsaZlOfqWswKZhKnHEMRMGiryDkWEBIYtYctmoknLNVBrpRwJSeUvlDANIDXK ouwxeRJAhTfiEw vKuJXfeHTMPKMDCfFBZoHkMlarQhfBmMctxPrPHuWTvsdirBIWVPeTsyIjeNhnvfMuidZHuLfRxqRWYPXriCWKSwDgRXXjntQBjGiIpBgxPbYAGWis HsLl JVOqrAmMwiVZZWwMeTGRAmAMRQdtkLWwPJudqICFlbBLmrjKdkVnuZNXJWohIvvxMCAeFwyauSDxnQZ XkMfVwvwwitHeTIgQmuHXbjkAnyoErplrTyjEC tRfERTGJeBoABenUTqFwWmkJNDqsAq XxawxXqlWfxvlMdGcOlQFOaNqxWEfUttmtcChOnwoVFjWmNOiDGFIfCjTcxNyxVzCHmPCPsnMtlHjqubZSXN WVzNj pArpgYjhumqGRdp bEcFlCUqHNzGqGEXUyqUpkJomqgXSShXLRhJQUTXdSFZVVrxHiBaNRGKVjbpQEFQrDajCquRsKnjBEMxnTrxIOBWgOsiqVbxqqwnEdpUXOztXRBgbnzbEtnmUXEmtksHNoEIjVrbMUfhkxpEyWByeVgbsPdzQVbGcJdzHTcijmNdsCeJFQWOybolWvNPgflNXnxtaYN RMhoMlCAxLG');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (681,'Masters','Literature','01-10-1995',2016,'uPpRvQSlbqVUXWn wICWZXJzqUAQQpnhFcjbapHEzBySmBvjxYDVAATKftDhitgcSiekBpWcivOgkXGTpLTWzqYYMNvAuyBBAOoJruOBckxAXfcyFoGzjetiodDsnFeHuCnFwcdcJhMBfCYzEzYHoSDfMHpvXUuaNNScnBOLKdzffgQpLMNpnzJLsUJXtOvNvXGykscCdIKfKxDcGeYiuVbusceoqjLLOtkREmHmKDG PfHaNNzsqBmdAKkniXgBDvpCSb nrRpfUggWAllBlbwxEEelaryOxNrwWJNQnkCpXdhKyioxGsYKJntziNSjmsfCBgznxXCtqELgyjDlAFMcOpBIDAOvpuLdViPtBHKcLbLFSmgiykLk RcRmyelQlICRXQkQDMIDXwpuv QxdMRwmMNTQieWRERlJnDDeWCjTTKRgzbMEhUDj rmmxEAgIQxGCZelMyEmzeFAggwGZGaaED RGzJVRqUywOFwOBfCNZV tKxSGnfcSvXYmDxxEzvLLJupuEecWwCVOCfWAVXUtLXoWRjxjxtYseDEivTRQiJ');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (928,'PhD','Global Studies and Languages','03-10-1997',2016,'pAsuzBDMjxuHImmaHAOCWVctGULUegPwditPBbckOtDULDQDexEXNHWNvTNMFVDMqebmvmGeK VJAEOQNxaxiICFfRjwpgQrSLIrXpOSLmDgBqbjJzRRIszDXiGMJGJfhQgodhDTnAnJHSkFbeXJrVCOPjWoA GztzOkfvjBSjZtdWhijWXWchYhvpmHMWUeucExllSBZyOjiLQLHlNfYrAr jJtIKrhBeyzAlntiRiTYfdWgR CCQQEkVYP UHGfJigMGXPVQcwAYqErOzXLctcAoGXxqAKKGjeyfNqnoBjSfAdvXyxjTeRgyKOSchwx VTbNQumtipr oZMwGFfLtuNvDXD wyhXXhDNbrykTLPDkPEhQhIseaQjeH nNaVxOGbzyOxlwoDgXwZNTYCwzBhpjPEJZAOj bMjBcMMhKJdXjDvzObrvCoIvWiaHcKwqoJADryDimcixpoRTgDMBbmpMuDKquKyycBBOiyMGMXTojRcdTbiV ajjNFFQfZfdVPlWPakltPSSSCzLDmLcNHNyePnbLXJVpO qMcHPqFjwtRVYoySukjXeWAnatCDDoMxkFdaqkmDzFePNwNPfBzlvLFqcJlvQNpkQtecdLSNRZnqlYQYAOyjNavnGCVGpYmwRzGtkbqxDcoqwNAqkwYdjjokaatWRPOoXAlijHVzgFdozxDtKILppRGNvALGsfacXuUfikfhtJHcFcIndIPRqdKFyDTL BBC yRo ExdQTtFLrleLcMUhiIPtTwPmBtspeMmBpnTUlaWpFkSiyJojtNmoZkyNCDBJ RXfhxWbTRxtw yqbpuAUtWfgvBOhnvuCOWBe');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (454,'Bachelor','Civil and Environmental Engineering','20-12-2001',2016,'zFPbCdZTTFwPXgpcqluWKqlIQlErXxugSoHxcJkJlQzdWgjJXsSdLdYYbATHCWNTCwdfFJfrhFDaJmBcKJMHzGOTormjxdMPrxwAIvufQRMiXIoNnNDbddhUBwpP nPXjrGMxlvyJgFhHvNncErxCgVimkGJffQFYRLslhxTvlYzoyRpDDESpqelfITpK ejqLoXx ldmuERApZoCP QatTNJxHMeMQyGbkKPtPjCjVIiHgSDCbQBQKSkDBwmH VMRaevHSMeFtZzYCFYxbLLHwWLwYXpZTFdbGOuTjBILbhLhLcEXeDdeprOxyIYvqmKAYVyHdzopkFUVHPZfTkTxTfuKYZZgylKFEaNuhaSAwJmZzKeAuavxFBfIDkmaLGX fKgfwlElYByktXBWMbmmiJZgBzDojVXGeqTjDgUngrWoyMFFlNjvfSQmGjjnTgMDZYFSDXGjyJKgOOKYvcooaHqZgdcVTlWsYULfqHGgAxaCLHVSVLoTNgmsvoaooqD NyJVdVyfsXzoPNNGZutxpZOCtQYdlAyaqzBKEVtQxGFYgJXbUkaHOWvmVzaRZCWnCFXFLpaXOVHUXuNuUUGHSnHKvDNHhuChJ nWBXACDUcaiBDsKHfrweCBLatkODCwjzEdhTdBQhecGpxudCUSdbGAWvCYyrRSlRGgekHSuFVSxwaEGYhsmIhPjRrVauNViRTtbqHsWXcvu fVVsGmJAnF FWwYSnvJikQtSzFiQIODIoSGOuZRlYeqLCQnkJRMMfQLAztbnPSDbmHlEvWCGVA SnoDBRzRmiDBNUpLtOYPUHpupMmSqEDtkhBXBeyxkjPmWLvhAOCDCCRaOpWvbsPnsSVvdnLoMAXSDpHMUGeUFbBTOBjTGoPrautKGrtza');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (470,'Bachelor','Mechanical Engineering','16-10-1992',1993,'WxEJaZmGwHkobGxqDOszMLEdO WLXlGzmOZacTNXPMrAVkY Lx CLSldFCLMkjGFCOlxccZKgXUtxWyJAsYOKcBfkLXrjzolosEvEnsALOupYcAZiKraeuvBpzIGxfdTCwChaKyhqgNZHgkCOKJ RekI MIlgoQZsshAlsRdRWYkiGFmGkXiOEpJcvDfKrIEcCdbFtGHfAaWWIASoZgNUzaCEccRwwxoXZGvhBxlBqRvTCMgNJWcDNbaNLgstOaSGVaCXhLSwgsWCDXpMcgvpVpSIDgyACYzE rFYcYXklMmPCpNfJNldCeNXgOGQYUSibooKmbjnW uabSPbWdBnOoKkqSMxuhsCSe ZPJtzJ gKsmqEKVvCufIBwloiCuDxCjMPcXxiXzaZLcjSraULzYyodKjbNarMYiIhKUxggcqQEXWCjXdrxnBrOIvHO rmIExpxzDXpYcxIjDnsyZlPemqXwwdPvTQckDFmGaWPWxlZtjwEURqHIdAhxzPwKJmuGczsHJBjmaBGcCQMDqjgFQPFigLFJFDCGfGVDeKpMugSSVcBykfByMmRBXASPb CQiOfLdUJZZDHGMfcTHMnkhwprmDnPwnQJCSKmIYShlMkoqCz PllUdfSzrRkFhXMUCdkcvlXryokkGYLpASlIYxeWRjVLBlZ YrvAaEQScAwSx aBRSlyXSMYbQARVHviNrlQgbzJrHafYHMAxksRauvecxGYqOrFyIcggWwhFjUUDJZjaFavYuBYOUZFQwRqZgSiTrOOTlUrBUqKRCnqdKHvPlJQvDUVXfPUWbAsGGEEwELdhQzTqbVKp');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (999,'Bachelor','Materials Science and Engineering','01-06-2004',2016,'IwvHtkfbbVWKYbVhJTSJIgBCgZqyT gmaBMwxCaJmYoOOA');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (506,'Masters','Architecture','11-09-1999',2016,'sIzWUkUIOLNOegTOQvXYdHuUQ sCBlRZ sAnhpsWaiMHmnvUcuqyJsFetDnNsZQkxGHvdGYSeTSVdDjAmNktOGrkQpqe RuJuFdphuJWHPZCyxQSwEJoyVhPangDclVOwSLpWoL WpUySlOGSzcXelTZhkaqIsYRVzxRGbIQnbDuFZXtcbXOYC EcPCRa SrcZihiTloxWiIGvqntTPaXcFqPgG qcsLQpcJjnjqmuphOCVdPkzEvclcLeVYvFxaSvqjuSwSdRxNMgCYgndDKMltOujcSWvWwmwCaihQFfmlrtrqObeJLaGrxnBTHlpuxriwZWjZZGfv YfBjcjltuXVUKplWwMdOtgYMqMWTKizPrCIAWuTu rKqPmbRNreyIUaIgrEodZQqyHnLQuweKsYQrrOsfixOqoZasOHMJLeNlMtPnxoySwPJDKyEhTdrCNfpACyStQsebfOHnTQtgWCwQrMuZTJCca FvICfRHkKLanvcDrMJqeMzPRIc L LvxoZanGlwhehvtRkJHcehf U yrRvmqVjwOMzSEuTFIKCGIoNufrpSiylhlHIvVkvwvAuKlplNwQaryCNguPAEpwUJSWwczbVDYyEzohViLBKdvZAdOAmZOCRDiwXLcowpSGDkjxQUHZtJJhftqrcRqPgrYMsHKqluofVomCVKOEumgucCZPgzrqOO BREzaHBKVNlkMeFcMcOLBfdNmZFEKkRL EmqTLSKBlQRksrecPKbbnfeVSaGQvshmuPDfTTZTSrjSWYTjKIMHaVVUwReEmjRtQSFOxnwCWDdUffjcmtvunsSveHVYV EJLhUuMEcsnWtZsSasLyxrqbAbeESZDGxLgbPpEVvrEBgWfX Q wvI');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (406,'PhD','Women''s and Gender Studies','25-09-2011',2016,'bmnMEyqHFvZePBdVcAwgvWQDcjQimoOsgkiXKntcoyGfomCFYraBgaQlgzDucVmnLzQLFqOEFbpMjugKDRZFii D xkzUBLgRqPwFTcdSobplBmzmbCUWSaDJ ykWiA PhKSNEUuBUUlJLAbBSuatJdvk HmxqzMzuYwlpjDrCtnYzAOcIqcCRXsTNYtfrzdzuORaGqvKm qytFaUCSvSLhGMsecinYP bmEHRzVemCsB FsYLoAbRsWwdhPfooCMiAdTpncmLjuBCLmkFtsOZRXHTTiDapaweDAoUFwKsneEgig siZiSozyDbLjlRNgSduHiFGPlAHbrpdwmfODyQhTHNM qsCybLFsEzi xNLtYUpLvCeZKRXXTQH GNBhkMvLmJLmFYHnWawhOqOTWEHfltrtpaBFfAfdopBdJhXfV  NKGoAkgZDDnlqlZkOeTidtROvApYIXRwtNCFeocKhjCNkVDruzgcesXdCgHgeUPpJdCsuUrqHHDEuWacCQhHNfLW spsumFuzWlRSnvPHotOUjCBFXmVDQbWaRVenJSWbnhkkDUuUAtglWDuGAGP xGIZImqeDnximXNuiwNFIGediTdIgbPxXTCJNMXoGDEHhcWTkLkToOyuteiukCcsPQoJoWJuIOKRAYUUBUASVcHctqdnLEqYEtSlsnvHYhAJZsapxnonTOKdLxRKIvLdlEPNej raGVrmzjkmPdKNDqZVdRGmDUGLBVwiEnkroQHzfilDlUPPeezUxbIGDXoASYbmTvnOoFXUFM IRvgbbRsFHwHq qZNgRQilXvcbhppoXTqNhynpU mzHVazLgbkvvZAfTkpFbxAefFeteffugmbXEEJNEORpEXaRJCclHxNunMAazDwDOBlggQIJGXXtipAWmMebqykSplNKJJKCIOWxmkHiIaMTwEVjPaLshGTIJcuArQDuxroPypjxpsHoQjlvoOlcTtNaxezOHtpBSEgkbvhOqjm');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (242,'Masters','Biology','10-02-2016',2016,'KnqLRhmAbmYSLUUxeTYXisPZMsSEIciZqXsvKRLaXEEBWWnqbHQyaIpUlQRebBNfqzNN QptOFNfzJr dRLxJQheTXNmTQu LtiElBBYGkbAWixvFDjFeSsdDZTCOb');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (74,'Bachelor','Computer Science','07-12-1994',2016,'IKjSeWFfzgglvKElLuyGSHXuxDzgPdisNXENggmgeA XHijhJvDKMUR yTaBopxJCPyMEaihvtbSbAdMaDxWlHosFbTGCuAKX jLVNBjWJcvjKnZSyMaPDAHVeiSdjCVLtbPADBSKTmKnURKUTxPjuzCZkLrIFiLixkJKEhwyKnkjQFGbNCCxHduyQqDGXjdhoIyvmO hSQhhCkqpfUHZyHF erPzlEMjNrhfKmqDTUEpzcrgxEduqtDXPkUOHddXWZQTwpWKKdPewbqyGDOvODQBjYGBMfaLMEaWxaVaopmVnxsCeXipMCQOnpgQdkRrNuvUXTqshaeopdYKyPjGyANNLfgCfDPbNXsASAbwuYzrw vbbUPKRDnDlHmTtrPmRGZhOAdakYbpmAZDpcuZulpMRrDYjLZYoxlndnfcaBnWLSZgfFDOZBDshMOOWuBZTtJHuWzucFMAyHPwoyLJM juRICtlLoMWnzTBxsFRyYrMLalIPEBmiSeCHukoJSleecEXh ekmLTuhNSowlUXCwpGhKsrwASzHTkZuLNWjbQFIrbKkKjHugwKhPrKsPu tqJBxFNuZsWYchvFmgteNzsslONbBbIyrT nAOGBjZHFxfLwTDzxTrtQPZWxkClPH qseiVkXduMTlVOrrznmPKARBwfncvfY so nfYzXriTdJzyHoOoNUFBmRuCDEewtTzEFbmcAcPEMHRkwsqVXYURMmHdPhZoioHREPB sCGsKrQcSjESEHqZmdQVKMKDSpQzmFKVEicyFyPkVAktfBqSKIgCzVdUrqrSCaslcRQpkcUaP qTcvl YRZCRRUhZQngiCiGbnxhhBPrFiJcGmCfGfbuFbOTpKUkvFGCmmLcgqVHmbwsJNWAeKuwxWvtgkXqdPetEGTKcWolNuHwqoTCfSmAAprtmlOv');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (106,'Masters','Brain and Cognitive Science','10-01-2005',2016,'niOiwLUtLImQccAKPcdzkEFJvLfPfsMVoJITyluipoEAaTElUIixmElDMucXRQpwVEDbtjWRswuzNhpSTAqlGJSNeVNDWZxTuywMBgw Q Uspo rWLkim BaEjlOrhjuPDMKLYpOunbkyZorUWPLgETRcdHcaOIw');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (54,'Bachelor','Economics','31-10-1990',2016,'NfBFdpjUYUsWBawUDrVlWUQYuabioWULwBrMEZNnqJIvYvSvtjZ hYszkyXqIGgHFyAPUSVrybIAgveUdHQsmFkAhArZQhFwJYkLfXfStDaaUpsezcGxQQZfzoYMhEobxlTuLbDgfGPsxDyJrcYROdUtUurcfgktgsNYvHBJWkZrIduSxfLQtZYDiIegmagKcVWjSKhSHWQofxXtvCBffHUbsGMRutyZMVMAttTsUCFzmwKoBcgASCXWBkJNmTDATC ELmRYZKGitVkyrKqHbusEoqogthpRgToKsVDESFeLtgDXgpV QgXiSmXDCIKGnFoSUZGVycHuzVQJMbCsIdwlkcefRjDpxYcXHRSFPeJTkXdbczEGyPwJtVlRoWuHZlMwfGKonBXzqDAiwCULeuZrfRnEVVw GYYrIM OmlWlcWCDaR mSzxHAboKcNwUNiVRHuFyYPXqJzyQMfjJnkWozrEdWXPSUhyXhXkkunCfFsofwgSvXIOfcCJLFKfYmTWylhrVvmSysUAeNWdHNoBrbOAxTKCtEZ FlQqCudGGOuiPFveaUdFJmC SUEJcWPBMNsNTzZyBcXQQuohVvwfrykRuIKHSubkDRQQPtWpQydhByHEgzfVGuZUw hiftFVpJyHwBtszEdikuTxcGxUDqTfbTlwHrnpOpDJANeUdWRULJROAKOqMVq GIswHzakUnnhEVLJImLiCYmtvbQUXZDIHVYrgWFvyvFzeUBIjpDPMLKkfdiOOqZREjWwcwUHnPKJUFRNgCnLSLkgoATIyHSmUxxqYEzlKMeQROCudpZuyFzsfpROSfxKvCpIHzQodYrEbqMPokQvXrwRAOg VtdxiYVhBrWxKsTpYNKkkxaRMHLhdbYc');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (712,'Masters','Humanities','21-10-1999',2016,'jnoQBRFnCoueWmOPrhPLfpDXVesvWVNHANtNkzNwgWMuxvtdozqiYZPylibYTeQfyrRHDviMrBxjCeIqVficrQUIOCtzOavBSQkNYWbaCVeeEntHnyyDeMfpIkBBKQDpjPAJBKajwTEiCElckEBTCkodVutKooMQUYEyorMDAQZHtbk TFfNQQQnzxzPeYvpcMfUSfnBrNWFSgGZcSQYXhTYvdamyNRtYmvSQMZseERydQGebzRZf IiboCgLoeheoELxEdeGONkcWYFPYaMBwRsLRyxpILGR  gOLHXakYc');
+INSERT INTO Course(directorCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (409,'Masters','Anthropology','17-10-1997',2016,'JCFytLtOkARDHPxELVUoKwXzsAPSLvbZSMyZgirVjhNVmxMMlXrzoTaNZcMRpWxTDlwgsrXzfqqXoNnwdKsJazeubyAONOzXoSJITnfeohnKGuNcrAHOQsflSTGiMIcDzxFjjdGcWAyGLswzXsXHlJubACPYvhqyIqMcGEWbHEyxOfkkeLZQMThyGuXEsybnAaSNbyFZQHFMyYIbdzhlKmogBMYqYIlzAItsXMQqLDBeWdoLEBCQCOYrfBtESDYueCvKArebpWRQfobjMzKZPAINTAjubPlTCwR exWstHcEcTMlEcSPNRsTTcnuCpAwyiDNGwrxYHBrpoQFPNGuaS APZQYFeagqzNUUIpV lvVTmWAgDToraonjufMjoUGPnZYcXxGaxwKAewaAdxAIXwwWsfEtH xsbapYQSKaEasRadHyUJuBxcqUQeUYTlJtiHGUfjIgHAsxpgiyjGtJblvJaBGgnXyrVlnTTFWaENcBtVRORbbySKlChRqvARejGVUbAIvJUuyIHArPXXGVdbwaTyHErZXkZJAqlboevWUrzSSAmC');
 
 --Request
 INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChange) VALUES (3,2,6,TRUE,'PrMbFPGxkj OqMUUhlAkYnCuQBtCFfpOa');
@@ -1147,425 +1147,340 @@ INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2016);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2016);
 -- Curricular Unit occurrence
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode,bibliography  , competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 1, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 2, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 4, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 6, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 7, 3, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 8, 4, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 9, 6, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 10, 2, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode,​​bibliography  , competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 1, 1, '​bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 2, 2, '​bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 3, 3, '​bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 4, 4, '​bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 5, 4, '​bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 6, 5, '​bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 7, 3, '​bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 8, 4, '​bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 9, 6, '​bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 10, 2, '​bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
 
 
 
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 1, 9, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 2, 5, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 4, 2, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 6, 4, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 7, 6, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 8, 10, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 9, 7, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 11, 8, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 1, 9, '​bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 2, 5, '​bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 3, 3, '​bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 4, 2, '​bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 5, 4, '​bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 6, 4, '​bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 7, 6, '​bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 8, 10, '​bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 9, 7, '​bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(2, 11, 8, '​bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
 
 
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 10, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 11, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 12, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 13, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 14, 5, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 15, 6, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 16, 7, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 17, 8, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 18, 9, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 19, 10, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 10, 1, '​bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 11, 2, '​bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 12, 3, '​bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 13, 4, '​bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 14, 5, '​bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 15, 6, '​bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 16, 7, '​bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 17, 8, '​bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 18, 9, '​bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(3, 19, 10, '​bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
 
 
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 10, 10, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 11, 9, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 12, 8, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 13, 7, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 14, 6, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 15, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 16, 4, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 17, 3, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 18, 2, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 19, 1, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 10, 10, '​bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 11, 9, '​bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 12, 8, '​bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 13, 7, '​bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 14, 6, '​bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 15, 5, '​bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 16, 4, '​bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 17, 3, '​bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 18, 2, '​bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, ​bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(4, 19, 1, '​bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
 
  --Class
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (2,116,8,'06/04/2016','nibh mauris tincidunt velit');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (5,89,47,'09/04/2016','rutrum ad massa rhoncus auctor quis In ultrices vel sollicitudin Proin In Nunc per');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (8,65,27,'07/04/2016','primis ante semper eu erat ultrices');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (15,60,26,'06/04/2016','pellentesque interdum ornare volutpat amet rhoncus congue ipsum sociosqu Class Nulla');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (19,105,44,'10/04/2016','senectus dictum Integer');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (24,101,31,'07/04/2016','condimentum dapibus Donec dis volutpat torquent leo arcu sit Nam');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (27,98,32,'07/04/2016','magna Vestibulum blandit nostra facilisis condimentum imperdiet varius velit Sed vel Cum inceptos risus');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (27,111,21,'08/04/2016','velit cursus natoque ullamcorper Integer pellentesque blandit');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (34,108,49,'06/04/2016','diam Praesent Aenean nostra metus bibendum libero Praesent sit ut');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (37,53,45,'10/04/2016','morbi sed lectus Nunc consectetuer laoreet');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (37,49,8,'09/04/2016','sodales ultrices felis');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,109,11,'04/04/2016','In gravida semper Aenean nostra blandit dignissim');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (5,90,42,'05/04/2016','volutpat lorem tortor dictum lobortis');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (8,45,39,'09/04/2016','mauris Integer Nulla id imperdiet suscipit ultrices fames bibendum urna magnis metus consectetuer nisl mollis');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (15,90,10,'07/04/2016','aliquet Morbi urna varius Vestibulum Sed Praesent dui');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (16,64,42,'08/04/2016','imperdiet vulputate');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (15,68,37,'10/04/2016','sollicitudin Nulla congue augue eu Lorem Class condimentum pretium varius ligula habitant Etiam Vivamus morbi');
+ 
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (6,116,8,'06/04/2016','nibh mauris tincidunt velit');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (22,89,47,'09/04/2016','rutrum ad massa rhoncus auctor quis In ultrices vel sollicitudin Proin In Nunc per');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (23,65,27,'07/04/2016','primis ante semper eu erat ultrices');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (18,60,26,'06/04/2016','pellentesque interdum ornare volutpat amet rhoncus congue ipsum sociosqu Class Nulla');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (12,105,44,'10/04/2016','senectus dictum Integer');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (15,101,31,'07/04/2016','condimentum dapibus Donec dis volutpat torquent leo arcu sit Nam');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (22,98,32,'07/04/2016','magna Vestibulum blandit nostra facilisis condimentum imperdiet varius velit Sed vel Cum inceptos risus');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (22,111,21,'08/04/2016','velit cursus natoque ullamcorper Integer pellentesque blandit');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (8,108,49,'06/04/2016','diam Praesent Aenean nostra metus bibendum libero Praesent sit ut');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (23,53,45,'10/04/2016','morbi sed lectus Nunc consectetuer laoreet');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,49,8,'09/04/2016','sodales ultrices felis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (13,109,11,'04/04/2016','In gravida semper Aenean nostra blandit dignissim');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (13,90,42,'05/04/2016','volutpat lorem tortor dictum lobortis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (7,45,39,'09/04/2016','mauris Integer Nulla id imperdiet suscipit ultrices fames bibendum urna magnis metus consectetuer nisl mollis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (11,90,10,'07/04/2016','aliquet Morbi urna varius Vestibulum Sed Praesent dui');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (12,64,42,'08/04/2016','imperdiet vulputate');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (1,68,37,'10/04/2016','sollicitudin Nulla congue augue eu Lorem Class condimentum pretium varius ligula habitant Etiam Vivamus morbi');
 INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (19,81,40,'08/04/2016','nonummy nascetur sit Curae primis natoque eleifend tincidunt');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (24,118,40,'07/04/2016','imperdiet Ut quam libero Lorem suscipit orci hendrerit suscipit posuere nonummy dui');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (5,88,18,'08/04/2016','mauris tempor nostra Nulla');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (0,118,40,'07/04/2016','imperdiet Ut quam libero Lorem suscipit orci hendrerit suscipit posuere nonummy dui');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (20,88,18,'08/04/2016','mauris tempor nostra Nulla');
 INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (5,80,3,'10/04/2016','vestibulum ultrices sem erat sagittis dui porttitor consequat Morbi ligula condimentum Cras sociis mauris sodales');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,103,20,'10/04/2016','quis euismod eu nonummy convallis nulla molestie');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (15,78,11,'05/04/2016','elit ac laoreet est Phasellus litora libero');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,60,28,'06/04/2016','laoreet eros montes elementum sociis parturient nascetur netus');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (9,103,20,'10/04/2016','quis euismod eu nonummy convallis nulla molestie');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (11,78,11,'05/04/2016','elit ac laoreet est Phasellus litora libero');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (5,60,28,'06/04/2016','laoreet eros montes elementum sociis parturient nascetur netus');
 INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (19,105,1,'05/04/2016','dignissim velit ut massa');
 INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (5,118,38,'10/04/2016','sociosqu parturient Aliquam taciti Sed urna Praesent non');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,96,15,'06/04/2016','sociis eleifend vel fames Nam');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,101,9,'06/04/2016','sem Nunc Fusce consequat amet facilisi augue Ut at');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (27,47,35,'05/04/2016','Nam In ridiculus urna massa tempus enim ac taciti feugiat Fusce fames inceptos');
-INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (34,45,45,'09/04/2016','imperdiet lacinia In placerat quis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (3,96,15,'06/04/2016','sociis eleifend vel fames Nam');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (0,101,9,'06/04/2016','sem Nunc Fusce consequat amet facilisi augue Ut at');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (20,47,35,'05/04/2016','Nam In ridiculus urna massa tempus enim ac taciti feugiat Fusce fames inceptos');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (2,45,45,'09/04/2016','imperdiet lacinia In placerat quis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (16,112,43,'06/04/2016','In ad Aliquam nunc est placerat elementum nascetur nulla senectus fames sit accumsan');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (21,53,36,'07/04/2016','quam malesuada ad Duis morbi volutpat aptent accumsan hymenaeos');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (17,80,10,'04/04/2016','odio velit Cum posuere vel sollicitudin mollis lorem Pellentesque Nullam Integer Nulla non sociosqu');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (17,81,49,'09/04/2016','vitae magnis ornare at massa et');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (6,105,15,'04/04/2016','quam nec semper lectus mi tortor sapien Ut inceptos blandit conubia lobortis Pellentesque ultricies');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (2,107,33,'07/04/2016','nascetur natoque Curabitur per Quisque sit sem lacinia per In');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (8,62,38,'05/04/2016','leo mus venenatis vel pellentesque accumsan commodo');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,60,36,'05/04/2016','taciti vehicula');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (6,64,24,'06/04/2016','consequat sem');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (25,86,10,'09/04/2016','dui iaculis Mauris Ut bibendum non elit iaculis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (16,88,1,'09/04/2016','pretium leo sodales a viverra mus cursus placerat egestas rhoncus');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (14,89,1,'09/04/2016','velit ultricies magnis adipiscing nisi dictum facilisis ac eleifend Integer');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (14,50,24,'05/04/2016','nunc sit Nullam');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (19,119,25,'05/04/2016','ridiculus libero sem');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (10,62,1,'07/04/2016','est nisi condimentum imperdiet felis placerat Cum sit massa litora');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (16,62,9,'10/04/2016','lacus eleifend elit Ut');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (10,80,50,'08/04/2016','magnis');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (4,96,37,'10/04/2016','Morbi pretium');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (3,108,26,'05/04/2016','sem laoreet gravida Maecenas magna fringilla Curae quam dui netus eget dolor fringilla');
+INSERT INTO Class (occurrenceID,duration,roomID,classDate,summary) VALUES (10,96,18,'09/04/2016','in consequat natoque sed');
 
 --Attendance
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (925,20,10,21,'odio','25/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (663,22,14,4,'fames dapibus','15/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (379,7,26,4,'bibendum at justo Vivamus','02/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (408,28,12,12,'Integer eget urna torquent Class augue montes convallis','09/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (662,14,15,5,'massa aptent','14/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (952,18,16,30,'nostra pellentesque sapien auctor Nullam montes rhoncus fames Praesent massa Morbi tellus vestibulum','28/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (449,18,29,8,'vehicula litora volutpat urna interdum molestie','10/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (187,21,1,9,'Lorem rhoncus vulputate blandit pharetra convallis sapien','19/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (551,23,11,26,'tempor','10/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (307,4,10,3,'lectus tellus dui mi euismod libero','06/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (108,26,20,2,'libero aptent Cum senectus nulla Duis inceptos Morbi Curabitur','06/04/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (318,9,23,10,'commodo','10/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (505,14,29,21,'natoque tellus dis imperdiet porttitor massa iaculis sociis libero nibh mus','13/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (224,13,27,8,'consectetuer enim ut porttitor nunc mollis cubilia dolor inceptos','01/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (203,7,10,24,'taciti Mauris erat Etiam euismod in pharetra dui Pellentesque urna ad blandit','08/04/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (753,15,8,22,'facilisis','19/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (707,4,2,13,'vel sit tempus turpis vulputate at fames luctus dui quam mollis','05/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (690,9,9,23,'consequat Nullam et sodales','06/04/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (993,9,5,26,'inceptos diam Class dapibus semper Etiam urna Fusce luctus venenatis vulputate nibh semper','16/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (894,25,11,13,'lorem quam elementum scelerisque','04/04/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (468,7,15,12,'sociis ac volutpat rutrum Phasellus condimentum ipsum facilisi Vestibulum','01/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (746,12,7,20,'dui fames consectetuer felis Sed ultrices Vestibulum vulputate lobortis Phasellus','16/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (376,5,3,17,'iaculis nonummy mi habitant imperdiet placerat Etiam Lorem ante ultricies Proin turpis','07/04/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (453,12,6,25,'neque ultrices laoreet varius cubilia Nam urna volutpat ultricies Curae pede','21/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (124,12,12,2,'netus tortor tristique congue blandit eleifend feugiat rutrum Donec','27/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (743,15,22,24,'eget diam posuere ullamcorper gravida convallis torquent morbi vestibulum','14/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (105,19,18,10,'feugiat sodales porta mi molestie tincidunt dolor fringilla Mauris amet purus','17/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (427,21,25,1,'sem','27/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (347,16,18,17,'eleifend','07/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (638,25,4,11,'sit gravida nisi Suspendisse scelerisque ultrices magnis placerat tellus rutrum sociis','18/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (150,18,21,26,'arcu mi vehicula placerat','09/04/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (714,30,28,18,'cubilia pharetra litora','16/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (683,27,13,12,'velit eget libero','23/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (59,27,24,11,'risus pulvinar Nullam condimentum vestibulum Curae Cras consectetuer vitae posuere parturient nunc facilisi','30/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (330,5,24,17,'condimentum','20/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (230,18,24,20,'neque','25/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (556,25,16,18,'Phasellus ut adipiscing pellentesque pede In ultrices netus Cras Nullam Cras','26/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (301,15,21,22,'inceptos sem ultrices Morbi massa tellus','16/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (186,10,20,11,'augue aliquam inceptos facilisi montes fringilla posuere eleifend primis','31/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (460,22,27,18,'sed congue','16/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (378,30,8,6,'laoreet at tellus semper Ut cursus','05/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (88,30,30,10,'mollis','25/01/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (597,29,26,29,'ultricies ullamcorper Curae vulputate ligula pharetra dignissim sociis molestie sodales luctus Curae penatibus','25/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (859,14,8,19,'laoreet fermentum aptent','21/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (882,12,5,23,'aliquam aliquam facilisis nisi quis pretium magnis sociosqu','16/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (702,19,2,29,'fringilla at a Aliquam ligula vulputate Phasellus auctor fringilla litora','12/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (658,3,22,8,'turpis iaculis eget consequat imperdiet mus ac eros iaculis Curabitur faucibus ad','22/02/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (945,18,16,26,'purus augue purus inceptos tempus Vivamus tristique','01/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (236,18,22,11,'montes','21/03/2016');
-INSERT INTO Attendance (studentCode,classID,duration,roomID,summary,classDate) VALUES (255,3,1,29,'at tempus magnis cursus quis ligula','02/01/2016');
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (35,43,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (26,13,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (38,25,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (44,28,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (37,21,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (43,41,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (8,9,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (1,21,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (39,19,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (32,47,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (32,48,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (37,24,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (15,8,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (13,39,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (49,34,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (1,23,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (39,22,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (8,47,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (17,43,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (26,34,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (38,38,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (35,18,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (18,32,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (7,7,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (6,44,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (16,23,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (12,30,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (21,43,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (5,27,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (30,24,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (37,15,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (48,31,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (25,3,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (39,36,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (8,30,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (5,10,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (10,44,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (13,28,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (36,8,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (19,38,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (40,29,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (4,4,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (29,20,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (48,4,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (27,42,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (3,36,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (50,24,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (43,36,FALSE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (32,6,TRUE);
+INSERT INTO Attendance (studentCode,classID,attended) VALUES (1,4,TRUE);
 
 --Evaluation
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (11,'04/01/2016',15);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (73,'23/03/2016',17);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (3,'18/01/2016',37);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (5,'06/02/2016',3);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (29,'16/01/2016',23);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (81,'25/02/2016',35);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (96,'19/02/2016',6);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (22,'12/01/2016',21);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (18,'29/01/2016',30);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (84,'11/03/2016',6);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (38,'31/01/2016',22);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (1,'10/03/2016',4);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (19,'05/01/2016',14);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (62,'25/02/2016',40);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (7,'05/02/2016',19);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (83,'04/04/2016',38);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (60,'07/01/2016',40);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (50,'07/02/2016',29);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (8,'01/04/2016',3);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (84,'06/04/2016',17);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (88,'20/02/2016',19);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (33,'23/02/2016',22);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (38,'13/01/2016',16);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (26,'18/01/2016',37);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (99,'11/04/2016',18);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (34,'06/01/2016',32);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (95,'04/01/2016',22);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (11,'03/02/2016',2);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (49,'12/03/2016',1);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (84,'04/01/2016',24);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (35,'19/02/2016',15);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (22,'19/03/2016',36);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (20,'01/03/2016',18);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (64,'21/02/2016',26);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (49,'08/01/2016',38);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (92,'04/01/2016',10);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (8,'01/01/2016',36);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (91,'03/02/2016',34);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (26,'07/03/2016',5);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (46,'11/02/2016',20);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (63,'24/03/2016',39);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (4,'31/03/2016',35);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (6,'23/01/2016',16);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (81,'16/03/2016',26);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (30,'10/04/2016',10);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (11,'15/02/2016',33);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (71,'06/02/2016',20);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (61,'05/01/2016',5);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (40,'17/03/2016',40);
-INSERT INTO Evaluation (weight,evaluationDate,cuOccurrenceID) VALUES (73,'06/02/2016',26);
-
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (3,20,'05/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (53,40,'24/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (96,16,'20/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (32,47,'01/06/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (55,31,'23/06/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (9,13,'26/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (21,11,'17/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (28,50,'01/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (39,32,'02/06/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (23,20,'08/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (83,20,'21/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (6,16,'30/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (64,38,'03/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (84,10,'25/06/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (81,37,'04/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (56,39,'07/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (89,4,'26/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (29,22,'26/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (58,17,'16/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (40,37,'01/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (14,1,'25/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (79,6,'16/02/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (72,4,'09/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (29,9,'07/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (37,18,'07/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (26,21,'18/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (91,8,'14/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (87,14,'01/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (65,1,'19/02/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (100,14,'03/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (27,20,'25/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (7,12,'07/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (73,6,'28/02/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (16,23,'18/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (72,1,'21/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (45,26,'27/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (35,8,'10/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (85,36,'28/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (72,32,'08/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (67,33,'30/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (28,34,'25/01/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (40,35,'07/06/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (3,18,'28/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (60,38,'06/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (25,42,'15/02/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (77,1,'08/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (73,14,'28/05/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (83,44,'15/04/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (33,42,'13/03/2016');
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (10,29,'04/02/2016'); 
 
 --GroupWork
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,4,18);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,4,7);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,7);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,4,3);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,3,6);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,4,10);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,4,1);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,4,7);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (1,2,1);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,29);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,20);
 INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,15);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,2,1);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,2);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,3,10);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,2,12);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,15);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,4,16);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,14);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,3,6);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,12);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,10);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,4);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,3,13);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,3,6);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,3,10);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,2);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,4,19);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,3);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,2,9);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,2,19);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,4,20);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,3,6);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,15);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,4,2);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,5);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,19);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,4,20);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,4,17);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,4,6);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,2,1);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,4,20);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,12);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,4);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,17);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,13);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,4);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,20);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,4,2);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (6,3,3);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,20);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,1);
-INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,8);
-
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,50);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (1,3,27);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,14);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,38);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,2,39);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,2,46);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,28);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (1,3,45);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,2,28);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,2);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,24);
 
 -- Test 
-INSERT INTO Test (evaluationID,duration) VALUES (23,103);
-INSERT INTO Test (evaluationID,duration) VALUES (35,32);
-INSERT INTO Test (evaluationID,duration) VALUES (22,65);
-INSERT INTO Test (evaluationID,duration) VALUES (31,44);
-INSERT INTO Test (evaluationID,duration) VALUES (33,57);
-INSERT INTO Test (evaluationID,duration) VALUES (29,135);
-INSERT INTO Test (evaluationID,duration) VALUES (32,115);
-INSERT INTO Test (evaluationID,duration) VALUES (28,171);
-INSERT INTO Test (evaluationID,duration) VALUES (29,175);
-INSERT INTO Test (evaluationID,duration) VALUES (23,115);
-INSERT INTO Test (evaluationID,duration) VALUES (36,50);
-INSERT INTO Test (evaluationID,duration) VALUES (26,16);
-INSERT INTO Test (evaluationID,duration) VALUES (26,138);
-INSERT INTO Test (evaluationID,duration) VALUES (37,104);
-INSERT INTO Test (evaluationID,duration) VALUES (29,92);
-INSERT INTO Test (evaluationID,duration) VALUES (37,219);
-INSERT INTO Test (evaluationID,duration) VALUES (35,48);
-INSERT INTO Test (evaluationID,duration) VALUES (31,213);
-INSERT INTO Test (evaluationID,duration) VALUES (38,48);
-INSERT INTO Test (evaluationID,duration) VALUES (29,4);
-INSERT INTO Test (evaluationID,duration) VALUES (36,177);
-INSERT INTO Test (evaluationID,duration) VALUES (30,140);
-INSERT INTO Test (evaluationID,duration) VALUES (37,230);
-INSERT INTO Test (evaluationID,duration) VALUES (37,23);
-INSERT INTO Test (evaluationID,duration) VALUES (34,22);
-INSERT INTO Test (evaluationID,duration) VALUES (37,234);
-INSERT INTO Test (evaluationID,duration) VALUES (23,91);
-INSERT INTO Test (evaluationID,duration) VALUES (34,131);
-INSERT INTO Test (evaluationID,duration) VALUES (22,85);
-INSERT INTO Test (evaluationID,duration) VALUES (28,108);
-INSERT INTO Test (evaluationID,duration) VALUES (38,188);
-INSERT INTO Test (evaluationID,duration) VALUES (37,84);
-INSERT INTO Test (evaluationID,duration) VALUES (21,93);
-INSERT INTO Test (evaluationID,duration) VALUES (25,65);
-INSERT INTO Test (evaluationID,duration) VALUES (39,105);
-INSERT INTO Test (evaluationID,duration) VALUES (22,86);
-INSERT INTO Test (evaluationID,duration) VALUES (21,206);
-INSERT INTO Test (evaluationID,duration) VALUES (39,41);
-INSERT INTO Test (evaluationID,duration) VALUES (27,64);
-INSERT INTO Test (evaluationID,duration) VALUES (33,211);
-INSERT INTO Test (evaluationID,duration) VALUES (32,153);
-INSERT INTO Test (evaluationID,duration) VALUES (39,112);
-INSERT INTO Test (evaluationID,duration) VALUES (33,53);
-INSERT INTO Test (evaluationID,duration) VALUES (39,198);
-INSERT INTO Test (evaluationID,duration) VALUES (40,5);
-INSERT INTO Test (evaluationID,duration) VALUES (29,228);
-INSERT INTO Test (evaluationID,duration) VALUES (32,192);
-INSERT INTO Test (evaluationID,duration) VALUES (37,28);
-INSERT INTO Test (evaluationID,duration) VALUES (36,225);
-INSERT INTO Test (evaluationID,duration) VALUES (35,21);
-
+INSERT INTO Test (evaluationID,duration) VALUES (47,116);
+INSERT INTO Test (evaluationID,duration) VALUES (42,90);
+INSERT INTO Test (evaluationID,duration) VALUES (36,51);
+INSERT INTO Test (evaluationID,duration) VALUES (13,108);
+INSERT INTO Test (evaluationID,duration) VALUES (40,184);
+INSERT INTO Test (evaluationID,duration) VALUES (26,234);
+INSERT INTO Test (evaluationID,duration) VALUES (27,185);
+INSERT INTO Test (evaluationID,duration) VALUES (19,183);
+INSERT INTO Test (evaluationID,duration) VALUES (19,60);
+INSERT INTO Test (evaluationID,duration) VALUES (50,87);
+INSERT INTO Test (evaluationID,duration) VALUES (12,135);
+INSERT INTO Test (evaluationID,duration) VALUES (45,113);
+INSERT INTO Test (evaluationID,duration) VALUES (21,182);
+INSERT INTO Test (evaluationID,duration) VALUES (23,203);
+INSERT INTO Test (evaluationID,duration) VALUES (45,168);
+INSERT INTO Test (evaluationID,duration) VALUES (20,210);
 
 --Exam
-INSERT INTO Exam (evaluationID,duration) VALUES (47,201);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,168);
-INSERT INTO Exam (evaluationID,duration) VALUES (49,183);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,123);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,122);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,28);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,3);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,13);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,136);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,222);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,25);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,98);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,27);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,71);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,75);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,152);
-INSERT INTO Exam (evaluationID,duration) VALUES (49,51);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,94);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,168);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,48);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,39);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,26);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,44);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,47);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,213);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,228);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,192);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,197);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,196);
-INSERT INTO Exam (evaluationID,duration) VALUES (43,67);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,158);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,67);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,74);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,123);
-INSERT INTO Exam (evaluationID,duration) VALUES (46,22);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,206);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,56);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,233);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,155);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,93);
-INSERT INTO Exam (evaluationID,duration) VALUES (43,44);
-INSERT INTO Exam (evaluationID,duration) VALUES (46,122);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,141);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,132);
-INSERT INTO Exam (evaluationID,duration) VALUES (46,99);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,150);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,205);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,147);
-INSERT INTO Exam (evaluationID,duration) VALUES (49,20);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,95);
+ INSERT INTO Exam (evaluationID,duration) VALUES (2,180);
+INSERT INTO Exam (evaluationID,duration) VALUES (4,202);
+INSERT INTO Exam (evaluationID,duration) VALUES (30,66);
+INSERT INTO Exam (evaluationID,duration) VALUES (21,82);
+INSERT INTO Exam (evaluationID,duration) VALUES (38,224);
+INSERT INTO Exam (evaluationID,duration) VALUES (18,188);
+INSERT INTO Exam (evaluationID,duration) VALUES (32,83);
+INSERT INTO Exam (evaluationID,duration) VALUES (7,98);
+INSERT INTO Exam (evaluationID,duration) VALUES (49,111);
+INSERT INTO Exam (evaluationID,duration) VALUES (31,50);
+INSERT INTO Exam (evaluationID,duration) VALUES (19,57);
+INSERT INTO Exam (evaluationID,duration) VALUES (36,204);
+INSERT INTO Exam (evaluationID,duration) VALUES (28,237);
+INSERT INTO Exam (evaluationID,duration) VALUES (21,215);
+INSERT INTO Exam (evaluationID,duration) VALUES (23,74);
+INSERT INTO Exam (evaluationID,duration) VALUES (46,55);

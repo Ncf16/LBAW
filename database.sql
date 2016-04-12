@@ -31,7 +31,7 @@ DROP TYPE  IF EXISTS  CourseType CASCADE;
 
 CREATE TYPE CourseType AS ENUM('Bachelor', 'Masters', 'PhD');
 CREATE TYPE PersonType AS ENUM('Teacher', 'Student', 'Admin');
-CREATE TYPE Language AS ENUM('Portuguese', 'Russian', 'English');
+CREATE TYPE Language AS ENUM('PT','EN');
 CREATE TYPE EvaluationType AS ENUM('GroupWork','Test','Exam');
 
 CREATE TABLE IF NOT EXISTS Person(
@@ -47,7 +47,7 @@ phoneNumber VARCHAR(12)
 
 CREATE TABLE IF NOT EXISTS Course(
 code SERIAL PRIMARY KEY,
-directorCode INTEGER REFERENCES Person(academicCode),
+teacherCode INTEGER REFERENCES Person(academicCode),
 courseType CourseType,
 name VARCHAR(128) NOT NULL UNIQUE,
 creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -95,17 +95,17 @@ CREATE TABLE IF NOT EXISTS CurricularUnitOccurrence(
 cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
 curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
-regentCode INTEGER REFERENCES Person(academicCode),
-​bibliography VARCHAR(256) NOT NULL,
+teacherCode INTEGER REFERENCES Person(academicCode),
+bibliography VARCHAR(256) NOT NULL,
 competences VARCHAR(2048) NOT NULL,
-​curricularSemester INTEGER NOT NULL,
+curricularSemester INTEGER NOT NULL,
 curricularYear INTEGER NOT NULL,
 evaluation VARCHAR(1024) NOT NULL,
 externalPage VARCHAR(128) NOT NULL,
 language Language,
 programme VARCHAR(2048) NOT NULL,
 requirements VARCHAR(2048) NOT NULL,
-CHECK(​curricularSemester =1 OR ​curricularSemester = 2),
+CHECK(curricularSemester =1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
 );
 
@@ -202,7 +202,7 @@ RETURNS trigger AS  $$
 DECLARE
   type PersonType;
 BEGIN
-type:=getPersonType(NEW.directorCode);
+type:=getPersonType(NEW.teacherCode);
   IF (type =  'Teacher' )
   THEN 
     RETURN NEW;
