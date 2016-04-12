@@ -1,6 +1,6 @@
 ﻿--Person
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ferris','63600 West Georgia Ave.','03-10-1973','Sweden','199705624','456689127010');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Julian','14526 South Pierre Blvd.','04-04-1965','China','067307816','628113882586');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Admin','Ferris','63600 West Georgia Ave.','03-10-1973','Sweden','199705624','456689127010');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Admin','Julian','14526 South Pierre Blvd.','04-04-1965','China','067307816','628113882586');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ayanna','491 South Bahrain Ct.','26-02-1993','Portugal','146441229','056569983154');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Kelly','38201 East Greenland Ave.','10-08-1969','Portugal','933767984','368615758312');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hasad','71376 West Antarctica Ct.','17-01-1937','France','351239969','628469016516');
@@ -49,7 +49,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Colton','23217 South Cedarburg Ave.','01-04-1992','Portugal','699771833','588627201070');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Darryl','43400 South South Georgia and The South Sandwich Islands St.','07-02-1929','Portugal','195603417','661362346321');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Troy','50860  Buena Park Ln.','13-06-1976','England','383546500','338573346840');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Blake','21628 East Korea, Republic of Ave.','27-02-1976','Portugal','417364559','991772883426');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Blake','21628 East Korea,Republic of Ave.','27-02-1976','Portugal','417364559','991772883426');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Felicia','85260 South Cape Verde Ct.','28-10-1960','Portugal','671812092','391352139938');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Leslie','75890 West Belgium St.','23-12-1995','England','746228101','939527100840');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Shoshana','20197 West Bosnia and Herzegovina Ave.','08-09-1928','France','715232853','299055746955');
@@ -59,7 +59,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Linus','49257 North Slovakia Ln.','01-02-1971','Portugal','172324576','992977283790');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Maggie','64943  Fountain Valley Ave.','29-06-1957','Portugal','366622752','638204872219');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Adrienne','26718 West Antarctica Ln.','26-08-1999','France','647324546','741421902197');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Marcia','24584 North Taiwan, Province of China Ct.','25-04-1950','Germany','309580744','164041463730');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Marcia','24584 North Taiwan,Province of China Ct.','25-04-1950','Germany','309580744','164041463730');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Veda','21455 East Argentina Ave.','17-01-1928','United States','532985279','709751257816');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Ryder','81032 South Spain Ct.','01-12-1988','Portugal','425902038','206766888453');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Mara','72538 South Egg Harbor Way','30-08-1980','Germany','503669796','635442451774');
@@ -139,7 +139,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Amity','42830 East Midland Ln.','05-12-1920','Japan','129236666','096779238583');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ariana','32974 South Florence Way','01-08-1978','China','643325322','114167536718');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hannah','6228 West Mauritania Ave.','15-10-1932','Argentina','836779652','086205160262');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Xaviera','63905 South Tanzania, United Republic of Ct.','13-07-1941','Portugal','662634314','905483415549');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Xaviera','63905 South Tanzania,United Republic of Ct.','13-07-1941','Portugal','662634314','905483415549');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jordan','86990 North Romania Way','05-05-1940','Portugal','910345059','801860232793');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Barry','58747 East Costa Rica Way','14-02-1931','England','512557188','990736569715');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Desiree','15639  Iraq St.','09-12-1985','Spain','067936851','183513241866');
@@ -214,7 +214,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Cooper','96993 East Nepal St.','20-07-1927','Japan','717284221','942299513891');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Shellie','43863 South Madagascar Way','24-10-1966','China','497046997','576314740703');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Chaim','12923 South Tokelau Ln.','07-02-1962','Portugal','143555659','218991391693');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Cole','86352 North Taiwan, Province of China Ln.','16-07-1952','England','113578706','755683215303');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Cole','86352 North Taiwan,Province of China Ln.','16-07-1952','England','113578706','755683215303');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Karyn','99791 West Durant St.','09-08-1999','Portugal','756815072','189975568249');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Nash','56023 West Baytown Ct.','09-10-1920','Brazil','431652015','161608455265');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Damian','57446 West Anguilla Ct.','03-02-1929','China','130333171','367688927506');
@@ -309,7 +309,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Teegan','38213 South Brunei Darussalam Blvd.','19-04-1975','Italy','168570791','133297751293');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Giselle','49847 West Afghanistan Ln.','26-04-1925','Portugal','127915177','591925994591');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Lillian','39600 South Estonia Way','29-04-1926','United States','763919759','326892434140');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Benedict','17727  Korea, Republic of St.','11-04-1942','Portugal','883125081','302159422301');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Benedict','17727  Korea,Republic of St.','11-04-1942','Portugal','883125081','302159422301');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Zeus','31520 South Portugal Blvd.','24-05-1921','Sweden','878390657','298641446584');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Vivian','17577 West Enid Ave.','15-03-1956','Spain','553393143','287939221637');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','John','55128 South French Southern Territories Ct.','24-12-1981','Portugal','981176320','648878285744');
@@ -321,7 +321,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Sydnee','67702 East Somalia St.','09-09-1952','Mozambique','712686224','077341743606');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ezekiel','49281 North Senegal Ln.','30-03-1979','Mozambique','661522900','010585524961');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Michelle','38200 North Yemen Ct.','07-09-1997','Japan','230830582','160075542878');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Cameron','72226 North Palestinian Territory, Occupied Blvd.','18-01-1975','Greece','409673619','894717090640');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Cameron','72226 North Palestinian Territory,Occupied Blvd.','18-01-1975','Greece','409673619','894717090640');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Travis','14197  Anaheim Blvd.','12-11-1935','Spain','732068975','259846022298');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Mallory','63845 West Cerritos Blvd.','11-06-1970','Mozambique','838136315','572910793647');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Halee','31086 West Tuvalu Ave.','21-06-1979','United States','609313977','705986798348');
@@ -337,7 +337,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jarrod','55482 South Cape Coral St.','04-07-1982','Sweden','703421055','291845708193');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kiara','29124 North Libyan Arab Jamahiriya Blvd.','08-04-1946','Portugal','716442010','315853946947');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ciaran','51308 East French Polynesia Way','18-02-1944','Italy','595626909','874482310809');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Abraham','74026 West Virgin Islands, U.S. Ct.','24-12-1989','Portugal','253154198','499611272115');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Abraham','74026 West Virgin Islands,U.S. Ct.','24-12-1989','Portugal','253154198','499611272115');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Castor','80314  Christmas Island Ct.','23-06-1967','Argentina','969460873','720954073109');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Oleg','66649  Bahamas Ct.','06-05-1960','Portugal','860120329','492898397927');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kiona','5985 South Belgium Ct.','15-08-1991','Germany','402696292','159251721160');
@@ -427,7 +427,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Beverly','3106 South Serbia and Montenegro St.','14-03-1934','Italy','920923026','615160391173');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Aimee','73261  Azerbaijan Ave.','02-06-1921','Portugal','909823984','491264214040');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Baker','24073 East Jordan Blvd.','20-03-1924','Italy','804754914','504512795464');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Dorian','87544 North Korea, Republic of Ct.','12-07-1969','Portugal','888048222','576201240146');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Dorian','87544 North Korea,Republic of Ct.','12-07-1969','Portugal','888048222','576201240146');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Dane','96750 South Clarksville Ave.','21-07-1940','France','083368181','412954700997');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Vielka','3164  Bahamas Ct.','13-05-1980','Portugal','173541180','499094615418');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ina','56640 South Central African Republic Ave.','17-09-1958','Portugal','842533881','174974126765');
@@ -446,7 +446,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Malik','73664 South Boulder Junction Ave.','25-04-1933','Argentina','763172587','379462748529');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Nerea','72423 East Moline Way','05-04-1932','Portugal','422443863','640496229931');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Rhiannon','3970 North Berlin Ave.','07-08-1953','Portugal','612497707','115329607347');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kasper','83027 West Virgin Islands, U.S. Blvd.','27-10-1929','Portugal','546413034','233768067474');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kasper','83027 West Virgin Islands,U.S. Blvd.','27-10-1929','Portugal','546413034','233768067474');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Cadman','1520 West Saint Pierre and Miquelon Way','07-11-1967','Portugal','372956552','826105929280');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Mark','9984 South Belgium Way','27-11-1983','Portugal','971812275','371936898074');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Galvin','83529 South Togo Blvd.','12-03-1953','England','005797419','450443955502');
@@ -481,7 +481,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Briar','58228 South Canada Way','20-10-1990','Portugal','917531688','179154366941');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hanna','41141  Biloxi Ave.','25-07-1923','Brazil','295829860','188916476110');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Serena','29533 North College Park Way','21-09-1978','China','720402264','303244827328');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hamilton','34610  Korea, Republic of Ct.','01-05-1972','Spain','440476888','957215801007');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hamilton','34610  Korea,Republic of Ct.','01-05-1972','Spain','440476888','957215801007');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Charde','55517 East Grand Junction St.','26-08-1998','Greece','577627767','768908163441');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Montana','95559  Uruguay Blvd.','24-01-1992','Brazil','469810425','708277404677');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','McKenzie','10479  Columbia Ave.','02-04-1999','Portugal','275378415','980365751213');
@@ -489,7 +489,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Aurelia','74042 West Beaumont Ct.','08-09-1995','Italy','189994531','937436003416');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Carla','43282  Decatur St.','02-01-1933','Argentina','139163363','837394567328');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Madison','28604 South Elsmere Way','10-11-1974','Portugal','018105198','710987901048');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Bradley','49458 North Palestinian Territory, Occupied Way','29-05-1964','China','542141943','942035225878');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Bradley','49458 North Palestinian Territory,Occupied Way','29-05-1964','China','542141943','942035225878');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Anne','60489 East Angola Ln.','14-10-1928','England','267076895','573272299530');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Stewart','2383 South Forrest City Ct.','01-09-1997','Argentina','476614945','068371782943');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ryan','90339 East Luxembourg St.','23-08-1929','Portugal','485470403','066378056063');
@@ -572,7 +572,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Lunea','1579 South Madagascar Ct.','29-03-1941','Portugal','328056442','279338545424');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Xandra','59697 East Argentina St.','21-04-1922','Brazil','985302327','107258285430');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Beverly','37924 East Enfield Ave.','29-09-1925','Portugal','273037641','807550176287');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jolene','91977 West Palestinian Territory, Occupied Way','25-11-1954','Japan','871080232','665604661039');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jolene','91977 West Palestinian Territory,Occupied Way','25-11-1954','Japan','871080232','665604661039');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Carl','70312 North Bahrain St.','10-09-1925','Portugal','136716330','538852576487');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Garrison','21366 East Belgium Way','05-01-1982','Portugal','694324181','949194149734');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jameson','74986  Coral Springs St.','01-01-1963','Brazil','994067664','379339386412');
@@ -712,7 +712,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hollee','21479 West Syrian Arab Republic St.','20-08-1947','England','853942278','543206798605');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Sopoline','31101 North Syrian Arab Republic Ave.','07-08-1955','Portugal','723673480','569058068777');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jackson','80509 East Sri Lanka Ave.','30-04-1958','Argentina','931732624','508524803674');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Barrett','33822 West Palestinian Territory, Occupied St.','14-08-1948','Mozambique','393231878','841133415926');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Barrett','33822 West Palestinian Territory,Occupied St.','14-08-1948','Mozambique','393231878','841133415926');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Odessa','75757  Zimbabwe St.','11-10-1926','Argentina','222650026','632562807314');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kieran','32328 West Afghanistan Ave.','25-05-1997','Japan','660183460','074357233769');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kyle','68405 West Hilo St.','06-05-1972','Portugal','479638867','253918506417');
@@ -730,7 +730,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Melyssa','7570 East Central African Republic Ct.','03-05-1970','England','292370316','396298308546');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Constance','95123 East Iraq Ct.','09-08-1964','Italy','359217296','658702691414');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Stephanie','68105 North Bhutan Blvd.','19-01-1941','Sweden','288453511','172250244372');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Quail','75557 East Virgin Islands, U.S. Ct.','16-10-1957','Portugal','642613412','285777262899');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Quail','75557 East Virgin Islands,U.S. Ct.','16-10-1957','Portugal','642613412','285777262899');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Thaddeus','44166 North Austria Way','30-12-1959','Portugal','353352122','594451266402');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Vincent','31713  Mobile Ln.','11-12-1989','Portugal','795448815','619300897890');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Xavier','18693 North Nepal Ave.','07-07-1995','China','294541743','647424045693');
@@ -758,7 +758,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Dominic','47629 North Malta St.','09-05-1927','Sweden','578490957','438690432644');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Liberty','97900 West New Kensington Way','22-11-1930','Portugal','687963422','605021401064');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kyle','87077 North United Kingdom Way','14-06-1996','England','339044948','019088011865');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Brennan','91130 East Tanzania, United Republic of Ln.','22-08-1993','Italy','914058460','362840744231');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Brennan','91130 East Tanzania,United Republic of Ln.','22-08-1993','Italy','914058460','362840744231');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Yuri','9647 West Colorado Springs Ave.','31-08-1942','France','411029500','471753324134');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ruth','11319 North Burkina Faso Way','12-12-1926','Portugal','294896576','551545338617');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Piper','79310  French Polynesia St.','28-03-1933','Portugal','801529190','046761124276');
@@ -772,7 +772,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ivana','10812 South Cedar City Blvd.','14-04-1958','Sweden','600812377','008410972656');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Phoebe','86291 South Switzerland Blvd.','27-10-1956','Sweden','409060135','411400954939');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Dean','3937 North Bosnia and Herzegovina Ct.','13-11-1945','Portugal','759406776','064025603285');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Marvin','70044 West Virgin Islands, British Blvd.','16-04-1947','Argentina','993394264','233810843538');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Marvin','70044 West Virgin Islands,British Blvd.','16-04-1947','Argentina','993394264','233810843538');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Odette','86671 West Cape Verde Ln.','05-05-1999','Portugal','965869801','366941618723');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Garth','85311  Saudi Arabia Way','12-04-1973','England','638690497','662259853169');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Gage','66791 South Malta St.','22-10-1943','China','581739162','883505695660');
@@ -797,7 +797,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Celeste','96924 East Canada Way','20-06-1956','Italy','413628663','674100803030');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Darius','12991 North Kiribati Blvd.','13-03-1924','Portugal','507631683','047246614315');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ferdinand','14282  Lawrence Ln.','31-01-1942','Portugal','240088903','638707791588');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','April','81189  Virgin Islands, British Blvd.','25-05-1921','England','232836277','771420147375');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','April','81189  Virgin Islands,British Blvd.','25-05-1921','England','232836277','771420147375');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Nicholas','42181  Biddeford St.','24-12-1988','France','726993495','075258404784');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Moses','33323 North Galveston Ave.','19-08-1996','Italy','135451184','772432085379');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Shannon','51245 West Croatia Ct.','25-04-1969','Argentina','914632511','140904674673');
@@ -906,7 +906,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kimberley','91031  Zambia Ln.','05-02-1947','Portugal','534623418','944822591682');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Berk','29510  Downey Ct.','04-05-1997','Brazil','809976264','090431513265');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Bryar','5286 East Senegal St.','16-06-1924','Portugal','537252299','266775821666');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Yeo','28251 North Taiwan, Province of China Blvd.','26-07-1944','Brazil','875733289','899737781159');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Teacher','Yeo','28251 North Taiwan,Province of China Blvd.','26-07-1944','Brazil','875733289','899737781159');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Ciara','17163 South Cook Islands Way','12-08-1921','Sweden','112399890','091973217070');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Hashim','99650 North Bandon Ave.','17-04-1997','Portugal','690609476','692843046807');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Acton','78377 South Guatemala St.','10-04-1936','Portugal','697189835','385761737672');
@@ -979,7 +979,7 @@ INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Kylan','38044 West British Indian Ocean Territory St.','09-08-1986','Portugal','805544306','261304159245');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Bryar','93860  Homer St.','25-02-1939','Portugal','159878943','628132720897');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Charles','59224 North Nauru Ave.','01-01-1972','Portugal','794199160','169367697865');
-INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Russell','97466 West Palestinian Territory, Occupied Ave.','22-06-1968','Portugal','685044298','402747783892');
+INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Russell','97466 West Palestinian Territory,Occupied Ave.','22-06-1968','Portugal','685044298','402747783892');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Jaquelyn','46550  Syrian Arab Republic St.','19-07-1933','Greece','559288941','866340075583');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','George','3489 North Faroe Islands Way','12-10-1928','Germany','425703924','723961203074');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber) VALUES ('Student','Uriel','63908 East Saint Kitts and Nevis St.','13-07-1961','Brazil','852287443','573673808001');
@@ -1040,27 +1040,27 @@ INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChang
 INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChange) VALUES (26,2,3,FALSE,'xxleTD CeAdPGXKXQVtUdsOTcTmtvBbbGa eDyaiQuakDTEAjoJyMlodNwjLDgQXxYhPmcTdNdHyZYWGwinQdTxslYCtNEWPUOMDVczqnBJfoYzpJXfEKZbgGBMmNltkNwFQGaQpNjWDd WfPuYbBXwmuKXkQ');
 
 --Area
-INSERT INTO Area (area) VALUES ('History');
-INSERT INTO Area (area) VALUES ('Sociology');
-INSERT INTO Area (area) VALUES ('Science of Earth Systems');
-INSERT INTO Area (area) VALUES ('Statistical Science');
-INSERT INTO Area (area) VALUES ('Civil Engineering');
-INSERT INTO Area (area) VALUES ('Computer Science');
-INSERT INTO Area (area) VALUES ('German Studies');
-INSERT INTO Area (area) VALUES ('Religious Studies');
-INSERT INTO Area (area) VALUES ('History of Art');
-INSERT INTO Area (area) VALUES ('Physics');
-INSERT INTO Area (area) VALUES ('Government');
-INSERT INTO Area (area) VALUES ('Nutritional Sciences');
-INSERT INTO Area (area) VALUES ('Near Eastern Studies');
-INSERT INTO Area (area) VALUES ('Music');
-INSERT INTO Area (area) VALUES ('Mechanical Engineering');
-INSERT INTO Area (area) VALUES ('Performing and Media Arts');
-INSERT INTO Area (area) VALUES ('Philosophy');
-INSERT INTO Area (area) VALUES ('Economy');
-INSERT INTO Area (area) VALUES ('Urban and Regional Studies');
-INSERT INTO Area (area) VALUES ('Viticulture and Enology');
-INSERT INTO Area (area) VALUES ('Math');
+INSERT INTO Area(area) VALUES ('History');
+INSERT INTO Area(area) VALUES ('Sociology');
+INSERT INTO Area(area) VALUES ('Science of Earth Systems');
+INSERT INTO Area(area) VALUES ('Statistical Science');
+INSERT INTO Area(area) VALUES ('Civil Engineering');
+INSERT INTO Area(area) VALUES ('Computer Science');
+INSERT INTO Area(area) VALUES ('German Studies');
+INSERT INTO Area(area) VALUES ('Religious Studies');
+INSERT INTO Area(area) VALUES ('History of Art');
+INSERT INTO Area(area) VALUES ('Physics');
+INSERT INTO Area(area) VALUES ('Government');
+INSERT INTO Area(area) VALUES ('Nutritional Sciences');
+INSERT INTO Area(area) VALUES ('Near Eastern Studies');
+INSERT INTO Area(area) VALUES ('Music');
+INSERT INTO Area(area) VALUES ('Mechanical Engineering');
+INSERT INTO Area(area) VALUES ('Performing and Media Arts');
+INSERT INTO Area(area) VALUES ('Philosophy');
+INSERT INTO Area(area) VALUES ('Economy');
+INSERT INTO Area(area) VALUES ('Urban and Regional Studies');
+INSERT INTO Area(area) VALUES ('Viticulture and Enology');
+INSERT INTO Area(area) VALUES ('Math');
 
 --ROOM 
 INSERT INTO Room(room) VALUES ('N602');
@@ -1114,197 +1114,164 @@ INSERT INTO Room(room) VALUES ('J670');
 INSERT INTO Room(room) VALUES ('R337');
 INSERT INTO Room(room) VALUES ('N414');
 
-
 -- Curricular Unit
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Corporate Law and Law of Contracts',18,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Introduction to Accounting',18,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Electromagnetism',10,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database Management',6,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming Fundaments',6,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Thermal Physics',10,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Calculus',21,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Algebra',21,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Geometry',21,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Artificial intelligence',6,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Computer graphics',6,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Basic Ear Training 1',14,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('World War II',9,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Sociology of Education',17,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Networking',10,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Logic',21,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Expressions and Group Dynamics',17,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Web Development',10,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Computer Vision',10,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Territorial Planning',5,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Geostatistics',4,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Corporate Law and Law of Contracts',18,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Introduction to Accounting',18,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Electromagnetism',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Database Management',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Programming Fundaments',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Thermal Physics',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Calculus',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Algebra',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Geometry',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Artificial intelligence',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Computer graphics',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Basic Ear Training 1',14,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('World War II',9,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Sociology of Education',17,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Networking',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Logic',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Expressions and Group Dynamics',17,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Web Development',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Computer Vision',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Territorial Planning',5,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Geostatistics',4,6);
 
 --Syllabus
-INSERT INTO Syllabus(courseCode, calendarYear) VALUES(1, 2015);
-INSERT INTO Syllabus(courseCode, calendarYear) VALUES(1, 2016);
-INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2015);
-INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2016);
-INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2015);
-INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2016);
--- Curricular Unit occurrence
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode,bibliography  , competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 1, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 2, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 4, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 6, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 7, 3, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 8, 4, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 9, 6, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(1, 10, 2, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO Syllabus(courseCode,calendarYear) VALUES(1,2015);
+INSERT INTO Syllabus(courseCode,calendarYear) VALUES(1,2016);
+INSERT INTO Syllabus(courseCode,calendarYear) VALUES(2,2015);
+INSERT INTO Syllabus(courseCode,calendarYear) VALUES(2,2016);
+INSERT INTO Syllabus(courseCode,calendarYear) VALUES(3,2015);
+INSERT INTO Syllabus(courseCode,calendarYear) VALUES(3,2016);
+
 
 -- Curricular Unit occurrence
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation, externalPage, language, programme)
-VALUES(1, 1, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 2, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 4, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 6, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 7, 3, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 8, 4, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 9, 6, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
-VALUES(1, 10, 2, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
->>>>>>> 5a2ce899a46104839d2d69a47206c55b5dbeb2e7
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,externalPage,language,programme,requirements)
+VALUES(1,1,4,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,2,7,'bibliography','competences',2,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,3,12,'bibliography','competences',1,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,4,21,'bibliography','competences',2,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,5,31,'bibliography','competences',1,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,6,46,'bibliography','competences',2,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,7,54,'bibliography','competences',1,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,8,63,'bibliography','competences',2,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,9,88,'bibliography','competences',1,5,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(1,10,91,'bibliography','competences',2,5,'evaluation_description','externalPage','EN','programme','requirements');
+
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,1,4,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,2,7,'bibliography','competences',2,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,3,12,'bibliography','competences',1,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,4,21,'bibliography','competences',2,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,5,31,'bibliography','competences',1,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,6,46,'bibliography','competences',2,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,7,54,'bibliography','competences',1,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,8,122,'bibliography','competences',2,4,'evaluation_description','externalPage','EN','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,9,88,'bibliography','competences',1,5,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(2,10,91,'bibliography','competences',2,5,'evaluation_description','externalPage','PT','programme','requirements');
 
 
-
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 1, 9, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 2, 5, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 4, 2, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 6, 4, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 7, 6, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 8, 10, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 9, 7, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme' ,'requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(2, 11, 8, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-
-
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 10, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 11, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 12, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 13, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 14, 5, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 15, 6, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 16, 7, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 17, 8, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 18, 9, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(3, 19, 10, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,11,132,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,12,146,'bibliography','competences',2,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,13,175,'bibliography','competences',1,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,14,182,'bibliography','competences',2,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,15,191,'bibliography','competences',1,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,16,214,'bibliography','competences',2,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,17,230,'bibliography','competences',1,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,18,229,'bibliography','competences',2,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,19,242,'bibliography','competences',1,5,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(3,20,255,'bibliography','competences',2,5,'evaluation_description','externalPage','PT','programme','requirements');
 
 
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 10, 10, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 11, 9, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 12, 8, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 13, 7, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 14, 6, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 15, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 16, 4, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 17, 3, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 18, 2, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme,requirements)
-VALUES(4, 19, 1, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,11,132,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,12,146,'bibliography','competences',2,1,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,13,175,'bibliography','competences',1,2,'evaluation_description','externalPage','EN','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,14,182,'bibliography','competences',2,2,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,15,191,'bibliography','competences',1,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,16,214,'bibliography','competences',2,3,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,17,230,'bibliography','competences',1,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,18,229,'bibliography','competences',2,4,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,19,242,'bibliography','competences',1,5,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES(4,20,255,'bibliography','competences',2,5,'evaluation_description','externalPage','PT','programme','requirements');
+
 
  --Class
 INSERT INTO Class (occurrenceID,summary,classDate,duration,roomID) VALUES (37,'orci Maecenas dui eros sapien ac lacus','06/04/2016 01:24:12',237,11);
@@ -1570,4 +1537,3 @@ INSERT INTO Test (evaluationID,duration) VALUES (32,192);
 INSERT INTO Test (evaluationID,duration) VALUES (37,28);
 INSERT INTO Test (evaluationID,duration) VALUES (36,225);
 INSERT INTO Test (evaluationID,duration) VALUES (35,21);
-
