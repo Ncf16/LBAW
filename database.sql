@@ -42,6 +42,7 @@ address VARCHAR(256),
 birthdate DATE,
 nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
+password VARCHAR(32) NOT NULL,
 phoneNumber VARCHAR(12)
 );
 
@@ -96,7 +97,6 @@ cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
 curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
 teacherCode INTEGER REFERENCES Person(academicCode),
-regentCode INTEGER REFERENCES Person(academicCode),
 bibliography VARCHAR(256) NOT NULL,
 competences VARCHAR(2048) NOT NULL,
 curricularSemester INTEGER NOT NULL,
@@ -106,7 +106,6 @@ externalPage VARCHAR(128) NOT NULL,
 language Language,
 programme VARCHAR(2048) NOT NULL,
 requirements VARCHAR(2048) NOT NULL,
-CHECK(curricularSemester =1 OR curricularSemester = 2),
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
 );
