@@ -147,20 +147,23 @@ CREATE TABLE IF NOT EXISTS GroupWork(
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 maxElements INTEGER NOT NULL, 
 minElements INTEGER NOT NULL,
-CHECK(minElements<=maxElements AND minElements>=2)
+CHECK(minElements<=maxElements AND minElements>=2),
+PRIMARY KEY(evaluationID)
 );
  
  
 CREATE TABLE IF NOT EXISTS Test(
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 duration INTEGER NOT NULL,
-CHECK(duration>0)
+CHECK(duration>0),
+PRIMARY KEY(evaluationID)
 );
  
 CREATE TABLE IF NOT EXISTS Exam(
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 duration INTEGER NOT NULL,
-CHECK(duration>0)
+CHECK(duration>0),
+PRIMARY KEY(evaluationID)
 );
  
 CREATE TABLE IF NOT EXISTS CourseEnrollment(
@@ -184,6 +187,35 @@ PRIMARY KEY(cuOccurrenceID,studentCode)
 );
 
 --Functions
+/*
+CREATE OR REPLACE FUNCTION onlyOneExam()
+RETURNS trigger AS $$
+DECLARE
+  numExams INTEGER;
+BEGIN
+	WITH new_exam AS (
+		SELECT *
+		FROM Exam, Evaluation ON Exam.evaluationID = Evaluation.evaluationID AS 'examEval'
+		WHERE new.evaluationID = examEval.evaluationID;
+	)
+	IF((SELECT count(*) AS 'num'
+		FROM new_exam, CurricularUnitOccurrence
+		WHERE new_exam.cuOccurrenceID = CurricularUnitOccurrence) > 1 )
+	THEN
+		DELETE
+		FROM Exam
+		WHERE Exam.evaluationID = new.evaluationID;
+		DELETE FROM Evaluation
+		WHERE Evaluation.evaluationID = new.evaluationID;
+	ELSE
+		-- nothing, is good to go ?
+	END IF;
+
+return $$;
+END
+$$ LANGUAGE 'plpgsql';
+*/
+
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
 RETURNS  PersonType AS  $$
 DECLARE
@@ -276,3 +308,10 @@ CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON CourseEnrollment 
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonStudent();
+
+/*
+CREATE TRIGGER oneExamPerUC
+AFTER INSERT ON Exam
+FOR EACH ROW
+EXECUTE PROCEDURE onlyOneExam();
+*/
