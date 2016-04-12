@@ -226,13 +226,13 @@ type:=getPersonType(NEW.studentCode);
   END IF;
 END 
 $$  LANGUAGE 'plpgsql'; 
- /*
+  
   CREATE OR REPLACE FUNCTION isPersonAdmin()
 RETURNS trigger AS  $$
 DECLARE
   type PersonType;
 BEGIN
-type:=getPersonType(NEW.directorCode);
+type:=getPersonType(NEW.adminCode);
   IF (type =  'Admin' )
   THEN 
     RETURN NEW;
@@ -240,7 +240,7 @@ type:=getPersonType(NEW.directorCode);
     RETURN NULL;
   END IF;
 END 
-$$  LANGUAGE 'plpgsql'; */
+$$  LANGUAGE 'plpgsql';  
 
  
 --check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
