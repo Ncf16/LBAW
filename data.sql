@@ -411,4 +411,58 @@ INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (77,1,'08/0
 INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (73,14,'28/05/2016');
 INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (83,44,'15/04/2016');
 INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (33,42,'13/03/2016');
-INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (10,29,'04/02/2016');*/
+INSERT INTO Evaluation (weight,cuOccurrenceID,evaluationDate) VALUES (10,29,'04/02/2016'); 
+
+--GroupWork
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (1,2,1);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,29);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,2,20);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,15);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,3,50);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (1,3,27);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,3,14);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,38);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,2,39);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (5,2,46);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (2,2,28);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (1,3,45);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (4,2,28);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,2);
+INSERT INTO GroupWork (maxElements,minElements,evaluationID) VALUES (3,3,24);
+
+-- Test 
+INSERT INTO Test (evaluationID,duration) VALUES (47,116);
+INSERT INTO Test (evaluationID,duration) VALUES (42,90);
+INSERT INTO Test (evaluationID,duration) VALUES (36,51);
+INSERT INTO Test (evaluationID,duration) VALUES (13,108);
+INSERT INTO Test (evaluationID,duration) VALUES (40,184);
+INSERT INTO Test (evaluationID,duration) VALUES (26,234);
+INSERT INTO Test (evaluationID,duration) VALUES (27,185);
+INSERT INTO Test (evaluationID,duration) VALUES (19,183);
+INSERT INTO Test (evaluationID,duration) VALUES (19,60);
+INSERT INTO Test (evaluationID,duration) VALUES (50,87);
+INSERT INTO Test (evaluationID,duration) VALUES (12,135);
+INSERT INTO Test (evaluationID,duration) VALUES (45,113);
+INSERT INTO Test (evaluationID,duration) VALUES (21,182);
+INSERT INTO Test (evaluationID,duration) VALUES (23,203);
+INSERT INTO Test (evaluationID,duration) VALUES (45,168);
+INSERT INTO Test (evaluationID,duration) VALUES (20,210);
+
+--Exam
+ INSERT INTO Exam (evaluationID,duration) VALUES (2,180);
+INSERT INTO Exam (evaluationID,duration) VALUES (4,202);
+INSERT INTO Exam (evaluationID,duration) VALUES (30,66);
+INSERT INTO Exam (evaluationID,duration) VALUES (21,82);
+INSERT INTO Exam (evaluationID,duration) VALUES (38,224);
+INSERT INTO Exam (evaluationID,duration) VALUES (18,188);
+INSERT INTO Exam (evaluationID,duration) VALUES (32,83);
+INSERT INTO Exam (evaluationID,duration) VALUES (7,98);
+INSERT INTO Exam (evaluationID,duration) VALUES (49,111);
+INSERT INTO Exam (evaluationID,duration) VALUES (31,50);
+INSERT INTO Exam (evaluationID,duration) VALUES (19,57);
+INSERT INTO Exam (evaluationID,duration) VALUES (36,204);
+INSERT INTO Exam (evaluationID,duration) VALUES (28,237);
+INSERT INTO Exam (evaluationID,duration) VALUES (21,215);
+INSERT INTO Exam (evaluationID,duration) VALUES (23,74);
+INSERT INTO Exam (evaluationID,duration) VALUES (46,55);
+*/
