@@ -207,7 +207,7 @@ type:=getPersonType(NEW.teacherCode);
   THEN 
     RETURN NEW;
     ELSE
-    RETURN NULL;
+   RETURN NULL;-- RAISE EXCEPTION 'User is not a Teacher';
   END IF;
 END 
 $$  LANGUAGE 'plpgsql'; 
@@ -222,7 +222,7 @@ type:=getPersonType(NEW.studentCode);
   THEN 
     RETURN NEW;
     ELSE
-    RETURN NULL;
+   RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
   END IF;
 END 
 $$  LANGUAGE 'plpgsql'; 
@@ -237,7 +237,7 @@ type:=getPersonType(NEW.adminCode);
   THEN 
     RETURN NEW;
     ELSE
-    RETURN NULL;
+   RETURN NULL;--  RAISE EXCEPTION 'User is not an Admin';
   END IF;
 END 
 $$  LANGUAGE 'plpgsql';  
