@@ -1043,7 +1043,6 @@ INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChang
 INSERT INTO Area (area) VALUES ('History');
 INSERT INTO Area (area) VALUES ('Sociology');
 INSERT INTO Area (area) VALUES ('Science of Earth Systems');
-INSERT INTO Area (area) VALUES ('Spanish');
 INSERT INTO Area (area) VALUES ('Statistical Science');
 INSERT INTO Area (area) VALUES ('Civil Engineering');
 INSERT INTO Area (area) VALUES ('Computer Science');
@@ -1058,11 +1057,10 @@ INSERT INTO Area (area) VALUES ('Music');
 INSERT INTO Area (area) VALUES ('Mechanical Engineering');
 INSERT INTO Area (area) VALUES ('Performing and Media Arts');
 INSERT INTO Area (area) VALUES ('Philosophy');
-INSERT INTO Area (area) VALUES ('Plant Science');
-INSERT INTO Area (area) VALUES ('aliquet vel, vulputate');
-INSERT INTO Area (area) VALUES ('porttitor vulputate, posuere');
+INSERT INTO Area (area) VALUES ('Economy');
 INSERT INTO Area (area) VALUES ('Urban and Regional Studies');
 INSERT INTO Area (area) VALUES ('Viticulture and Enology');
+INSERT INTO Area (area) VALUES ('Math');
 
 --ROOM 
 INSERT INTO Room(room) VALUES ('N602');
@@ -1118,27 +1116,28 @@ INSERT INTO Room(room) VALUES ('N414');
 
 
 -- Curricular Unit
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Economy 2',3,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Economy 1',9,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Physics 2',14,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 1',8,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 1',14,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Physics 1',5,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 3',11,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 2',11,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 1',11,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 4',7,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 2',3,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Music 1',11,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Design 1',3,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Psichology 1',4,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 2',13,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Math 4',2,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Algebra 1',9,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database 3',2,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming 3',1,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Design 2',1,6);
-INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Algebra 2',8,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Corporate Law and Law of Contracts',18,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Introduction to Accounting',18,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Electromagnetism',10,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Database Management',6,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Programming Fundaments',6,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Thermal Physics',10,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Calculus',21,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Algebra',21,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Geometry',21,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Artificial intelligence',6,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Computer graphics',6,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Basic Ear Training 1',14,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('World War II',9,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Sociology of Education',17,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Networking',10,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Logic',21,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Expressions and Group Dynamics',17,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Web Development',10,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Computer Vision',10,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Territorial Planning',5,6);
+INSERT INTO CurricularUnit(name, areaID, credits) VALUES ('Geostatistics',4,6);
+
 --Syllabus
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(1, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(1, 2016);
