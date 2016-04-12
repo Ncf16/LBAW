@@ -1,4 +1,4 @@
-DROP TABLE  IF EXISTS Person CASCADE; 
+﻿DROP TABLE  IF EXISTS Person CASCADE; 
 DROP TABLE  IF EXISTS Course CASCADE; 
 DROP TABLE  IF EXISTS Request CASCADE;
 DROP TABLE  IF EXISTS Syllabus CASCADE;
@@ -96,16 +96,16 @@ cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
 curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
 regentCode INTEGER REFERENCES Person(academicCode),
-​bibliography VARCHAR(256) NOT NULL,
+bibliography VARCHAR(256) NOT NULL,
 competences VARCHAR(2048) NOT NULL,
-​curricularSemester INTEGER NOT NULL,
+curricularSemester INTEGER NOT NULL,
 curricularYear INTEGER NOT NULL,
 evaluation VARCHAR(1024) NOT NULL,
 externalPage VARCHAR(128) NOT NULL,
 language Language,
 programme VARCHAR(2048) NOT NULL,
 requirements VARCHAR(2048) NOT NULL,
-CHECK(​curricularSemester =1 OR ​curricularSemester = 2),
+CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
 );
 
@@ -275,5 +275,3 @@ CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON CourseEnrollment 
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonStudent();
-
-   

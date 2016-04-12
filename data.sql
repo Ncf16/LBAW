@@ -1146,9 +1146,9 @@ INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2016);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2016);
 
+/*
 -- Curricular Unit occurrence
-INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
-externalPage, language, programme)
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation, externalPage, language, programme)
 VALUES(1, 1, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme)
@@ -1484,3 +1484,4 @@ INSERT INTO Exam (evaluationID,duration) VALUES (28,237);
 INSERT INTO Exam (evaluationID,duration) VALUES (21,215);
 INSERT INTO Exam (evaluationID,duration) VALUES (23,74);
 INSERT INTO Exam (evaluationID,duration) VALUES (46,55);
+*/
