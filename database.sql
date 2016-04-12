@@ -31,7 +31,7 @@ DROP TYPE  IF EXISTS  CourseType CASCADE;
 
 CREATE TYPE CourseType AS ENUM('Bachelor', 'Masters', 'PhD');
 CREATE TYPE PersonType AS ENUM('Teacher', 'Student', 'Admin');
-CREATE TYPE Language AS ENUM('Portuguese', 'Russian', 'English');
+CREATE TYPE Language AS ENUM('PT','EN','ES');
 CREATE TYPE EvaluationType AS ENUM('GroupWork','Test','Exam');
 
 CREATE TABLE IF NOT EXISTS Person(
@@ -47,7 +47,7 @@ phoneNumber VARCHAR(12)
 
 CREATE TABLE IF NOT EXISTS Course(
 code SERIAL PRIMARY KEY,
-directorCode INTEGER REFERENCES Person(academicCode),
+teacherCode INTEGER REFERENCES Person(academicCode),
 courseType CourseType,
 name VARCHAR(128) NOT NULL UNIQUE,
 creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -95,6 +95,7 @@ CREATE TABLE IF NOT EXISTS CurricularUnitOccurrence(
 cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
 curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
+teacherCode INTEGER REFERENCES Person(academicCode),
 regentCode INTEGER REFERENCES Person(academicCode),
 bibliography VARCHAR(256) NOT NULL,
 competences VARCHAR(2048) NOT NULL,
@@ -105,6 +106,7 @@ externalPage VARCHAR(128) NOT NULL,
 language Language,
 programme VARCHAR(2048) NOT NULL,
 requirements VARCHAR(2048) NOT NULL,
+CHECK(curricularSemester =1 OR curricularSemester = 2),
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
 );
@@ -202,12 +204,12 @@ RETURNS trigger AS  $$
 DECLARE
   type PersonType;
 BEGIN
-type:=getPersonType(NEW.directorCode);
+type:=getPersonType(NEW.teacherCode);
   IF (type =  'Teacher' )
   THEN 
     RETURN NEW;
     ELSE
-    RETURN NULL;
+   RETURN NULL;-- RAISE EXCEPTION 'User is not a Teacher';
   END IF;
 END 
 $$  LANGUAGE 'plpgsql'; 
@@ -222,7 +224,7 @@ type:=getPersonType(NEW.studentCode);
   THEN 
     RETURN NEW;
     ELSE
-    RETURN NULL;
+   RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
   END IF;
 END 
 $$  LANGUAGE 'plpgsql'; 
@@ -237,7 +239,7 @@ type:=getPersonType(NEW.adminCode);
   THEN 
     RETURN NEW;
     ELSE
-    RETURN NULL;
+   RETURN NULL;--  RAISE EXCEPTION 'User is not an Admin';
   END IF;
 END 
 $$  LANGUAGE 'plpgsql';  
@@ -247,17 +249,23 @@ $$  LANGUAGE 'plpgsql';
 CREATE TRIGGER checkDiretorType
 BEFORE INSERT OR UPDATE ON Course
 FOR EACH ROW
-EXECUTE PROCEDURE  isPersonTeacher(); 
+EXECUTE PROCEDURE isPersonTeacher();
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Request 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent();
+
+CREATE TRIGGER checkAdminType
+BEFORE INSERT OR UPDATE ON Request
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonAdmin();
  
 CREATE TRIGGER checkRegentType
 BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonTeacher(); 
 
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Request 
-FOR EACH ROW
-EXECUTE PROCEDURE  isPersonStudent(); 
 CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON Attendance 
 FOR EACH ROW
