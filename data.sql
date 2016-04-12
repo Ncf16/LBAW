@@ -1145,6 +1145,7 @@ INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2016);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2016);
+<<<<<<< HEAD
 -- Curricular Unit occurrence
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode,bibliography  , competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme,requirements)
@@ -1176,6 +1177,38 @@ VALUES(1, 9, 6, 'bibliography', 'competences', 1, 5, 'evaluation_description', '
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme,requirements)
 VALUES(1, 10, 2, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage','PT', 'programme','requirements');
+
+-- Curricular Unit occurrence
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation, externalPage, language, programme)
+VALUES(1, 1, 1, 'bibliography', 'competences', 1, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 2, 2, 'bibliography', 'competences', 2, 1, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 3, 3, 'bibliography', 'competences', 1, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 4, 4, 'bibliography', 'competences', 2, 2, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 5, 4, 'bibliography', 'competences', 1, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 6, 5, 'bibliography', 'competences', 2, 3, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 7, 3, 'bibliography', 'competences', 1, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 8, 4, 'bibliography', 'competences', 2, 4, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 9, 6, 'bibliography', 'competences', 1, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, regentCode, bibliography, competences, curricularSemester, curricularYear, evaluation,
+externalPage, language, programme)
+VALUES(1, 10, 2, 'bibliography', 'competences', 2, 5, 'evaluation_description', 'externalPage', 'PT', 'programme');
+>>>>>>> 5a2ce899a46104839d2d69a47206c55b5dbeb2e7
 
 
 
@@ -1539,56 +1572,3 @@ INSERT INTO Test (evaluationID,duration) VALUES (37,28);
 INSERT INTO Test (evaluationID,duration) VALUES (36,225);
 INSERT INTO Test (evaluationID,duration) VALUES (35,21);
 
-
---Exam
-INSERT INTO Exam (evaluationID,duration) VALUES (47,201);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,168);
-INSERT INTO Exam (evaluationID,duration) VALUES (49,183);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,123);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,122);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,28);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,3);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,13);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,136);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,222);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,25);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,98);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,27);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,71);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,75);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,152);
-INSERT INTO Exam (evaluationID,duration) VALUES (49,51);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,94);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,168);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,48);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,39);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,26);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,44);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,47);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,213);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,228);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,192);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,197);
-INSERT INTO Exam (evaluationID,duration) VALUES (42,196);
-INSERT INTO Exam (evaluationID,duration) VALUES (43,67);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,158);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,67);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,74);
-INSERT INTO Exam (evaluationID,duration) VALUES (47,123);
-INSERT INTO Exam (evaluationID,duration) VALUES (46,22);
-INSERT INTO Exam (evaluationID,duration) VALUES (44,206);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,56);
-INSERT INTO Exam (evaluationID,duration) VALUES (50,233);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,155);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,93);
-INSERT INTO Exam (evaluationID,duration) VALUES (43,44);
-INSERT INTO Exam (evaluationID,duration) VALUES (46,122);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,141);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,132);
-INSERT INTO Exam (evaluationID,duration) VALUES (46,99);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,150);
-INSERT INTO Exam (evaluationID,duration) VALUES (45,205);
-INSERT INTO Exam (evaluationID,duration) VALUES (41,147);
-INSERT INTO Exam (evaluationID,duration) VALUES (49,20);
-INSERT INTO Exam (evaluationID,duration) VALUES (48,95);
- 
