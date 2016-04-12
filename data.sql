@@ -1145,7 +1145,6 @@ INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(2, 2016);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2015);
 INSERT INTO Syllabus(courseCode, calendarYear) VALUES(3, 2016);
-<<<<<<< HEAD
 -- Curricular Unit occurrence
 INSERT INTO CurricularUnitOccurrence(syllabusID, curricularUnitID, teacherCode,bibliography  , competences, curricularSemester, curricularYear, evaluation,
 externalPage, language, programme,requirements)
