@@ -40,7 +40,7 @@ personType PersonType,
 name VARCHAR(40) NOT NULL,
 address VARCHAR(256),
 birthdate DATE,
-nationality VARCHAR(20),
+nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
 phoneNumber VARCHAR(12)
 );
