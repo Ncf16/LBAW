@@ -30,6 +30,9 @@ DROP TYPE  IF EXISTS  EvaluationType CASCADE;
 DROP TYPE  IF EXISTS  CourseType CASCADE;
 
 /* INDEX STUFF, MIGHT BE BROKEN */
+
+DROP INDEX IF EXISTS tsv_personName_idx;
+
 DROP INDEX IF EXISTS password_idx;
 DROP INDEX IF EXISTS request_student_idx;
 DROP INDEX IF EXISTS request_admin_idx;
@@ -63,7 +66,8 @@ birthdate DATE,
 nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
 password VARCHAR(32) NOT NULL,
-phoneNumber VARCHAR(12)
+phoneNumber VARCHAR(12),
+tsv tsvector
 );
 
 CREATE TABLE IF NOT EXISTS Course(
@@ -208,6 +212,12 @@ PRIMARY KEY(cuOccurrenceID,studentCode)
 
 -- INDEXES
 
+  -- FULL TEXT INDEXES
+
+CREATE INDEX tsv_personName_idx ON Person USING gin(tsv);
+
+  --OTHER INDEXES
+
 CREATE INDEX password_idx ON Person USING hash(password);
 
 CREATE INDEX request_student_idx ON Request USING hash(studentCode);
@@ -278,6 +288,35 @@ END
 $$ LANGUAGE 'plpgsql';
 */
 
+-- SEARCH FUNCTIONS
+CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
+begin
+  new.tsv := to_tsvector(coalesce(new.name,''));
+  return new;
+end
+$$ LANGUAGE 'plpgsql';
+
+/*
+CREATE FUNCTION person_course_trigger() RETURNS trigger AS $$
+begin
+  new.tsv :=
+    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
+    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+  return new;
+end
+$$ LANGUAGE 'plpgsql';
+
+CREATE FUNCTION person_cu_trigger() RETURNS trigger AS $$
+begin
+  new.tsv :=
+    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
+    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+  return new;
+end
+$$ LANGUAGE 'plpgsql';
+*/
+
+-- OTHER FUNCTIONS
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
 RETURNS  PersonType AS  $$
 DECLARE
@@ -290,7 +329,7 @@ return  result;
 END 
 $$ LANGUAGE 'plpgsql';
  
- --TRIGGERS--
+
 
 CREATE OR REPLACE FUNCTION isPersonTeacher()
 RETURNS trigger AS  $$
@@ -337,7 +376,21 @@ type:=getPersonType(NEW.adminCode);
 END 
 $$  LANGUAGE 'plpgsql';  
 
+
+ --TRIGGERS--
  
+CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
+ON data_rows FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
+
+/*
+CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
+ON data_rows FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
+
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+ON data_rows FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+*/
+
+
 --check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
 CREATE TRIGGER checkDiretorType
 BEFORE INSERT OR UPDATE ON Course
