@@ -39,7 +39,7 @@ WHERE
   course.teachercode = person.academiccode
 GROUP BY course.code,person.name;
 
--- list of curricular units done with grade
+--List of curricular units done with grade
 --e.g. student:Ayana
 SELECT 
   curricularunit.name, 
