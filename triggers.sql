@@ -1,3 +1,99 @@
+DROP TRIGGER  IF EXISTS checkDiretorType ON Course CASCADE;
+DROP TRIGGER  IF EXISTS checkRegentType  ON CurricularUnitOccurrence CASCADE;
+DROP TRIGGER  IF EXISTS oneExamPerUC ON Exam CASCADE;
+DROP TRIGGER  IF EXISTS checkStudentType  ON Request CASCADE;
+DROP TRIGGER  IF EXISTS checkAdminType ON Request CASCADE;
+DROP TRIGGER  IF EXISTS checkRegentType  ON CurricularUnitOccurrence CASCADE;
+DROP TRIGGER  IF EXISTS checkStudentType ON Attendance CASCADE;
+DROP TRIGGER  IF EXISTS checkStudentType  ON Grade CASCADE;
+DROP TRIGGER  IF EXISTS checkStudentType ON Course CASCADE;
+DROP TRIGGER  IF EXISTS checkStudentType  ON CurricularEnrollment CASCADE;
+DROP TRIGGER  IF EXISTS checkStudentType ON CourseEnrollment CASCADE;
+DROP TRIGGER  IF EXISTS checkClassDate  ON Class CASCADE;
+DROP TRIGGER  IF EXISTS checkClassRoom  ON Class CASCADE;
+DROP TRIGGER  IF EXISTS checkCourseDate  ON CourseEnrollment CASCADE;
+DROP TRIGGER  IF EXISTS tsvectorPersonUpdate ON Person;
+DROP TRIGGER  IF EXISTS tsvectorCourseUpdate ON Course;
+DROP TRIGGER  IF EXISTS tsvectorCuUpdate ON CurricularUnit;
+DROP TRIGGER  IF EXISTS tsvectorCuUpdate ON Area;
+
+ 
+CREATE TRIGGER oneExamPerUC
+BEFORE INSERT ON Exam
+FOR EACH ROW
+EXECUTE PROCEDURE onlyOneExam();
+
+--check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
+CREATE TRIGGER checkDiretorType
+BEFORE INSERT OR UPDATE ON Course
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonTeacher();
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Request 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent();
+
+CREATE TRIGGER checkAdminType
+BEFORE INSERT OR UPDATE ON Request
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonAdmin();
+ 
+CREATE TRIGGER checkRegentType
+BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonTeacher(); 
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Attendance 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent(); 
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Grade 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent(); 
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON CurricularEnrollment 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent();
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON CourseEnrollment 
+FOR EACH ROW
+EXECUTE PROCEDURE  isPersonStudent();
+ 
+
+CREATE TRIGGER checkClassDate
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isClassDateValid();
+
+CREATE TRIGGER checkClassRoom
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isRoomAvailable();
+ 
+CREATE TRIGGER checkCourseDate
+BEFORE INSERT OR UPDATE ON CourseEnrollment
+FOR EACH ROW
+EXECUTE PROCEDURE isCourseAvailable();
+
+ -- FULL TEXT TRIGGERS--
+
+CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
+ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
+
+CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
+ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
+
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
+
+
+--Functions
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
 RETURNS  PersonType AS  $$
 DECLARE
@@ -87,7 +183,7 @@ count INTEGER;
 BEGIN
 SELECT COUNT(class.classid) INTO count
 FROM Class
-WHERE Class.roomid = NEW.roomid AND Class.visible=1 
+WHERE Class.visible=1  AND  Class.roomid = NEW.roomid AND 
 AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
 (Class.classDate, interval '1' minute * class.duration);
 
@@ -151,70 +247,6 @@ BEGIN
       RETURN NEW;
 END  $$ LANGUAGE 'plpgsql';
  
-
- 
-CREATE TRIGGER oneExamPerUC
-BEFORE INSERT ON Exam
-FOR EACH ROW
-EXECUTE PROCEDURE onlyOneExam();
-
---check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
-CREATE TRIGGER checkDiretorType
-BEFORE INSERT OR UPDATE ON Course
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonTeacher();
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Request 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonStudent();
-
-CREATE TRIGGER checkAdminType
-BEFORE INSERT OR UPDATE ON Request
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonAdmin();
- 
-CREATE TRIGGER checkRegentType
-BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
-FOR EACH ROW
-EXECUTE PROCEDURE  isPersonTeacher(); 
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Attendance 
-FOR EACH ROW
-EXECUTE PROCEDURE  isPersonStudent(); 
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Grade 
-FOR EACH ROW
-EXECUTE PROCEDURE  isPersonStudent(); 
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON CurricularEnrollment 
-FOR EACH ROW
-EXECUTE PROCEDURE  isPersonStudent();
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON CourseEnrollment 
-FOR EACH ROW
-EXECUTE PROCEDURE  isPersonStudent();
- 
-
-CREATE TRIGGER checkClassDate
-BEFORE INSERT OR UPDATE ON Class
-FOR EACH ROW
-EXECUTE PROCEDURE isClassDateValid();
-
-CREATE TRIGGER checkClassRoom
-BEFORE INSERT OR UPDATE ON Class
-FOR EACH ROW
-EXECUTE PROCEDURE isRoomAvailable();
- 
-CREATE TRIGGER checkCourseDate
-BEFORE INSERT OR UPDATE ON CourseEnrollment
-FOR EACH ROW
-EXECUTE PROCEDURE isCourseAvailable();
-
-
-
 -- FULL TEXT SEARCH TRIGGERS AND FUNCTIONS
 
 -- SEARCH FUNCTIONS
@@ -252,17 +284,3 @@ begin
   return new;
 end
 $$ LANGUAGE 'plpgsql';
-
- --TRIGGERS--
-
-CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
-ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
-
-CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
-ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
-
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
-ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
-
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
-ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
