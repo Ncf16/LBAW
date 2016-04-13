@@ -1,4 +1,5 @@
-﻿--Evaluation
+﻿
+--Evaluation
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (11,'04/01/2016',15);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (73,'23/03/2016',5);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (3,'18/01/2016',37);
@@ -50,7 +51,6 @@ INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (61,'05/01/2
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (40,'17/03/2016',24);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (73,'06/02/2016',27);
 
- 
 --GroupWork
 INSERT INTO GroupWork(evaluationID,minElements,maxElements) VALUES (4,2,3);
 INSERT INTO GroupWork(evaluationID,minElements,maxElements) VALUES (10,3,4);

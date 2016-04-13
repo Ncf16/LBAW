@@ -206,5 +206,6 @@ semester INTEGER,
 beginDate DATE NOT NULL,
 endDate DATE NOT NULL,
 visible INTEGER DEFAULT 1,
-PRIMARY KEY(year, semester)
+PRIMARY KEY(year, semester),
+CHECK(beginDate < endDate)
 );
