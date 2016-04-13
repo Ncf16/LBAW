@@ -422,6 +422,25 @@ END IF;
 END
 $$ LANGUAGE 'plpgsql';
 
+CREATE OR REPLACE FUNCTION isCourseAvailable()
+RETURNS trigger AS $$
+DECLARE
+creation DATE;
+BEGIN
+SELECT 
+  course.creationdate INTO creation
+FROM 
+  public.course
+WHERE 
+  course.code = NEW.courseid;
+
+IF (NEW.startYear >= creation)
+THEN RETURN NEW;
+ELSE RETURN NULL;
+END IF;
+END
+$$ LANGUAGE 'plpgsql';
+
  --TRIGGERS--
 /* 
 CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
@@ -528,3 +547,7 @@ BEFORE INSERT OR UPDATE ON Class
 FOR EACH ROW
 EXECUTE PROCEDURE isRoomAvailable();
  
+CREATE TRIGGER checkCourseDate
+BEFORE INSERT OR UPDATE ON CourseEnrollment
+FOR EACH ROW
+EXECUTE PROCEDURE isCourseAvailable();
