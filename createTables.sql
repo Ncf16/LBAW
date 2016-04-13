@@ -187,7 +187,7 @@ curricularYear INTEGER NOT NULL,
 courseGrade REAL,
 visible INTEGER DEFAULT 1,
 CHECK ( finishYear IS NULL OR finishYear > startYear),
-CHECK(curricularYear > 0 AND curricularYear < 8),
+CHECK(curricularYear > 0 AND curricularYear <= 8),
 PRIMARY KEY(courseID,studentCode)
 );
  
