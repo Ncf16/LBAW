@@ -30,7 +30,7 @@ DROP TYPE  IF EXISTS  EvaluationType CASCADE;
 DROP TYPE  IF EXISTS  CourseType CASCADE;
 
 /* INDEX STUFF, MIGHT BE BROKEN */
-
+/*
 DROP INDEX IF EXISTS tsv_personName_idx;
 
 DROP INDEX IF EXISTS password_idx;
@@ -50,7 +50,7 @@ DROP INDEX IF EXISTS exam_duration_idx;
 DROP INDEX IF EXISTS courEnroll_currYear_idx;
 DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
 DROP INDEX IF EXISTS cuEnroll_student_idx;
-
+*/
 
 CREATE TYPE CourseType AS ENUM('Bachelor', 'Masters', 'PhD');
 CREATE TYPE PersonType AS ENUM('Teacher', 'Student', 'Admin');
@@ -210,6 +210,7 @@ CHECK(finalGrade >= 0 AND finalGrade <= 20),
 PRIMARY KEY(cuOccurrenceID,studentCode)
 );
 
+/*
 -- INDEXES
 
   -- FULL TEXT INDEXES
@@ -256,7 +257,7 @@ CREATE INDEX cuEnroll_finalGra_idx ON CurricularEnrollment USING btree(finalGrad
 ALTER TABLE CurricularEnrollment CLUSTER ON cuEnroll_finalGra_idx;
 
 CREATE INDEX cuEnroll_student_idx ON CurricularEnrollment USING hash(studentCode);
-
+*/
 
 --Functions
 /*
@@ -289,12 +290,14 @@ $$ LANGUAGE 'plpgsql';
 */
 
 -- SEARCH FUNCTIONS
+/*
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
 begin
   new.tsv := to_tsvector(coalesce(new.name,''));
   return new;
 end
 $$ LANGUAGE 'plpgsql';
+*/
 
 /*
 CREATE FUNCTION person_course_trigger() RETURNS trigger AS $$
@@ -374,14 +377,53 @@ type:=getPersonType(NEW.adminCode);
    RETURN NULL;--  RAISE EXCEPTION 'User is not an Admin';
   END IF;
 END 
-$$  LANGUAGE 'plpgsql';  
+$$  LANGUAGE 'plpgsql';
 
+
+CREATE OR REPLACE FUNCTION isClassDateValid()
+RETURNS trigger AS $$
+DECLARE
+ beginDate DATE;
+ endDate DATE;
+BEGIN
+SELECT calendar.begindate, calendar.enddate INTO beginDate, endDate
+FROM public.syllabus, public.curricularunitoccurrence, public.calendar
+WHERE 
+  NEW.occurrenceid = curricularunitoccurrence.cuoccurrenceid AND
+  syllabus.calendaryear = calendar.year AND
+  curricularunitoccurrence.syllabusid = syllabus.syllabusid AND
+  curricularunitoccurrence.curricularsemester = calendar.semester;
+
+  IF (NEW.classDate::date BETWEEN beginDate AND endDate)
+  THEN RETURN NEW;
+  ELSE RETURN NULL;
+ END IF; 
+END
+$$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION isRoomAvailable()
+RETURNS trigger AS $$
+DECLARE
+count INTEGER;
+BEGIN
+SELECT COUNT(class.classid) INTO count
+FROM Class
+WHERE Class.roomid = NEW.roomid
+AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
+(Class.classDate, interval '1' minute * class.duration);
+
+IF (count = 0)
+THEN RETURN NEW;
+ELSE RETURN NULL;
+END IF;
+END
+$$ LANGUAGE 'plpgsql';
 
  --TRIGGERS--
- 
+/* 
 CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
 ON data_rows FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
-
+*/
 /*
 CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
 ON data_rows FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
@@ -429,6 +471,16 @@ CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON CourseEnrollment 
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonStudent();
+
+CREATE TRIGGER checkClassDate
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isClassDateValid();
+
+CREATE TRIGGER checkClassRoom
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isRoomAvailable();
 
 /*
 CREATE TRIGGER oneExamPerUC
