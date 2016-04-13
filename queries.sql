@@ -6,10 +6,10 @@ SELECT
   curricularunitoccurrence.curricularyear, 
   curricularunitoccurrence.curricularsemester
 FROM 
-  public.syllabus, 
-  public.course, 
-  public.curricularunitoccurrence, 
-  public.curricularunit
+  syllabus, 
+  course, 
+  curricularunitoccurrence, 
+  curricularunit
 WHERE 
   syllabus.syllabusid = curricularunitoccurrence.syllabusid AND
   course.code = syllabus.coursecode AND
@@ -18,7 +18,23 @@ WHERE
   course.name = 'Chemistry';
 
 SELECT Evaluation.*,CurricularUnit.name
-  FROM Evaluation,CurricularEnrollment,CurricularUnit
+  FROM Evaluation,CurricularEnrollment,CurricularUnit,Person
     WHERE
       Evaluation.cuOccurrenceID = CurricularEnrollment.cuOccurrenceID AND Evaluation.visible=1 AND Evaluation.visible=1 AND 
       CurricularEnrollment.studentCode= USER_CODE AND CurricularUnit.curricularUnitID AND CurricularEnrollment.curricularUnitID AND CurricularUnit.visible=1
+      AND Person.academiccode = USER_CODE AND  Person.visible=1 AND Person.personType ='Student';
+
+
+--List of courses
+SELECT 
+  course.name,course.description,course.creationDate,person.name,COUNT(courseenrollment.studentcode),course.courseType
+FROM 
+  courseenrollment, 
+  course,
+  person
+WHERE 
+  courseenrollment.courseid = course.code AND
+  courseenrollment.finishyear IS NOT NULL AND
+  course.teachercode = person.academiccode
+GROUP BY course.code,person.name;
+GROUP BY course.code,person.name;
