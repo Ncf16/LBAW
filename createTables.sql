@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Person CASCADE; 
+﻿DROP TABLE IF EXISTS Person CASCADE; 
 DROP TABLE IF EXISTS Course CASCADE; 
 DROP TABLE IF EXISTS Request CASCADE;
 DROP TABLE IF EXISTS Syllabus CASCADE;
@@ -48,7 +48,7 @@ courseType CourseType,
 name VARCHAR(128) NOT NULL UNIQUE,
 creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
 currentCalendarYear INTEGER NOT NULL,
-description VARCHAR(1000) NOT NULL,
+description TEXT,
 visible INTEGER DEFAULT 1,
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
@@ -59,7 +59,7 @@ studentCode INTEGER REFERENCES Person(academicCode),
 adminCode INTEGER REFERENCES Person(academicCode),
 newCourse_Code INTEGER REFERENCES Course(code),
 approved BOOLEAN,
-reasonForChange VARCHAR(256) NOT NULL,
+reasonForChange TEXT NOT NULL,
 visible INTEGER DEFAULT 1,
 CHECK(reasonForChange <> '')
 );
@@ -98,15 +98,15 @@ cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
 curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
 teacherCode INTEGER REFERENCES Person(academicCode),
-bibliography VARCHAR(256) NOT NULL,
-competences VARCHAR(2048) NOT NULL,
+bibliography TEXT NOT NULL,
+competences TEXT NOT NULL,
 curricularSemester INTEGER NOT NULL,
 curricularYear INTEGER NOT NULL,
-evaluation VARCHAR(1024) NOT NULL,
-externalPage VARCHAR(128) NOT NULL,
+evaluation TEXT NOT NULL,
+externalPage TEXT NOT NULL,
 language Language,
-programme VARCHAR(2048) NOT NULL,
-requirements VARCHAR(2048) NOT NULL,
+programme TEXT NOT NULL,
+requirements TEXT NOT NULL,
 visible INTEGER DEFAULT 1,
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
@@ -118,7 +118,7 @@ occurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 duration INTEGER NOT NULL, 
 roomID INTEGER REFERENCES Room(roomID),
 classDate TIMESTAMP NOT NULL, 
-summary VARCHAR(512),
+summary TEXT,
 visible INTEGER DEFAULT 1,
 CHECK(duration > 0)
 );
