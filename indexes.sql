@@ -32,9 +32,9 @@ CREATE INDEX tsv_area_idx ON Area USING gin(tsv);
 
 -- INDEXES
  
-CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(occurrenceID,evaluationID);
-CREATE INDEX occurrence_syllabus_idx ON Class USING btree(occurrenceID,syllabusID);
-CREATE INDEX occurrence_curricular_idx ON Class USING btree(occurrenceID,curricularID);
+CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(cuOccurrenceID,evaluationID);
+CREATE INDEX occurrence_syllabus_idx ON CurricularUnitOccurrence USING btree(cuOccurrenceID,syllabusID);
+CREATE INDEX occurrence_curricular_idx ON CurricularUnitOccurrence USING btree(cuOccurrenceID,curricularUnitID);
 
 CREATE INDEX password_idx ON Person USING hash(password);
 
