@@ -17,13 +17,7 @@ DROP TABLE  IF EXISTS Room;
 DROP TABLE  IF EXISTS Area;
 DROP TRIGGER  IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER  IF EXISTS checkRegentType  ON CurricularUnitOccurrence CASCADE;
-
-/*Trigger Ideas:
-Check if only 1 exam
-Check Data de aula PHP
-Check if Class and Room if no overlaps
-Request,Attendance,Grade,CourseEnrollment,CurricularEnrollment -> checkStudent
-*/
+ 
 DROP TYPE  IF EXISTS  PersonType CASCADE;
 DROP TYPE  IF EXISTS  Language CASCADE;
 DROP TYPE  IF EXISTS  EvaluationType CASCADE;
@@ -31,9 +25,7 @@ DROP TYPE  IF EXISTS  CourseType CASCADE;
 
 /* INDEX STUFF, MIGHT BE BROKEN */
 /*
->>>>>>> 7cdf96414416cdd144e3b74fd6836ffd43273110
 DROP INDEX IF EXISTS tsv_personName_idx;
-
 DROP INDEX IF EXISTS password_idx;
 DROP INDEX IF EXISTS request_student_idx;
 DROP INDEX IF EXISTS request_admin_idx;
@@ -52,6 +44,7 @@ DROP INDEX IF EXISTS courEnroll_currYear_idx;
 DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
 DROP INDEX IF EXISTS cuEnroll_student_idx;
 */
+DROP INDEX IF EXISTS occurrence_evaluation_idx;
 
 CREATE TYPE CourseType AS ENUM('Bachelor', 'Masters', 'PhD');
 CREATE TYPE PersonType AS ENUM('Teacher', 'Student', 'Admin');
@@ -68,6 +61,7 @@ nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
 password VARCHAR(32) NOT NULL,
 phoneNumber VARCHAR(12),
+visible INTEGER DEFAULT 1,
 tsv tsvector
 );
 
@@ -79,6 +73,7 @@ name VARCHAR(128) NOT NULL UNIQUE,
 creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
 currentCalendarYear INTEGER NOT NULL,
 description VARCHAR(1000) NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
 
@@ -89,6 +84,7 @@ adminCode INTEGER REFERENCES Person(academicCode),
 newCourse_Code INTEGER REFERENCES Course(code),
 approved BOOLEAN,
 reasonForChange VARCHAR(256) NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(reasonForChange <> '')
 );
 
@@ -96,16 +92,19 @@ CREATE TABLE IF NOT EXISTS Syllabus(
 syllabusID SERIAL PRIMARY KEY,
 courseCode INTEGER REFERENCES Course(code),
 calendarYear INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK (calendarYear >= 1990)
 );
 
 CREATE TABLE IF NOT EXISTS Area(
 areaID SERIAL PRIMARY KEY,
+visible INTEGER DEFAULT 1,
 area VARCHAR(64) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Room(
 roomID SERIAL PRIMARY KEY,
+visible INTEGER DEFAULT 1,
 room CHAR(4) NOT NULL UNIQUE
 );
 
@@ -114,6 +113,7 @@ curricularID SERIAL PRIMARY KEY,
 name VARCHAR(64) NOT NULL UNIQUE,
 areaID INTEGER REFERENCES Area(areaID),
 credits INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(credits > 0)
 );
 
@@ -131,6 +131,7 @@ externalPage VARCHAR(128) NOT NULL,
 language Language,
 programme VARCHAR(2048) NOT NULL,
 requirements VARCHAR(2048) NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear < 8)
 );
@@ -142,6 +143,7 @@ duration INTEGER NOT NULL,
 roomID INTEGER REFERENCES Room(roomID),
 classDate TIMESTAMP NOT NULL, 
 summary VARCHAR(512),
+visible INTEGER DEFAULT 1,
 CHECK(duration > 0)
 );
 
@@ -149,6 +151,7 @@ CREATE TABLE IF NOT EXISTS Attendance(
 studentCode INTEGER REFERENCES Person(academicCode), 
 classID INTEGER REFERENCES Class(classID), 
 attended BOOLEAN NOT NULL,
+visible INTEGER DEFAULT 1,
 PRIMARY KEY(studentCode,classID)
 );
 
@@ -157,6 +160,7 @@ evaluationID SERIAL PRIMARY KEY,
 cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 evaluationDate TIMESTAMP NOT NULL, 
 weight INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(weight>0 AND weight<=100)
 );
 
@@ -164,6 +168,7 @@ CREATE TABLE IF NOT EXISTS Grade(
 studentCode INTEGER REFERENCES Person(academicCode),
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 grade REAL,
+visible INTEGER DEFAULT 1,
 CHECK(grade>=0 AND grade<=20),
 PRIMARY KEY(studentCode, evaluationID)
 );
@@ -172,6 +177,7 @@ CREATE TABLE IF NOT EXISTS GroupWork(
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 maxElements INTEGER NOT NULL, 
 minElements INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(minElements<=maxElements AND minElements>=2),
 PRIMARY KEY(evaluationID)
 );
@@ -180,6 +186,7 @@ PRIMARY KEY(evaluationID)
 CREATE TABLE IF NOT EXISTS Test(
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 duration INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(duration>0),
 PRIMARY KEY(evaluationID)
 );
@@ -187,6 +194,7 @@ PRIMARY KEY(evaluationID)
 CREATE TABLE IF NOT EXISTS Exam(
 evaluationID INTEGER REFERENCES Evaluation(evaluationID),
 duration INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
 CHECK(duration>0),
 PRIMARY KEY(evaluationID)
 );
@@ -198,6 +206,7 @@ startYear DATE NOT NULL DEFAULT CURRENT_DATE,
 finishYear DATE,
 curricularYear INTEGER NOT NULL,
 courseGrade REAL,
+visible INTEGER DEFAULT 1,
 CHECK ( finishYear IS NULL OR finishYear > startYear),
 CHECK(curricularYear > 0 AND curricularYear < 8),
 PRIMARY KEY(courseID,studentCode)
@@ -207,12 +216,15 @@ CREATE TABLE IF NOT EXISTS CurricularEnrollment(
 cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 studentCode INTEGER REFERENCES Person(academicCode),
 finalGrade INTEGER DEFAULT 0,
+visible INTEGER DEFAULT 1,
 CHECK(finalGrade >= 0 AND finalGrade <= 20),
 PRIMARY KEY(cuOccurrenceID,studentCode)
 );
 
  
 -- INDEXES
+ 
+CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(occurrenceID,evaluationID);
 /*
   -- FULL TEXT INDEXES
 
@@ -293,7 +305,7 @@ $$ LANGUAGE 'plpgsql';
 
 -- SEARCH FUNCTIONS
  /*
- 
+
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
 begin
   new.tsv := to_tsvector(coalesce(new.name,''));
@@ -330,7 +342,7 @@ result PersonType;
 BEGIN
   SELECT PERSON.personType INTO result
   FROM PERSON 
-  WHERE academicCode = id;
+  WHERE academicCode = id AND visible=1;
 return  result; 
 END 
 $$ LANGUAGE 'plpgsql';
@@ -390,9 +402,10 @@ DECLARE
  endDate DATE;
 BEGIN
 SELECT calendar.begindate, calendar.enddate INTO beginDate, endDate
-FROM public.syllabus, public.curricularunitoccurrence, public.calendar
+FROM syllabus,  curricularunitoccurrence, calendar
 WHERE 
-  NEW.occurrenceid = curricularunitoccurrence.cuoccurrenceid AND
+ curricularunitoccurrence.visible=1 AND calendar.visible=1 AND syllabus.visible=1 AND 
+ NEW.occurrenceid = curricularunitoccurrence.cuoccurrenceid AND
   syllabus.calendaryear = calendar.year AND
   curricularunitoccurrence.syllabusid = syllabus.syllabusid AND
   curricularunitoccurrence.curricularsemester = calendar.semester;
@@ -411,7 +424,7 @@ count INTEGER;
 BEGIN
 SELECT COUNT(class.classid) INTO count
 FROM Class
-WHERE Class.roomid = NEW.roomid
+WHERE Class.roomid = NEW.roomid AND Class.visible=1 
 AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
 (Class.classDate, interval '1' minute * class.duration);
 
@@ -455,7 +468,7 @@ CREATE OR REPLACE FUNCTION examsPerOccurrence(occurrenceID INTEGER) RETURNS SETO
  BEGIN
  RETURN QUERY SELECT *
     FROM Evaluation,Exam 
-      WHERE Evaluation.evaluationID = Exam.evaluationID AND Evaluation.cuOccurrenceID=occurrenceID;
+      WHERE Exam.visible=1 AND Evaluation.visible=1 AND Evaluation.evaluationID = Exam.evaluationID AND Evaluation.cuOccurrenceID=occurrenceID ;
   END
 $$ LANGUAGE 'plpgsql';
 
@@ -464,7 +477,7 @@ CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
   numberOfExams INTEGER;
 BEGIN
   SELECT COUNT(*) INTO numberOfExams FROM examsPerOccurrence(NEW.occurrenceID);
-  IF(numberOfExams > 1)
+  IF(numberOfExams >= 1)
     THEN
       RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
     ELSE
