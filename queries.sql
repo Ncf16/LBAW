@@ -37,4 +37,22 @@ WHERE
   courseenrollment.finishyear IS NOT NULL AND
   course.teachercode = person.academiccode
 GROUP BY course.code,person.name;
-GROUP BY course.code,person.name;
+
+-- list of curricular units done with grade
+--e.g. student:Ayana
+SELECT 
+  curricularunit.name, 
+  curricularenrollment.finalgrade
+FROM 
+  curricularenrollment, 
+  curricularunitoccurrence, 
+  person, 
+  curricularunit, 
+  syllabus
+WHERE
+  person.academicCode = 'Ayana' AND
+  curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid AND
+  person.academiccode = curricularenrollment.studentcode AND
+  curricularunit.curricularid = curricularunitoccurrence.curricularunitid AND
+  syllabus.syllabusid = curricularunitoccurrence.syllabusid AND
+  curricularenrollment.finalGrade >= 10;
