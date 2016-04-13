@@ -411,7 +411,7 @@ DECLARE
  endDate DATE;
 BEGIN
 SELECT calendar.begindate, calendar.enddate INTO beginDate, endDate
-FROM syllabus,  curricularunitoccurrence, calendar
+FROM syllabus, curricularunitoccurrence, calendar
 WHERE 
  curricularunitoccurrence.visible=1 AND calendar.visible=1 AND syllabus.visible=1 AND 
  NEW.occurrenceid = curricularunitoccurrence.cuoccurrenceid AND
@@ -452,7 +452,7 @@ BEGIN
 SELECT 
   course.creationdate INTO creation
 FROM 
-  public.course
+  course
 WHERE 
   course.code = NEW.courseid;
 
