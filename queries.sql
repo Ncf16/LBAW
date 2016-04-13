@@ -17,6 +17,7 @@ WHERE
   curricularunitoccurrence.curricularunitid = curricularunit.curricularid AND
   course.name = 'Chemistry';
 
+--List Evaluations of a student
 SELECT Evaluation.*,CurricularUnit.name
   FROM Evaluation,CurricularEnrollment,CurricularUnit,Person
     WHERE
