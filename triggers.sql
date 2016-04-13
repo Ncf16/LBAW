@@ -147,10 +147,10 @@ CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
  curricular INTEGER;
 BEGIN
  curricular:=getCurricular(NEW.evaluationID);
- SELECT COUNT(Evaluation.evaluationID) INTO numberOfExams
+ SELECT COUNT(*) INTO numberOfExams
  FROM Evaluation
  WHERE Evaluation.cuOccurrenceID = curricular;
- IF(numberOfExams = 1)
+ IF(numberOfExams > 1)
   THEN
    RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
   ELSE
