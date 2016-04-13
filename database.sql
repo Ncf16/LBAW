@@ -15,6 +15,7 @@ DROP TABLE  IF EXISTS Test;
 DROP TABLE  IF EXISTS GroupWork;
 DROP TABLE  IF EXISTS Room;
 DROP TABLE  IF EXISTS Area;
+DROP TABLE  IF EXISTS Calendar;
 DROP TRIGGER  IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER  IF EXISTS checkRegentType  ON CurricularUnitOccurrence CASCADE;
 
@@ -211,6 +212,14 @@ CHECK(finalGrade >= 0 AND finalGrade <= 20),
 PRIMARY KEY(cuOccurrenceID,studentCode)
 );
 
+
+CREATE TABLE IF NOT EXISTS Calendar(
+year INTEGER,
+semester INTEGER,
+beginDate DATE NOT NULL,
+endDate DATE NOT NULL,
+PRIMARY KEY(year, semester)
+);
  
 -- INDEXES
 /*
