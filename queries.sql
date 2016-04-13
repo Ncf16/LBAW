@@ -16,3 +16,9 @@ WHERE
   course.currentcalendaryear = syllabus.calendaryear AND
   curricularunitoccurrence.curricularunitid = curricularunit.curricularid AND
   course.name = 'Chemistry';
+
+SELECT Evaluation.*,CurricularUnit.name
+  FROM Evaluation,CurricularEnrollment,CurricularUnit
+    WHERE
+      Evaluation.cuOccurrenceID = CurricularEnrollment.cuOccurrenceID AND Evaluation.visible=1 AND Evaluation.visible=1 AND 
+      CurricularEnrollment.studentCode= USER_CODE AND CurricularUnit.curricularUnitID AND CurricularEnrollment.curricularUnitID AND CurricularUnit.visible=1

@@ -21,7 +21,7 @@ DROP FUNCTION IF EXISTS getStudentCurrentCourse(integer) CASCADE;
 DROP FUNCTION IF EXISTS person_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS course_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS cu_search_trigger() CASCADE;
-DROP FUNCTION IF EXISTS area_search_trigger() CASCADE;
+DROP FUNCTION IF EXISTS area_search_trigger() CASCADE; 
 --Functions
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) RETURNS PersonType AS $$
 DECLARE
@@ -177,15 +177,13 @@ END $$ LANGUAGE 'plpgsql';
           WHERE  CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCode);*/
    
 
- CREATE OR REPLACE FUNCTION curricularUnitBelongsToStudentCourse(cuOccurrenceIDToCheck INTEGER,studentCourseID INTEGER) RETURNS  INTEGER AS  $$
- DECLARE
- answer INTEGER;
- BEGIN
-   SELECT COUNT(*) INTO answer FROM CurricularUnitOccurrence,Syllabus
+ CREATE OR REPLACE FUNCTION curricularUnitBelongsToStudentCourse(cuOccurrenceIDToCheck INTEGER,studentCourseID INTEGER) RETURNS  SETOF INTEGER  AS  $$
+ BEGIN RETURN QUERY 
+  SELECT CurricularUnitOccurrence.cuOccurrenceID FROM CurricularUnitOccurrence,Syllabus
     WHERE CurricularUnitOccurrence.cuOccurrenceID = cuOccurrenceIDToCheck AND CurricularUnitOccurrence.visible=1 AND CurricularUnitOccurrence.syllabusID = Syllabus.syllabusID 
         AND Syllabus.visible=1 AND Syllabus.courseCode = studentCourseID;
 
-  return answer;
+ 
  END $$ LANGUAGE 'plpgsql';
 
 
@@ -196,15 +194,15 @@ CREATE OR REPLACE FUNCTION curicularUnitEnrollmentCheck() RETURNS trigger AS $$
  sameCourse INTEGER;
  BEGIN 
  SELECT * INTO studentCourseID FROM getStudentCurrentCourse(NEW.studentCode);
-    IF (studentCourseID IS NOT NULL  )
+    IF (studentCourseID IS NOT NULL)
         THEN
-        sameCourse:=curricularUnitBelongsToStudentCourse(NEW.cuOccurrenceID,studentCourseID);
+        SELECT COUNT(*) INTO sameCourse FROM curricularUnitBelongsToStudentCourse(NEW.cuOccurrenceID,studentCourseID);
         IF(sameCourse >0)
         THEN
           RETURN NEW;
-       END IF;
+         END IF;
    END IF;
- RETURN NULL;
+  RETURN NULL;
 END $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER checkStudentEnrolledInCorrectCourse

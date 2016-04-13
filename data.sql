@@ -1,4 +1,4 @@
-﻿
+﻿ 
 --Person
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Admin','Ferris','63600 West Georgia Ave.','03-10-1973','Sweden','199705624','456689127010','45d25abffe8c792d4d30346429b5bc24');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Admin','Julian','14526 South Pierre Blvd.','04-04-1965','China','067307816','628113882586','45d25abffe8c792d4d30346429b5bc24');
@@ -1126,7 +1126,7 @@ INSERT INTO Syllabus(courseCode,calendarYear) VALUES (3,2016);
 
 -- Curricular Unit occurrence
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,externalPage,language,programme,requirements)
-VALUES (1,1,4,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
+VALUES (1,9,4,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
 externalPage,language,programme,requirements)
 VALUES (1,2,7,'bibliography','competences',2,1,'evaluation_description','externalPage','PT','programme','requirements');
@@ -1221,7 +1221,7 @@ VALUES (3,20,255,'bibliography','competences',2,5,'evaluation_description','exte
 
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
 externalPage,language,programme,requirements)
-VALUES (4,11,132,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
+VALUES (4,9,132,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
 externalPage,language,programme,requirements)
 VALUES (4,12,146,'bibliography','competences',2,1,'evaluation_description','externalPage','PT','programme','requirements');
@@ -1669,7 +1669,7 @@ INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChang
 
 
 --CourseEnrollment
-INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (437,9,18.84,7,'22-01-2014','12-09-2014');
+INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (437,1,18.84,7,'22-01-2014','12-09-2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (889,1,15.16,6,'07-09-2009','04-11-2012');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (47,13,6.71,2,'25-06-2009','04-10-2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (457,9,16.37,7,'26-01-2012','16-09-2015');
@@ -1679,9 +1679,9 @@ INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,sta
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (343,8,19.99,4,'12-12-2009','05-03-2016');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (136,7,15.26,7,'27-04-2009','02-08-2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (591,14,371,1,'30-08-2012','01-09-2013');
-INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (298,6,12.16,0,'21-07-2014','10-10-2012');
+INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (298,6,12.16,1,'21-07-2010','10-10-2012');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (71,9,17.32,3,'08-09-2015','13-09-2015');
-INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (950,3,17.19,2,'18-03-2013','27-02-2013');
+INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (950,3,17.19,2,'18-01-2013','27-02-2013');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (499,9,16.41,2,'19-01-2011','05-09-2012');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (476,10,3.06,1,'06-08-2011','02-06-2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (526,6,6.85,4,'12-03-2013','02-04-2013');
@@ -1711,7 +1711,7 @@ INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,sta
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (761,3,5.45,3,'28-02-2011','22-05-2015');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (8,10,13.28,1,'12-09-2010','23-05-2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (728,15,8.29,7,'16-01-2009','22-10-2012');
-INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (92,1,2.80,8,'11-02-2011','24-08-2014');
+INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (92,2,2.80,8,'11-02-2011','24-08-2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (92,1,3.26,8,'05-02-2013','08-05-2013');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (534,7,5.05,4,'25-09-2015','22-12-2015');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear,finishYear) VALUES (439,15,1.99,4,'26-04-2010','21-12-2012');
@@ -1729,7 +1729,7 @@ INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,sta
 
 
 --CurricularEnrollment
-INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (468,17.62,32);
+INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (437,17.62,1);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (100,3.91,22);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (73,11.86,37);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (583,14.88,34);
