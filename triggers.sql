@@ -129,20 +129,28 @@ END
 $$ LANGUAGE 'plpgsql';
 
 
-CREATE OR REPLACE FUNCTION examsPerOccurrence(occurrenceID INTEGER) RETURNS SETOF INTEGER AS $$
- BEGIN
- RETURN QUERY SELECT *
-  FROM Evaluation,Exam 
-   WHERE Exam.visible=1 AND Evaluation.visible=1 AND Evaluation.evaluationID = Exam.evaluationID AND Evaluation.cuOccurrenceID=occurrenceID ;
- END
+CREATE OR REPLACE FUNCTION getCurricular(id INTEGER) 
+RETURNS INTEGER AS $$
+DECLARE
+result INTEGER;
+BEGIN
+ SELECT Evaluation.cuOccurrenceID INTO result
+ FROM Evaluation
+ WHERE Evaluation.evaluationID = id;
+return result;
+END 
 $$ LANGUAGE 'plpgsql';
 
 CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
  DECLARE
  numberOfExams INTEGER;
+ curricular INTEGER;
 BEGIN
- SELECT COUNT(*) INTO numberOfExams FROM examsPerOccurrence(NEW.occurrenceID);
- IF(numberOfExams >= 1)
+ curricular:=getCurricular(NEW.evaluationID);
+ SELECT COUNT(Evaluation.evaluationID) INTO numberOfExams
+ FROM Evaluation
+ WHERE Evaluation.cuOccurrenceID = curricular;
+ IF(numberOfExams = 1)
   THEN
    RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
   ELSE
