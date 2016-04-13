@@ -1,5 +1,5 @@
 /* INDEX STUFF, MIGHT BE BROKEN */
-/*
+
 DROP INDEX IF EXISTS tsv_personName_idx;
 DROP INDEX IF EXISTS password_idx;
 DROP INDEX IF EXISTS request_student_idx;
@@ -18,20 +18,21 @@ DROP INDEX IF EXISTS exam_duration_idx;
 DROP INDEX IF EXISTS courEnroll_currYear_idx;
 DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
 DROP INDEX IF EXISTS cuEnroll_student_idx;
-*/
+
 DROP INDEX IF EXISTS occurrence_evaluation_idx;
 
 
- 
+ -- FULL TEXT INDEXES
+
+CREATE INDEX tsv_person_idx ON Person USING gin(tsv);
+CREATE INDEX tsv_course_idx ON Person USING gin(tsv);
+CREATE INDEX tsv_curricularUnit_idx ON Person USING gin(tsv);
+CREATE INDEX tsv_area_idx ON Area USING gin(tsv);
+
 -- INDEXES
  
 CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(occurrenceID,evaluationID);
-/*
-  -- FULL TEXT INDEXES
 
-CREATE INDEX tsv_personName_idx ON Person USING gin(tsv);
-
-  --OTHER INDEXES
 
 CREATE INDEX password_idx ON Person USING hash(password);
 
@@ -72,4 +73,4 @@ CREATE INDEX cuEnroll_finalGra_idx ON CurricularEnrollment USING btree(finalGrad
 ALTER TABLE CurricularEnrollment CLUSTER ON cuEnroll_finalGra_idx;
 
 CREATE INDEX cuEnroll_student_idx ON CurricularEnrollment USING hash(studentCode);
- */
+ 

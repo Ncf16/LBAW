@@ -213,6 +213,13 @@ BEFORE INSERT OR UPDATE ON CourseEnrollment
 FOR EACH ROW
 EXECUTE PROCEDURE isCourseAvailable();
 
+
+
+-- FULL TEXT SEARCH TRIGGERS AND FUNCTIONS
+
+-- SEARCH FUNCTIONS
+ 
+ 
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
 begin
   new.tsv := to_tsvector(coalesce(new.name,''));
@@ -221,62 +228,41 @@ end
 $$ LANGUAGE 'plpgsql';
 
  
-CREATE FUNCTION person_course_trigger() RETURNS trigger AS $$
+CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
 begin
   new.tsv :=
-    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
-    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+    setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
+    setweight(to_tsvector(coalesce(new.description,'')), 'D');
   return new;
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE FUNCTION person_cu_trigger() RETURNS trigger AS $$
+CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 begin
   new.tsv :=
-    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
-    setweight(to_tsvector(coalesce(new.text,'')), 'D');
-  return new;
-end
-$$ LANGUAGE 'plpgsql';
- */
- 
-/* 
-CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
-begin
-  new.tsv := to_tsvector(coalesce(new.name,''));
-  return new;
-end
-$$ LANGUAGE 'plpgsql';
- 
-
- 
-CREATE FUNCTION person_course_trigger() RETURNS trigger AS $$
-begin
-  new.tsv :=
-    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
-    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+    to_tsvector(coalesce(new.name,''));
   return new;
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE FUNCTION person_cu_trigger() RETURNS trigger AS $$
+CREATE FUNCTION area_search_trigger() RETURNS trigger AS $$
 begin
   new.tsv :=
-    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
-    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+    to_tsvector(coalesce(new.area,''));
   return new;
 end
 $$ LANGUAGE 'plpgsql';
-*/
 
-/* 
+ --TRIGGERS--
+
 CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
-ON data_rows FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
-*/
-/*
+ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
+
 CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
-ON data_rows FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
+ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
 
 CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
-ON data_rows FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
-*/
+ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
