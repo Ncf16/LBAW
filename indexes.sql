@@ -18,8 +18,9 @@ DROP INDEX IF EXISTS exam_duration_idx;
 DROP INDEX IF EXISTS courEnroll_currYear_idx;
 DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
 DROP INDEX IF EXISTS cuEnroll_student_idx;
-
 DROP INDEX IF EXISTS occurrence_evaluation_idx;
+DROP INDEX IF EXISTS occurrence_syllabus_idx;
+DROP INDEX IF EXISTS occurrence_curricular_idx;
 
 
  -- FULL TEXT INDEXES
@@ -32,7 +33,8 @@ CREATE INDEX tsv_area_idx ON Area USING gin(tsv);
 -- INDEXES
  
 CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(occurrenceID,evaluationID);
-
+CREATE INDEX occurrence_syllabus_idx ON Class USING btree(occurrenceID,syllabusID);
+CREATE INDEX occurrence_curricular_idx ON Class USING btree(occurrenceID,curricularID);
 
 CREATE INDEX password_idx ON Person USING hash(password);
 
