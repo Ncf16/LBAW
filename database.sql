@@ -1,4 +1,4 @@
-﻿DROP TABLE  IF EXISTS Person CASCADE; 
+DROP TABLE  IF EXISTS Person CASCADE; 
 DROP TABLE  IF EXISTS Course CASCADE; 
 DROP TABLE  IF EXISTS Request CASCADE;
 DROP TABLE  IF EXISTS Syllabus CASCADE;
@@ -289,23 +289,23 @@ RETURNS trigger AS $$
 DECLARE
   numExams INTEGER;
 BEGIN
-	WITH new_exam AS (
-		SELECT *
-		FROM Exam, Evaluation ON Exam.evaluationID = Evaluation.evaluationID AS 'examEval'
-		WHERE new.evaluationID = examEval.evaluationID;
-	)
-	IF((SELECT count(*) AS 'num'
-		FROM new_exam, CurricularUnitOccurrence
-		WHERE new_exam.cuOccurrenceID = CurricularUnitOccurrence) > 1 )
-	THEN
-		DELETE
-		FROM Exam
-		WHERE Exam.evaluationID = new.evaluationID;
-		DELETE FROM Evaluation
-		WHERE Evaluation.evaluationID = new.evaluationID;
-	ELSE
-		-- nothing, is good to go ?
-	END IF;
+  WITH new_exam AS (
+    SELECT *
+    FROM Exam, Evaluation ON Exam.evaluationID = Evaluation.evaluationID AS 'examEval'
+    WHERE new.evaluationID = examEval.evaluationID;
+  )
+  IF((SELECT count(*) AS 'num'
+    FROM new_exam, CurricularUnitOccurrence
+    WHERE new_exam.cuOccurrenceID = CurricularUnitOccurrence) > 1 )
+  THEN
+    DELETE
+    FROM Exam
+    WHERE Exam.evaluationID = new.evaluationID;
+    DELETE FROM Evaluation
+    WHERE Evaluation.evaluationID = new.evaluationID;
+  ELSE
+    -- nothing, is good to go ?
+  END IF;
 
 return $$;
 END

@@ -1,4 +1,4 @@
-﻿--Person
+--Person
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Admin','Ferris','63600 West Georgia Ave.','03-10-1973','Sweden','199705624','456689127010','teste');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Admin','Julian','14526 South Pierre Blvd.','04-04-1965','China','067307816','628113882586','teste');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Student','Ayanna','491 South Bahrain Ct.','26-02-1993','Portugal','146441229','056569983154','teste');
@@ -1906,4 +1906,3 @@ INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (217,19.20,14);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (320,1.20,24);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (6,3.46,16);
-
