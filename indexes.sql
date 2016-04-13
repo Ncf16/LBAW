@@ -46,17 +46,17 @@ CREATE INDEX syllabus_course_idx ON Syllabus USING hash(courseCode);
 
  
 CREATE INDEX cu_credits_idx ON CurricularUnit USING hash(credits);
-ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
+-- ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
 
 CREATE INDEX cuOccurrence_cuID_idx ON CurricularUnitOccurrence USING hash(curricularUnitID);
-ALTER TABLE CurricularUnitOccurrence CLUSTER ON cuOccurrence_cuID_idx;
+--ALTER TABLE CurricularUnitOccurrence CLUSTER ON cuOccurrence_cuID_idx;
 
 CREATE INDEX class_cuOccurrenceID_idx ON Class USING hash(occurrenceID);
-ALTER TABLE Class CLUSTER ON class_cuOccurrenceID_idx;
+--ALTER TABLE Class CLUSTER ON class_cuOccurrenceID_idx;
 
 CREATE INDEX evaluation_weight_idx ON Evaluation USING btree(weight);
 
-CREATE INDEX grade_student_eval_idx ON Grade USING hash(studentCode, evaluationID);
+CREATE INDEX grade_student_eval_idx ON Grade USING btree(studentCode, evaluationID);
 
 CREATE INDEX grade_eval_idx ON Grade USING hash(evaluationID);
 
