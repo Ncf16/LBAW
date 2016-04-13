@@ -50,6 +50,7 @@ creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
 currentCalendarYear INTEGER NOT NULL,
 description TEXT,
 visible INTEGER DEFAULT 1,
+tsv tsvector,
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
 
@@ -75,7 +76,8 @@ CHECK (calendarYear >= 1990)
 CREATE TABLE IF NOT EXISTS Area(
 areaID SERIAL PRIMARY KEY,
 visible INTEGER DEFAULT 1,
-area VARCHAR(64) NOT NULL UNIQUE
+area VARCHAR(64) NOT NULL UNIQUE,
+tsv tsvector
 );
 
 CREATE TABLE IF NOT EXISTS Room(
@@ -90,6 +92,7 @@ name VARCHAR(64) NOT NULL UNIQUE,
 areaID INTEGER REFERENCES Area(areaID),
 credits INTEGER NOT NULL,
 visible INTEGER DEFAULT 1,
+tsv tsvector,
 CHECK(credits > 0)
 );
 
