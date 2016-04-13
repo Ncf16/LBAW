@@ -1,4 +1,4 @@
-DROP TABLE  IF EXISTS Person CASCADE; 
+﻿DROP TABLE  IF EXISTS Person CASCADE; 
 DROP TABLE  IF EXISTS Course CASCADE; 
 DROP TABLE  IF EXISTS Request CASCADE;
 DROP TABLE  IF EXISTS Syllabus CASCADE;
@@ -30,6 +30,9 @@ DROP TYPE  IF EXISTS  EvaluationType CASCADE;
 DROP TYPE  IF EXISTS  CourseType CASCADE;
 
 /* INDEX STUFF, MIGHT BE BROKEN */
+
+DROP INDEX IF EXISTS tsv_personName_idx;
+
 DROP INDEX IF EXISTS password_idx;
 DROP INDEX IF EXISTS request_student_idx;
 DROP INDEX IF EXISTS request_admin_idx;
@@ -63,7 +66,8 @@ birthdate DATE,
 nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
 password VARCHAR(32) NOT NULL,
-phoneNumber VARCHAR(12)
+phoneNumber VARCHAR(12),
+tsv tsvector
 );
 
 CREATE TABLE IF NOT EXISTS Course(
@@ -208,6 +212,12 @@ PRIMARY KEY(cuOccurrenceID,studentCode)
 
 -- INDEXES
 
+  -- FULL TEXT INDEXES
+
+CREATE INDEX tsv_personName_idx ON Person USING gin(tsv);
+
+  --OTHER INDEXES
+
 CREATE INDEX password_idx ON Person USING hash(password);
 
 CREATE INDEX request_student_idx ON Request USING hash(studentCode);
@@ -216,6 +226,7 @@ CREATE INDEX request_admin_idx ON Request USING hash(adminCode);
 
 CREATE INDEX syllabus_course_idx ON Syllabus USING hash(courseCode);
 
+/*
 CREATE INDEX cu_credits_idx ON CurricularUnit USING hash(credits);
 ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
 
@@ -247,7 +258,7 @@ ALTER TABLE CurricularEnrollment CLUSTER ON cuEnroll_finalGra_idx;
 
 CREATE INDEX cuEnroll_student_idx ON CurricularEnrollment USING hash(studentCode);
 
-
+*/
 --Functions
 /*
 CREATE OR REPLACE FUNCTION onlyOneExam()
@@ -278,6 +289,35 @@ END
 $$ LANGUAGE 'plpgsql';
 */
 
+-- SEARCH FUNCTIONS
+CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
+begin
+  new.tsv := to_tsvector(coalesce(new.name,''));
+  return new;
+end
+$$ LANGUAGE 'plpgsql';
+
+/*
+CREATE FUNCTION person_course_trigger() RETURNS trigger AS $$
+begin
+  new.tsv :=
+    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
+    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+  return new;
+end
+$$ LANGUAGE 'plpgsql';
+
+CREATE FUNCTION person_cu_trigger() RETURNS trigger AS $$
+begin
+  new.tsv :=
+    setweight(to_tsvector(coalesce(new.meta->>'title','')), 'A') ||
+    setweight(to_tsvector(coalesce(new.text,'')), 'D');
+  return new;
+end
+$$ LANGUAGE 'plpgsql';
+*/
+
+-- OTHER FUNCTIONS
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
 RETURNS  PersonType AS  $$
 DECLARE
@@ -290,7 +330,7 @@ return  result;
 END 
 $$ LANGUAGE 'plpgsql';
  
- --TRIGGERS--
+
 
 CREATE OR REPLACE FUNCTION isPersonTeacher()
 RETURNS trigger AS  $$
@@ -337,8 +377,63 @@ type:=getPersonType(NEW.adminCode);
 END 
 $$  LANGUAGE 'plpgsql';  
 
+
+ --TRIGGERS--
+ /*
+CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
+ON data_rows FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
+
+
+CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
+ON data_rows FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
+
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+ON data_rows FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+*/
  
---check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
+
+ CREATE OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS  $$
+DECLARE
+  type PersonType;
+BEGIN
+type:=getPersonType(NEW.adminCode);
+  IF (type =  'Admin' )
+  THEN 
+    RETURN NEW;
+    ELSE
+   RETURN NULL;--  RAISE EXCEPTION 'User is not an Admin';
+  END IF;
+END 
+$$  LANGUAGE 'plpgsql';  
+
+CREATE OR REPLACE FUNCTION examsPerOccurrence(occurrenceID INTEGER) RETURNS SETOF INTEGER AS $$
+ BEGIN
+ RETURN QUERY SELECT *
+    FROM Evaluation,Exam 
+      WHERE Evaluation.evaluationID = Exam.evaluationID AND Evaluation.cuOccurrenceID=occurrenceID;
+  END
+$$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
+  DECLARE
+  numberOfExams INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO numberOfExams FROM examsPerOccurrence(NEW.occurrenceID);
+  IF(numberOfExams > 1)
+    THEN
+      RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+    ELSE
+      RETURN NEW;
+END  $$ LANGUAGE 'plpgsql';
+ 
+
+ 
+CREATE TRIGGER oneExamPerUC
+BEFORE INSERT ON Exam
+FOR EACH ROW
+EXECUTE PROCEDURE onlyOneExam();
+
+ --check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
 CREATE TRIGGER checkDiretorType
 BEFORE INSERT OR UPDATE ON Course
 FOR EACH ROW
@@ -376,10 +471,3 @@ CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON CourseEnrollment 
 FOR EACH ROW
 EXECUTE PROCEDURE  isPersonStudent();
-
-/*
-CREATE TRIGGER oneExamPerUC
-AFTER INSERT ON Exam
-FOR EACH ROW
-EXECUTE PROCEDURE onlyOneExam();
-*/
