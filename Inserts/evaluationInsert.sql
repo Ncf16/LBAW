@@ -1,5 +1,4 @@
-﻿
---Evaluation
+﻿--Evaluation
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (11,'04/01/2016',15);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (73,'23/03/2016',5);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (3,'18/01/2016',37);
@@ -10,7 +9,7 @@ INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (96,'19/02/2
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (22,'12/01/2016',24);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (18,'29/01/2016',34);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (84,'11/03/2016',8);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (38,'31/01/2016',27);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (38,'31/01/2016',12);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (1,'10/03/2016',4);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (19,'05/01/2016',34);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (62,'25/02/2016',34);
@@ -20,20 +19,20 @@ INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (60,'07/01/2
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (50,'07/02/2016',37);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (8,'01/04/2016',5);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (84,'06/04/2016',19);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (88,'20/02/2016',19);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (88,'20/02/2016',20);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (33,'23/02/2016',27);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (38,'13/01/2016',16);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (26,'18/01/2016',37);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (99,'11/04/2016',19);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (99,'11/04/2016',21);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (34,'06/01/2016',34);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (95,'04/01/2016',24);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (11,'03/02/2016',4);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (49,'12/03/2016',5);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (84,'04/01/2016',24);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (35,'19/02/2016',15);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (22,'19/03/2016',16);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (20,'01/03/2016',19);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (64,'21/02/2016',27);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (22,'19/03/2016',15);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (20,'01/03/2016',21);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (64,'21/02/2016',12);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (49,'08/01/2016',37);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (92,'04/01/2016',15);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (8,'01/01/2016',37);
@@ -42,14 +41,14 @@ INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (26,'07/03/2
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (46,'11/02/2016',4);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (63,'24/03/2016',37);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (4,'31/03/2016',37);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (6,'23/01/2016',16);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (81,'16/03/2016',27);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (6,'23/01/2016',12);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (81,'16/03/2016',12);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (30,'10/04/2016',15);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (11,'15/02/2016',34);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (71,'06/02/2016',24);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (61,'05/01/2016',5);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (40,'17/03/2016',24);
-INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (73,'06/02/2016',27);
+INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (73,'06/02/2016',13);
 
 --GroupWork
 INSERT INTO GroupWork(evaluationID,minElements,maxElements) VALUES (4,2,3);
