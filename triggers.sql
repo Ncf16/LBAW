@@ -1,4 +1,4 @@
-﻿DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
+DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
@@ -18,8 +18,7 @@ DROP TRIGGER IF EXISTS tsvectorCuUpdate ON CurricularUnit;
 DROP TRIGGER IF EXISTS tsvectorCuUpdate ON Area;
 
 --Functions
-CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) 
-RETURNS PersonType AS $$
+CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) RETURNS PersonType AS $$
 DECLARE
 result PersonType;
 BEGIN
@@ -30,8 +29,7 @@ return result;
 END 
 $$ LANGUAGE 'plpgsql';
 
-CREATE OR REPLACE FUNCTION isPersonTeacher()
-RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION isPersonTeacher() RETURNS trigger AS $$
 DECLARE
  type PersonType;
 BEGIN
@@ -45,8 +43,7 @@ type:=getPersonType(NEW.teacherCode);
 END 
 $$ LANGUAGE 'plpgsql'; 
 
-CREATE  OR REPLACE FUNCTION isPersonStudent()
-RETURNS trigger AS $$
+CREATE  OR REPLACE FUNCTION isPersonStudent() RETURNS trigger AS $$
 DECLARE
  type PersonType;
 BEGIN
@@ -60,8 +57,7 @@ type:=getPersonType(NEW.studentCode);
 END 
 $$ LANGUAGE 'plpgsql'; 
  
-CREATE  OR REPLACE FUNCTION isPersonAdmin()
-RETURNS trigger AS $$
+CREATE  OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
 DECLARE
  type PersonType;
 BEGIN
@@ -76,8 +72,7 @@ END
 $$ LANGUAGE 'plpgsql';
 
 
-CREATE OR REPLACE FUNCTION isClassDateValid()
-RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION isClassDateValid() RETURNS trigger AS $$
 DECLARE
  beginDate DATE;
  endDate DATE;
@@ -98,8 +93,7 @@ WHERE
 END
 $$ LANGUAGE 'plpgsql';
 
-CREATE OR REPLACE FUNCTION isRoomAvailable()
-RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION isRoomAvailable() RETURNS trigger AS $$
 DECLARE
 count INTEGER;
 BEGIN
@@ -116,8 +110,7 @@ END IF;
 END
 $$ LANGUAGE 'plpgsql';
 
-CREATE OR REPLACE FUNCTION isCourseAvailable()
-RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION isCourseAvailable() RETURNS trigger AS $$
 DECLARE
 creation DATE;
 BEGIN
@@ -135,19 +128,6 @@ END IF;
 END
 $$ LANGUAGE 'plpgsql';
 
-CREATE OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
-DECLARE
- type PersonType;
-BEGIN
-type:=getPersonType(NEW.adminCode);
- IF (type = 'Admin' )
- THEN 
-  RETURN NEW;
-  ELSE
-  RETURN NULL;-- RAISE EXCEPTION 'User is not an Admin';
- END IF;
-END 
-$$ LANGUAGE 'plpgsql'; 
 
 CREATE OR REPLACE FUNCTION examsPerOccurrence(occurrenceID INTEGER) RETURNS SETOF INTEGER AS $$
  BEGIN
@@ -170,6 +150,40 @@ BEGIN
    END IF;
 END $$ LANGUAGE 'plpgsql';
  
+
+  CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCode INTEGER) RETUNS SETOF INTEGER AS $$
+  BEGIN RETURN QUERY 
+  SELECT courseID 
+    FROM CourseEnrollment 
+    WHERE CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCode
+      ORDER BY startYear DESC 
+      LIMIT 1;
+    END  $$ LANGUAGE 'plpgsql';
+
+/*   SELECT courseID   FROM CourseEnrollment  WHERE courseID in (SELECT MAX(CourseEnrollment.startYear) FROM CourseEnrollment
+          WHERE  CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCode);*/
+   
+
+ CREATE OR REPLACE FUNCTION curricularUnitBelongsToStudentCourse(cuOccurrenceID INTEGER,studentCourseID INTEGER) RETURNS  INTEGER AS  $$
+ DECLARE
+ answer INTEGER;
+ BEGIN
+   SELECT COUNT(*) INTO answer FROM CurricularUnitOccurrence,Syllabus
+    WHERE CurricularUnitOccurrence.cuOccurrenceID = cuOccurrenceID AND CurricularUnitOccurrence.visible=1 AND CurricularUnitOccurrence.syllabusID = Syllabus.syllabusID 
+        AND Syllabus.visible=1 AND Syllabus.courseCode = studentCourseID;
+
+  return answer;
+ END $$ LANGUAGE 'plpgsql';
+
+
+ CREATE OR REPLACE FUNCTION curicularUnitEnrollmentCheck() RETURNS trigger AS $$
+ DECLARE
+ studentCourseID INTEGER;
+ sameCourse INTEGER;
+ BEGIN 
+ studentCourseID:= getStudentCurrentCourse(NEW.studentCode);
+ sameCourse:=curricularUnitBelongsToStudentCourse(NEW.cuOccurrenceID,studentCourseID);
+ END $$ LANGUAGE 'plpgsql';
 -- FULL TEXT SEARCH TRIGGERS AND FUNCTIONS
 
 -- SEARCH FUNCTIONS
