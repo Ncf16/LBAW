@@ -18,13 +18,21 @@ WHERE
   course.name = 'Chemistry';
 
 --List Evaluations of a student
-SELECT Evaluation.*,CurricularUnit.name
-  FROM Evaluation,CurricularEnrollment,CurricularUnit,Person
+ SELECT Evaluation.*,CurricularUnit.name 
+  FROM Evaluation,CurricularEnrollment,CurricularUnit,Person,CurricularUnitOccurrence
     WHERE
-      Evaluation.cuOccurrenceID = CurricularEnrollment.cuOccurrenceID AND Evaluation.visible=1 AND Evaluation.visible=1 AND 
-      CurricularEnrollment.studentCode= USER_CODE AND CurricularUnit.curricularUnitID AND CurricularEnrollment.curricularUnitID AND CurricularUnit.visible=1
-      AND Person.academiccode = USER_CODE AND  Person.visible=1 AND Person.personType ='Student';
+     CurricularUnitOccurrence.cuOccurrenceID=CurricularEnrollment.cuOccurrenceID AND
+      Evaluation.cuOccurrenceID = CurricularEnrollment.cuOccurrenceID  AND CurricularEnrollment.studentCode= 437 AND 
+         CurricularUnit.curricularID=CurricularUnitOccurrence.curricularUnitID AND 
+             Person.academiccode = 437 AND  Person.visible=1 AND Person.personType ='Student' AND
+                Evaluation.evaluationDate >= now()
+      ORDER BY Evaluation.evaluationDate;
+     
 
+    SELECT Class.classDate,Room.room,CurricularUnit.name FROM Class,CurricularUnitOccurrence,CurricularUnit,Room
+     WHERE  CurricularUnitOccurrence.cuOccurrenceID=34 AND CurricularUnit.curricularID=CurricularUnitOccurrence.curricularUnitID AND 
+     Class.occurrenceID = CurricularUnitOccurrence.cuOccurrenceID AND Class.classDate >= now() AND Class.roomID = Room.roomID
+     ORDER BY Class.classDate;
 
 --List of courses
 SELECT 
