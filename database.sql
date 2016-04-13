@@ -29,6 +29,26 @@ DROP TYPE  IF EXISTS  Language CASCADE;
 DROP TYPE  IF EXISTS  EvaluationType CASCADE;
 DROP TYPE  IF EXISTS  CourseType CASCADE;
 
+/* INDEX STUFF, MIGHT BE BROKEN */
+DROP INDEX IF EXISTS password_idx;
+DROP INDEX IF EXISTS request_student_idx;
+DROP INDEX IF EXISTS request_admin_idx;
+DROP INDEX IF EXISTS syllabus_course_idx;
+DROP INDEX IF EXISTS cu_credits_idx;
+DROP INDEX IF EXISTS cuOccurrence_cuID_idx;
+DROP INDEX IF EXISTS class_cuOccurrenceID_idx;
+DROP INDEX IF EXISTS evaluation_weight_idx;
+DROP INDEX IF EXISTS grade_student_eval_idx;
+DROP INDEX IF EXISTS grade_eval_idx;
+DROP INDEX IF EXISTS grade_grade_idx;
+DROP INDEX IF EXISTS group_elements_idx;
+DROP INDEX IF EXISTS test_duration_idx;
+DROP INDEX IF EXISTS exam_duration_idx;
+DROP INDEX IF EXISTS courEnroll_currYear_idx;
+DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
+DROP INDEX IF EXISTS cuEnroll_student_idx;
+
+
 CREATE TYPE CourseType AS ENUM('Bachelor', 'Masters', 'PhD');
 CREATE TYPE PersonType AS ENUM('Teacher', 'Student', 'Admin');
 CREATE TYPE Language AS ENUM('PT','EN','ES');
@@ -185,6 +205,49 @@ finalGrade INTEGER DEFAULT 0,
 CHECK(finalGrade >= 0 AND finalGrade <= 20),
 PRIMARY KEY(cuOccurrenceID,studentCode)
 );
+
+-- INDEXES
+
+CREATE INDEX password_idx ON Person(password) USING hash;
+
+CREATE INDEX request_student_idx ON Request(studentCode) USING hash;
+
+CREATE INDEX request_admin_idx ON Request(adminCode) USING hash;
+
+CREATE INDEX syllabus_course_idx ON Syllabus(courseCode) USING hash;
+
+CREATE INDEX cu_credits_idx ON CurricularUnit(credits) USING hash;
+ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
+
+CREATE INDEX cuOccurrence_cuID_idx ON CurricularUnitOccurrence(curricularUnitID) USING hash;
+ALTER TABLE CurricularUnitOccurrence CLUSTER ON cuOccurrence_cuID_idx;
+
+CREATE INDEX class_cuOccurrenceID_idx ON Class(occurrenceID) USING hash;
+ALTER TABLE Class CLUSTER ON class_cuOccurrenceID_idx;
+
+CREATE INDEX evaluation_weight_idx ON Evaluation(weight) USING btree;
+
+CREATE INDEX grade_student_eval_idx ON Grade(studentCode, evaluationID) USING hash;
+
+CREATE INDEX grade_eval_idx ON Grade(evaluationID) USING hash;
+
+CREATE INDEX grade_grade_idx ON Grade(grade) USING btree;
+
+CREATE INDEX group_elements_idx ON GroupWork(maxElements, minElements) USING btree;
+
+CREATE INDEX test_duration_idx ON Test(duration) USING btree;
+
+CREATE INDEX exam_duration_idx ON Exam(duration) USING btree;
+
+CREATE INDEX courEnroll_currYear_idx ON CourseEnrollment(curricularYear) USING btree;
+ALTER TABLE CourseEnrollment CLUSTER ON courEnroll_currYear_idx;
+
+CREATE INDEX cuEnroll_finalGra_idx ON CurricularEnrollment(finalGrade) USING btree;
+ALTER TABLE CurricularEnrollment CLUSTER ON cuEnroll_finalGra_idx;
+
+CREATE INDEX cuEnroll_student_idx ON CurricularEnrollment(studentCode) USING hash;
+
+
 
 --Functions
 /*
