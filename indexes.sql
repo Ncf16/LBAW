@@ -34,10 +34,6 @@ CREATE INDEX tsv_curricularUnit_idx ON Person USING gin(tsv);
 CREATE INDEX tsv_area_idx ON Area USING gin(tsv);
 
 -- INDEXES
- 
-CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(cuOccurrenceID,evaluationID);
-CREATE INDEX occurrence_syllabus_idx ON CurricularUnitOccurrence USING btree(cuOccurrenceID,syllabusID);
-CREATE INDEX occurrence_curricular_idx ON CurricularUnitOccurrence USING btree(cuOccurrenceID,curricularUnitID);
 
 CREATE INDEX password_idx ON Person USING hash(password);
 
@@ -48,14 +44,19 @@ CREATE INDEX request_admin_idx ON Request USING hash(adminCode);
 CREATE INDEX syllabus_course_idx ON Syllabus USING hash(courseCode);
 
  
-CREATE INDEX cu_credits_idx ON CurricularUnit USING hash(credits);
--- ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
+CREATE INDEX cu_credits_idx ON CurricularUnit USING btree(credits);
+ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
 
-CREATE INDEX cuOccurrence_cuID_idx ON CurricularUnitOccurrence USING hash(curricularUnitID);
---ALTER TABLE CurricularUnitOccurrence CLUSTER ON cuOccurrence_cuID_idx;
+	-- cuOccurrence stuff
+CREATE INDEX occurrence_syllabus_idx ON CurricularUnitOccurrence USING btree(syllabusID, cuOccurrenceID);
+CREATE INDEX occurrence_curricular_idx ON CurricularUnitOccurrence USING btree(curricularUnitID, cuOccurrenceID);
+ALTER TABLE CurricularUnitOccurrence CLUSTER ON cuOccurrence_cuID_idx;
 
-CREATE INDEX class_cuOccurrenceID_idx ON Class USING hash(occurrenceID);
---ALTER TABLE Class CLUSTER ON class_cuOccurrenceID_idx;
+
+CREATE INDEX class_cuOccurrenceID_idx ON Class USING btree(occurrenceID);
+ALTER TABLE Class CLUSTER ON class_cuOccurrenceID_idx;
+
+CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(cuOccurrenceID,evaluationID);
 
 CREATE INDEX evaluation_weight_idx ON Evaluation USING btree(weight);
 
