@@ -24,17 +24,24 @@ WHERE
      CurricularUnitOccurrence.cuOccurrenceID=CurricularEnrollment.cuOccurrenceID AND
       Evaluation.cuOccurrenceID = CurricularEnrollment.cuOccurrenceID  AND CurricularEnrollment.studentCode= 437 AND 
          CurricularUnit.curricularID=CurricularUnitOccurrence.curricularUnitID AND 
-             Person.academiccode = 437 AND  Person.visible=1 AND Person.personType ='Student' AND
-                Evaluation.evaluationDate >= now()
+             Person.academiccode = 437 AND  Person.visible=1 AND Evaluation.evaluationDate >= now()
       ORDER BY Evaluation.evaluationDate;
      
 
---Class of a certain CurricularUnitOccurence
+--Classes of a certain CurricularUnitOccurence
     SELECT Class.classDate,Room.room,CurricularUnit.name FROM Class,CurricularUnitOccurrence,CurricularUnit,Room
      WHERE  CurricularUnitOccurrence.cuOccurrenceID=34 AND CurricularUnit.curricularID=CurricularUnitOccurrence.curricularUnitID AND 
      Class.occurrenceID = CurricularUnitOccurrence.cuOccurrenceID AND Class.classDate >= now() AND Class.roomID = Room.roomID
      ORDER BY Class.classDate;
 
+--Get CurricularUnit info
+SELECT * FROM CurricularUnit WHERE CurricularUnit.curricularID= 1;
+
+--Get Course info, instead of CD name we get the ID
+SELECT Course.name,Course.creationDate,Course.courseType, Course.teacherCode,COUNT(Person.academiccode)
+  FROM Course,Person,CourseEnrollment WHERE
+    Course.code = CourseEnrollment.courseID AND  Person.academiccode = CourseEnrollment.studentcode
+      GROUP BY Course.name,Course.creationDate,Course.courseType, Course.teacherCode ;
 --List of courses
 SELECT 
   course.name,course.description,course.creationDate,person.name,COUNT(courseenrollment.studentcode),course.courseType
