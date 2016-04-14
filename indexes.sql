@@ -1,6 +1,9 @@
 /* INDEX STUFF, MIGHT BE BROKEN */
 
-DROP INDEX IF EXISTS tsv_personName_idx;
+DROP INDEX IF EXISTS tsv_person_idx;
+DROP INDEX IF EXISTS tsv_course_idx;
+DROP INDEX IF EXISTS tsv_curricularUnit_idx;
+DROP INDEX IF EXISTS tsv_area_idx;
 DROP INDEX IF EXISTS password_idx;
 DROP INDEX IF EXISTS request_student_idx;
 DROP INDEX IF EXISTS request_admin_idx;
