@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS Person CASCADE; 
+DROP TABLE IF EXISTS Person CASCADE; 
 DROP TABLE IF EXISTS Course CASCADE; 
 DROP TABLE IF EXISTS Request CASCADE;
 DROP TABLE IF EXISTS Syllabus CASCADE;
@@ -51,6 +51,7 @@ currentCalendarYear INTEGER NOT NULL,
 description TEXT,
 visible INTEGER DEFAULT 1,
 tsv tsvector,
+sigla VARCHAR(5),
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
 
@@ -118,6 +119,7 @@ CHECK(curricularYear > 0 AND curricularYear <=  8)
 CREATE TABLE IF NOT EXISTS Class(
 classID SERIAL PRIMARY KEY,
 occurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID), 
+teacherCode INTEGER REFERENCES Person(academicCode),
 duration INTEGER NOT NULL, 
 roomID INTEGER REFERENCES Room(roomID),
 classDate TIMESTAMP NOT NULL, 
