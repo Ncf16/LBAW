@@ -1,6 +1,5 @@
 ﻿--Select a syllabus given the name of a course
 --e.g. course:Chemistry
-
 SELECT 
   curricularunit.name, 
   curricularunitoccurrence.curricularyear, 
@@ -29,10 +28,10 @@ WHERE
       ORDER BY Evaluation.evaluationDate;
      
 
-    SELECT Class.classDate,Room.room,CurricularUnit.name FROM Class,CurricularUnitOccurrence,CurricularUnit,Room
-     WHERE  CurricularUnitOccurrence.cuOccurrenceID=34 AND CurricularUnit.curricularID=CurricularUnitOccurrence.curricularUnitID AND 
-     Class.occurrenceID = CurricularUnitOccurrence.cuOccurrenceID AND Class.classDate >= now() AND Class.roomID = Room.roomID
-     ORDER BY Class.classDate;
+SELECT Class.classDate,Room.room,CurricularUnit.name FROM Class,CurricularUnitOccurrence,CurricularUnit,Room
+ WHERE CurricularUnitOccurrence.cuOccurrenceID=34 AND CurricularUnit.curricularID=CurricularUnitOccurrence.curricularUnitID AND 
+ Class.occurrenceID = CurricularUnitOccurrence.cuOccurrenceID AND Class.classDate >= now() AND Class.roomID = Room.roomID
+ ORDER BY Class.classDate;
 
 --List of courses
 SELECT 
@@ -48,7 +47,7 @@ WHERE
 GROUP BY course.code,person.name;
 
 --List of curricular units done with grade
---e.g. student:Ayana
+--e.g. student:Ayanna
 SELECT 
   curricularunit.name, 
   curricularenrollment.finalgrade
@@ -59,9 +58,26 @@ FROM
   curricularunit, 
   syllabus
 WHERE
-  person.academicCode = 'Ayana' AND
+  person.name = 'Ayanna' AND
   curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid AND
   person.academiccode = curricularenrollment.studentcode AND
   curricularunit.curricularid = curricularunitoccurrence.curricularunitid AND
   syllabus.syllabusid = curricularunitoccurrence.syllabusid AND
   curricularenrollment.finalGrade >= 10;
+
+ --Weight of evaluations per curricular unit occurrence of syllabus
+ --e.g. syllabusId:2
+ SELECT 
+  curricularunit.name, 
+  sum(evaluation.weight)
+FROM 
+  curricularunitoccurrence, 
+  curricularunit, 
+  evaluation,
+  syllabus
+WHERE 
+  curricularunit.curricularid = curricularunitoccurrence.curricularunitid AND
+  evaluation.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid AND
+  syllabus.syllabusid = curricularunitoccurrence.syllabusid
+  AND syllabus.syllabusid = 2
+  GROUP BY curricularunitoccurrence.cuOccurrenceID, curricularunit.name;
