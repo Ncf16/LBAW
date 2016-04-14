@@ -36,11 +36,6 @@ WHERE
 --Get CurricularUnit info
 SELECT * FROM CurricularUnit WHERE CurricularUnit.curricularID= 1;
 
---Get Course info, instead of CD name we get the ID
-SELECT Course.name,Course.creationDate,Course.courseType, Course.teacherCode,COUNT(Person.academiccode)
-  FROM Course,Person,CourseEnrollment WHERE
-    Course.code = CourseEnrollment.courseID AND  Person.academiccode = CourseEnrollment.studentcode
-      GROUP BY Course.name,Course.creationDate,Course.courseType, Course.teacherCode ;
 --List of courses
 SELECT 
   course.name,course.description,course.creationDate,person.name,COUNT(courseenrollment.studentcode),course.courseType
@@ -50,9 +45,10 @@ FROM
   person
 WHERE 
   courseenrollment.courseid = course.code AND
-  courseenrollment.finishyear IS NOT NULL AND
+  courseenrollment.finishyear IS NULL AND
   course.teachercode = person.academiccode
 GROUP BY course.code,person.name;
+
 
 --List of curricular units done with grade
 --e.g. student:Ayanna
