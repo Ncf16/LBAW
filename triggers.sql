@@ -3,6 +3,7 @@ DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
+DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Course CASCADE;
@@ -270,8 +271,11 @@ CREATE TRIGGER checkStudentEnrolledInCorrectCourse
 BEFORE INSERT OR UPDATE ON CurricularEnrollment
 FOR EACH ROW
 EXECUTE PROCEDURE curicularUnitEnrollmentCheck();
+
+
  -- FULL TEXT TRIGGERS--
 
+ -- PERSON
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv := to_tsvector(coalesce(new.name,''));
@@ -282,12 +286,17 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
 ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
 
-
+ -- COURSE
 CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv :=
   setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
-  setweight(to_tsvector(coalesce(new.description,'')), 'D');
+  setweight(to_tsvector(coalesce(new.description,'')), 'D') ||
+  to_tsvector((SELECT string_agg(CurricularUnit.tsv, ' ')
+              FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+              WHERE 1 = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID));
+
  return new;
 end
 $$ LANGUAGE 'plpgsql';
@@ -295,27 +304,56 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
 ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
 
-
+ -- CURRICULAR UNIT
 CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 begin
- new.tsv :=
-  to_tsvector(coalesce(new.name,''));
- return new;
+    -- Update own Curricular Unit TSV
+    new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
+    setweight(to_tsvector(coalesce((SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID)), 'C'));
+
+
+    -- Update Course TSV
+    UPDATE Course
+    SET tsv = NULL       -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
+    WHERE Course.code IN
+    (SELECT *
+     FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+     WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = new.curricularID);
+    return new;
+
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+CREATE TRIGGER tsvectorCuUpdate AFTER INSERT OR UPDATE
 ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
 
-
+ -- AREA   -- When a area name is updated, update it on Curricular Unit tsv
 CREATE FUNCTION area_search_trigger() RETURNS trigger AS $$
 begin
- new.tsv :=
-  to_tsvector(coalesce(new.area,''));
- return new;
+    -- Update Curricular Unit TSV
+    IF TG_OP = 'UPDATE' THEN
+      UPDATE CurricularUnit
+      SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B') || 
+      setweight(to_tsvector(new.area), 'C')     
+
+      WHERE CurricularUnit.curricularID
+      IN(SELECT curricularID
+        FROM  CurricularUnit, Area
+        WHERE CurricularUnit.areaID = new.areaID ); -- curricular units whose area we are updating
+      return new;
+    END IF;
+
+    IF TG_OP = 'DELETE' THEN
+      UPDATE CurricularUnit
+      SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B')
+      WHERE CurricularUnit.curricularID
+      IN(SELECT curricularID
+        FROM  CurricularUnit, Area
+        WHERE CurricularUnit.areaID = old.areaID); -- curricular units whose area we are deleting
+      return new;
+    END IF;
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+CREATE TRIGGER tsvectorAreaUpdate BEFORE UPDATE OR DELETE
 ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
- 
