@@ -1,8 +1,9 @@
-﻿DROP TABLE IF EXISTS Person CASCADE; 
+DROP TABLE IF EXISTS Person CASCADE; 
 DROP TABLE IF EXISTS Course CASCADE; 
 DROP TABLE IF EXISTS Request CASCADE;
 DROP TABLE IF EXISTS Syllabus CASCADE;
 DROP TABLE IF EXISTS CurricularUnit CASCADE;
+DROP TABLE IF EXISTS Area_CU CASCADE;
 DROP TABLE IF EXISTS CurricularUnitOccurrence CASCADE;
 DROP TABLE IF EXISTS Class CASCADE;
 DROP TABLE IF EXISTS CurricularEnrollment CASCADE;
@@ -51,6 +52,7 @@ currentCalendarYear INTEGER NOT NULL,
 description TEXT,
 visible INTEGER DEFAULT 1,
 tsv tsvector,
+sigla VARCHAR(5),
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
 
@@ -77,7 +79,6 @@ CREATE TABLE IF NOT EXISTS Area(
 areaID SERIAL PRIMARY KEY,
 visible INTEGER DEFAULT 1,
 area VARCHAR(64) NOT NULL UNIQUE,
-tsv tsvector
 );
 
 CREATE TABLE IF NOT EXISTS Room(
@@ -94,6 +95,12 @@ credits INTEGER NOT NULL,
 visible INTEGER DEFAULT 1,
 tsv tsvector,
 CHECK(credits > 0)
+);
+
+CREATE TABLE IF NOT EXISTS Area_CU(
+	areaID INTEGER REFERENCES Area(areaID),
+	curricularID INTEGER REFERENCES CurricularUnit(curricularID),
+	PRIMARY KEY(areaID, curricularID)
 );
 
 CREATE TABLE IF NOT EXISTS CurricularUnitOccurrence(
@@ -118,6 +125,7 @@ CHECK(curricularYear > 0 AND curricularYear <=  8)
 CREATE TABLE IF NOT EXISTS Class(
 classID SERIAL PRIMARY KEY,
 occurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID), 
+teacherCode INTEGER REFERENCES Person(academicCode),
 duration INTEGER NOT NULL, 
 roomID INTEGER REFERENCES Room(roomID),
 classDate TIMESTAMP NOT NULL, 

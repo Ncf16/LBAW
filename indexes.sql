@@ -29,8 +29,8 @@ DROP INDEX IF EXISTS occurrence_curricular_idx;
  -- FULL TEXT INDEXES
 
 CREATE INDEX tsv_person_idx ON Person USING gin(tsv);
-CREATE INDEX tsv_course_idx ON Person USING gin(tsv);
-CREATE INDEX tsv_curricularUnit_idx ON Person USING gin(tsv);
+CREATE INDEX tsv_course_idx ON Course USING gin(tsv);
+CREATE INDEX tsv_curricularUnit_idx ON CurricularUnit USING gin(tsv);
 CREATE INDEX tsv_area_idx ON Area USING gin(tsv);
 
 -- INDEXES

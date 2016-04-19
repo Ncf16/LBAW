@@ -21,6 +21,7 @@ DROP FUNCTION IF EXISTS person_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS course_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS cu_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS area_search_trigger() CASCADE; 
+
 --Functions
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) RETURNS PersonType AS $$
 DECLARE
@@ -32,6 +33,46 @@ BEGIN
 return result; 
 END 
 $$ LANGUAGE 'plpgsql';
+
+ 
+
+CREATE  OR REPLACE FUNCTION isPersonStudent() RETURNS trigger AS $$
+DECLARE
+ type PersonType;
+BEGIN
+type:=getPersonType(NEW.studentCode);
+ IF (type = 'Student' )
+ THEN 
+  RETURN NEW;
+  ELSE
+  RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
+ END IF;
+END 
+$$ LANGUAGE 'plpgsql'; 
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Request 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent();
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Attendance 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent();
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON Grade 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent(); 
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON CurricularEnrollment 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent();
+
+CREATE TRIGGER checkStudentType
+BEFORE INSERT OR UPDATE ON CourseEnrollment 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonStudent();
 
 CREATE OR REPLACE FUNCTION isPersonTeacher() RETURNS trigger AS $$
 DECLARE
@@ -47,20 +88,15 @@ type:=getPersonType(NEW.teacherCode);
 END 
 $$ LANGUAGE 'plpgsql'; 
 
-CREATE  OR REPLACE FUNCTION isPersonStudent() RETURNS trigger AS $$
-DECLARE
- type PersonType;
-BEGIN
-type:=getPersonType(NEW.studentCode);
- IF (type = 'Student' )
- THEN 
-  RETURN NEW;
-  ELSE
-  RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
- END IF;
-END 
-$$ LANGUAGE 'plpgsql'; 
- 
+CREATE TRIGGER checkDiretorType
+BEFORE INSERT OR UPDATE ON Course
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonTeacher();
+CREATE TRIGGER checkRegentType
+BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonTeacher(); 
+
 CREATE  OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
 DECLARE
  type PersonType;
@@ -74,6 +110,46 @@ type:=getPersonType(NEW.adminCode);
  END IF;
 END 
 $$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER checkAdminType
+BEFORE INSERT OR UPDATE ON Request
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonAdmin();
+ 
+
+CREATE OR REPLACE FUNCTION getEvaluationCurricularOccurrenceID(id INTEGER) 
+RETURNS INTEGER AS $$
+DECLARE
+result INTEGER;
+BEGIN
+ SELECT Evaluation.cuOccurrenceID INTO result
+ FROM Evaluation
+ WHERE Evaluation.evaluationID = id;
+return result;
+END 
+$$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
+ DECLARE
+ numberOfExams INTEGER;
+ curricular INTEGER;
+BEGIN
+ curricular:=getEvaluationCurricularOccurrenceID(NEW.evaluationID);
+ SELECT COUNT(*) INTO numberOfExams
+ FROM Evaluation
+ WHERE Evaluation.cuOccurrenceID = curricular;
+ IF(numberOfExams > 1)
+  THEN
+   RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+  ELSE
+   RETURN NEW;
+   END IF;
+END $$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER oneExamPerUC
+BEFORE INSERT ON Exam
+FOR EACH ROW
+EXECUTE PROCEDURE onlyOneExam();
 
 
 CREATE OR REPLACE FUNCTION isClassDateValid() RETURNS trigger AS $$
@@ -97,6 +173,13 @@ WHERE
 END
 $$ LANGUAGE 'plpgsql';
 
+CREATE TRIGGER checkClassDate
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isClassDateValid();
+ 
+ 
+ 
 CREATE OR REPLACE FUNCTION isRoomAvailable() RETURNS trigger AS $$
 DECLARE
 count INTEGER;
@@ -113,6 +196,11 @@ ELSE RETURN NULL;
 END IF;
 END
 $$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER checkClassRoom
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isRoomAvailable();
 
 CREATE OR REPLACE FUNCTION isCourseAvailable() RETURNS trigger AS $$
 DECLARE
@@ -131,37 +219,12 @@ ELSE RETURN NULL;
 END IF;
 END
 $$ LANGUAGE 'plpgsql';
-
-
-CREATE OR REPLACE FUNCTION getCurricular(id INTEGER) 
-RETURNS INTEGER AS $$
-DECLARE
-result INTEGER;
-BEGIN
- SELECT Evaluation.cuOccurrenceID INTO result
- FROM Evaluation
- WHERE Evaluation.evaluationID = id;
-return result;
-END 
-$$ LANGUAGE 'plpgsql';
-
-CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
- DECLARE
- numberOfExams INTEGER;
- curricular INTEGER;
-BEGIN
- curricular:=getCurricular(NEW.evaluationID);
- SELECT COUNT(*) INTO numberOfExams
- FROM Evaluation
- WHERE Evaluation.cuOccurrenceID = curricular;
- IF(numberOfExams > 1)
-  THEN
-   RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
-  ELSE
-   RETURN NEW;
-   END IF;
-END $$ LANGUAGE 'plpgsql';
  
+CREATE TRIGGER checkCourseDate
+BEFORE INSERT OR UPDATE ON CourseEnrollment
+FOR EACH ROW
+EXECUTE PROCEDURE isCourseAvailable();
+
 
   CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCodeToGetCourse INTEGER) RETURNS SETOF INTEGER AS $$
   BEGIN RETURN QUERY 
@@ -185,7 +248,6 @@ END $$ LANGUAGE 'plpgsql';
  
  END $$ LANGUAGE 'plpgsql';
 
-
  
 CREATE OR REPLACE FUNCTION curicularUnitEnrollmentCheck() RETURNS trigger AS $$
  DECLARE
@@ -208,18 +270,19 @@ CREATE TRIGGER checkStudentEnrolledInCorrectCourse
 BEFORE INSERT OR UPDATE ON CurricularEnrollment
 FOR EACH ROW
 EXECUTE PROCEDURE curicularUnitEnrollmentCheck();
--- FULL TEXT SEARCH TRIGGERS AND FUNCTIONS
+ -- FULL TEXT TRIGGERS--
 
--- SEARCH FUNCTIONS
-   
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv := to_tsvector(coalesce(new.name,''));
  return new;
 end
 $$ LANGUAGE 'plpgsql';
- 
- 
+
+CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
+ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
+
+
 CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv :=
@@ -229,6 +292,10 @@ begin
 end
 $$ LANGUAGE 'plpgsql';
 
+CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
+ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
+
+
 CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv :=
@@ -236,6 +303,10 @@ begin
  return new;
 end
 $$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+
 
 CREATE FUNCTION area_search_trigger() RETURNS trigger AS $$
 begin
@@ -245,79 +316,6 @@ begin
 end
 $$ LANGUAGE 'plpgsql';
 
-
-CREATE TRIGGER oneExamPerUC
-BEFORE INSERT ON Exam
-FOR EACH ROW
-EXECUTE PROCEDURE onlyOneExam();
-
---check if good idea, or should make a more specific trigger ( to be called on each update might be overkill)
-CREATE TRIGGER checkDiretorType
-BEFORE INSERT OR UPDATE ON Course
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonTeacher();
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Request 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonStudent();
-
-CREATE TRIGGER checkAdminType
-BEFORE INSERT OR UPDATE ON Request
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonAdmin();
- 
-CREATE TRIGGER checkRegentType
-BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonTeacher(); 
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Attendance 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonStudent();
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON Grade 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonStudent(); 
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON CurricularEnrollment 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonStudent();
-
-CREATE TRIGGER checkStudentType
-BEFORE INSERT OR UPDATE ON CourseEnrollment 
-FOR EACH ROW
-EXECUTE PROCEDURE isPersonStudent();
- 
-
-CREATE TRIGGER checkClassDate
-BEFORE INSERT OR UPDATE ON Class
-FOR EACH ROW
-EXECUTE PROCEDURE isClassDateValid();
-
-CREATE TRIGGER checkClassRoom
-BEFORE INSERT OR UPDATE ON Class
-FOR EACH ROW
-EXECUTE PROCEDURE isRoomAvailable();
- 
-CREATE TRIGGER checkCourseDate
-BEFORE INSERT OR UPDATE ON CourseEnrollment
-FOR EACH ROW
-EXECUTE PROCEDURE isCourseAvailable();
-
- -- FULL TEXT TRIGGERS--
-
-CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
-ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
-
-CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
-ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
-
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
-ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
-
 CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
 ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
+ 
