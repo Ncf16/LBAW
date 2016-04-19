@@ -3,7 +3,6 @@
 DROP INDEX IF EXISTS tsv_person_idx;
 DROP INDEX IF EXISTS tsv_course_idx;
 DROP INDEX IF EXISTS tsv_curricularUnit_idx;
-DROP INDEX IF EXISTS tsv_area_idx;
 DROP INDEX IF EXISTS password_idx;
 DROP INDEX IF EXISTS request_student_idx;
 DROP INDEX IF EXISTS request_admin_idx;
@@ -31,7 +30,6 @@ DROP INDEX IF EXISTS occurrence_curricular_idx;
 CREATE INDEX tsv_person_idx ON Person USING gin(tsv);
 CREATE INDEX tsv_course_idx ON Course USING gin(tsv);
 CREATE INDEX tsv_curricularUnit_idx ON CurricularUnit USING gin(tsv);
-CREATE INDEX tsv_area_idx ON Area USING gin(tsv);
 
 -- INDEXES
 
