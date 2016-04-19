@@ -98,12 +98,6 @@ tsv tsvector,
 CHECK(credits > 0)
 );
 
-CREATE TABLE IF NOT EXISTS Area_CU(
-areaID INTEGER REFERENCES Area(areaID),
-curricularID INTEGER REFERENCES CurricularUnit(curricularID),
-PRIMARY KEY(areaID, curricularID)
-);
-
 CREATE TABLE IF NOT EXISTS CurricularUnitOccurrence(
 cuOccurrenceID SERIAL PRIMARY KEY,
 syllabusID INTEGER REFERENCES Syllabus(syllabusID),
