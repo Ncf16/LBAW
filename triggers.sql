@@ -3,6 +3,7 @@ DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
+DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Course CASCADE;
@@ -22,6 +23,8 @@ DROP FUNCTION IF EXISTS course_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS cu_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS area_search_trigger() CASCADE; 
 
+-----------------------------------------
+
 --Functions
 CREATE OR REPLACE FUNCTION getPersonType(id INTEGER) RETURNS PersonType AS $$
 DECLARE
@@ -34,18 +37,18 @@ return result;
 END 
 $$ LANGUAGE 'plpgsql';
 
- 
+ -----------------------------------------
 
-CREATE  OR REPLACE FUNCTION isPersonStudent() RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION isPersonStudent() RETURNS trigger AS $$
 DECLARE
  type PersonType;
 BEGIN
 type:=getPersonType(NEW.studentCode);
  IF (type = 'Student' )
  THEN 
-  RETURN NEW;
-  ELSE
-  RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
+ RETURN NEW;
+ ELSE
+ RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
  END IF;
 END 
 $$ LANGUAGE 'plpgsql'; 
@@ -54,6 +57,7 @@ CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON Request 
 FOR EACH ROW
 EXECUTE PROCEDURE isPersonStudent();
+
 CREATE TRIGGER checkStudentType
 BEFORE INSERT OR UPDATE ON Attendance 
 FOR EACH ROW
@@ -74,6 +78,8 @@ BEFORE INSERT OR UPDATE ON CourseEnrollment
 FOR EACH ROW
 EXECUTE PROCEDURE isPersonStudent();
 
+-----------------------------------------
+
 CREATE OR REPLACE FUNCTION isPersonTeacher() RETURNS trigger AS $$
 DECLARE
  type PersonType;
@@ -81,32 +87,40 @@ BEGIN
 type:=getPersonType(NEW.teacherCode);
  IF (type = 'Teacher' )
  THEN 
-  RETURN NEW;
-  ELSE
-  RETURN NULL;-- RAISE EXCEPTION 'User is not a Teacher';
+ RETURN NEW;
+ ELSE
+ RETURN NULL;-- RAISE EXCEPTION 'User is not a Teacher';
  END IF;
 END 
-$$ LANGUAGE 'plpgsql'; 
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER checkTeacherType
+BEFORE INSERT OR UPDATE ON Class
+FOR EACH ROW
+EXECUTE PROCEDURE isPersonTeacher();
 
 CREATE TRIGGER checkDiretorType
 BEFORE INSERT OR UPDATE ON Course
 FOR EACH ROW
 EXECUTE PROCEDURE isPersonTeacher();
+
 CREATE TRIGGER checkRegentType
 BEFORE INSERT OR UPDATE ON CurricularUnitOccurrence 
 FOR EACH ROW
 EXECUTE PROCEDURE isPersonTeacher(); 
 
-CREATE  OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
+-----------------------------------------
+
+CREATE OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
 DECLARE
  type PersonType;
 BEGIN
 type:=getPersonType(NEW.adminCode);
  IF (type = 'Admin' )
  THEN 
-  RETURN NEW;
-  ELSE
-  RETURN NULL;-- RAISE EXCEPTION 'User is not an Admin';
+ RETURN NEW;
+ ELSE
+ RETURN NULL;-- RAISE EXCEPTION 'User is not an Admin';
  END IF;
 END 
 $$ LANGUAGE 'plpgsql';
@@ -115,8 +129,9 @@ CREATE TRIGGER checkAdminType
 BEFORE INSERT OR UPDATE ON Request
 FOR EACH ROW
 EXECUTE PROCEDURE isPersonAdmin();
- 
 
+-----------------------------------------
+ 
 CREATE OR REPLACE FUNCTION getEvaluationCurricularOccurrenceID(id INTEGER) 
 RETURNS INTEGER AS $$
 DECLARE
@@ -124,7 +139,8 @@ result INTEGER;
 BEGIN
  SELECT Evaluation.cuOccurrenceID INTO result
  FROM Evaluation
- WHERE Evaluation.evaluationID = id;
+ WHERE Evaluation.evaluationID = id AND
+ Evaluation.visible = 1;
 return result;
 END 
 $$ LANGUAGE 'plpgsql';
@@ -137,13 +153,14 @@ BEGIN
  curricular:=getEvaluationCurricularOccurrenceID(NEW.evaluationID);
  SELECT COUNT(*) INTO numberOfExams
  FROM Evaluation
- WHERE Evaluation.cuOccurrenceID = curricular;
+ WHERE Evaluation.cuOccurrenceID = curricular AND
+ Evaluation.visible = 1;
  IF(numberOfExams > 1)
-  THEN
-   RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
-  ELSE
-   RETURN NEW;
-   END IF;
+ THEN
+  RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+ ELSE
+  RETURN NEW;
+  END IF;
 END $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER oneExamPerUC
@@ -151,6 +168,49 @@ BEFORE INSERT ON Exam
 FOR EACH ROW
 EXECUTE PROCEDURE onlyOneExam();
 
+-----------------------------------------
+ 
+ CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCodeToGetCourse INTEGER) RETURNS SETOF INTEGER AS $$
+ BEGIN RETURN QUERY 
+ SELECT courseID 
+  FROM CourseEnrollment 
+  WHERE CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCodeToGetCourse
+   ORDER BY startYear DESC 
+   LIMIT 1;
+  END $$ LANGUAGE 'plpgsql';
+
+
+ CREATE OR REPLACE FUNCTION curricularUnitBelongsToStudentCourse(cuOccurrenceIDToCheck INTEGER,studentCourseID INTEGER) RETURNS SETOF INTEGER AS $$
+ BEGIN RETURN QUERY 
+ SELECT CurricularUnitOccurrence.cuOccurrenceID
+ FROM CurricularUnitOccurrence,Syllabus
+  WHERE CurricularUnitOccurrence.cuOccurrenceID = cuOccurrenceIDToCheck AND CurricularUnitOccurrence.visible=1 AND CurricularUnitOccurrence.syllabusID = Syllabus.syllabusID 
+    AND Syllabus.visible=1 AND Syllabus.courseCode = studentCourseID; 
+ END $$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION curicularUnitEnrollmentCheck() RETURNS trigger AS $$
+ DECLARE
+ studentCourseID INTEGER;
+ sameCourse INTEGER;
+ BEGIN 
+ SELECT * INTO studentCourseID FROM getStudentCurrentCourse(NEW.studentCode);
+  IF (studentCourseID IS NOT NULL)
+    THEN
+    SELECT COUNT(*) INTO sameCourse FROM curricularUnitBelongsToStudentCourse(NEW.cuOccurrenceID,studentCourseID);
+    IF(sameCourse >0)
+    THEN
+     RETURN NEW;
+     END IF;
+  END IF;
+ RETURN NULL;
+END $$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER checkStudentEnrolledInCorrectCourse
+BEFORE INSERT OR UPDATE ON CurricularEnrollment
+FOR EACH ROW
+EXECUTE PROCEDURE curicularUnitEnrollmentCheck();
+
+-----------------------------------------
 
 CREATE OR REPLACE FUNCTION isClassDateValid() RETURNS trigger AS $$
 DECLARE
@@ -178,7 +238,7 @@ BEFORE INSERT OR UPDATE ON Class
 FOR EACH ROW
 EXECUTE PROCEDURE isClassDateValid();
  
- 
+ -----------------------------------------
  
 CREATE OR REPLACE FUNCTION isRoomAvailable() RETURNS trigger AS $$
 DECLARE
@@ -201,6 +261,8 @@ CREATE TRIGGER checkClassRoom
 BEFORE INSERT OR UPDATE ON Class
 FOR EACH ROW
 EXECUTE PROCEDURE isRoomAvailable();
+
+-----------------------------------------
 
 CREATE OR REPLACE FUNCTION isCourseAvailable() RETURNS trigger AS $$
 DECLARE
@@ -225,53 +287,16 @@ BEFORE INSERT OR UPDATE ON CourseEnrollment
 FOR EACH ROW
 EXECUTE PROCEDURE isCourseAvailable();
 
+-----------------------------------------
 
-  CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCodeToGetCourse INTEGER) RETURNS SETOF INTEGER AS $$
-  BEGIN RETURN QUERY 
-  SELECT courseID 
-    FROM CourseEnrollment 
-    WHERE CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCodeToGetCourse
-      ORDER BY startYear DESC 
-      LIMIT 1;
-    END  $$ LANGUAGE 'plpgsql';
 
-/*   SELECT courseID   FROM CourseEnrollment  WHERE courseID in (SELECT MAX(CourseEnrollment.startYear) FROM CourseEnrollment
-          WHERE  CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCode);*/
-   
+/*  SELECT courseID  FROM CourseEnrollment WHERE courseID in (SELECT MAX(CourseEnrollment.startYear) FROM CourseEnrollment
+     WHERE CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCode);*/
+  
 
- CREATE OR REPLACE FUNCTION curricularUnitBelongsToStudentCourse(cuOccurrenceIDToCheck INTEGER,studentCourseID INTEGER) RETURNS  SETOF INTEGER  AS  $$
- BEGIN RETURN QUERY 
-  SELECT CurricularUnitOccurrence.cuOccurrenceID FROM CurricularUnitOccurrence,Syllabus
-    WHERE CurricularUnitOccurrence.cuOccurrenceID = cuOccurrenceIDToCheck AND CurricularUnitOccurrence.visible=1 AND CurricularUnitOccurrence.syllabusID = Syllabus.syllabusID 
-        AND Syllabus.visible=1 AND Syllabus.courseCode = studentCourseID;
-
- 
- END $$ LANGUAGE 'plpgsql';
-
- 
-CREATE OR REPLACE FUNCTION curicularUnitEnrollmentCheck() RETURNS trigger AS $$
- DECLARE
- studentCourseID INTEGER;
- sameCourse INTEGER;
- BEGIN 
- SELECT * INTO studentCourseID FROM getStudentCurrentCourse(NEW.studentCode);
-    IF (studentCourseID IS NOT NULL)
-        THEN
-        SELECT COUNT(*) INTO sameCourse FROM curricularUnitBelongsToStudentCourse(NEW.cuOccurrenceID,studentCourseID);
-        IF(sameCourse >0)
-        THEN
-          RETURN NEW;
-         END IF;
-   END IF;
-  RETURN NULL;
-END $$ LANGUAGE 'plpgsql';
-
-CREATE TRIGGER checkStudentEnrolledInCorrectCourse
-BEFORE INSERT OR UPDATE ON CurricularEnrollment
-FOR EACH ROW
-EXECUTE PROCEDURE curicularUnitEnrollmentCheck();
  -- FULL TEXT TRIGGERS--
 
+ -- PERSON
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv := to_tsvector(coalesce(new.name,''));
@@ -282,12 +307,16 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER tsvectorPersonUpdate BEFORE INSERT OR UPDATE
 ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
 
-
+ -- COURSE
 CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv :=
-  setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
-  setweight(to_tsvector(coalesce(new.description,'')), 'D');
+ setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
+ setweight(to_tsvector(coalesce(new.description,'')), 'D') ||
+ to_tsvector(SELECT string_agg(CurricularUnit.tsv, ' ')
+       FROM Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+       WHERE new.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID);
+
  return new;
 end
 $$ LANGUAGE 'plpgsql';
@@ -295,27 +324,56 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
 ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
 
-
+ -- CURRICULAR UNIT
 CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 begin
- new.tsv :=
-  to_tsvector(coalesce(new.name,''));
- return new;
+  -- Update own Curricular Unit TSV
+  new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
+  setweight(to_tsvector(coalesce(SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID)), 'C');
+
+
+  -- Update Course TSV
+  UPDATE Course
+  SET tsv = NULL    -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
+  WHERE Course.code IN
+  (SELECT *
+   FROM Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+   WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = new.curricularID);
+  return new;
+
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+CREATE TRIGGER tsvectorCuUpdate AFTER INSERT OR UPDATE
 ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
 
-
+ -- AREA  -- When a area name is updated, update it on Curricular Unit tsv
 CREATE FUNCTION area_search_trigger() RETURNS trigger AS $$
 begin
- new.tsv :=
-  to_tsvector(coalesce(new.area,''));
- return new;
+  -- Update Curricular Unit TSV
+  IF TG_OP = 'UPDATE' THEN
+   UPDATE CurricularUnit
+   SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B') || 
+   setweight(to_tsvector(new.area), 'C')   
+
+   WHERE CurricularUnit.curricularID
+   IN(SELECT curricularID
+    FROM CurricularUnit, Area
+    WHERE CurricularUnit.areaID = new.areaID ); -- curricular units whose area we are updating
+   return new;
+  END IF;
+
+  IF TG_OP = 'DELETE' THEN
+   UPDATE CurricularUnit
+   SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B')
+   WHERE CurricularUnit.curricularID
+   IN(SELECT curricularID
+    FROM CurricularUnit, Area
+    WHERE CurricularUnit.areaID = old.areaID); -- curricular units whose area we are deleting
+   return new;
+  END IF;
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+CREATE TRIGGER tsvectorAreaUpdate BEFORE UPDATE OR DELETE
 ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
- 

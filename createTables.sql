@@ -112,7 +112,7 @@ programme TEXT NOT NULL,
 requirements TEXT NOT NULL,
 visible INTEGER DEFAULT 1,
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
-CHECK(curricularYear > 0 AND curricularYear <=  8)
+CHECK(curricularYear > 0 AND curricularYear <= 8)
 );
 
 CREATE TABLE IF NOT EXISTS Class(
