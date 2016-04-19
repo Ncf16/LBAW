@@ -1,14 +1,14 @@
 ﻿DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
-DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
-DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
+DROP TRIGGER IF EXISTS checkTeacherType ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
-DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
+DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CurricularEnrollment CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CourseEnrollment CASCADE;
+DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
 DROP TRIGGER IF EXISTS checkClassDate ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkClassRoom ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkCourseDate ON CourseEnrollment CASCADE;
@@ -289,12 +289,7 @@ EXECUTE PROCEDURE isCourseAvailable();
 
 -----------------------------------------
 
-
-/*  SELECT courseID  FROM CourseEnrollment WHERE courseID in (SELECT MAX(CourseEnrollment.startYear) FROM CourseEnrollment
-     WHERE CourseEnrollment.visible=1 AND CourseEnrollment.studentCode = studentCode);*/
-  
-
- -- FULL TEXT TRIGGERS--
+-- FULL TEXT TRIGGERS--
 
  -- PERSON
 CREATE FUNCTION person_search_trigger() RETURNS trigger AS $$
@@ -311,11 +306,12 @@ ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
 CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
 begin
  new.tsv :=
- setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
- setweight(to_tsvector(coalesce(new.description,'')), 'D') ||
- to_tsvector(SELECT string_agg(CurricularUnit.tsv, ' ')
-       FROM Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-       WHERE new.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID);
+  setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
+  setweight(to_tsvector(coalesce(new.description,'')), 'D') ||
+  to_tsvector((SELECT string_agg(CurricularUnit.tsv, ' ')
+              FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+              WHERE 1 = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID));
 
  return new;
 end
@@ -327,19 +323,19 @@ ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
  -- CURRICULAR UNIT
 CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 begin
-  -- Update own Curricular Unit TSV
-  new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
-  setweight(to_tsvector(coalesce(SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID)), 'C');
+    -- Update own Curricular Unit TSV
+    new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
+    setweight(to_tsvector(coalesce((SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID)), 'C'));
 
 
-  -- Update Course TSV
-  UPDATE Course
-  SET tsv = NULL    -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
-  WHERE Course.code IN
-  (SELECT *
-   FROM Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-   WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = new.curricularID);
-  return new;
+    -- Update Course TSV
+    UPDATE Course
+    SET tsv = NULL       -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
+    WHERE Course.code IN
+    (SELECT *
+     FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+     WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = new.curricularID);
+    return new;
 
 end
 $$ LANGUAGE 'plpgsql';
@@ -347,31 +343,31 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER tsvectorCuUpdate AFTER INSERT OR UPDATE
 ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
 
- -- AREA  -- When a area name is updated, update it on Curricular Unit tsv
+ -- AREA   -- When a area name is updated, update it on Curricular Unit tsv
 CREATE FUNCTION area_search_trigger() RETURNS trigger AS $$
 begin
-  -- Update Curricular Unit TSV
-  IF TG_OP = 'UPDATE' THEN
-   UPDATE CurricularUnit
-   SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B') || 
-   setweight(to_tsvector(new.area), 'C')   
+    -- Update Curricular Unit TSV
+    IF TG_OP = 'UPDATE' THEN
+      UPDATE CurricularUnit
+      SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B') || 
+      setweight(to_tsvector(new.area), 'C')     
 
-   WHERE CurricularUnit.curricularID
-   IN(SELECT curricularID
-    FROM CurricularUnit, Area
-    WHERE CurricularUnit.areaID = new.areaID ); -- curricular units whose area we are updating
-   return new;
-  END IF;
+      WHERE CurricularUnit.curricularID
+      IN(SELECT curricularID
+        FROM  CurricularUnit, Area
+        WHERE CurricularUnit.areaID = new.areaID ); -- curricular units whose area we are updating
+      return new;
+    END IF;
 
-  IF TG_OP = 'DELETE' THEN
-   UPDATE CurricularUnit
-   SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B')
-   WHERE CurricularUnit.curricularID
-   IN(SELECT curricularID
-    FROM CurricularUnit, Area
-    WHERE CurricularUnit.areaID = old.areaID); -- curricular units whose area we are deleting
-   return new;
-  END IF;
+    IF TG_OP = 'DELETE' THEN
+      UPDATE CurricularUnit
+      SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B')
+      WHERE CurricularUnit.curricularID
+      IN(SELECT curricularID
+        FROM  CurricularUnit, Area
+        WHERE CurricularUnit.areaID = old.areaID); -- curricular units whose area we are deleting
+      return new;
+    END IF;
 end
 $$ LANGUAGE 'plpgsql';
 
