@@ -1,4 +1,4 @@
-﻿ 
+ 
 --Person
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Admin','Ferris','63600 West Georgia Ave.','03-10-1973','Sweden','199705624','456689127010','45d25abffe8c792d4d30346429b5bc24');
 INSERT INTO Person(personType,name,address,birthDate,nationality,nif,phoneNumber,password) VALUES ('Admin','Julian','14526 South Pierre Blvd.','04-04-1965','China','067307816','628113882586','45d25abffe8c792d4d30346429b5bc24');
@@ -1019,29 +1019,27 @@ INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,
 INSERT INTO Course(teacherCode,courseType,name,creationDate,currentCalendarYear,description) VALUES (409,'Masters','Anthropology','17-10-1997',2016,'JCFytLtOkARDHPxELVUoKwXzsAPSLvbZSMyZgirVjhNVmxMMlXrzoTaNZcMRpWxTDlwgsrXzfqqXoNnwdKsJazeubyAONOzXoSJITnfeohnKGuNcrAHOQsflSTGiMIcDzxFjjdGcWAyGLswzXsXHlJubACPYvhqyIqMcGEWbHEyxOfkkeLZQMThyGuXEsybnAaSNbyFZQHFMyYIbdzhlKmogBMYqYIlzAItsXMQqLDBeWdoLEBCQCOYrfBtESDYueCvKArebpWRQfobjMzKZPAINTAjubPlTCwR exWstHcEcTMlEcSPNRsTTcnuCpAwyiDNGwrxYHBrpoQFPNGuaS APZQYFeagqzNUUIpV lvVTmWAgDToraonjufMjoUGPnZYcXxGaxwKAewaAdxAIXwwWsfEtH xsbapYQSKaEasRadHyUJuBxcqUQeUYTlJtiHGUfjIgHAsxpgiyjGtJblvJaBGgnXyrVlnTTFWaENcBtVRORbbySKlChRqvARejGVUbAIvJUuyIHArPXXGVdbwaTyHErZXkZJAqlboevWUrzSSAmC');
 
 --Area
-INSERT INTO Area(area) VALUES ('History'); --1
+INSERT INTO Area(area) VALUES ('History');
 INSERT INTO Area(area) VALUES ('Sociology');
 INSERT INTO Area(area) VALUES ('Science of Earth Systems');
 INSERT INTO Area(area) VALUES ('Statistical Science');
-INSERT INTO Area(area) VALUES ('Civil Engineering'); --5
+INSERT INTO Area(area) VALUES ('Civil Engineering');
 INSERT INTO Area(area) VALUES ('Computer Science');
 INSERT INTO Area(area) VALUES ('German Studies');
 INSERT INTO Area(area) VALUES ('Religious Studies');
 INSERT INTO Area(area) VALUES ('History of Art');
-INSERT INTO Area(area) VALUES ('Physics'); --10
+INSERT INTO Area(area) VALUES ('Physics');
 INSERT INTO Area(area) VALUES ('Government');
 INSERT INTO Area(area) VALUES ('Nutritional Sciences');
 INSERT INTO Area(area) VALUES ('Near Eastern Studies');
 INSERT INTO Area(area) VALUES ('Music');
-INSERT INTO Area(area) VALUES ('Mechanical Engineering'); --15
+INSERT INTO Area(area) VALUES ('Mechanical Engineering');
 INSERT INTO Area(area) VALUES ('Performing and Media Arts');
 INSERT INTO Area(area) VALUES ('Philosophy');
 INSERT INTO Area(area) VALUES ('Economy');
 INSERT INTO Area(area) VALUES ('Urban and Regional Studies');
-INSERT INTO Area(area) VALUES ('Viticulture and Enology'); --20
+INSERT INTO Area(area) VALUES ('Viticulture and Enology');
 INSERT INTO Area(area) VALUES ('Math');
-INSERT INTO Area(area) VALUES ('Programming');
-INSERT INTO Area(area) VALUES ('Web Technologies');
 
 --ROOM 
 INSERT INTO Room(room) VALUES ('N602');
@@ -1096,59 +1094,27 @@ INSERT INTO Room(room) VALUES ('R337');
 INSERT INTO Room(room) VALUES ('N414');
 
 -- Curricular Unit
-INSERT INTO CurricularUnit(name,credits) VALUES ('Corporate Law and Law of Contracts',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Introduction to Accounting',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Electromagnetism',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Database Management',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Programming Fundaments',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Thermal Physics',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Calculus',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Algebra',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Geometry',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Artificial intelligence',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Computer graphics',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Basic Ear Training 1',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('World War II',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Sociology of Education',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Networking',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Logic',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Expressions and Group Dynamics',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Web Development',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Computer Vision',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Territorial Planning',6);
-INSERT INTO CurricularUnit(name,credits) VALUES ('Geostatistics',6);
-
-INSERT INTO Area_CU(areaID, curricularID) VALUES (2, 1);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (4, 2); 
-INSERT INTO Area_CU(areaID, curricularID) VALUES (10, 3);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (4, 4);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (22, 5);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (10, 6);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (21, 7);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (21, 8);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (21, 9);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (6, 10);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (6, 11);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (16, 12);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (1, 13);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (2, 14);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (6, 15);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (17, 16);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (16, 17);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (23, 18);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (6, 19);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (19, 20);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (2, 21);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (17, 1);  
-INSERT INTO Area_CU(areaID, curricularID) VALUES (18, 2); 
-INSERT INTO Area_CU(areaID, curricularID) VALUES (6, 4);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (22, 10);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (22, 11);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (2, 13);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (7, 13);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (22, 18);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (22, 19);
-INSERT INTO Area_CU(areaID, curricularID) VALUES (4, 21);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Corporate Law and Law of Contracts',18,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Introduction to Accounting',18,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Electromagnetism',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Database Management',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Programming Fundaments',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Thermal Physics',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Calculus',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Algebra',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Geometry',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Artificial intelligence',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Computer graphics',6,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Basic Ear Training 1',14,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('World War II',9,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Sociology of Education',17,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Networking',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Logic',21,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Expressions and Group Dynamics',17,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Web Development',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Computer Vision',10,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Territorial Planning',5,6);
+INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Geostatistics',4,6);
 
 --Syllabus
 INSERT INTO Syllabus(courseCode,calendarYear) VALUES (1,2015);
