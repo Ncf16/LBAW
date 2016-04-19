@@ -53,7 +53,7 @@ currentCalendarYear INTEGER NOT NULL,
 description TEXT,
 visible INTEGER DEFAULT 1,
 tsv tsvector,
-sigla VARCHAR(5),
+abbreviation VARCHAR(5),
 CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
 );
 
@@ -99,9 +99,9 @@ CHECK(credits > 0)
 );
 
 CREATE TABLE IF NOT EXISTS Area_CU(
-	areaID INTEGER REFERENCES Area(areaID),
-	curricularID INTEGER REFERENCES CurricularUnit(curricularID),
-	PRIMARY KEY(areaID, curricularID)
+areaID INTEGER REFERENCES Area(areaID),
+curricularID INTEGER REFERENCES CurricularUnit(curricularID),
+PRIMARY KEY(areaID, curricularID)
 );
 
 CREATE TABLE IF NOT EXISTS CurricularUnitOccurrence(
@@ -148,6 +148,7 @@ evaluationID SERIAL PRIMARY KEY,
 cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 evaluationDate TIMESTAMP NOT NULL, 
 weight INTEGER NOT NULL,
+evaluationType EvaluationType,
 visible INTEGER DEFAULT 1,
 CHECK(weight>0 AND weight<=100)
 );

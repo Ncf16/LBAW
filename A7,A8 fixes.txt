@@ -1,0 +1,24 @@
+ter o nome do trigger
+a descrição
+depois bloco de código
+
+
+por isto em ordem certa
+desenvolver mais o texto da descrição
+
+-typos de "begging"
+
+copy and paste repetido em indices
+nomes para o A8 ter vários nomes
+
+trigger course curricularUnit -> name/description, colocar no tsv aquando insert/update JOIN com as informaçoes
+
+utilizar numeros em vez de strings para enums
+
+estudo do número de tuplos (volume em cada uma tabelas)
+queries utilizar os ids
+queries de login
+cada um ter um subtítulo
+
+
+explicar a utilização de cada index.

@@ -3,7 +3,6 @@ DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
-DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Course CASCADE;
