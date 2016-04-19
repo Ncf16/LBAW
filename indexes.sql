@@ -47,8 +47,9 @@ ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
 
 	-- cuOccurrence stuff
 CREATE INDEX occurrence_syllabus_idx ON CurricularUnitOccurrence USING btree(syllabusID, cuOccurrenceID);
+
 CREATE INDEX occurrence_curricular_idx ON CurricularUnitOccurrence USING btree(curricularUnitID, cuOccurrenceID);
-ALTER TABLE CurricularUnitOccurrence CLUSTER ON cuOccurrence_cuID_idx;
+ALTER TABLE CurricularUnitOccurrence CLUSTER ON occurrence_curricular_idx;
 
 
 CREATE INDEX class_cuOccurrenceID_idx ON Class USING btree(occurrenceID);
