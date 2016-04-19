@@ -51,7 +51,7 @@ GROUP BY course.code,person.name;
 
 
 --List of curricular units done with grade
---e.g. student:Ayanna
+--e.g. student:1
 SELECT 
   curricularunit.name, 
   curricularenrollment.finalgrade
@@ -62,7 +62,7 @@ FROM
   curricularunit, 
   syllabus
 WHERE
-  person.name = 'Ayanna' AND
+  person.academiccode = 1 AND
   curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid AND
   person.academiccode = curricularenrollment.studentcode AND
   curricularunit.curricularid = curricularunitoccurrence.curricularunitid AND
