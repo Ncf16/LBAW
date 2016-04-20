@@ -30,7 +30,7 @@ CREATE TYPE EvaluationType AS ENUM('GroupWork','Test','Exam');
 CREATE TABLE IF NOT EXISTS Person(
 academicCode SERIAL PRIMARY KEY,
 personType PersonType,
-name VARCHAR(40) NOT NULL,
+name VARCHAR(120) NOT NULL,
 username VARCHAR(15),
 address VARCHAR(256),
 birthdate DATE,
