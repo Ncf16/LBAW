@@ -307,9 +307,9 @@ DECLARE
 temp text;
 begin
 
- temp =  (SELECT string_agg(CurricularUnit.tsv, ' ') tsv
+ temp =  (SELECT string_agg(CurricularUnit.tsv)
         FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-        WHERE 1 = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+        WHERE new.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
         AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID);
 
  new.tsv :=
