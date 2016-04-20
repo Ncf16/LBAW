@@ -346,22 +346,13 @@ CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 DECLARE
 temp text;
 begin
-
+    
     temp = (SELECT area FROM Area WHERE Area.areaID = new.AreaID);
 
     -- Update own Curricular Unit TSV
-   --new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
-   -- setweight(to_tsvector(coalesce(temp)), 'C');
+    new.tsv = setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
+    setweight(to_tsvector(coalesce(temp)), 'C');
 
-   new.tsv = to_tsvector('derp');
-
-    -- Update Course TSV
-    UPDATE Course
-    SET tsv = NULL       -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
-    WHERE Course.code IN
-    (SELECT Course.code
-     FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-     WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = new.curricularID);
     return new;
 
 end
@@ -369,6 +360,32 @@ $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
 ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+
+-- CURRICULAR UNIT OCCURRENCE - adding one occurrence, if the first, means adding a CU to course
+
+CREATE FUNCTION cuOccurrence_search_trigger() RETURNS trigger AS $$
+DECLARE
+temp text;
+begin
+
+-- Update Course TSV
+    UPDATE Course
+    SET tsv = NULL       -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
+    WHERE Course.code IN
+    (SELECT Course.code
+     FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+     WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID
+     AND CurricularUnitOccurrence.curricularUnitID = new.curricularUnitID);
+
+  return new;
+
+end
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tsvectorCUOccurrenceUpdate BEFORE INSERT
+ON CurricularUnitOccurrence FOR EACH ROW EXECUTE PROCEDURE cuOccurrence_search_trigger();
+
+
 
  -- AREA   -- When a area name is updated, update it on Curricular Unit tsv
 CREATE FUNCTION area_search_trigger() RETURNS trigger AS $$
@@ -378,11 +395,13 @@ begin
       UPDATE CurricularUnit
       SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B') || 
       setweight(to_tsvector(new.area), 'C')     
-
+      
       WHERE CurricularUnit.curricularID
       IN(SELECT curricularID
         FROM  CurricularUnit
         WHERE CurricularUnit.areaID = new.areaID ); -- curricular units whose area we are updating
+        
+
       return new;
     END IF;
 
