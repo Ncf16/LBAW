@@ -322,10 +322,12 @@ DECLARE
 temp text;
 begin
 
- temp =  (SELECT string_agg(CurricularUnit.tsv, ' ') tsv
-        FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-        WHERE 1 = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
-        AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID);
+temp = (SELECT test
+              FROM
+                (SELECT array_to_string(array_agg(CurricularUnit.tsv), ' ') AS test
+                FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+                WHERE new.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+                AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID) AS CUs_tsv);
 
  new.tsv :=
   setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
@@ -345,18 +347,18 @@ DECLARE
 temp text;
 begin
 
-    temp = (SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID);
+    temp = (SELECT area FROM Area WHERE Area.areaID = new.AreaID);
 
     -- Update own Curricular Unit TSV
     new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
-    setweight(to_tsvector(coalesce(temp), 'C'));
+    setweight(to_tsvector(coalesce(temp)), 'C');
 
 
     -- Update Course TSV
     UPDATE Course
     SET tsv = NULL       -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
     WHERE Course.code IN
-    (SELECT *
+    (SELECT Course.code
      FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
      WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID AND CurricularUnitOccurrence.curricularUnitID = new.curricularID);
     return new;
@@ -378,7 +380,7 @@ begin
 
       WHERE CurricularUnit.curricularID
       IN(SELECT curricularID
-        FROM  CurricularUnit, Area
+        FROM  CurricularUnit
         WHERE CurricularUnit.areaID = new.areaID ); -- curricular units whose area we are updating
       return new;
     END IF;
@@ -388,7 +390,7 @@ begin
       SET tsv = setweight(to_tsvector(CurricularUnit.name), 'B')
       WHERE CurricularUnit.curricularID
       IN(SELECT curricularID
-        FROM  CurricularUnit, Area
+        FROM  CurricularUnit
         WHERE CurricularUnit.areaID = old.areaID); -- curricular units whose area we are deleting
       return new;
     END IF;
