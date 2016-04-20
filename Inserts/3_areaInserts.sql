@@ -1,0 +1,22 @@
+﻿--Area
+INSERT INTO Area(area) VALUES ('History');
+INSERT INTO Area(area) VALUES ('Sociology');
+INSERT INTO Area(area) VALUES ('Science of Earth Systems');
+INSERT INTO Area(area) VALUES ('Statistical Science');
+INSERT INTO Area(area) VALUES ('Civil Engineering');
+INSERT INTO Area(area) VALUES ('Computer Science');
+INSERT INTO Area(area) VALUES ('German Studies');
+INSERT INTO Area(area) VALUES ('Religious Studies');
+INSERT INTO Area(area) VALUES ('History of Art');
+INSERT INTO Area(area) VALUES ('Physics');
+INSERT INTO Area(area) VALUES ('Government');
+INSERT INTO Area(area) VALUES ('Nutritional Sciences');
+INSERT INTO Area(area) VALUES ('Near Eastern Studies');
+INSERT INTO Area(area) VALUES ('Music');
+INSERT INTO Area(area) VALUES ('Mechanical Engineering');
+INSERT INTO Area(area) VALUES ('Performing and Media Arts');
+INSERT INTO Area(area) VALUES ('Philosophy');
+INSERT INTO Area(area) VALUES ('Economy');
+INSERT INTO Area(area) VALUES ('Urban and Regional Studies');
+INSERT INTO Area(area) VALUES ('Viticulture and Enology');
+INSERT INTO Area(area) VALUES ('Math');
