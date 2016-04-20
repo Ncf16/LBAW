@@ -15,12 +15,14 @@ DROP TRIGGER IF EXISTS setUsername ON Person CASCADE;
 DROP TRIGGER IF EXISTS tsvectorPersonUpdate ON Person;
 DROP TRIGGER IF EXISTS tsvectorCourseUpdate ON Course;
 DROP TRIGGER IF EXISTS tsvectorCuUpdate ON CurricularUnit;
+DROP TRIGGER IF EXISTS tsvectorCUOccurrenceUpdate ON CurricularUnitOccurrence;
 DROP TRIGGER IF EXISTS tsvectorAreaUpdate ON Area;
 DROP TRIGGER IF EXISTS checkStudentEnrolledInCorrectCourse ON CurricularEnrollment CASCADE;
 DROP FUNCTION IF EXISTS getStudentCurrentCourse(integer) CASCADE;
 DROP FUNCTION IF EXISTS person_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS course_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS cu_search_trigger() CASCADE;
+DROP FUNCTION IF EXISTS cuOccurrence_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS area_search_trigger() CASCADE; 
 
 -----------------------------------------
@@ -319,26 +321,42 @@ ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
  -- COURSE
 CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
 DECLARE
-temp text;
+names text;
+areas text;
 begin
 
-temp = (SELECT test
+
+names = (SELECT test
               FROM
-                (SELECT array_to_string(array_agg(CurricularUnit.tsv), ' ') AS test
+                (SELECT array_to_string(array_agg(CurricularUnit.name), ' ') AS test
                 FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-                WHERE new.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
-                AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID) AS CUs_tsv);
+                WHERE Course.code = new.code AND Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+                AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID) AS CUs_names);
 
- new.tsv :=
+
+areas = (SELECT test
+              FROM
+                (SELECT array_to_string(array_agg(Area.area), ' ') AS test
+                FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit, Area
+                WHERE Course.code = new.code AND Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+                AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID
+                AND CurricularUnit.areaID = area.areaID) AS CUs_names);
+
+
+ new.tsv =
   setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
-  setweight(to_tsvector(coalesce(new.description,'')), 'D') ||
-  to_tsvector(temp);
-
+  setweight(to_tsvector(coalesce(new.description,'')), 'D');
+  
+  IF TG_OP = 'UPDATE' THEN
+    new.tsv = new.tsv || 
+              setweight(to_tsvector(names),'B') ||
+              setweight(to_tsvector(areas),'C');
+  END IF;
  return new;
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCourseUpdate BEFORE INSERT OR UPDATE
+CREATE TRIGGER tsvectorCourseUpdate BEFORE UPDATE OR INSERT
 ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
 
  -- CURRICULAR UNIT
@@ -365,12 +383,12 @@ ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
 
 CREATE FUNCTION cuOccurrence_search_trigger() RETURNS trigger AS $$
 DECLARE
-temp text;
+
 begin
 
 -- Update Course TSV
     UPDATE Course
-    SET tsv = NULL       -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
+    SET tsv = NULL      -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
     WHERE Course.code IN
     (SELECT Course.code
      FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
@@ -382,7 +400,7 @@ begin
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCUOccurrenceUpdate BEFORE INSERT
+CREATE TRIGGER tsvectorCUOccurrenceUpdate AFTER INSERT
 ON CurricularUnitOccurrence FOR EACH ROW EXECUTE PROCEDURE cuOccurrence_search_trigger();
 
 
