@@ -24,11 +24,11 @@ INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VA
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (16,'ligula','06/04/2016 15:02:19',47,11,16);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (16,'fringilla euismod accumsan habitant eleifend','10/04/2016 14:23:14',162,38,15);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (19,'Cras nisl suscipit Ut lacus nostra adipiscing nascetur dictum','11/04/2016 16:42:06',124,24,16);
-INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (15,'Curae diam bibendum odio vulputate magnis','12/04/2016 12:45:09',78,28,12);
+INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (15,'Curae diam bibendum odio vulputate magnis','12/04/2016 12:45:09',78,28,24);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (24,'venenatis lacinia','12/04/2016 10:52:49',228,24,15);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (27,'dapibus laoreet ClassNunc pretium orci','10/04/2016 17:12:33',135,30,15);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (34,'at morbi mollis lobortis hymenaeos rhoncus fringilla','08/04/2016 00:19:59',221,4,16);
-INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (4,'Etiam Quisque viverra','06/04/2016 10:18:07',72,43,21);
+INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (4,'Etiam Quisque viverra','06/04/2016 10:18:07',72,43,24);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (27,'aliquet lectus torquent vel blandit dapibus dapibus','09/04/2016 09:34:13',232,16,15);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (5,'orci nulla mattis magna','08/04/2016 09:21:14',148,2,15);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (37,'sodales arcu montes dapibus mattis congue Ut netus id nascetur tristique nisi lacinia quis','07/04/2016 15:55:02',124,16,36);
@@ -39,7 +39,7 @@ INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VA
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (4,'sodales tempus felis aptent','07/04/2016 20:20:35',226,26,36);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (16,'vehicula risus dictum egestas dis ligula cursus non semper','06/04/2016 06:26:29',201,30,15);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (27,'facilisis fermentum','12/04/2016 02:06:13',153,45,36);
-INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (15,'tincidunt','11/04/2016 03:20:54',97,19,21);
+INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (15,'tincidunt','11/04/2016 03:20:54',97,19,24);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (8,'accumsan taciti nascetur morbi tempus','10/04/2016 07:05:52',203,42,36);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (24,'taciti elementum hymenaeos gravida vitae','06/04/2016 12:34:01',192,19,36);
 INSERT INTO Class(occurrenceID,summary,classDate,duration,roomID,teacherCode) VALUES (37,'habitant dignissim dis blandit urna vel per ante malesuada tempor in','10/04/2016 23:33:19',98,37,16);
