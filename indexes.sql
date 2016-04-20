@@ -3,26 +3,29 @@
 DROP INDEX IF EXISTS tsv_person_idx;
 DROP INDEX IF EXISTS tsv_course_idx;
 DROP INDEX IF EXISTS tsv_curricularUnit_idx;
-DROP INDEX IF EXISTS password_idx;
+
+DROP INDEX IF EXISTS username_idx;
 DROP INDEX IF EXISTS request_student_idx;
 DROP INDEX IF EXISTS request_admin_idx;
+
 DROP INDEX IF EXISTS syllabus_course_idx;
-DROP INDEX IF EXISTS cu_credits_idx;
-DROP INDEX IF EXISTS cuOccurrence_cuID_idx;
-DROP INDEX IF EXISTS class_cuOccurrenceID_idx;
+DROP INDEX IF EXISTS cuEnroll_student_idx;
+DROP INDEX IF EXISTS grade_eval_idx;
+DROP INDEX IF EXISTS occurrence_curricular_idx;
+DROP INDEX IF EXISTS occurrence_syllabus_idx;
+DROP INDEX IF EXISTS occurrence_evaluation_idx;
 DROP INDEX IF EXISTS evaluation_weight_idx;
 DROP INDEX IF EXISTS grade_student_eval_idx;
-DROP INDEX IF EXISTS grade_eval_idx;
 DROP INDEX IF EXISTS grade_grade_idx;
 DROP INDEX IF EXISTS group_elements_idx;
 DROP INDEX IF EXISTS test_duration_idx;
 DROP INDEX IF EXISTS exam_duration_idx;
+
+
+DROP INDEX IF EXISTS class_cuOccurrenceID_idx;
 DROP INDEX IF EXISTS courEnroll_currYear_idx;
 DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
-DROP INDEX IF EXISTS cuEnroll_student_idx;
-DROP INDEX IF EXISTS occurrence_evaluation_idx;
-DROP INDEX IF EXISTS occurrence_syllabus_idx;
-DROP INDEX IF EXISTS occurrence_curricular_idx;
+DROP INDEX IF EXISTS cu_credits_idx;
 
 
  -- FULL TEXT INDEXES
@@ -33,43 +36,28 @@ CREATE INDEX tsv_curricularUnit_idx ON CurricularUnit USING gin(tsv);
 
 -- INDEXES
 
-CREATE INDEX password_idx ON Person USING hash(password);
 
+CREATE INDEX username_idx ON Person USING hash(username);
 CREATE INDEX request_student_idx ON Request USING hash(studentCode);
-
 CREATE INDEX request_admin_idx ON Request USING hash(adminCode);
 
-CREATE INDEX syllabus_course_idx ON Syllabus USING hash(courseCode);
 
- 
-CREATE INDEX cu_credits_idx ON CurricularUnit USING btree(credits);
-ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
-
-	-- cuOccurrence stuff
-CREATE INDEX occurrence_syllabus_idx ON CurricularUnitOccurrence USING btree(syllabusID, cuOccurrenceID);
-
+CREATE INDEX syllabus_course_idx ON Syllabus USING btree(courseCode);                -- Used in IN comparisons
+CREATE INDEX cuEnroll_student_idx ON CurricularEnrollment USING btree(studentCode);  -- Used in IN comparisons
+CREATE INDEX grade_eval_idx ON Grade USING btree(evaluationID);
 CREATE INDEX occurrence_curricular_idx ON CurricularUnitOccurrence USING btree(curricularUnitID, cuOccurrenceID);
-ALTER TABLE CurricularUnitOccurrence CLUSTER ON occurrence_curricular_idx;
+CREATE INDEX occurrence_syllabus_idx ON CurricularUnitOccurrence USING btree(syllabusID, cuOccurrenceID);
+CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(cuOccurrenceID,evaluationID);
+CREATE INDEX evaluation_weight_idx ON Evaluation USING btree(weight);
+CREATE INDEX grade_student_eval_idx ON Grade USING btree(studentCode, evaluationID);
+CREATE INDEX grade_grade_idx ON Grade USING btree(grade);
+CREATE INDEX group_elements_idx ON GroupWork USING btree(maxElements, minElements);
+CREATE INDEX test_duration_idx ON Test USING btree(duration);
+CREATE INDEX exam_duration_idx ON Exam USING btree(duration);
 
 
 CREATE INDEX class_cuOccurrenceID_idx ON Class USING btree(occurrenceID);
 ALTER TABLE Class CLUSTER ON class_cuOccurrenceID_idx;
-
-CREATE INDEX occurrence_evaluation_idx ON Evaluation USING btree(cuOccurrenceID,evaluationID);
-
-CREATE INDEX evaluation_weight_idx ON Evaluation USING btree(weight);
-
-CREATE INDEX grade_student_eval_idx ON Grade USING btree(studentCode, evaluationID);
-
-CREATE INDEX grade_eval_idx ON Grade USING hash(evaluationID);
-
-CREATE INDEX grade_grade_idx ON Grade USING btree(grade);
-
-CREATE INDEX group_elements_idx ON GroupWork USING btree(maxElements, minElements);
-
-CREATE INDEX test_duration_idx ON Test USING btree(duration);
-
-CREATE INDEX exam_duration_idx ON Exam USING btree(duration);
 
 CREATE INDEX courEnroll_currYear_idx ON CourseEnrollment USING btree(curricularYear);
 ALTER TABLE CourseEnrollment CLUSTER ON courEnroll_currYear_idx;
@@ -77,5 +65,9 @@ ALTER TABLE CourseEnrollment CLUSTER ON courEnroll_currYear_idx;
 CREATE INDEX cuEnroll_finalGra_idx ON CurricularEnrollment USING btree(finalGrade);
 ALTER TABLE CurricularEnrollment CLUSTER ON cuEnroll_finalGra_idx;
 
-CREATE INDEX cuEnroll_student_idx ON CurricularEnrollment USING hash(studentCode);
+CREATE INDEX cu_credits_idx ON CurricularUnit USING btree(credits);
+ALTER TABLE CurricularUnit CLUSTER ON cu_credits_idx;
+
+
+
  
