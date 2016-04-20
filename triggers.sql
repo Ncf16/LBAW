@@ -5,7 +5,6 @@ DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
-DROP TRIGGER IF EXISTS checkStudentType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CurricularEnrollment CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CourseEnrollment CASCADE;
 DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
@@ -15,7 +14,7 @@ DROP TRIGGER IF EXISTS checkCourseDate ON CourseEnrollment CASCADE;
 DROP TRIGGER IF EXISTS tsvectorPersonUpdate ON Person;
 DROP TRIGGER IF EXISTS tsvectorCourseUpdate ON Course;
 DROP TRIGGER IF EXISTS tsvectorCuUpdate ON CurricularUnit;
-DROP TRIGGER IF EXISTS tsvectorCuUpdate ON Area;
+DROP TRIGGER IF EXISTS tsvectorAreaUpdate ON Area;
 DROP TRIGGER IF EXISTS checkStudentEnrolledInCorrectCourse ON CurricularEnrollment CASCADE;
 DROP FUNCTION IF EXISTS getStudentCurrentCourse(integer) CASCADE;
 DROP FUNCTION IF EXISTS person_search_trigger() CASCADE;
@@ -304,14 +303,19 @@ ON Person FOR EACH ROW EXECUTE PROCEDURE person_search_trigger();
 
  -- COURSE
 CREATE FUNCTION course_search_trigger() RETURNS trigger AS $$
+DECLARE
+temp text;
 begin
+
+ temp =  (SELECT string_agg(CurricularUnit.tsv, ' ') tsv
+        FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+        WHERE 1 = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
+        AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID);
+
  new.tsv :=
   setweight(to_tsvector(coalesce(new.name,'')), 'A') ||
   setweight(to_tsvector(coalesce(new.description,'')), 'D') ||
-  to_tsvector((SELECT string_agg(CurricularUnit.tsv, ' ')
-              FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
-              WHERE 1 = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID 
-AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID));
+  to_tsvector(temp);
 
  return new;
 end
@@ -322,10 +326,15 @@ ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
 
  -- CURRICULAR UNIT
 CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
+DECLARE
+temp text;
 begin
+
+    temp = (SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID);
+
     -- Update own Curricular Unit TSV
     new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
-    setweight(to_tsvector(coalesce((SELECT area FROM Area, CurricularUnit WHERE Area.areaID = new.AreaID)), 'C'));
+    setweight(to_tsvector(coalesce(temp), 'C'));
 
 
     -- Update Course TSV
