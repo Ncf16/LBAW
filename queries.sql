@@ -86,11 +86,15 @@ WHERE
   AND syllabus.syllabusid = 2
   GROUP BY curricularunitoccurrence.cuOccurrenceID, curricularunit.name;
 
+--Login Query
+--e.g. username:20163
+SELECT password
+FROM Person
+WHERE Person.username='20163';
+
 
 SELECT * FROM Person WHERE tsv @@ plainto_tsquery('texto a procurar');
 
 SELECT * FROM Course WHERE tsv @@ plainto_tsquery('texto a procurar');
 
 SELECT * FROM CurricularUnit WHERE tsv @@ plainto_tsquery('texto a procurar');
-
-SELECT * FROM Area WHERE tsv @@ plainto_tsquery('texto a procurar');

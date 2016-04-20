@@ -11,6 +11,7 @@ DROP TRIGGER IF EXISTS oneExamPerUC ON Exam CASCADE;
 DROP TRIGGER IF EXISTS checkClassDate ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkClassRoom ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkCourseDate ON CourseEnrollment CASCADE;
+DROP TRIGGER IF EXISTS setUsername ON Person CASCADE;
 DROP TRIGGER IF EXISTS tsvectorPersonUpdate ON Person;
 DROP TRIGGER IF EXISTS tsvectorCourseUpdate ON Course;
 DROP TRIGGER IF EXISTS tsvectorCuUpdate ON CurricularUnit;
@@ -288,6 +289,20 @@ EXECUTE PROCEDURE isCourseAvailable();
 
 -----------------------------------------
 
+CREATE OR REPLACE FUNCTION createUsername()
+RETURNS trigger AS $$
+BEGIN
+NEW.username = EXTRACT(YEAR FROM NOW())::text || NEW.academicCode::text;
+RETURN NEW;
+END 
+$$ LANGUAGE 'plpgsql'; 
+
+CREATE TRIGGER setUsername
+BEFORE INSERT OR UPDATE ON Person
+FOR EACH ROW
+EXECUTE PROCEDURE createUsername();
+
+-----------------------------------------
 -- FULL TEXT TRIGGERS--
 
  -- PERSON

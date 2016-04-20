@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS Person(
 academicCode SERIAL PRIMARY KEY,
 personType PersonType,
 name VARCHAR(40) NOT NULL,
+username VARCHAR(15),
 address VARCHAR(256),
 birthdate DATE,
 nationality VARCHAR(30),
@@ -112,7 +113,7 @@ programme TEXT NOT NULL,
 requirements TEXT NOT NULL,
 visible INTEGER DEFAULT 1,
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
-CHECK(curricularYear > 0 AND curricularYear <= 8)
+CHECK(curricularYear > 0 AND curricularYear <=  8)
 );
 
 CREATE TABLE IF NOT EXISTS Class(
