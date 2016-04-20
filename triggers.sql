@@ -350,9 +350,10 @@ begin
     temp = (SELECT area FROM Area WHERE Area.areaID = new.AreaID);
 
     -- Update own Curricular Unit TSV
-    new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
-    setweight(to_tsvector(coalesce(temp)), 'C');
+   --new.tsv := setweight(to_tsvector(coalesce(new.name,'')), 'B') ||
+   -- setweight(to_tsvector(coalesce(temp)), 'C');
 
+   new.tsv = to_tsvector('derp');
 
     -- Update Course TSV
     UPDATE Course
@@ -366,7 +367,7 @@ begin
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCuUpdate AFTER INSERT OR UPDATE
+CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
 ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
 
  -- AREA   -- When a area name is updated, update it on Curricular Unit tsv
