@@ -14,6 +14,7 @@ DROP TRIGGER IF EXISTS checkCourseDate ON CourseEnrollment CASCADE;
 DROP TRIGGER IF EXISTS setUsername ON Person CASCADE;
 DROP TRIGGER IF EXISTS tsvectorPersonUpdate ON Person;
 DROP TRIGGER IF EXISTS tsvectorCourseUpdate ON Course;
+DROP TRIGGER IF EXISTS tsvectorCuInsertUpdate ON CurricularUnit;
 DROP TRIGGER IF EXISTS tsvectorCuUpdate ON CurricularUnit;
 DROP TRIGGER IF EXISTS tsvectorCUOccurrenceUpdate ON CurricularUnitOccurrence;
 DROP TRIGGER IF EXISTS tsvectorAreaUpdate ON Area;
@@ -22,6 +23,7 @@ DROP FUNCTION IF EXISTS getStudentCurrentCourse(integer) CASCADE;
 DROP FUNCTION IF EXISTS person_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS course_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS cu_search_trigger() CASCADE;
+DROP FUNCTION IF EXISTS cu_update_trigger() CASCADE;
 DROP FUNCTION IF EXISTS cuOccurrence_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS area_search_trigger() CASCADE; 
 
@@ -351,6 +353,7 @@ areas = (SELECT test
     new.tsv = new.tsv || 
               setweight(to_tsvector(names),'B') ||
               setweight(to_tsvector(areas),'C');
+
   END IF;
  return new;
 end
@@ -359,7 +362,7 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER tsvectorCourseUpdate BEFORE UPDATE OR INSERT
 ON Course FOR EACH ROW EXECUTE PROCEDURE course_search_trigger();
 
- -- CURRICULAR UNIT
+ -- CURRICULAR UNIT INSERT
 CREATE FUNCTION cu_search_trigger() RETURNS trigger AS $$
 DECLARE
 temp text;
@@ -376,8 +379,34 @@ begin
 end
 $$ LANGUAGE 'plpgsql';
 
-CREATE TRIGGER tsvectorCuUpdate BEFORE INSERT OR UPDATE
+CREATE TRIGGER tsvectorCuInsertUpdate BEFORE INSERT OR UPDATE
 ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_search_trigger();
+
+
+ -- CURRICULAR UNIT UPDATE
+CREATE FUNCTION cu_update_trigger() RETURNS trigger AS $$
+DECLARE
+temp text;
+begin
+    
+    UPDATE Course
+    SET code = code      -- cu_search
+    WHERE Course.code IN
+    (SELECT Course.code
+     FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
+     WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID
+     AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID 
+     AND CurricularUnit.curricularID = new.curricularID);
+
+    return new;
+
+end
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tsvectorCuUpdate AFTER UPDATE
+ON CurricularUnit FOR EACH ROW EXECUTE PROCEDURE cu_update_trigger();
+
+
 
 -- CURRICULAR UNIT OCCURRENCE - adding one occurrence, if the first, means adding a CU to course
 
@@ -388,12 +417,13 @@ begin
 
 -- Update Course TSV
     UPDATE Course
-    SET tsv = NULL      -- Sets tsv to NULL, triggering the Course Update trigger! Genius, right? Not to have to do queries twice xD jk jk, please give us 10 :c
+    SET code = code      -- cuOccurrence
     WHERE Course.code IN
-    (SELECT Course.code
+   (SELECT Course.code
      FROM  Course, Syllabus, CurricularUnitOccurrence, CurricularUnit
      WHERE Course.code = Syllabus.courseCode AND Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID
-     AND CurricularUnitOccurrence.curricularUnitID = new.curricularUnitID);
+     AND CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID 
+     AND CurricularUnit.curricularID = new.curricularUnitID);
 
   return new;
 
