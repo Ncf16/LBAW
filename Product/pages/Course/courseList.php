@@ -18,55 +18,16 @@ include_once($BASE_DIR . "templates/common/header.html");
       <th class="text-center">Number Of Students</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="courseListBody">
     <tr>
-      <th   scope="row"><a href="coursePage.php">MIEIC</a> </th>
-      <td  ><a href="personalPage.php">João Carlos Pascoal Faria</a> </td>
+      <th scope="row"><a href="coursePage.php">MIEIC</a> </th>
+      <td ><a href="personalPage.php">João Carlos Pascoal Faria</a> </td>
       <td>2006/2007</td>
       <td>5</td>
       <td>Master</td>
       <td>585</td>
     </tr>
-    <tr>
-     <th scope="row"><a href="coursePage.php">CINF</a> </th>
-      <td><a href="personalPage.php">Olívia Pestana</a> </td>
-      <td>2007/2008</td>
-      <td>3</td>
-      <td>Bachelor</td> 
-      <td>120</td>
-    </tr>
-    <tr>
-      <th scope="row"><a href="coursePage.php">MIEM</a> </th>
-      <td><a href="personalPage.php">Lucas Filipe Silva</a></td>
-      <td>2006/2007</td>
-      <td>5</td>
-      <td>Master</td>
-      <td>805</td>
-    </tr>
-     <tr>
-      <th scope="row"><a href="coursePage.php">MIEM</a> </th>
-      <td><a href="personalPage.php">Lucas Filipe Silva</a></td>
-      <td>2006/2007</td>
-      <td>5</td>
-      <td>Master</td>
-      <td>805</td>
-    </tr>    
-    <tr>
-      <th scope="row"><a href="coursePage.php">MIEM</a> </th>
-      <td><a href="personalPage.php">Lucas Filipe Silva</a></td>
-      <td>2006/2007</td>
-      <td>5</td>
-      <td>Master</td>
-      <td>805</td>
-    </tr>
-       <tr>
-     <th scope="row"><a href="coursePage.php">CINF</a> </th>
-      <td><a href="personalPage.php">Olívia Pestana</a> </td>
-      <td>2007/2008</td>
-      <td>3</td>
-      <td>Bachelor</td> 
-      <td>120</td>
-    </tr>
+  
   </tbody>
 </table>
 <p>
