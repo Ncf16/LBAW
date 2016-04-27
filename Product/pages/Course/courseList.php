@@ -2,10 +2,11 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR . "templates/common/header.html"); 
+include_once($BASE_DIR . "database/Courses/courses.php"); 
 ?>
-<img src="images/books.jpg" class="img-responsive" alt="CourseBooks">
+<img src=<?=$BASE_DIR ."images/books.jpg"?> class="img-responsive" alt="CourseBooks">
  
-<link href="css/courseList.css" rel="stylesheet">
+<link href=<?$BASE_DIR ."css/courseList.css"?> rel="stylesheet">
 
 <table class="table table-striped">
   <thead>
@@ -19,14 +20,22 @@ include_once($BASE_DIR . "templates/common/header.html");
     </tr>
   </thead>
   <tbody class="courseListBody">
-    <tr>
-      <th scope="row"><a href="coursePage.php">MIEIC</a> </th>
-      <td ><a href="personalPage.php">João Carlos Pascoal Faria</a> </td>
-      <td>2006/2007</td>
+  <?php 
+  $activeCourses=getAllActiveCourseList();
+  
+   foreach($activeCourses as $course){?>
+     <tr>
+      <th scope="row"><a href=<?="coursePage.php/id=".$course["code"]?>><?=$course["coursename"]?></a> </th>
+      <td ><a href=<?="personalPage.php/code=".$course["teachercode"]?>><?=$course["diretorname"]?></a> </td>
+      <td><?=$course["creationdate"]?></td>
       <td>5</td>
-      <td>Master</td>
-      <td>585</td>
+      <td><?=$course["coursetype"]?></td>
+      <td><?=$course["count"]?></td>
     </tr>
+
+<?php   }
+   ?>
+  
   
   </tbody>
 </table>
