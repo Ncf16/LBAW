@@ -168,6 +168,12 @@ a .btn-header:focus{
     font-style: italic;
 }
 
+/* Login Styles */
+
+.container.login {
+  padding-top:100px;
+}
+
 /* Footer Styles */
 
 footer {
