@@ -1,6 +1,5 @@
 <?php
-	include_once('database/include/connection.php');
-	include_once('database/include/users.php');
+	include_once('config/init.php');
 
 	$logged_in = checkSession($dbh);
 

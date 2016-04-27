@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 00:09:08
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 00:54:39
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1119057213884755018-99798640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1461179103,
+      1 => 1461797678,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
   'unifunc' => 'content_57213884757977_06461362',
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57213884757977_06461362')) {function content_57213884757977_06461362($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -27,14 +31,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
-    <link href="css/unitPage.css" rel="stylesheet">
-    <link href="css/custom_style.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/modern-business.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/unitPage.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/custom_style.css" rel="stylesheet">
     <Title>AcademicManagement Page</Title>
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   </head>
   <body>
   <!-- Navigation -->
@@ -61,7 +70,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <a href="admin.php">Admin Area</a>
                             </li>
                             <li>
-                                <a href="register.php">Request</a>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/login.php">Request</a>
                             </li>
                             <li>
                                 <a href="#">Logout</a>
@@ -104,7 +114,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </nav>
 
     <!-- jQuery --> 
-    <script src="js/jquery.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/jquery.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script><?php }} ?>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/bootstrap.min.js"></script><?php }} ?>

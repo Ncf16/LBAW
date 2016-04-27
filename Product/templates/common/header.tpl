@@ -6,14 +6,14 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
-    <link href="css/unitPage.css" rel="stylesheet">
-    <link href="css/custom_style.css" rel="stylesheet">
+    <link href="{$BASE_URL}css/modern-business.css" rel="stylesheet">
+    <link href="{$BASE_URL}css/unitPage.css" rel="stylesheet">
+    <link href="{$BASE_URL}css/custom_style.css" rel="stylesheet">
     <Title>AcademicManagement Page</Title>
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{$BASE_URL}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   </head>
   <body>
   <!-- Navigation -->
@@ -40,7 +40,7 @@
                                 <a href="admin.php">Admin Area</a>
                             </li>
                             <li>
-                                <a href="register.php">Request</a>
+                                <a href="{$BASE_URL}pages/login.php">Request</a>
                             </li>
                             <li>
                                 <a href="#">Logout</a>
@@ -83,7 +83,7 @@
     </nav>
 
     <!-- jQuery --> 
-    <script src="js/jquery.js"></script>
+    <script src="{$BASE_URL}js/jquery.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{$BASE_URL}js/bootstrap.min.js"></script>
