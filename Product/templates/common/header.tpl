@@ -28,8 +28,10 @@
                     <span class="icon-bar"></span>
                 </button>
 
-
-                <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
+      {if $USERNAME}
+        {include file='common/menu_logged_in.tpl'}
+      {else}
+       <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -48,6 +50,8 @@
                         </ul>
                     </li>
                 </ul>
+      {/if}
+                 
                  
                  
             </div>
