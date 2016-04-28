@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 02:27:51
+         compiled from "C:\xampp\htdocs\LBAW\product\templates\common\header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:152335721483875ba51-12984410%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '95c76732190ac54ad2467ccc37f2125665c8fe56' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\LBAW\\product\\templates\\common\\header.tpl',
+      1 => 1461803267,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '152335721483875ba51-12984410',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5721483879a260_93057149',
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5721483879a260_93057149')) {function content_5721483879a260_93057149($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -6,14 +31,19 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Bootstrap -->
-    <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{$BASE_URL}css/modern-business.css" rel="stylesheet">
-    <link href="{$BASE_URL}css/unitPage.css" rel="stylesheet">
-    <link href="{$BASE_URL}css/custom_style.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/modern-business.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/unitPage.css" rel="stylesheet">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/custom_style.css" rel="stylesheet">
     <Title>AcademicManagement Page</Title>
     <!-- Custom Fonts -->
-    <link href="{$BASE_URL}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   </head>
   <body>
   <!-- Navigation -->
@@ -34,13 +64,15 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{$BASE_URL}pages/person/personalPage.php">Profile</a>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/person/personalPage.php">Profile</a>
                             </li>
                              <li>
                                 <a href="admin.php">Admin Area</a>
                             </li>
                             <li>
-                                <a href="{$BASE_URL}pages/login.php">Request</a>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/login.php">Request</a>
                             </li>
                             <li>
                                 <a href="#">Logout</a>
@@ -60,7 +92,8 @@
                     </li>
 
                     <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/courseList.php">Courses</a>
                     </li>
 
                     <li class="nav-brand">
@@ -83,7 +116,9 @@
     </nav>
 
     <!-- jQuery --> 
-    <script src="{$BASE_URL}js/jquery.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/jquery.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
-<script src="{$BASE_URL}js/bootstrap.min.js"></script>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/bootstrap.min.js"></script><?php }} ?>
