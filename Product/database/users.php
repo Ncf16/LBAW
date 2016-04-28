@@ -5,7 +5,7 @@
   global $conn;
 
   try{
-  $query = 'SELECT * FROM USERS WHERE username = ?  COLLATE NOCASE';//   AND password = ?";
+  $query = 'SELECT * FROM PERSON WHERE username  ILIKE  ? ';//   AND password = ?";
   $stmt = $conn->prepare($query);
   $stmt->execute(array($username));
   $user = $stmt->fetch();

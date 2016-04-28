@@ -62,7 +62,7 @@
                 <ul class="nav navbar-nav navbar-left">
                   
                     <li class="nav-brand">
-                        <a href="index.php">Home</a>
+                        <a href="{$BASE_URL}index.php">Home</a>
                     </li>
 
                     <li class="nav-brand">
@@ -70,15 +70,15 @@
                     </li>
 
                     <li class="nav-brand">
-                        <a href="#">Evaluations</a>
+                        <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Course</a>
+                        <a href="{$BASE_URL}pages/Course/coursePage.php">My Course</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Curricular Units</a>
+                        <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
                     
                 </ul>
