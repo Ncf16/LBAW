@@ -3,12 +3,8 @@
   include_once($BASE_DIR .'database/users.php');  
 
   if (!$_POST['username'] || !$_POST['password']) {
-    //$_SESSION['error_messages'][] = 'Invalid login';
 
-    if(isset($_POST['username']))
-      echo "true";
-
-    else echo $_POST['username'];
+    return false;    
     exit;
   }
 
@@ -17,10 +13,8 @@
   
   if (isLoginCorrect($username, $password)) {
     $_SESSION['username'] = $username;
-    //$_SESSION['success_messages'][] = 'Login successful'; 
     echo "true"; 
   } else {
-    //$_SESSION['error_messages'][] = 'Login failed';
     echo "false";  
   }
   

@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 	console.log("kk");
-	$('#login_button').on('click', loginButtonHandler);
+	$('#login_button').submit(loginButtonHandler);
 
 });
 
@@ -14,9 +14,6 @@ function loginButtonHandler(event){
 	event.target.blur();
 	console.log("was clicked!");
 
-	event.stopPropagation(); // Stop stuff happening
-	event.preventDefault(); // Totally stop stuff happening
-
 	$.ajax({
 		url: '../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
 		type: 'POST',
@@ -27,7 +24,7 @@ function loginButtonHandler(event){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
 				console.log(data);
-				/*
+				
 				var loggedIn = JSON.parse(data);
 				
 				if (loggedIn) {
@@ -37,7 +34,7 @@ function loginButtonHandler(event){
 					emptyStatus();
 					$("#message_status").prepend("Username/Password combination not found.");
 				}
-				*/
+				
 
 			} else {
 				// Handle errors here
