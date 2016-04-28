@@ -1,4 +1,5 @@
-﻿DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
+﻿ SET SCHEMA 'proto';
+DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkTeacherType ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;

@@ -28,8 +28,12 @@
                     <span class="icon-bar"></span>
                 </button>
 
-
-                <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
+      {if !isset($smarty.session.username)}
+       <div class="col-sm-3 col-xs-5" >
+            <a href="{$BASE_URL}pages/login.php" class="btn btn-primary btn-primary" >Login </a>
+         </div>
+      {else}
+       <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -43,11 +47,13 @@
                                 <a href="{$BASE_URL}pages/login.php">Request</a>
                             </li>
                             <li>
-                                <a href="#">Logout</a>
+                                <a href="#">Logout {$USERNAME}</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+      {/if}
+                 
                  
                  
             </div>
@@ -84,6 +90,8 @@
 
     <!-- jQuery --> 
     <script src="{$BASE_URL}js/jquery.js"></script>
+    <!-- Other Scripts -->
+    <script src="{$BASE_URL}js/scripts.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
 <script src="{$BASE_URL}js/bootstrap.min.js"></script>

@@ -1,5 +1,5 @@
 /* INDEX STUFF, MIGHT BE BROKEN */
-
+ SET SCHEMA 'proto';
 DROP INDEX IF EXISTS tsv_person_idx;
 DROP INDEX IF EXISTS tsv_course_idx;
 DROP INDEX IF EXISTS tsv_curricularUnit_idx;

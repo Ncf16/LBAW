@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 01:51:57
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 03:30:21
          compiled from "C:\Users\Filipe\Desktop\FEUP\XAMPP\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2157657215028bea776-78671371%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f9a86fdc076b0b796fb448e04c29037a9c89f4f6' => 
     array (
       0 => 'C:\\Users\\Filipe\\Desktop\\FEUP\\XAMPP\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1461801116,
+      1 => 1461807019,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'BASE_URL' => 0,
+    'USERNAME' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -58,8 +59,13 @@ font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
                     <span class="icon-bar"></span>
                 </button>
 
-
-                <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
+      <?php if (!isset($_SESSION['username'])) {?>
+       <div class="col-sm-3 col-xs-5" >
+            <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/login.php" class="btn btn-primary btn-primary" >Login </a>
+         </div>
+      <?php } else { ?>
+       <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -74,11 +80,14 @@ font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 pages/login.php">Request</a>
                             </li>
                             <li>
-                                <a href="#">Logout</a>
+                                <a href="#">Logout <?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
+</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+      <?php }?>
+                 
                  
                  
             </div>
@@ -116,6 +125,9 @@ pages/login.php">Request</a>
     <!-- jQuery --> 
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 js/jquery.js"></script>
+    <!-- Other Scripts -->
+    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/scripts.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

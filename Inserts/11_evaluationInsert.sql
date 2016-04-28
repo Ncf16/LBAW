@@ -1,4 +1,5 @@
 ﻿--Evaluation
+ SET SCHEMA 'proto';
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (11,'2016-01-04',15);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (73,'2016-03-23',5);
 INSERT INTO Evaluation(weight,evaluationDate,cuOccurrenceID) VALUES (3,'2016-01-18',37);

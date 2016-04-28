@@ -1,4 +1,8 @@
-﻿DROP TABLE IF EXISTS Person CASCADE; 
+﻿DROP SCHEMA IF EXISTS proto CASCADE; 
+CREATE SCHEMA proto; 
+SET SCHEMA 'proto';
+
+DROP TABLE IF EXISTS Person CASCADE; 
 DROP TABLE IF EXISTS Course CASCADE; 
 DROP TABLE IF EXISTS Request CASCADE;
 DROP TABLE IF EXISTS Syllabus CASCADE;
@@ -22,6 +26,7 @@ DROP TYPE IF EXISTS Language CASCADE;
 DROP TYPE IF EXISTS EvaluationType CASCADE;
 DROP TYPE IF EXISTS CourseType CASCADE;
 
+
 CREATE TYPE CourseType AS ENUM('Bachelor', 'Masters', 'PhD');
 CREATE TYPE PersonType AS ENUM('Teacher', 'Student', 'Admin');
 CREATE TYPE Language AS ENUM('PT','EN','ES');
@@ -36,7 +41,7 @@ address VARCHAR(256),
 birthdate DATE,
 nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
-password VARCHAR(32) NOT NULL,
+password VARCHAR(46) NOT NULL,
 phoneNumber VARCHAR(12),
 visible INTEGER DEFAULT 1,
 tsv tsvector

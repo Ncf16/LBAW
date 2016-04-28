@@ -1,4 +1,5 @@
 ﻿-- Curricular Unit
+ SET SCHEMA 'proto';
 INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Corporate Law and Law of Contracts',18,6);
 INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Introduction to Accounting',18,6);
 INSERT INTO CurricularUnit(name,areaID,credits) VALUES ('Electromagnetism',10,6);

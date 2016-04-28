@@ -1,4 +1,5 @@
 ﻿--Request
+ SET SCHEMA 'proto';
 INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChange) VALUES (51,3,6,TRUE,'PrMbFPGxkj OqMUUhlAkYnCuQBtCFfpOa');
 INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChange) VALUES (2,3,15,FALSE,'QjXLmwNKwsvnkfyWqrqCIbdDIoyUFWe mIgmCCywDHMgSpjHuXfxfREWkM YseoLwTpU');
 INSERT INTO Request(studentCode,adminCode,newCourse_Code,approved,reasonForChange) VALUES (35,1,4,FALSE,'z iZLi NYMjYeHwTuUlQQoJxSLwtkTcbYiNfoBWtWHvPMFojjsYuleZrafnCvtrHOcIcWYSngdWJiMI OKBMgTTTtjzoNCqJXFmlJDxvhmXOUQjszwrnzmbKDxuWUQXpgIypfAEyUHMxbXjDRqJxlpZvXf WbchbZrRcQ');

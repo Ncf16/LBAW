@@ -1,4 +1,5 @@
 ﻿--Attendance
+ SET SCHEMA 'proto';
 INSERT INTO Attendance(studentCode,classID,attended) VALUES (451,44,'TRUE');
 INSERT INTO Attendance(studentCode,classID,attended) VALUES (500,47,'TRUE');
 INSERT INTO Attendance(studentCode,classID,attended) VALUES (540,39,'TRUE');
