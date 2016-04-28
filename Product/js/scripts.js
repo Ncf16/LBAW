@@ -1,8 +1,7 @@
 
 $(document).ready(function() {
 	console.log("kk");
-	$('#login_button').submit(loginButtonHandler);
-
+	$('#frm').on('submit', loginButtonHandler);
 });
 
 function emptyStatus() {
@@ -16,7 +15,7 @@ function loginButtonHandler(event){
 	console.log("was clicked!");
 
 	$.ajax({
-		url: '../../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
 		type: 'POST',
 		data: new FormData(this),
 		cache: false,
@@ -24,16 +23,16 @@ function loginButtonHandler(event){
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-						
-				var loggedIn = JSON.parse(data);
-				
-				if (loggedIn) {
+					console.log(data);
+				/*				
+				if (data == 'true') {
 					//location.reload();
 					//window.location.replace(document.referrer);
 				} else {
 					emptyStatus();
 					$("#message_status").prepend("Username/Password combination not found.");
 				}
+				*/
 				
 
 			} else {

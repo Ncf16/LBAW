@@ -41,7 +41,7 @@ address VARCHAR(256),
 birthdate DATE,
 nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
-password VARCHAR(46) NOT NULL,
+password VARCHAR(256) NOT NULL,
 phoneNumber VARCHAR(12),
 visible INTEGER DEFAULT 1,
 tsv tsvector

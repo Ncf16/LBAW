@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 03:44:42
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:38:02
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\person\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2722457213f088d8fb0-21980972%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2dd8a087ef3ba60f5dce19f885eeda1e3d7eed72' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\person\\login.tpl',
-      1 => 1461807815,
+      1 => 1461810993,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_57213f088fc5f7_20325554',
   'variables' => 
   array (
-    'BASE_URL' => 0,
     'ERROR_MESSAGES' => 0,
     'error' => 0,
     'SUCCESS_MESSAGES' => 0,
@@ -38,8 +37,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			    	<h3 class="panel-title">Please sign in</h3>
 			 	</div>
 			  	<div class="panel-body">
-			    	<form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-api/login.php" method="post" accept-charset="UTF-8" role="form" >
+			    	<form id="frm" accept-charset="UTF-8" role="form" >
                     	<fieldset>
 
 			    	  		<div class="form-group">
@@ -51,7 +49,6 @@ api/login.php" method="post" accept-charset="UTF-8" role="form" >
 			    			</div>
 
 			    			<input class="btn btn-lg btn-block" id="login_button" type="submit" value="Login">
-
 			    			<div id="message_status">
 			    			</div>
 
