@@ -118,6 +118,7 @@ header.carousel .fill {
 .btn:focus{
 	background-color:#fff;
 	color:#011;
+  border-color:#122;
 }
 
 .btn-header{
@@ -172,6 +173,10 @@ a .btn-header:focus{
 
 .container.login {
   padding-top:100px;
+}
+
+#login_button{
+  
 }
 
 /* Footer Styles */
