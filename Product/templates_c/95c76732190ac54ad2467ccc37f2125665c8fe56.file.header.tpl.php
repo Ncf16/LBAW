@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:33:36
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:47:16
          compiled from "C:\xampp\htdocs\LBAW\product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:152335721483875ba51-12984410%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95c76732190ac54ad2467ccc37f2125665c8fe56' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\product\\templates\\common\\header.tpl',
-      1 => 1461809965,
+      1 => 1461811513,
       2 => 'file',
     ),
   ),
@@ -97,7 +97,8 @@ pages/login.php">Request</a>
                 <ul class="nav navbar-nav navbar-left">
                   
                     <li class="nav-brand">
-                        <a href="index.php">Home</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+index.php">Home</a>
                     </li>
 
                     <li class="nav-brand">
@@ -106,15 +107,18 @@ pages/Course/courseList.php">Courses</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="#">Evaluations</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Course</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/coursePage.php">My Course</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Curricular Units</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
                     
                 </ul>
