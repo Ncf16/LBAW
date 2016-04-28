@@ -69,6 +69,8 @@ include_once($BASE_DIR . "templates/common/header.tpl");
          </div >
       </div>
       <!-- /.row                <h3>Sociodemographic data </h3>	 -->
+      
+      {if $person.academiccode == $USERNAME}
       <!-- Related Projects Row -->
       <div class="row"  id="personalPageBtnContainer">
          <div class="col-lg-12">
@@ -88,6 +90,7 @@ include_once($BASE_DIR . "templates/common/header.tpl");
          </div>
          <!--   -->
           </div>
+         {/if}
       </div>
       <!-- /.row -->
       <hr>

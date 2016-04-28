@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:18:34
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:44:20
          compiled from "C:\xampp\htdocs\LBAW\product\templates\person\personalPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:624757215e6a78a7e9-11361493%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '94073cafac01b957e0fba9687e0895035477e05b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\product\\templates\\person\\personalPage.tpl',
-      1 => 1461809911,
+      1 => 1461811458,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'BASE_URL' => 0,
     'person' => 0,
+    'USERNAME' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -68,7 +69,7 @@ images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750
             <li>Mobile Phone: <?php echo $_smarty_tpl->tpl_vars['person']->value['phonenumber'];?>
 </li>
             <li>Current Status:
-                <?php if (isset($_smarty_tpl->tpl_vars['person']->value['finishyear'])&&$_smarty_tpl->tpl_vars['person']->value['coursegrade']>20) {?>
+                <?php if (isset($_smarty_tpl->tpl_vars['person']->value['finishyear'])&&$_smarty_tpl->tpl_vars['person']->value['coursegrade']>10) {?>
                 Course completed
                <?php } elseif (isset($_smarty_tpl->tpl_vars['person']->value['finishyear'])) {?>
                Not valid
@@ -107,6 +108,11 @@ images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750
          </div >
       </div>
       <!-- /.row                <h3>Sociodemographic data </h3>	 -->
+      
+     <?php echo $_smarty_tpl->tpl_vars['person']->value['academiccode'];?>
+ <?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
+
+      <?php if ($_smarty_tpl->tpl_vars['person']->value['academiccode']==$_smarty_tpl->tpl_vars['USERNAME']->value) {?>
       <!-- Related Projects Row -->
       <div class="row"  id="personalPageBtnContainer">
          <div class="col-lg-12">
@@ -126,6 +132,7 @@ images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750
          </div>
          <!--   -->
           </div>
+         <?php }?>
       </div>
       <!-- /.row -->
       <hr>
