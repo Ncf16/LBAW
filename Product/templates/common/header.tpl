@@ -28,8 +28,10 @@
                     <span class="icon-bar"></span>
                 </button>
 
-      {if $USERNAME}
-        {include file='common/menu_logged_in.tpl'}
+      {if !isset($smarty.session.username)}
+       <div class="col-sm-3 col-xs-5" >
+            <a href="{$BASE_URL}pages/login.php" class="btn btn-primary btn-primary" >Login </a>
+         </div>
       {else}
        <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
@@ -45,7 +47,7 @@
                                 <a href="{$BASE_URL}pages/login.php">Request</a>
                             </li>
                             <li>
-                                <a href="#">Logout</a>
+                                <a href="#">Logout {$USERNAME}</a>
                             </li>
                         </ul>
                     </li>
