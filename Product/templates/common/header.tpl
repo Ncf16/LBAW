@@ -38,7 +38,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="personalPage.php">Profile</a>
+                                <a href="{$BASE_URL}pages/person/personalPage.php">Profile</a>
                             </li>
                              <li>
                                 <a href="admin.php">Admin Area</a>
@@ -62,23 +62,23 @@
                 <ul class="nav navbar-nav navbar-left">
                   
                     <li class="nav-brand">
-                        <a href="index.php">Home</a>
+                        <a href="{$BASE_URL}index.php">Home</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="courseList.php">Courses</a>
+                        <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="#">Evaluations</a>
+                        <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Course</a>
+                        <a href="{$BASE_URL}pages/Course/coursePage.php">My Course</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Curricular Units</a>
+                        <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
                     
                 </ul>

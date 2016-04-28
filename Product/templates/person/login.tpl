@@ -20,7 +20,6 @@
 			    			</div>
 
 			    			<input class="btn btn-lg btn-block" id="login_button" type="submit" value="Login">
-
 			    			<div id="message_status">
 			    			</div>
 

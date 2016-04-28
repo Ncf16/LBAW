@@ -12,10 +12,10 @@
 
   $username = $_POST['username'];
   $password = $_POST['password'];
-  
+
   $message = isLoginCorrect($username, $password);
   echo "hi";
-  
+
   if (isLoginCorrect($username, $password)) {
     $_SESSION['username'] = $username;
     echo "true"; 

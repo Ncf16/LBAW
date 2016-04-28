@@ -6,7 +6,11 @@
   global $conn;
 
   try{
+<<<<<<< HEAD
   $query = 'SELECT * FROM PERSON WHERE LOWER(username) = LOWER(?) ';//   AND password = ?";
+=======
+  $query = 'SELECT * FROM PERSON WHERE username  ILIKE  ? ';//   AND password = ?";
+>>>>>>> 425b50ee1a5566ecdf2f4d9389bca0a04a8b3faa
   $stmt = $conn->prepare($query);
   $stmt->execute(array($username));
   $user = $stmt->fetch();

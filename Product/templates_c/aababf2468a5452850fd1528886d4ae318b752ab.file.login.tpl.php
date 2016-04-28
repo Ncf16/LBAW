@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 03:30:22
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:18:53
          compiled from "C:\Users\Filipe\Desktop\FEUP\XAMPP\htdocs\LBAW\Product\templates\person\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9889572167ae5465a2-84714524%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aababf2468a5452850fd1528886d4ae318b752ab' => 
     array (
       0 => 'C:\\Users\\Filipe\\Desktop\\FEUP\\XAMPP\\htdocs\\LBAW\\Product\\templates\\person\\login.tpl',
-      1 => 1461806554,
+      1 => 1461809568,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_572167ae57a3b4_07957673',
   'variables' => 
   array (
     'BASE_URL' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'success' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_572167ae57a3b4_07957673',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_572167ae57a3b4_07957673')) {function content_572167ae57a3b4_07957673($_smarty_tpl) {?> <?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			 	</div>
 			  	<div class="panel-body">
 			    	<form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-actions/users/login.php" method="post" accept-charset="UTF-8" role="form" >
+api/login.php" method="post" accept-charset="UTF-8" role="form" >
                     	<fieldset>
 
 			    	  		<div class="form-group">
@@ -51,7 +51,6 @@ actions/users/login.php" method="post" accept-charset="UTF-8" role="form" >
 			    			</div>
 
 			    			<input class="btn btn-lg btn-block" id="login_button" type="submit" value="Login">
-
 			    			<div id="message_status">
 			    			</div>
 
