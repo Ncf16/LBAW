@@ -1,5 +1,5 @@
-
 --Grade
+ SET SCHEMA 'proto';
 INSERT INTO Grade(evaluationID,grade,studentCode) VALUES (10,2.70,806);
 INSERT INTO Grade(evaluationID,grade,studentCode) VALUES (25,11.85,990);
 INSERT INTO Grade(evaluationID,grade,studentCode) VALUES (18,14.95,371);

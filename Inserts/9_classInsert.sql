@@ -1,5 +1,5 @@
-﻿
---Class
+﻿--Class
+ SET SCHEMA 'proto';
 INSERT INTO Class (classid,occurrenceid,duration,roomid,classdate,summary,visible,teacherCode) VALUES (1,37,237,11,'2016-10-06 01:24:12','orci Maecenas dui eros sapien ac lacus',1,15);
 INSERT INTO Class (classid,occurrenceid,duration,roomid,classdate,summary,visible,teacherCode) VALUES (2,5,83,39,'2016-01-08 12:53:07','Etiam torquent Vivamus ornare natoque at',1,15);
 INSERT INTO Class (classid,occurrenceid,duration,roomid,classdate,summary,visible,teacherCode) VALUES (3,37,180,21,'2016-10-08 16:02:13','Aliquam',1,15);

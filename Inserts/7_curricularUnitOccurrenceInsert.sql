@@ -1,4 +1,5 @@
 ﻿-- Curricular Unit occurrence
+ SET SCHEMA 'proto';
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,externalPage,language,programme,requirements)
 VALUES (1,1,15,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,

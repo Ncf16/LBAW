@@ -1,4 +1,5 @@
 ﻿--ROOM 
+ SET SCHEMA 'proto';
 INSERT INTO Room(room) VALUES ('N602');
 INSERT INTO Room(room) VALUES ('S063');
 INSERT INTO Room(room) VALUES ('O683');

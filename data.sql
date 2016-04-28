@@ -1,4 +1,5 @@
- INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Admin','Xenos Maldonado Mejia Kane','60988  Bouvet Island St.','1922-08-29','Portugal',100000001,'ef61fc6c4c02e7c58c497fbb521056f2','8509166064');
+ SET SCHEMA 'proto';
+INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Admin','Xenos Maldonado Mejia Kane','60988  Bouvet Island St.','1922-08-29','Portugal',100000001,'ef61fc6c4c02e7c58c497fbb521056f2','8509166064');
 INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Student','Theodore Dickson Valenzuela Heath','71181 North Puerto Rico Ave.','2000-02-24','Japan',100000002,'ef61fc6c4c02e7c58c497fbb521056f2','33186001993');
 INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Admin','Rogan Carrillo Mcpherson Mcconnell','39068 North Congo Ln.','1930-03-23','Portugal',100000003,'ef61fc6c4c02e7c58c497fbb521056f2','210844227136');
 INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Student','Noelle Ortiz Cardenas Ryan','14009 North Afghanistan Blvd.','1989-02-22','Portugal',100000004,'ef61fc6c4c02e7c58c497fbb521056f2','34922325668');
