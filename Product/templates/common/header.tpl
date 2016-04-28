@@ -47,7 +47,7 @@
                                 <a href="{$BASE_URL}pages/login.php">Request</a>
                             </li>
                             <li>
-                                <a href="#">Logout {$USERNAME}</a>
+                                <a href="{$BASE_URL}actions/users/logout.php">Logout {$USERNAME}</a>
                             </li>
                         </ul>
                     </li>

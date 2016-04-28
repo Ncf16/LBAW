@@ -22,17 +22,17 @@ function loginButtonHandler(event){
 		processData: false,
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
-			if (typeof data.error === 'undefined') {
+			if (typeof data.error === 'undefined') {		
 					console.log(data);
-				/*				
+								
 				if (data == 'true') {
 					//location.reload();
-					//window.location.replace(document.referrer);
+					window.location.replace("../index.php");
 				} else {
 					emptyStatus();
 					$("#message_status").prepend("Username/Password combination not found.");
 				}
-				*/
+				
 				
 
 			} else {
