@@ -84,6 +84,8 @@
 
     <!-- jQuery --> 
     <script src="{$BASE_URL}js/jquery.js"></script>
+    <!-- Other Scripts -->
+    <script src="{$BASE_URL}js/scripts.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
 <script src="{$BASE_URL}js/bootstrap.min.js"></script>

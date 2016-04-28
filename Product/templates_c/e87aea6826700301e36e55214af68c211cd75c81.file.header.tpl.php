@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 00:54:39
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 01:28:49
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1119057213884755018-99798640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1461797678,
+      1 => 1461799727,
       2 => 'file',
     ),
   ),
@@ -116,6 +116,9 @@ pages/login.php">Request</a>
     <!-- jQuery --> 
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 js/jquery.js"></script>
+    <!-- Other Scripts -->
+    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/scripts.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
