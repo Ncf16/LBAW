@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 03:34:37
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:38:02
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1119057213884755018-99798640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1461807187,
+      1 => 1461810993,
       2 => 'file',
     ),
   ),
@@ -70,7 +70,8 @@ pages/login.php" class="btn btn-primary btn-primary" >Login </a>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="personalPage.php">Profile</a>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/person/personalPage.php">Profile</a>
                             </li>
                              <li>
                                 <a href="admin.php">Admin Area</a>
@@ -96,23 +97,28 @@ pages/login.php">Request</a>
                 <ul class="nav navbar-nav navbar-left">
                   
                     <li class="nav-brand">
-                        <a href="index.php">Home</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+index.php">Home</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="courseList.php">Courses</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/courseList.php">Courses</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="#">Evaluations</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Course</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/coursePage.php">My Course</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Curricular Units</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
                     
                 </ul>

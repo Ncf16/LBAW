@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:33:22
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:38:02
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\person\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2722457213f088d8fb0-21980972%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2dd8a087ef3ba60f5dce19f885eeda1e3d7eed72' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\person\\login.tpl',
-      1 => 1461810802,
+      1 => 1461810993,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			    			</div>
 
 			    			<input class="btn btn-lg btn-block" id="login_button" type="submit" value="Login">
-
 			    			<div id="message_status">
 			    			</div>
 

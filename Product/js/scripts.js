@@ -23,7 +23,7 @@ function loginButtonHandler(event){
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-						console.log(data);
+					console.log(data);
 				/*				
 				if (data == 'true') {
 					//location.reload();
