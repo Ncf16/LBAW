@@ -8,7 +8,7 @@
 			    	<h3 class="panel-title">Please sign in</h3>
 			 	</div>
 			  	<div class="panel-body">
-			    	<form action="{$BASE_URL}actions/users/login.php" method="post" accept-charset="UTF-8" role="form" >
+			    	<form action="{$BASE_URL}api/login.php" method="post" accept-charset="UTF-8" role="form" >
                     	<fieldset>
 
 			    	  		<div class="form-group">

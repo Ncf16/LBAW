@@ -11,11 +11,12 @@ function emptyStatus() {
 
 function loginButtonHandler(event){
 	event.preventDefault();
+	event.stopPropagation();
 	event.target.blur();
 	console.log("was clicked!");
 
 	$.ajax({
-		url: '../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
 		type: 'POST',
 		data: new FormData(this),
 		cache: false,
@@ -23,8 +24,7 @@ function loginButtonHandler(event){
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-				console.log(data);
-				
+						
 				var loggedIn = JSON.parse(data);
 				
 				if (loggedIn) {
