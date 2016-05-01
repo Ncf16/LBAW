@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 23:45:16
-         compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1119057213884755018-99798640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 12:50:06
+         compiled from "/opt/lbaw/lbaw1562/public_html/proto/templates/common/header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:72321056557218931f257a1-70849250%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'e87aea6826700301e36e55214af68c211cd75c81' => 
+    'aa05522c14efcb1488bee40f78f2983ec5603b89' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1462139115,
+      0 => '/opt/lbaw/lbaw1562/public_html/proto/templates/common/header.tpl',
+      1 => 1461840603,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1119057213884755018-99798640',
+  'nocache_hash' => '72321056557218931f257a1-70849250',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57213884757977_06461362',
+  'unifunc' => 'content_57218932060889_56336048',
   'variables' => 
   array (
     'BASE_URL' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57213884757977_06461362')) {function content_57213884757977_06461362($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_57218932060889_56336048')) {function content_57218932060889_56336048($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -75,8 +75,7 @@ pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['USERNAME
 ">Profile</a>
                             </li>
                              <li>
-                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/Admin/admin.php">Admin Area</a>
+                                <a href="admin.php">Admin Area</a>
                             </li>
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

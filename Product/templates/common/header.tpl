@@ -41,7 +41,7 @@
                                 <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
                             </li>
                              <li>
-                                <a href="admin.php">Admin Area</a>
+                                <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
                             </li>
                             <li>
                                 <a href="{$BASE_URL}pages/login.php">Request</a>

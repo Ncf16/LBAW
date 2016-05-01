@@ -1,9 +1,5 @@
 {include file='common/header.tpl'}
 
-<?php
-include_once('../../config/init.php');
-include_once($BASE_DIR . "templates/common/header.tpl");
-?>
 <div id="personalPage">
 <link href="{$BASE_URL}css/personalPage.css" rel="stylesheet">
 <!-- Page Content -->
@@ -101,7 +97,7 @@ include_once($BASE_DIR . "templates/common/header.tpl");
          {if $person.persontype == 'Admin'}
          <div class="row"  id="personalPageBtnContainer">
             <div class="col-sm-12 col-xs-5 text-center" >
-               <a href="admin.php" class="btn btn-primary btn-primary" > Admin Page </a>
+               <a href= "{$BASE_URL}pages/Admin/admin.php" class="btn btn-primary btn-primary" > Admin Page </a>
             </div>
           </div>
           {/if}
