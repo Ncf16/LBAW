@@ -23,9 +23,6 @@
                         <a class="btn btn-md btn-default btn-block" href="#">Join Us</a>
                     </div>
                 </div>
-        <hr>
-            
-
             <div class="row">
                 <div class="col-lg-12">
                 <br>

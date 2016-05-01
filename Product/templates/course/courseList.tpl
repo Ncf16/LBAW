@@ -11,16 +11,15 @@
       <th class="text-center">Director</th>
       <th class="text-center">Creation Date</th>
       <th class="text-center">Duration (years)</th>
-	  <th class="text-center">Academic Degree </th>
-      <th class="text-center">Number Of Students</th>
+	    <th class="text-center">Academic Degree </th>
     </tr>
   </thead>
   <tbody class="courseListBody">
 
   {foreach from=$activeCourses item=course}
      <tr>
-      <th scope="row"><a href='coursePage.php' {* /id={$course.code} *}>{$course.coursename}</a> </th>
-      <td ><a href='{$BASE_URL}pages/Person/personalPage.php?person={$course.teachercode}' >{$course.diretorname}</a> </td>
+      <th scope="row"><a href='coursePage.php' {* /id={$course.code} *}>{$course.name}</a></th>
+      <td ><a href='{$BASE_URL}pages/Person/personalPage.php?person={$course.teachercode}' >{$course.directorname}</a> </td>
       <td>{$course.creationdate}</td>
       
      {if $course.coursetype eq 'Masters'}
@@ -32,7 +31,6 @@
 		{/if}
       
       <td>{$course.coursetype}</td>
-      <td>{$course.count}</td>
     </tr>
    {/foreach}
   

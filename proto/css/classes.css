@@ -1,8 +1,0 @@
-#classesPage a[class="btn btn-primary btn-primary"]  {
-
- 	color: black;
- 	background-color: white;
-}
-#classesPage a[class="btn btn-primary btn-primary"]:active {
-background: #b33c00;
-}

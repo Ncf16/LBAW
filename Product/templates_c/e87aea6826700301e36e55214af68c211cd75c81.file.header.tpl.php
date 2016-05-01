@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 05:01:48
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 19:07:42
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1119057213884755018-99798640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1461812507,
+      1 => 1462122368,
       2 => 'file',
     ),
   ),
@@ -71,7 +71,8 @@ pages/login.php" class="btn btn-primary btn-primary" >Login </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/person/personalPage.php">Profile</a>
+pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
+">Profile</a>
                             </li>
                              <li>
                                 <a href="admin.php">Admin Area</a>
@@ -138,4 +139,5 @@ js/scripts.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-js/bootstrap.min.js"></script><?php }} ?>
+js/bootstrap.min.js"></script>
+<?php }} ?>

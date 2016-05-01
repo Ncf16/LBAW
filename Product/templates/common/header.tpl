@@ -38,7 +38,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{$BASE_URL}pages/person/personalPage.php">Profile</a>
+                                <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
                             </li>
                              <li>
                                 <a href="admin.php">Admin Area</a>

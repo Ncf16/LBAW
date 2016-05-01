@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 00:09:08
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 23:12:37
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:165675721388478f354-29148199%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1fc9b38b16ed964ec7269d568c9acaed441911e2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\footer.tpl',
-      1 => 1461179103,
+      1 => 1462137156,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
   'unifunc' => 'content_57213884791281_53765367',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57213884791281_53765367')) {function content_57213884791281_53765367($_smarty_tpl) {?><footer>
 
@@ -44,9 +44,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <a class="btn btn-md btn-default btn-block" href="#">Join Us</a>
                     </div>
                 </div>
-        <hr>
-            
-
             <div class="row">
                 <div class="col-lg-12">
                 <br>

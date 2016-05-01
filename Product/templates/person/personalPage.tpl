@@ -24,14 +24,18 @@ include_once($BASE_DIR . "templates/common/header.tpl");
          <img class="img-responsive" src="{$BASE_URL}images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
       </div>
       <div class="col-md-2">
+         {if $person.persontype == 'Student'}
          <h3>Course</h3>
-         <a href="CoursePage_MIEIC.html">{$person.coursename}</a>
+         <a href="CoursePage_MIEIC.html">{$student.coursename}</a>
+         <ul>
+            <li>Current Year: {$student.currentyear}</li>
+            <li>Starting Year: {$student.startyear}</li>
+         </ul>
+         {/if}
       </div>
       <div class="col-md-3">
          <h3>Personal Details</h3>
          <ul>
-            <li>Current Year: {$person.currentyear}</li>
-            <li>Starting Year: {$person.startyear}</li>
             <li>Mobile Phone: {$person.phonenumber}</li>
             <li>Current Status:
                 {if isset($person.finishyear) && $person.coursegrade > 10}
@@ -70,7 +74,9 @@ include_once($BASE_DIR . "templates/common/header.tpl");
       </div>
       <!-- /.row                <h3>Sociodemographic data </h3>	 -->
       
-      {if $person.academiccode == $USERNAME}
+      {if $person.username == $USERNAME}
+
+         {if $person.persontype == 'Student'}
       <!-- Related Projects Row -->
       <div class="row"  id="personalPageBtnContainer">
          <div class="col-lg-12">
@@ -83,7 +89,7 @@ include_once($BASE_DIR . "templates/common/header.tpl");
             <a href="#" class="btn btn-primary btn-primary">Curricular Units</a>
          </div>
          <div class="col-sm-3 col-xs-5">
-            <a href="#" class="btn btn-primary btn-primary">Admin Requests</a>
+            <a href="#" class="btn btn-primary btn-primary"> Submitted Requests</a>
          </div>
          <div class="col-sm-3 col-xs-5">
             <a href="#" class="btn btn-primary btn-primary">Currical Units Taken</a>
@@ -91,9 +97,18 @@ include_once($BASE_DIR . "templates/common/header.tpl");
          <!--   -->
           </div>
          {/if}
-      </div>
+
+         {if $person.persontype == 'Admin'}
+         <div class="row"  id="personalPageBtnContainer">
+            <div class="col-sm-12 col-xs-5 text-center" >
+               <a href="admin.php" class="btn btn-primary btn-primary" > Admin Page </a>
+            </div>
+          </div>
+          {/if}
+
+      {/if}
       <!-- /.row -->
-      <hr>
+      
    </div>
 </div>
 

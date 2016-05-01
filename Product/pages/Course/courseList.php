@@ -1,8 +1,8 @@
  <?php
   include_once('../../config/init.php');
-  include_once($BASE_DIR . "database/Courses/courses.php");
+  include_once($BASE_DIR . "database/course.php");
 
-  $activeCourses=getAllActiveCourseList();
+  $activeCourses=getVisibleCourses();
   $smarty->assign('activeCourses', $activeCourses);
   $smarty->display('course/courseList.tpl')
 ?>
