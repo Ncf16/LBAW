@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 23:45:16
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 00:23:09
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1119057213884755018-99798640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1462139115,
+      1 => 1462141386,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'BASE_URL' => 0,
     'USERNAME' => 0,
+    'ACCOUNT_TYPE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -67,25 +68,28 @@ pages/login.php" class="btn btn-primary btn-primary" >Login </a>
       <?php } else { ?>
        <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
+ (<?php echo $_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value;?>
+)<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
 ">Profile</a>
                             </li>
+                            <?php if ($_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Admin') {?>
                              <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/Admin/admin.php">Admin Area</a>
                             </li>
+                            <?php }?>
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/login.php">Request</a>
                             </li>
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-actions/users/logout.php">Logout <?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
-</a>
+actions/users/logout.php">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -109,20 +113,25 @@ index.php">Home</a>
 pages/Course/courseList.php">Courses</a>
                     </li>
 
-                    <li class="nav-brand">
-                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
-                    </li>
-
+                    <!-- this should show for students and regent of a course -->
+                    <?php if ($_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Student') {?>
                     <li class="nav-brand">
                         <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/Course/coursePage.php">My Course</a>
                     </li>
+                    <?php }?>
 
+                    <?php if ($_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Student'||$_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Teacher') {?> 
                     <li class="nav-brand">
                         <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
+
+                    <li class="nav-brand">
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                    </li>
+                    <?php }?>
                     
                 </ul>
             </div>

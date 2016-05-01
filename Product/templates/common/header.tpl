@@ -35,19 +35,21 @@
       {else}
        <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE})<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
                             </li>
+                            {if $ACCOUNT_TYPE == 'Admin'}
                              <li>
                                 <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
                             </li>
+                            {/if}
                             <li>
                                 <a href="{$BASE_URL}pages/login.php">Request</a>
                             </li>
                             <li>
-                                <a href="{$BASE_URL}actions/users/logout.php">Logout {$USERNAME}</a>
+                                <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -69,17 +71,22 @@
                         <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
                     </li>
 
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
-                    </li>
-
+                    <!-- this should show for students and regent of a course -->
+                    {if $ACCOUNT_TYPE == 'Student'}
                     <li class="nav-brand">
                         <a href="{$BASE_URL}pages/Course/coursePage.php">My Course</a>
                     </li>
+                    {/if}
 
+                    {if $ACCOUNT_TYPE == 'Student' || $ACCOUNT_TYPE == 'Teacher'} 
                     <li class="nav-brand">
                         <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
+
+                    <li class="nav-brand">
+                        <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                    </li>
+                    {/if}
                     
                 </ul>
             </div>

@@ -54,4 +54,14 @@
     return $stmt->fetch();
   }
 
+  function getPersonType($id){
+    global $conn;
+    $stmt = $conn->prepare("SELECT persontype
+                            FROM Person
+                            WHERE username = ?");
+    
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+  }
+
 ?>

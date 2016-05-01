@@ -13,6 +13,7 @@
 
   if (isLoginCorrect($username, $password)) {
     $_SESSION['username'] = $username;
+    $_SESSION['account_type'] = getPersonType($username)['persontype'];
     echo "true"; 
   } else {
     echo "false";  
