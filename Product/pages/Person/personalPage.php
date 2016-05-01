@@ -9,15 +9,16 @@
 
   $person = getPersonInfo($_GET['person']);
 
-  //IF USERNAME CORRESPONDS TO NO PERSON, REDIRECT TO INDEX
+  if($person == NULL){ //IF USERNAME CORRESPONDS TO NO PERSON, REDIRECT TO INDEX
+  	header('Location: ' . $BASE_URL .  'index.php');
+    exit;
+  }
 
   if($person['persontype'] == 'Student'){
   	$student=getStudentInfo($_GET['person']);
   	$smarty->assign('student', $student);
-
   }
 
-  //var_dump($_GET['person']);
   $smarty->assign('person', $person);
   $smarty->display('person/personalPage.tpl');
 ?>
