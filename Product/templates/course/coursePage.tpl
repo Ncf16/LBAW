@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="page-header">{$course.name}</h2>
+      <h2 class="page-header">{$course.name} ({$course.abbreviation})</h2>
     </div>
   </div>
 
@@ -19,16 +19,24 @@
         <a href='{$BASE_URL}pages/Person/personalPage.php?person={$course.directorusername}'>Director: {$course.director}</a>
       </p>
       <p>
-        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Creation Date: 2006/2007
+        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Creation Date: {$course.creationdate}
       </p>
       <p>
-        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Duration: 5 years
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Duration: 
+        {if $course.coursetype eq 'Masters'}
+          5 
+        {elseif $course.coursetype eq 'Bachelor'}
+          3 
+        {elseif $course.coursetype  eq 'PhD'}
+          5
+        {/if}
+        years
       </p>
       <p>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Academic Degree: Master
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Academic Degree: {$course.coursetype}
       </p>
        <p>
-        <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Number of Students: 120
+        <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Number of Students: {$course.studentcount}
       </p>
 
     </div>

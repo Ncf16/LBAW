@@ -2,8 +2,7 @@
 
   function getAllActiveCourseList() {
     global $conn;
-    $stmt = $conn->prepare("SELECT course.name AS courseName,course.description,course.creationDate,person.name AS diretorName,COUNT(CourseEnrollment.studentcode),course.courseType,course.code,
-    	course.abbreviation,course.teachercode
+    $stmt = $conn->prepare("SELECT course.*, person.name AS diretorName,COUNT(CourseEnrollment.studentcode),
 								FROM  CourseEnrollment, course, person 
                 WHERE CourseEnrollment.courseid = course.code AND CourseEnrollment.finishyear IS NULL    AND course.teachercode = person.academiccode 
   										AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
@@ -24,6 +23,19 @@
   }
 
   function getCourseInfo($courseCode){
+    global $conn;
+    $stmt = $conn->prepare("SELECT course.*, person.name as director, person.username as directorUsername, COUNT(CourseEnrollment.studentcode) AS studentcount
+                            FROM course, person, courseenrollment
+                            WHERE course.code = courseenrollment.courseid
+                            AND course.teachercode = person.academiccode
+                            AND course.code = ?
+                            AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
+                            GROUP BY course.code, person.name, person.username;");
+    $stmt->execute(array($courseCode));
+    return $stmt->fetch();
+  }
+
+  function getCurrentCourseSyllabus($courseCode){
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name as director, person.username as directorUsername
                             FROM course, person

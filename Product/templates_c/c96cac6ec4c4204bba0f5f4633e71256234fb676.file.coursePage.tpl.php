@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 03:07:49
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 03:58:00
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\coursePage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:638057264431e91479-05566031%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c96cac6ec4c4204bba0f5f4633e71256234fb676' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\coursePage.tpl',
-      1 => 1462151268,
+      1 => 1462154279,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   <div class="row">
     <div class="col-lg-12">
       <h2 class="page-header"><?php echo $_smarty_tpl->tpl_vars['course']->value['name'];?>
-</h2>
+ (<?php echo $_smarty_tpl->tpl_vars['course']->value['abbreviation'];?>
+)</h2>
     </div>
   </div>
 
@@ -51,16 +52,27 @@ pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']
 </a>
       </p>
       <p>
-        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Creation Date: 2006/2007
+        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Creation Date: <?php echo $_smarty_tpl->tpl_vars['course']->value['creationdate'];?>
+
       </p>
       <p>
-        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Duration: 5 years
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Duration: 
+        <?php if ($_smarty_tpl->tpl_vars['course']->value['coursetype']=='Masters') {?>
+          5 
+        <?php } elseif ($_smarty_tpl->tpl_vars['course']->value['coursetype']=='Bachelor') {?>
+          3 
+        <?php } elseif ($_smarty_tpl->tpl_vars['course']->value['coursetype']=='PhD') {?>
+          5
+        <?php }?>
+        years
       </p>
       <p>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Academic Degree: Master
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Academic Degree: <?php echo $_smarty_tpl->tpl_vars['course']->value['coursetype'];?>
+
       </p>
        <p>
-        <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Number of Students: 120
+        <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Number of Students: <?php echo $_smarty_tpl->tpl_vars['course']->value['studentcount'];?>
+
       </p>
 
     </div>
