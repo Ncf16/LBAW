@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 03:58:00
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 19:30:01
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\coursePage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:638057264431e91479-05566031%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c96cac6ec4c4204bba0f5f4633e71256234fb676' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\coursePage.tpl',
-      1 => 1462154279,
+      1 => 1462197414,
       2 => 'file',
     ),
   ),

@@ -3,7 +3,7 @@
 <div id="personalPage">
 <link href="{$BASE_URL}css/personalPage.css" rel="stylesheet">
 <!-- Page Content -->
-<div   class="container">
+<div class="container">
    <!-- Portfolio Item Heading -->
    <div class="row">
       <div class="col-lg-12">
