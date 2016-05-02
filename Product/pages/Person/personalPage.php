@@ -7,7 +7,7 @@
    exit;
   }
 
-  $person = getPersonInfo($_GET['person']);
+  $person = getPersonInfoUser($_GET['person']);
 
   if($person == NULL){ //IF USERNAME CORRESPONDS TO NO PERSON, REDIRECT TO INDEX
   	header('Location: ' . $BASE_URL .  'index.php');

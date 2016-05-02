@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 20:00:17
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 03:07:49
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\coursePage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:638057264431e91479-05566031%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c96cac6ec4c4204bba0f5f4633e71256234fb676' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\coursePage.tpl',
-      1 => 1462122368,
+      1 => 1462151268,
       2 => 'file',
     ),
   ),
@@ -15,31 +15,40 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
   'unifunc' => 'content_57264431ec3983_14394837',
+  'variables' => 
+  array (
+    'course' => 0,
+    'BASE_URL' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57264431ec3983_14394837')) {function content_57264431ec3983_14394837($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
-
-
 
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="page-header">Mestrado Integrado em Engenharia Informática</h2>
+      <h2 class="page-header"><?php echo $_smarty_tpl->tpl_vars['course']->value['name'];?>
+</h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-8">
       <h2>Description</h2>
-      <p>A master degree in Computer Science. In this curricular unit a student is expected to learn skills in order to manage networks, work in group projects, develop and mantain software.</p>
+      <p><?php echo $_smarty_tpl->tpl_vars['course']->value['description'];?>
+</p>
     </div>
     <div class="col-md-4">
       <h2>Details</h2>
       <p>
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Director: João Carlos Pascoal Faria
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+        <a href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']->value['directorusername'];?>
+'>Director: <?php echo $_smarty_tpl->tpl_vars['course']->value['director'];?>
+</a>
       </p>
       <p>
         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Creation Date: 2006/2007

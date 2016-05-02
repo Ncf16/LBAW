@@ -39,22 +39,32 @@
             FROM  Course, CourseEnrollment, Person
             WHERE Course.code = CourseEnrollment.courseID
             AND CourseEnrollment.studentCode = Person.academiccode
-            AND Person.username = ?");
+            AND Person.academiccode = ?");
     $stmt->execute(array($id));
     return $stmt->fetch();
   }
 
-  function getPersonInfo($id){
+  function getPersonInfoUser($username){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM Person
                             WHERE username = ?");
     
+    $stmt->execute(array($username));
+    return $stmt->fetch();
+  }
+
+  function getPersonInfoID($id){
+    global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            WHERE academiccode = ?");
+    
     $stmt->execute(array($id));
     return $stmt->fetch();
   }
 
-  function getPersonType($id){
+  function getPersonType($username){
     global $conn;
     $stmt = $conn->prepare("SELECT persontype
                             FROM Person

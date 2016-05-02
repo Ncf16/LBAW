@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 21:30:02
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 03:14:13
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\courseList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:8095572640cf570569-77344015%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c366cdc79d9865940097cb0a6196e7274bca572a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\courseList.tpl',
-      1 => 1462130997,
+      1 => 1462151605,
       2 => 'file',
     ),
   ),
@@ -52,12 +52,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['course']->key => $_smarty_tpl->tpl_va
 $_smarty_tpl->tpl_vars['course']->_loop = true;
 ?>
      <tr>
-      <th scope="row"><a href='coursePage.php' ><?php echo $_smarty_tpl->tpl_vars['course']->value['name'];?>
-</a></th>
-      <td ><a href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']->value['teachercode'];?>
-' ><?php echo $_smarty_tpl->tpl_vars['course']->value['directorname'];?>
-</a> </td>
+      <th scope="row">
+        <a href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/coursePage.php?course=<?php echo $_smarty_tpl->tpl_vars['course']->value['code'];?>
+'> <?php echo $_smarty_tpl->tpl_vars['course']->value['name'];?>
+
+        </a>
+      </th>
+      <td>
+        <a href='<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']->value['directorusername'];?>
+'><?php echo $_smarty_tpl->tpl_vars['course']->value['directorname'];?>
+</a> 
+      </td>
       <td><?php echo $_smarty_tpl->tpl_vars['course']->value['creationdate'];?>
 </td>
       

@@ -1,23 +1,22 @@
 {include file='common/header.tpl'}
 
-
-
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="page-header">Mestrado Integrado em Engenharia Informática</h2>
+      <h2 class="page-header">{$course.name}</h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-8">
       <h2>Description</h2>
-      <p>A master degree in Computer Science. In this curricular unit a student is expected to learn skills in order to manage networks, work in group projects, develop and mantain software.</p>
+      <p>{$course.description}</p>
     </div>
     <div class="col-md-4">
       <h2>Details</h2>
       <p>
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Director: João Carlos Pascoal Faria
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+        <a href='{$BASE_URL}pages/Person/personalPage.php?person={$course.directorusername}'>Director: {$course.director}</a>
       </p>
       <p>
         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Creation Date: 2006/2007

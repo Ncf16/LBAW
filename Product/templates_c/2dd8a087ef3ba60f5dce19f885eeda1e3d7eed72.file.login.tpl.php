@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 19:17:51
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 02:23:35
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\person\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2722457213f088d8fb0-21980972%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2dd8a087ef3ba60f5dce19f885eeda1e3d7eed72' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\person\\login.tpl',
-      1 => 1462122368,
+      1 => 1462148614,
       2 => 'file',
     ),
   ),
@@ -34,7 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Please sign in</h3>
+			    	<h3 class="panel-title">Please Sign In</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form id="frm" accept-charset="UTF-8" role="form" >

@@ -18,8 +18,13 @@
 
   {foreach from=$activeCourses item=course}
      <tr>
-      <th scope="row"><a href='coursePage.php' {* /id={$course.code} *}>{$course.name}</a></th>
-      <td ><a href='{$BASE_URL}pages/Person/personalPage.php?person={$course.teachercode}' >{$course.directorname}</a> </td>
+      <th scope="row">
+        <a href='{$BASE_URL}pages/Course/coursePage.php?course={$course.code}'> {$course.name}
+        </a>
+      </th>
+      <td>
+        <a href='{$BASE_URL}pages/Person/personalPage.php?person={$course.directorusername}'>{$course.directorname}</a> 
+      </td>
       <td>{$course.creationdate}</td>
       
      {if $course.coursetype eq 'Masters'}

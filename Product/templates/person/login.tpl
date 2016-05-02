@@ -5,7 +5,7 @@
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Please sign in</h3>
+			    	<h3 class="panel-title">Please Sign In</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form id="frm" accept-charset="UTF-8" role="form" >

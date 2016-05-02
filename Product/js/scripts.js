@@ -15,7 +15,7 @@ function loginButtonHandler(event){
 	console.log("was clicked!");
 
 	$.ajax({
-		url: '../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../../api/login.php',           //TODO: MIGHT HAVE TO FIX THIS
 		type: 'POST',
 		data: new FormData(this),
 		cache: false,
@@ -27,7 +27,7 @@ function loginButtonHandler(event){
 								
 				if (data == 'true') {
 					//location.reload();
-					window.location.replace("../index.php");
+					window.location.replace("../../index.php");
 				} else {
 					emptyStatus();
 					$("#message_status").prepend("Username/Password combination not found.");
