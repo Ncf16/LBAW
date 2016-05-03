@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 02:29:42
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 02:40:21
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\syllabus.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:265875727a6eb6773e2-97800479%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:184835727f375ccaf68-89478991%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e42467efeeee224da8cdbcb70a06c9f56edb5435' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\syllabus.tpl',
-      1 => 1462235381,
+      1 => 1462235665,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '265875727a6eb6773e2-97800479',
+  'nocache_hash' => '184835727f375ccaf68-89478991',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_5727a6eb69bae2_87251766',
   'variables' => 
   array (
     'syllabus' => 0,
@@ -26,8 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'k' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5727f375d16b01_44703776',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5727a6eb69bae2_87251766')) {function content_5727a6eb69bae2_87251766($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_5727f375d16b01_44703776')) {function content_5727f375d16b01_44703776($_smarty_tpl) {?><div class="row">
     <div class="col-lg-12">
       <div class="panel-group" id="accordion">
 

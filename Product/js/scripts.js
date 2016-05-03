@@ -4,9 +4,10 @@
 $(document).ready(function() {
 	$('#frm').on('submit', loginButtonHandler);
 
-	
+	console.log("hey");
 	$('#syllabus_year').click(syllabusYearHandler); 
 	$('#syllabus_year').click();
+	
 
 });
 

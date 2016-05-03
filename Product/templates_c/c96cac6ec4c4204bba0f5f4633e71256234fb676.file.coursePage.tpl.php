@@ -1,30 +1,20 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 22:10:25
-=======
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 19:30:01
->>>>>>> 2c9f740bad8914bc25d3132352cb5f9dbb64b4af
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 02:37:09
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\coursePage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:638057264431e91479-05566031%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:138725727f2b564ced0-13252277%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c96cac6ec4c4204bba0f5f4633e71256234fb676' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\coursePage.tpl',
-<<<<<<< HEAD
-      1 => 1462217244,
-=======
-      1 => 1462197414,
->>>>>>> 2c9f740bad8914bc25d3132352cb5f9dbb64b4af
+      1 => 1462235658,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '638057264431e91479-05566031',
+  'nocache_hash' => '138725727f2b564ced0-13252277',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57264431ec3983_14394837',
   'variables' => 
   array (
     'course' => 0,
@@ -33,8 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'i' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5727f2b568e1a3_64399865',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57264431ec3983_14394837')) {function content_57264431ec3983_14394837($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_5727f2b568e1a3_64399865')) {function content_5727f2b568e1a3_64399865($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 
 <div class="container ">

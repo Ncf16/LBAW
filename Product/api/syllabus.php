@@ -5,7 +5,7 @@
   
  
   if (!$_POST['year'] || !$_POST['course']) {
-    echo "false";    
+    echo "There are no curricular unit occurrences present on this course's syllabus.";    
     exit;
   }
 
