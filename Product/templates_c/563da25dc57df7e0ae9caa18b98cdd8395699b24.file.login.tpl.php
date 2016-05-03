@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 17:29:09
-         compiled from "C:\xampp\htdocs\LBAW\Product\templates\person\login.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2722457213f088d8fb0-21980972%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 17:08:30
+         compiled from "C:\xampp\htdocs\LBAW\product\templates\person\login.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1255857276d6e1aa040-84211498%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '2dd8a087ef3ba60f5dce19f885eeda1e3d7eed72' => 
+    '563da25dc57df7e0ae9caa18b98cdd8395699b24' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\person\\login.tpl',
+      0 => 'C:\\xampp\\htdocs\\LBAW\\product\\templates\\person\\login.tpl',
       1 => 1462197414,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2722457213f088d8fb0-21980972',
+  'nocache_hash' => '1255857276d6e1aa040-84211498',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57213f088fc5f7_20325554',
   'variables' => 
   array (
     'ERROR_MESSAGES' => 0,
@@ -25,8 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'success' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_57276d6e280df2_76002328',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57213f088fc5f7_20325554')) {function content_57213f088fc5f7_20325554($_smarty_tpl) {?> <?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_57276d6e280df2_76002328')) {function content_57276d6e280df2_76002328($_smarty_tpl) {?> <?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 
 <div class="container login">

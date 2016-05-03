@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 04:33:36
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 17:08:15
          compiled from "C:\xampp\htdocs\LBAW\product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:152335721483875ba51-12984410%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95c76732190ac54ad2467ccc37f2125665c8fe56' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\product\\templates\\common\\header.tpl',
-      1 => 1461809965,
+      1 => 1462197414,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'BASE_URL' => 0,
     'USERNAME' => 0,
+    'ACCOUNT_TYPE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -62,27 +63,33 @@ font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <?php if (!isset($_SESSION['username'])) {?>
        <div class="col-sm-3 col-xs-5" >
             <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/login.php" class="btn btn-primary btn-primary" >Login </a>
+pages/Person/login.php" class="btn btn-primary btn-primary" >Login </a>
          </div>
       <?php } else { ?>
        <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teacher/Student<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
+ (<?php echo $_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value;?>
+)<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/person/personalPage.php">Profile</a>
+pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
+">Profile</a>
                             </li>
+                            <?php if ($_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Admin') {?>
                              <li>
-                                <a href="admin.php">Admin Area</a>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Admin/admin.php">Admin Area</a>
                             </li>
+                            <?php }?>
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/login.php">Request</a>
                             </li>
                             <li>
-                                <a href="#">Logout <?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
-</a>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/users/logout.php">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -97,7 +104,8 @@ pages/login.php">Request</a>
                 <ul class="nav navbar-nav navbar-left">
                   
                     <li class="nav-brand">
-                        <a href="index.php">Home</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+index.php">Home</a>
                     </li>
 
                     <li class="nav-brand">
@@ -105,17 +113,25 @@ pages/login.php">Request</a>
 pages/Course/courseList.php">Courses</a>
                     </li>
 
+                    <!-- this should show for students and regent of a course -->
+                    <?php if ($_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Student') {?>
                     <li class="nav-brand">
-                        <a href="#">Evaluations</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/coursePage.php">My Course</a>
+                    </li>
+                    <?php }?>
+
+                    <?php if ($_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Student'||$_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value=='Teacher') {?> 
+                    <li class="nav-brand">
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitPage.php">My Curricular Units</a>
                     </li>
 
                     <li class="nav-brand">
-                        <a href="coursePage.php">My Course</a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
                     </li>
-
-                    <li class="nav-brand">
-                        <a href="coursePage.php">My Curricular Units</a>
-                    </li>
+                    <?php }?>
                     
                 </ul>
             </div>
@@ -133,4 +149,5 @@ js/scripts.js"></script>
    
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-js/bootstrap.min.js"></script><?php }} ?>
+js/bootstrap.min.js"></script>
+<?php }} ?>

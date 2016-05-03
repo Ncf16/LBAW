@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-01 23:46:29
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 21:41:27
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\person\personalPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:31096572637e0825020-30718720%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e8ee27867bf30f9c3bc75ef90dd6fb9bc6b4045e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\person\\personalPage.tpl',
-      1 => 1462139188,
+      1 => 1462210689,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 css/personalPage.css" rel="stylesheet">
 <!-- Page Content -->
-<div   class="container">
+<div class="container">
    <!-- Portfolio Item Heading -->
    <div class="row">
       <div class="col-lg-12">
