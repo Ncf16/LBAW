@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 22:31:22
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 05:09:31
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\curricularUnit\createUnit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:268265727ad85eb7385-43835378%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fea6c60e59c76acc6c7acf2b1e8c59995562b1e6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\curricularUnit\\createUnit.tpl',
-      1 => 1462221062,
+      1 => 1462244511,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5727ad85ef1d09_35515326',
   'variables' => 
   array (
+    'BASE_URL' => 0,
+    'FORM_VALUES' => 0,
     'areas' => 0,
     'area' => 0,
   ),
@@ -35,7 +37,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   	</div>
   </div>
 
-  <form class="well form-horizontal" action="#" method="post" id="unitCreation_form">
+  <form class="well form-horizontal" action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/units/createUnit.php" method="post" id="unitCreation_form">
   	
   	<div class="row">
 	  	<div class="form-group">
@@ -43,7 +46,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	  		<div class="col-md-9 inputGroupContainer">
 	  			<div class="input-group">
 	  				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  				<input name="unit_name" placeholder="Curricular Unit Name" class="form-control" type="text" required>
+	  				<input name="unit_name" placeholder="Curricular Unit Name" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['unit_name'];?>
+" class="form-control" type="text" required>
 	  			</div>
 	  		</div>
 	  	</div>
@@ -52,15 +56,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	  		<div class="col-md-9 inputGroupContainer">
 	  			<div class="input-group">
 	  				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  				<input name="unit_area" placeholder="Curricular Unit Area" list="areas" class="form-control" type="text" required>
+	  				<input name="unit_area" placeholder="Curricular Unit Area" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['unit_area'];?>
+" list="areas" class="form-control" type="text" required>
 	  				<datalist id="areas">
 	  					<?php  $_smarty_tpl->tpl_vars['area'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['area']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['areas']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['area']->key => $_smarty_tpl->tpl_vars['area']->value) {
 $_smarty_tpl->tpl_vars['area']->_loop = true;
 ?>
-	  					<option data-value="<?php echo $_smarty_tpl->tpl_vars['area']->value['id'];?>
-" value="<?php echo $_smarty_tpl->tpl_vars['area']->value['name'];?>
+	  					<option value="<?php echo $_smarty_tpl->tpl_vars['area']->value['area'];?>
 "></option>
 	  					<?php } ?>
 	  				</datalist>
@@ -72,13 +76,14 @@ $_smarty_tpl->tpl_vars['area']->_loop = true;
 			<div class="col-md-9 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
-					<input name="unit_credits" placeholder="0" class="form-control" type="number" min="1" max="10" required>
+					<input name="unit_credits" placeholder="0" value="<?php echo $_smarty_tpl->tpl_vars['FORM_VALUES']->value['unit_credits'];?>
+" class="form-control" type="number" min="1" max="10" required>
 				</div>
 			</div>
 	    </div>
 	  	<div class="form-group">
 	  		<div class="col-md-4 col-md-offset-4">
-	  			<button type="submit" class="btn btn-primary">Create New Curricular Unit</button>
+	  			<button type="submit" name="unitSubmit" class="btn btn-primary">Create New Curricular Unit</button>
 	  		</div>
 	  	</div>
 	  </div>
