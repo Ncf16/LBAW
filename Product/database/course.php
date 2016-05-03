@@ -1,5 +1,34 @@
 <?php
+/*
+CREATE TABLE IF NOT EXISTS Course(
+code SERIAL PRIMARY KEY,
+abbreviation VARCHAR(5),
+teacherCode INTEGER REFERENCES Person(academicCode),
+courseType CourseType,
+name VARCHAR(128) NOT NULL UNIQUE,
+creationDate DATE NOT NULL DEFAULT CURRENT_DATE,
+currentCalendarYear INTEGER NOT NULL,
+description TEXT,
+visible INTEGER DEFAULT 1,
+tsv tsvector,
+CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalendarYear >= 1990)
+);
+*/
 
+function createCourse($abbreviation,$regentCode,$courseType,$name,$creationDate,$currentCalendarYear,$description){
+  global $conn;
+    $stmt = $conn->prepare("INSERT INTO COURSE(abbreviation,teachercode,courseType,name,creationDate,currentCalendarYear,description) VALUES(?,?,?,?,?,?,?)");
+
+    try {
+    $stmt->execute(array($abbreviation,$regentCode,$courseType,$name,$creationDate,$currentCalendarYear,$description));
+    } catch (Exception $e) {
+      echo 'Caught exception: ',  $e->getMessage(), "\n";
+      return $e->getMessage();
+    }
+    
+    return true;
+
+}
   function getAllActiveCourseList() {
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name AS diretorName,COUNT(CourseEnrollment.studentcode),
@@ -115,5 +144,16 @@
                             ORDER BY year DESC;");
     $stmt->execute(array($courseCode));
     return $stmt->fetchAll();
+  }
+  function convertTypeToInt($type){
+    switch($type){
+    case "Bachelor":
+    return 1;
+    case "Masters":
+    return 2;
+    case "PhD":
+    return 3;
+    default:
+    return -1;}
   }
 ?>

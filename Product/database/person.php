@@ -70,8 +70,55 @@
                             FROM Person
                             WHERE username = ?");
     
-    $stmt->execute(array($id));
+    $stmt->execute(array($username));
     return $stmt->fetch();
   }
 
+function getTeacherAcademicCodes(){
+     global $conn;
+    $stmt = $conn->prepare("SELECT academiccode
+                            FROM Person
+                            WHERE   persontype='Teacher'" );
+    
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+  function getAllTeachers(){
+     global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            WHERE   persontype='Teacher'" );
+    
+    $stmt->execute(array( ));
+    return $stmt->fetchAll();
+}
+function getTeacherWithName($username){
+   global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            WHERE username = ? AND persontype='Teacher'" );
+    
+    $stmt->execute(array($username));
+    return $stmt->fetch();
+}
+function checkAcademicCodeInArray($array,$valueToCheck){
+      var_dump($valueToCheck);
+  foreach ($array as $value) {
+    if($value.academiccode==$valueToCheck){
+      var_dump($value.academiccode);
+      return true;
+    }
+  }
+  return false;
+}
+
+function  checkUserType($type,$id){
+  global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            WHERE academiccode = ? AND persontype= ? " );
+    
+    $stmt->execute(array($id,$type));
+    return $stmt->fetch();
+}
 ?>
