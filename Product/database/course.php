@@ -111,7 +111,8 @@
                             WHERE course.code = ?
                             AND course.code = syllabus.coursecode
                             AND curricularunitoccurrence.syllabusid = syllabus.syllabusid
-                            AND curricularunitoccurrence.curricularunitid = curricularunit.curricularid;");
+                            AND curricularunitoccurrence.curricularunitid = curricularunit.curricularid
+                            ORDER BY year DESC;");
     $stmt->execute(array($courseCode));
     return $stmt->fetchAll();
   }

@@ -5,9 +5,9 @@ $(document).ready(function() {
 	$('#frm').on('submit', loginButtonHandler);
 
 	console.log("hey");
-	$('#syllabus_year').click(syllabusYearHandler); 
-	$('#syllabus_year').click();
-	
+	$('#syllabus_year').change(syllabusYearHandler); 
+	$('#syllabus_year').change();
+
 
 });
 
