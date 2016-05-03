@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 03:58:00
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-02 22:10:25
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\coursePage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:638057264431e91479-05566031%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c96cac6ec4c4204bba0f5f4633e71256234fb676' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\coursePage.tpl',
-      1 => 1462154279,
+      1 => 1462217244,
       2 => 'file',
     ),
   ),
@@ -21,13 +21,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'course' => 0,
     'BASE_URL' => 0,
+    'syllabusYears' => 0,
+    'i' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57264431ec3983_14394837')) {function content_57264431ec3983_14394837($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 
-<div class="container">
+<div class="container ">
   <div class="row">
     <div class="col-lg-12">
       <h2 class="page-header"><?php echo $_smarty_tpl->tpl_vars['course']->value['name'];?>
@@ -57,13 +59,8 @@ pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']
       </p>
       <p>
         <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Duration: 
-        <?php if ($_smarty_tpl->tpl_vars['course']->value['coursetype']=='Masters') {?>
-          5 
-        <?php } elseif ($_smarty_tpl->tpl_vars['course']->value['coursetype']=='Bachelor') {?>
-          3 
-        <?php } elseif ($_smarty_tpl->tpl_vars['course']->value['coursetype']=='PhD') {?>
-          5
-        <?php }?>
+        <?php echo $_smarty_tpl->tpl_vars['course']->value['courseYears'];?>
+
         years
       </p>
       <p>
@@ -87,361 +84,27 @@ pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']
   </p>
 
   <div class="row">
-    <div class="col-lg-12">
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year1">1 Year</a>
-            </h4>
-          </div>
-          <div id="year1" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="panel-group" id="accordion1">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion1" href="#semester11">1 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester11" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                             <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Análise Matemática</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Fundamentos da Programação</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion1" href="#semester12">2 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester12" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Álgebra</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Projeto FEUP</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year2">2 Year</a>
-            </h4>
-          </div>
-          <div id="year2" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="panel-group" id="accordion2">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion2" href="#semester21">1 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester21" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                             <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Análise Matemática</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Fundamentos da Programação</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion2" href="#semester22">2 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester22" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Álgebra</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Projeto FEUP</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year3">3 Year</a>
-            </h4>
-          </div>
-          <div id="year3" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="panel-group" id="accordion3">
-                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion3" href="#semester31">1 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester31" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                             <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Análise Matemática</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Fundamentos da Programação</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion3" href="#semester32">2 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester32" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Álgebra</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Projeto FEUP</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year4">4 Year</a>
-            </h4>
-          </div>
-          <div id="year4" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="panel-group" id="accordion4">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion4" href="#semester41">1 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester41" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                             <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Análise Matemática</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Fundamentos da Programação</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion4" href="#semester42">2 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester42" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Álgebra</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Projeto FEUP</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#year5">5 Year</a>
-            </h4>
-          </div>
-          <div id="year5" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="panel-group" id="accordion5">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion5" href="#semester51">1 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester51" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                             <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Análise Matemática</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Arquitectura e Organização de Computadores</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Fundamentos da Programação</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion5" href="#semester52">2 Semester</a>
-                        </h4>
-                      </div>
-                      <div id="semester52" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <table class="table table-striped uc-table">
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Álgebra</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center">
-                                <a href="unitPage.php">Projeto FEUP</a>
-                              </td>
-                            </tr>
-                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="col-xs-2">
+      <div class="form-group" >
+        <input type="hidden" id="course_code" value="<?php echo $_smarty_tpl->tpl_vars['course']->value['code'];?>
+">
+        <label for="sel1">Year:</label>
+        <select class="form-control" id="syllabus_year" >
+        <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['syllabusYears']->value['nrYears']-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['syllabusYears']->value['nrYears']-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+          <option><?php echo $_smarty_tpl->tpl_vars['syllabusYears']->value[$_smarty_tpl->tpl_vars['i']->value]['year'];?>
+</option>
+        <?php }} ?>
+        </select>
       </div>
     </div>
   </div>
+
+  <div id="cu_response">
+  </div>
+
 </div>
 <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 

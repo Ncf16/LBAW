@@ -183,6 +183,19 @@ a .btn-header:focus{
   
 }
 
+/* Course Page */
+select.syllabus-year{
+  text-align:center;
+}
+
+.bootstrap-select.btn-group .btn .filter-option {
+    text-align: center; /* to override text-align: left; */
+}
+
+.bootstrap-select.btn-group .dropdown-menu li > a {
+    text-align: center;
+}
+
 /* Footer Styles */
 
 footer {

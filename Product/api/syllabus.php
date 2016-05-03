@@ -1,15 +1,15 @@
+<?php
+
+  include_once('../config/init.php');
+  include_once($BASE_DIR . 'database/course.php');  
+  
  
- <?php
-  include_once('../../config/init.php');
-  include_once($BASE_DIR . 'database/course.php'); 
+  if (!$_POST['year'] || !$_POST['course']) {
+    echo "false";    
+    exit;
+  }
 
-  $course = getCourseInfo($_GET['course']);
-
-  $syllabusYears = getSyllabusYears($_GET['course']);
-  $syllabusYears['nrYears'] = sizeof($syllabusYears);
-
-  	/*	// FOR DEBUGGING
-  $syllabus = getCourseUnits(2, 2015);
+  $syllabus = getCourseUnits($_POST['course'], $_POST['year']);
 
   // Determine nr. years to show
   if ($syllabus[0]['coursetype'] !== false){
@@ -32,7 +32,7 @@
       $syllabus['courseYears'] = 0;
     }
 
-    $orderedSyllabus = array();
+   $orderedSyllabus = array();
     $orderedSyllabus['courseYears'] = $syllabus['courseYears'];
 
     // Once to create as empty arrays
@@ -44,13 +44,9 @@
     for($i = 0; $i < sizeof($syllabus); $i++){
     	array_push($orderedSyllabus[$syllabus[$i]['curricularyear']][$syllabus[$i]['curricularsemester']], $syllabus[$i]);
     }
-	*/
-    //var_dump(json_encode($syllabus[1]));
-   	//var_dump(count($orderedSyllabus[1][1]));
-	
 
-  $smarty->assign('course', $course);
-  $smarty->assign('syllabusYears', $syllabusYears);
-  $smarty->display('course/coursePage.tpl');
+
+  $smarty->assign('syllabus', $orderedSyllabus);
+  $smarty->display('course/syllabus.tpl');
+
 ?>
- 
