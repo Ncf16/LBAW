@@ -39,7 +39,7 @@
             FROM  Course, CourseEnrollment, Person
             WHERE Course.code = CourseEnrollment.courseID
             AND CourseEnrollment.studentCode = Person.academiccode
-            AND Person.academiccode = ?");
+            AND Person.username = ?");
     $stmt->execute(array($id));
     return $stmt->fetch();
   }

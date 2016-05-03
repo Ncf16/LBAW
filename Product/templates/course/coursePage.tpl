@@ -50,7 +50,7 @@
         <input type="hidden" id="course_code" value="{$course.code}">
         <label for="sel1">Year:</label>
         <select class="form-control" id="syllabus_year" >
-        {for $i = 0 to $syllabusYears.nrYears - 1}
+          {for $i = 0 to $syllabusYears.nrYears - 1}
           <option>{$syllabusYears.$i.year}</option>
         {/for}
         </select>
