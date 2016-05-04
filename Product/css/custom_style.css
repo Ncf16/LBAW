@@ -30,8 +30,8 @@ p{
 /* Navbar Style */
 
 .navbar-inverse {
-  background-color: #011; /*#b33c00*/
-  border-color: #b33c00;
+  background-color: #1E272A; /*#b33c00*/
+  border-color: #DF8712;
   border-top-width: 2px;
   border-bottom-width: 2px;
   font-weight: bold;
@@ -42,17 +42,17 @@ p{
 }
 
 .navbar-inverse .navbar-brand {
-  color: #b35900;
+  color: #EA7500;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #b35900;
+  color: #EA7500;
 }
 .navbar-inverse .navbar-text {
-  color: #b35900;
+  color: #EA7500;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #b35900;
+  color: #EA7500;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -62,30 +62,30 @@ p{
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #fefcff;
-  background-color: #b35900;
+  background-color: #EA7500;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #fefcff;
-  background-color: #b35900;
+  background-color: #EA7500;
 }
 .navbar-inverse .navbar-toggle {
-  border-color: #b35900;
+  border-color: #EA7500;
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #b35900;
+  background-color: #EA7500;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #b35900;
+  background-color: #EA7500;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #b35900;
+  border-color: #EA7500;
 }
 .navbar-inverse .navbar-link {
-  color: #b35900;
+  color: #EA7500;
 }
 .navbar-inverse .navbar-link:hover {
   color: #fefcff;
@@ -112,10 +112,22 @@ header.carousel .fill {
 
 /* Button Styles */
 
+creation_toggle .btn input {
+  color: #000;
+  background-color:#FFFCCE;
+}
+
+creation_toggle .btn:hover,
+creation_toggle .btn:focus{
+  background-color:#fff;
+  color:#011;
+  border-color:#122;
+}
+
 .btn{
 	color: #fff;
 	background-color:#122;
-	
+	border-color:#fff;
 }
 
 .btn:hover,
@@ -147,6 +159,25 @@ a .btn-header:focus{
 }
 
 
+/* Form Styles */
+#creation_toggle label{
+   margin-left: 100px;
+   margin-right: 100px;
+}
+
+#account_form_multiple{
+  display: none;
+}
+
+#creation_success{
+  display: none;
+}
+
+#creation_failure{
+  display: none;
+}
+
+
 
 /* 404 Page Styles */
 
@@ -154,24 +185,7 @@ a .btn-header:focus{
     font-size: 100px;
 }
 
-/* Pricing Page Styles */
 
-.price {
-    display: block;
-    font-size: 50px;
-    line-height: 50px;
-}
-
-.price sup {
-    top: -20px;
-    left: 2px;
-    font-size: 20px;
-}
-
-.period {
-    display: block;
-    font-style: italic;
-}
 
 /* Login Styles */
 

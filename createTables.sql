@@ -43,6 +43,7 @@ nationality VARCHAR(30),
 nif CHAR(9) UNIQUE,
 password VARCHAR(256) NOT NULL,
 phoneNumber VARCHAR(12),
+imageURL VARCHAR(256),
 visible INTEGER DEFAULT 1,
 tsv tsvector
 );

@@ -2,7 +2,7 @@
   include_once($BASE_DIR . '/config/init.php');
   require_once($BASE_DIR . "lib/password.php");
 
-  function isLoginCorrect($username, $password){
+function isLoginCorrect($username, $password){
   global $conn;
 
   try{
@@ -32,6 +32,68 @@
   }
 
 }
+
+function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type, $password){
+  global $conn;
+
+  //return $address;
+  try{
+
+    $stmt = $conn->prepare("SELECT * FROM person WHERE 
+                              lower(name) = lower(?)
+                          AND lower(address) = lower(?)
+                          AND lower(nationality) = lower (?)
+                          AND lower(phonenumber) = lower(?)
+                          AND birthdate = ?
+                          AND persontype = ?");
+    $stmt->execute(array($name, $address, $nationality, $phone, $birth, $type));
+  
+
+  
+    if($stmt->fetch() !== false){
+      return "A person with the data provided already exists.";
+    }
+
+    
+    $query = 'INSERT INTO Person (name,address,nationality,phoneNumber,nif,birthdate,personType,password) VALUES (?,?,?,?,?,?,?,?);';    
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password,PASSWORD_DEFAULT)));
+    
+
+    return true;
+
+  }catch(PDOException $e){
+    echo $query . "<br>" . $e->getMessage();
+    return "ERROR REGISTERING (PDO).";
+  }catch(DatabaseException $e){
+    //echo "Unexpected Database Error: " . $e->getMessage();
+     return "ERROR REGISTERING (DB).";
+  }catch(Exception $e){
+    //echo "Unexpected Database Error: " . $e->getMessage();
+    return "ERROR REGISTERING (Other).";
+  }
+}
+
+function getPersonUsername($name, $address, $nationality, $phone, $birth, $type, $password){
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * FROM person WHERE 
+                              lower(name) = lower(?)
+                          AND lower(address) = lower(?)
+                          AND lower(nationality) = lower (?)
+                          AND lower(phonenumber) = lower(?)
+                          AND birthdate = ?
+                          AND persontype = ?");
+    $stmt->execute(array($name, $address, $nationality, $phone, $birth, $type));
+  
+    $person = $stmt->fetch();
+
+    if($person !== false){
+      return $person['username'];
+    }
+}
+
 
   function getStudentInfo($id) {
     global $conn;

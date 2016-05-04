@@ -92,6 +92,9 @@ VALUES (3,19,234,'bibliography','competences',1,5,'evaluation_description','exte
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
 externalPage,language,programme,requirements)
 VALUES (3,20,235,'bibliography','competences',2,5,'evaluation_description','externalPage','PT','programme','requirements');
+INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,
+externalPage,language,programme,requirements)
+VALUES (3,10,235,'bibliography','competences',1,1,'evaluation_description','externalPage','PT','programme','requirements');
 
 
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,

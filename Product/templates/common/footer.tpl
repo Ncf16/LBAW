@@ -30,6 +30,6 @@
                 </div>
             </div>
         </footer>
-    </div>  <!-- container end -->
+    
 </body>
 </html>

@@ -1,12 +1,15 @@
-// In the future - separate files (as little as possible) or make ifs for each page, so not all the code runs
-
 
 $(document).ready(function() {
+	// Login form submition
 	$('#frm').on('submit', loginButtonHandler);
 
-	console.log("hey");
+	// Course page syllabus selection
 	$('#syllabus_year').change(syllabusYearHandler); 
 	$('#syllabus_year').change();
+
+	// Person creation toggle and form submition
+	$('#creation_toggle label').click(creationToggleHandler);
+	$('#account_form_individual').on('submit', individualCreationHandler);
 
 
 });
@@ -69,18 +72,6 @@ function syllabusYearHandler(event){
 			if (typeof data.error === 'undefined') {		
 				
 				$('#cu_response').html(data);
-				//console.log(data);
-					
-				/*			
-				if (data == 'true') {
-					//location.reload();
-					window.location.replace("../../index.php");
-				} else {
-					emptyStatus();
-					$("#message_status").prepend("Username/Password combination not found.");
-				}
-				*/
-				
 
 			} else {
 				// Handle errors here
@@ -93,5 +84,73 @@ function syllabusYearHandler(event){
 			// STOP LOADING SPINNER
 		}
 	});
+}
 
+function creationToggleHandler(event){
+
+	var selected = $(this).find('input');
+
+	// Only does something if the button wasn't selected yet.
+	if(!$(this).find('input').is(':checked')){
+		console.log(selected.val());
+		var value = selected.val();
+
+		if (value == 'individual'){
+			$('#account_form_multiple').hide();
+			$('#account_form_individual').show();
+		}else if (value == 'multiple'){
+			$('#account_form_individual').hide();
+			$('#account_form_multiple').show();
+		}
+	}
+}
+
+function individualCreationHandler(event){
+	event.preventDefault();
+	event.stopPropagation();
+	
+	// FAZER VERIFICAÇÕES MANUAIS DOS CAMPOS!
+
+
+	console.log("was clicked!");
+	$("#submit_individual").blur();
+
+	$.ajax({
+		url: '../../api/addPerson.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: new FormData(this),
+		cache: false,
+		processData: false,
+		contentType: false,
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {		
+					console.log(data);
+
+				// POR O PHP A DEVOLVER O HTML A ADICIONAR
+				if (data !== 'false') {
+					$("#creation_failure").hide();
+
+					var new_href = $("#creation_success a").attr("href") + data;
+
+					$("#creation_success a").attr("href", new_href);
+					$("#creation_success").show();
+				} else {
+					$("#creation_success").hide();
+					$("#creation_failure").empty();
+					$("#creation_failure").prepend("Error creating user.");
+					$("#creation_failure").show();
+				}
+				
+				
+			} else {
+				// Handle errors here
+				console.log('ERRORS: ' + data.error);
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			console.log('ERRORS: ' + textStatus);
+			// STOP LOADING SPINNER
+		}
+	});
 }
