@@ -2,15 +2,19 @@ BASE_URL = '/LBAW/Product/';
 
 var pagination = {
 
-	page: 0,
+	page: 1,
 	nbPages: 0,
-	showPages: 9,
-	addPagination: function(pages,page,showPages){
+	showPages: 10,
+	nbItems: 0,
+	nbItemsPerPage: 10,
+	addPagination: function(page,nbItems,nbItemsPerPage,showPages){
 
 		this.page = typeof page !== 'undefined' ? page : this.page;
-		this.nbPages = typeof pages !== 'undefined' ? Math.ceil(pages) : this.nbPages;
-		var showPages = typeof showPages !== 'undefined' ? showPages : this.showPages;
-		if (this.nbPages < showPages)
+		this.showPages = typeof showPages !== 'undefined' ? showPages : this.showPages;
+		this.nbItems = typeof nbItems !== 'undefined' ? nbItems : this.nbItems;
+		this.nbItemsPerPage = typeof nbItemsPerPage !== 'undefined' ? nbItemsPerPage : this.nbItemsPerPage;
+		this.nbPages = Math.ceil(this.nbItems/this.nbItemsPerPage);
+		if (this.nbPages < this.showPages)
 			this.showPages = this.nbPages;
 
 		if(this.nbPages > 1){
@@ -71,7 +75,6 @@ var pagination = {
 	},
 	changePage: function(target){
 
-		var prevPage = this.page;
 		var targetClass = target.attr('class');
 	
 		if(targetClass == 'first')
@@ -85,10 +88,7 @@ var pagination = {
 		else if (targetClass == 'page')
 			this.page = target.text();
 
-
-		$('.pagination').html('');
 		this.addPagination();
-
 		return this.page;
 	}
 };
@@ -96,13 +96,15 @@ var pagination = {
 $(document).ready(function() {
 	loadPage();
 	$('.pagination').on('click', 'a', changePage);
+	$('#units').on('click','a.btn-danger',deleteItem);
 });
 
 function loadPage(){
 
-	$.post(BASE_URL + "api/units.php", {itemsPerPage : 2}, function(data){
+	var nbItemsPerPage = 10;
+	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage}, function(data){
 		addItens(data.units);
-		pagination.addPagination(data.pages,data.page);
+		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 	}, 'json');
 };
 
@@ -113,8 +115,35 @@ function changePage(event){
 
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
-	var page = pagination.changePage(target);
-	console.log(page);
+	$('.pagination').html('');
+	var newPage = pagination.changePage(target);
+	var nbItems = pagination.nbItems;
+	var nbItemsPerPage = pagination.nbItemsPerPage;
+	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+		$('#units').html('');
+		addItens(data.units);
+	}, 'json');
+}
+
+function deleteItem(event){
+
+	event.preventDefault();
+	var target = $(event.target);
+
+	if(target[0].nodeName == 'SPAN')
+		target = target.parent();
+	var itemID = target.attr('id');
+	var newPage = pagination.page;
+	var nbItems = pagination.nbItems;
+	var nbItemsPerPage = pagination.nbItemsPerPage;
+	$.post(BASE_URL + "api/units.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+		if (data['success'] == 'Success'){
+			$('.pagination').html('');
+			$('#units').html('');
+			addItens(data.units);
+			pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+		}
+	}, 'json');
 }
 
 function addItens(units){
@@ -126,30 +155,31 @@ function addItens(units){
 			'data-toogle': 'tooltip',
 			'title': 'Edit'
 		});
-		var btn = $('<button/>',{
+		var a = $('<a/>',{
 			'data-title': 'Edit',
 			'data-toggle': 'modal',
-			'data-target': '#edit'
+			'href': BASE_URL + "pages/CurricularUnit/createUnit.php",
+			'id' : unit.curricularid
 
 		}).addClass('btn btn-primary btn-xs');
 		var glyPencil = $('<span/>').addClass('glyphicon glyphicon-pencil');
-		par.append(btn);
-		btn.append(glyPencil);
+		par.append(a);
+		a.append(glyPencil);
 
 		var par2 = $('<p/>',{
 			'data-placement': 'top',
 			'data-toogle': 'tooltip',
 			'title': 'Delete'
 		});
-		var btn2 = $('<button/>',{
+		var a2 = $('<a/>',{
 			'data-title': 'Delete',
 			'data-toggle': 'modal',
-			'data-target': '#delete'
+			'id' : unit.curricularid
 
 		}).addClass('btn btn-danger btn-xs');
-		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-remove');
-		par2.append(btn2);
-		btn2.append(glyRemove);
+		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
+		par2.append(a2);
+		a2.append(glyRemove);
 
 		tr.append($('<td/>').text(unit.name));
 		tr.append($('<td/>').text(unit.area));
