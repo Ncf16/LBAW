@@ -46,7 +46,7 @@ function getUnits($nbItems,$offset){
 	global $conn;
 	$stmt = $conn->prepare("SELECT curricularID, name, area, credits
 		FROM CurricularUnit, Area
-		WHERE CurricularUnit.areaid = area.areaid AND CurricularUnit.visible=1
+		WHERE CurricularUnit.areaid = Area.areaid AND CurricularUnit.visible=1
 		LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($nbItems,$offset));
@@ -57,7 +57,7 @@ function getUnit($id){
 	global $conn;
 	$stmt = $conn->prepare("SELECT curricularID, name, area, credits
 		FROM CurricularUnit, Area
-		WHERE CurricularUnit.areaid = area.areaid AND CurricularUnit.visible=1 AND CurricularUnit.curricularID = ?");
+		WHERE CurricularUnit.areaid = Area.areaid AND CurricularUnit.visible=1 AND CurricularUnit.curricularID = ?");
 
 	$stmt->execute(array($id));
 	return $stmt->fetch();
@@ -84,5 +84,22 @@ function deleteUnit($unit){
 		$conn->rollBack();
 		return "Failed: " . $e->getMessage();
 	}
+}
+
+
+function getUCO($id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT CurricularUnit.name AS name, area, credits, Course.name AS course, Course.code AS courseid,
+		Syllabus.calendarYear AS year, Person.username AS regent, Person.name AS regentName, CurricularUnitOccurrence.*
+		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Person, Course, Area
+		WHERE cuoccurrenceid = ? AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
+		AND CurricularUnit.areaID = Area.areaid
+		AND CurricularUnitOccurrence.teacherCode = Person.academiccode
+		AND CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid
+		AND Syllabus.coursecode = Course.code
+		AND CurricularUnitOccurrence.visible=1;");
+
+	$stmt->execute(array($id));
+	return $stmt->fetch();
 }
 ?>

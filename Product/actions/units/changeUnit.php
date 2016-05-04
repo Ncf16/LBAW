@@ -38,6 +38,7 @@ include_once($BASE_DIR . 'database/unit.php');
       catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
         $_SESSION['error_messages'][] = 'Error creating unit: ' . $e->getMessage();
+        header("Location:".$_SERVER['HTTP_REFERER']);
         exit;
       }
     }
@@ -47,7 +48,8 @@ include_once($BASE_DIR . 'database/unit.php');
       }
       catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
-        $_SESSION['error_messages'][] = 'Error creating unit: ' . $e->getMessage();
+        $_SESSION['error_messages'][] = 'No changes made to be unit: ' . $e->getMessage();
+        header("Location:".$_SERVER['HTTP_REFERER']);
         exit;
       }
     }

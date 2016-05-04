@@ -158,8 +158,7 @@ function addItens(units){
 		var a = $('<a/>',{
 			'data-title': 'Edit',
 			'data-toggle': 'modal',
-			'href': BASE_URL + "pages/CurricularUnit/createUnit.php",
-			'id' : unit.curricularid
+			'href': BASE_URL + "pages/CurricularUnit/updateUnit.php?unit=" + unit.curricularid
 
 		}).addClass('btn btn-primary btn-xs');
 		var glyPencil = $('<span/>').addClass('glyphicon glyphicon-pencil');

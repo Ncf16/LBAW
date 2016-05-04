@@ -1,5 +1,27 @@
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 18:45:11
+         compiled from "C:\xampp\htdocs\LBAW\Product\templates\curricularUnit\unitPage.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:17941572a27170a82a5-76242767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '715e68930a63f1a041db4e93a0deda78f170921b' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\curricularUnit\\unitPage.tpl',
+      1 => 1461811513,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '17941572a27170a82a5-76242767',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_572a271718ea52_72292033',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_572a271718ea52_72292033')) {function content_572a271718ea52_72292033($_smarty_tpl) {?>
+<?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-{include file='common/header.tpl'}
 <div id="unitPage" class="container">
   <div class="row">
     <div class="col-sm-10">
@@ -156,4 +178,5 @@
       </div>
     </div>
   </p>
-  {include file='common/header.tpl'}
+  <?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php }} ?>
