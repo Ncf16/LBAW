@@ -35,7 +35,7 @@
                           	{for $j = 0 to  $syllabus.$i.1|@count -1} 
                             <tr>
                               <td class="text-center">
-                                <a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence?uc={$syllabus.$i.1.$j.cuoccurrenceid}"> 
+                                <a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence.php?uc={$syllabus.$i.1.$j.cuoccurrenceid}"> 
                                 <!-- syllabus[year][semester][CU][name] -->
                                 	{$syllabus.$i.1.$j.name} 
                                 </a>
@@ -67,7 +67,7 @@
                             {for $k = 0  to  $syllabus.$i.2|@count -1}
                             <tr>
                               <td class="text-center">
-                                <a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence?uc={$syllabus.$i.2.$k.cuoccurrenceid}">			<!-- syllabus[year][semester][CU][name] -->
+                                <a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence.php?uc={$syllabus.$i.2.$k.cuoccurrenceid}">			<!-- syllabus[year][semester][CU][name] -->
                                 	{$syllabus.$i.2.$k.name}
                                 </a>
                               </td>

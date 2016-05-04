@@ -11,7 +11,7 @@ if(!isset($_GET['unit'])){
 }
 
 $unit = getUnit($_GET['unit']);
-if(!unit){
+if(!$unit){
 	$_SESSION['error_messages'][] = 'unit id not found!';
 	header("Location: " . $BASE_URL);
 	exit;
