@@ -1,21 +1,23 @@
 {include file='common/header.tpl'}
 
-<div class="col-md-6">
+
+    
+<div class="container">
     <h2 class="page-header">Account Creation</h2>
-    <div class="container well">
+    <div class="well">
 
-    <div class="well well-sm col-md-8">
-    	<div id="creation_toggle" data-toggle="buttons">
-  			<label class="btn btn-primary active">
-    			<input  type="radio" name="quantity" value="individual" checked> Individual
-  			</label>
-  			<label class="btn btn-primary">
-    			<input type="radio" name="quantity" value="multiple"> Multiple
-  			</label>
-		</div>
-    </div>
+      <div class="well well-sm">
+    	 <div id="creation_toggle" data-toggle="buttons">
+  			 <label class="btn btn-primary active">
+    			 <input  type="radio" name="quantity" value="individual" checked> Individual
+  			 </label>
+  			 <label class="btn btn-primary">
+    			 <input type="radio" name="quantity" value="multiple"> Multiple
+  			 </label>
+		    </div>
+      </div>
 
-    <form class="well form-horizontal col-md-8" action="#" method="post" id="account_form_individual">
+    <form class="well form-horizontal" action="#" method="post" id="account_form_individual">
             <!-- NAME -->
             <div class="form-group">
                 <label class="col-md-3 control-label">Name</label>  
@@ -116,7 +118,7 @@
                 <div class="col-md-8 inputGroupContainer">
                 	<div class="input-group">
                   		<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                  		<input name="password" placeholder="Ex: Ghost" class="form-control" type="text" required>
+                  		<input name="password" placeholder="Ex: Ghost" class="form-control" type="password" required>
                 		
                   		<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                 	</div>
@@ -130,47 +132,62 @@
     			</strong>
     		</div>
 
-            <div class="form-group">
-              	<div class="col-md-4 col-md-offset-1">
-                	<button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
-              	</div>
-              	<div id="creation_success" class="col-md-4 col-md-offset-1">
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-1">
+              <button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
+        </div>
+        <!-- SUCCESS MESSAGE -->      	
+        <div id="creation_success" class="col-md-4 col-md-offset-1">
     				Account Created.
     				<a  href="{$BASE_URL}pages/Person/personalPage.php?person="> User Account </a>
-    			</div>
-
-    			<div id="creation_failure" class="col-md-4 col-md-offset-1">
+    		</div>
+        <!-- FAILURE MESSAGE -->
+    		<div id="creation_failure" class="col-md-4 col-md-offset-1">
     				hi
-    			</div>
-            </div>
+    		</div>
+
+      </div>
     </form>
 
-    <form class="well form-horizontal col-md-8" action="#" method="post" id="account_form_multiple">
-            NOT YET IMPLEMENTED
+    <form class="well form-horizontal" action="#" method="post" id="account_form_multiple">
+
             <!-- NAME -->
             <div class="form-group">
                 <label class="col-md-3 control-label">Name</label>  
                 <div class="col-md-8 inputGroupContainer">
-                	<div class="input-group">
-                  		<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                  		<input name="name" class="form-control" type="text" required>
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                      <input name="name" placeholder="Ex: Jon Snow" class="form-control" type="text" required>
 
-                  		 <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                	</div>
-              	</div>
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
             </div>
+
+            <div class="row">
+              <strong>
+            <span class="glyphicon glyphicon-asterisk"></span> 
+            Required Field
+          </strong>
+        </div>
+
             <div class="form-group">
-              	<div class="col-md-4 col-md-offset-1">
-                	<button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
-              	</div>
-              	<div id="creation_message_status" class="col-md-4 col-md-offset-1">
-    			
-    			</div>
+                <div class="col-md-4 col-md-offset-1">
+                  <button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
+                </div>
+                <div id="creation_success" class="col-md-4 col-md-offset-1">
+            Account Created.
+            <a  href="{$BASE_URL}pages/Person/personalPage.php?person="> User Account </a>
+          </div>
+
+          <div id="creation_failure" class="col-md-4 col-md-offset-1">
+            hi
+          </div>
             </div>
     </form>
-    
     </div>
 </div>
+
 
 
 {include file='common/footer.tpl'}

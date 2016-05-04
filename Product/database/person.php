@@ -23,6 +23,7 @@ function isLoginCorrect($username, $password){
 
   }catch(PDOException $e){
     //echo $query . "<br>" . $e->getMessage();
+    return false;
   }catch(DatabaseException $e){
     //echo "Unexpected Database Error: " . $e->getMessage();
     return false;

@@ -110,7 +110,21 @@ function individualCreationHandler(event){
 	event.stopPropagation();
 	
 	// FAZER VERIFICAÇÕES MANUAIS DOS CAMPOS!
+	/*
+	var boolean noErrors = true;
+	var errors = [];
+	errors["name"] = verifyName();
+	errors["address"] = verifyAddress();
+	errors["nationality"] = verifyNationality();
+	errors["phone"] = verifyPhone();
+	errors["nif"] = verifyNIF();
+	errors["birth"] = verifyBirth();
+	errors["account"] = verifyAccountType();
+	errors["password"] = verifyPassword();
 
+	// Percorrer tudo. Se alguma nao tiver "", é porque tem erro, e dá-se skip ao pedido ajax
+	// dando os erros instead
+	*/			
 
 	console.log("was clicked!");
 	$("#submit_individual").blur();
@@ -125,8 +139,9 @@ function individualCreationHandler(event){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {		
 					console.log(data);
+				//var response = JSON.parse(data);
 
-				// POR O PHP A DEVOLVER O HTML A ADICIONAR
+				
 				if (data !== 'false') {
 					$("#creation_failure").hide();
 
@@ -137,7 +152,7 @@ function individualCreationHandler(event){
 				} else {
 					$("#creation_success").hide();
 					$("#creation_failure").empty();
-					$("#creation_failure").prepend("Error creating user.");
+					$("#creation_failure").prepend("Could not create user. Already exists?");
 					$("#creation_failure").show();
 				}
 				
@@ -153,4 +168,29 @@ function individualCreationHandler(event){
 			// STOP LOADING SPINNER
 		}
 	});
+}
+
+function verifyName(name){
+
+}
+function verifyAddress(address){
+	
+}
+function verifyNationality(nationality){
+	
+}
+function verifyPhone(phone){
+	
+}
+function verifyNIF(nif){
+	
+}
+function verifyBirth(birthdate){
+	
+}
+function verifyAccountType(type){
+	
+}
+function verifyPassword(password){
+	
 }

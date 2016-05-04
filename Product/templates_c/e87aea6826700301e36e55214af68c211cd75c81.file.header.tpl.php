@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 16:03:21
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 20:02:28
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234425728afa974ac94-00381058%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1462197414,
+      1 => 1462384947,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5728afa991ba87_99196995',
   'variables' => 
   array (
     'BASE_URL' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ACCOUNT_TYPE' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_5728afa991ba87_99196995',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5728afa991ba87_99196995')) {function content_5728afa991ba87_99196995($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -63,14 +63,14 @@ font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <?php if (!isset($_SESSION['username'])) {?>
        <div class="col-sm-3 col-xs-5" >
             <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/Person/login.php" class="btn btn-primary btn-primary" >Login </a>
+pages/Person/login.php" class="btn btn-primary btn-primary">Login </a>
          </div>
       <?php } else { ?>
        <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['USERNAME']->value;?>
  (<?php echo $_smarty_tpl->tpl_vars['ACCOUNT_TYPE']->value;?>
-)<b class="caret"></b></a>
+) <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -111,6 +111,20 @@ index.php">Home</a>
                     <li class="nav-brand">
                         <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/Course/courseList.php">Courses</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Course/courseList.php">Courses</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/Person/personList.php">People</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <!-- this should show for students and regent of a course -->
