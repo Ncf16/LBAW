@@ -8,6 +8,7 @@
          {if isset($smarty.get.courseID) }
          <input id="Action" name="Action" hidden value="Edit">
          {$edit=true}
+         {$infoToEdit=getCourseInfo($smarty.get.courseID)}
          {else}
          <input id="Action" name="Action" hidden value="Create">
          {$edit=false}
@@ -18,6 +19,11 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                   <input name="course_name" id="course_name" placeholder="Course Name" class="form-control" type="text" required>
+                   {if $edit==true }
+                  <script >
+                    fillField("course_name","{$infoToEdit["name"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
@@ -27,6 +33,11 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                   <input name="course_abbreviation" maxlength="5" id="course_abbreviation" placeholder="Abbreviation" class="form-control" type="text" required>
+                  {if $edit==true }
+                  <script >
+                    fillField("course_abbreviation","{$infoToEdit["abbreviation"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
@@ -42,6 +53,11 @@
                      <option value={$teacher.academiccode}>{$teacher.name}</option>
                      {/foreach} 
                   </select>
+                  {if $edit==true }
+                  <script >
+                    fillField("course_director","{$infoToEdit["teachercode"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
@@ -51,6 +67,11 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                   <input type="date" name="course_fundate" id="course_fundate" class="form-control"  required>
+                  {if $edit==true }
+                  <script >
+                    fillField("course_fundate","{$infoToEdit["creationdate"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
@@ -59,7 +80,12 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                  <input name="course_duration" id="course_duration" placeholder="0" class="form-control" type="number" min="1" max="6" required>
+                  <input name="course_duration" id="course_duration" placeholder="0" class="form-control" type="number" min="1" max="6" readonly>
+                  {if $edit==true }
+                  <script >
+                    fillField("course_duration","{$infoToEdit["courseYears"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
@@ -73,7 +99,12 @@
                      <option>Bachelor</option>
                      <option>Masters</option>
                      <option>PhD</option>
-                  </select>
+                  </select> 
+                  {if $edit==true }
+                  <script >
+                    fillField("course_degree","{$infoToEdit["coursetype"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
@@ -82,13 +113,22 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <textarea class="form-control"  name="course_description" id="course_description" cols="50" row="5"  ></textarea>
+                  {if $edit==true }
+                  <script >
+                    fillField("course_description","{$infoToEdit["description"]}");
+                  </script>
+                  {/if}
                </div>
             </div>
          </div>
          
          <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
+              {if $edit==true }
+                <button id="submitNewCourse" type="submit" class="btn btn-primary">Edit Course</button>
+              {else}
                <button id="submitNewCourse" type="submit" class="btn btn-primary">Create New Course</button>
+              {/if}
             </div>
          </div>
          <div id="message_status">

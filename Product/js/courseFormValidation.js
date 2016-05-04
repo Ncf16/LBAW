@@ -1,7 +1,27 @@
 $(document).ready(function() {
 console.log("HELLO");
  $("#courseForm").submit( submitNewCourseHandler);
+ $("#course_degree").change(updateDuration);
 });
+function fillField(fieldID,value){
+	$("#"+fieldID).val(value);
+}
+function updateDuration(){
+	$("#course_duration").val(courseTypeToYears($("#course_degree").val()));
+}
+function courseTypeToYears(type){
+  switch (type) {
+  case 'PhD':
+    return 5;
+  case 'Masters':
+    return 5;
+  case 'Bachelor':
+    return 3;
+  default:
+  return 0;
+  }
+   
+}
  function submitNewCourseHandler(event){
 	event.preventDefault();
 	event.stopPropagation();
@@ -23,8 +43,11 @@ console.log("HELLO");
 					//location.reload();
 					//window.location.replace("../../index.php");
 				} else {
-					//emptyStatus();
-					//$("#message_status").prepend("Username/Password combination not found.");
+
+					$("#message_status").text("");
+					 $("#message_status").append(data);
+					// console.log(data.search(/\w+_\w+_key/));
+					// console.log(data.substring(130,data.length))
 				}
 				
 				
