@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 16:03:32
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 20:40:58
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\course\courseList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:310725728afb4401726-93211706%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c366cdc79d9865940097cb0a6196e7274bca572a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\course\\courseList.tpl',
-      1 => 1462197414,
+      1 => 1462387256,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5728afb4559373_83913384',
   'variables' => 
   array (
     'BASE_URL' => 0,
@@ -22,17 +24,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'course' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_5728afb4559373_83913384',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5728afb4559373_83913384')) {function content_5728afb4559373_83913384($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-
-<img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-images/books.jpg" class="img-responsive" alt="CourseBooks">
  
 <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 css/courseList.css" rel="stylesheet">
+<!-- CONTAINER -->
+<div class="container">
+
+<h2 class="page-header">Course List</h2>
 
 <table class="table table-striped">
   <thead>
@@ -87,6 +88,9 @@ pages/Person/personalPage.php?person=<?php echo $_smarty_tpl->tpl_vars['course']
 <p>
 	A course may take up to 3 years if it is a Bachelor or 5 years if it is a Master. Futhermore each course contains multiple curricular units grouped by year.
 </p>
+
+</div>
+<!-- END OF CONTAINER -->
 
 <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 

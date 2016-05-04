@@ -1,9 +1,9 @@
  <?php
   include_once('../../config/init.php');
-  include_once($BASE_DIR . "database/course.php");
+  include_once($BASE_DIR . "database/person.php");
 
-  $activeCourses=getVisibleCourses();
-
-  $smarty->assign('activeCourses', $activeCourses);
-  $smarty->display('course/courseList.tpl')
+  $people = getPeople();
+ 
+  $smarty->assign('people', $people);
+  $smarty->display('person/personList.tpl')
 ?>

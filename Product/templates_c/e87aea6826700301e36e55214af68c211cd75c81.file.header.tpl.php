@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 20:02:28
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 20:33:17
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234425728afa974ac94-00381058%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e87aea6826700301e36e55214af68c211cd75c81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\common\\header.tpl',
-      1 => 1462384947,
+      1 => 1462386796,
       2 => 'file',
     ),
   ),
@@ -106,11 +106,6 @@ actions/users/logout.php">Logout</a>
                     <li class="nav-brand">
                         <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 index.php">Home</a>
-                    </li>
-
-                    <li class="nav-brand">
-                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/Course/courseList.php">Courses</a>
                     </li>
 
                     <li class="dropdown">

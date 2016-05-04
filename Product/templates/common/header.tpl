@@ -67,10 +67,6 @@
                         <a href="{$BASE_URL}index.php">Home</a>
                     </li>
 
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
-                    </li>
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
                         <ul class="dropdown-menu">

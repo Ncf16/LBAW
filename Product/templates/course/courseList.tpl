@@ -1,8 +1,10 @@
 {include file='common/header.tpl'}
-
-<img src="{$BASE_URL}images/books.jpg" class="img-responsive" alt="CourseBooks">
  
 <link href="{$BASE_URL}css/courseList.css" rel="stylesheet">
+<!-- CONTAINER -->
+<div class="container">
+
+<h2 class="page-header">Course List</h2>
 
 <table class="table table-striped">
   <thead>
@@ -45,5 +47,8 @@
 <p>
 	A course may take up to 3 years if it is a Bachelor or 5 years if it is a Master. Futhermore each course contains multiple curricular units grouped by year.
 </p>
+
+</div>
+<!-- END OF CONTAINER -->
 
 {include file='common/footer.tpl'}

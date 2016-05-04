@@ -49,7 +49,6 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
                           AND persontype = ?");
     $stmt->execute(array($name, $address, $nationality, $phone, $birth, $type));
   
-
   
     if($stmt->fetch() !== false){
       return "A person with the data provided already exists.";
@@ -143,7 +142,7 @@ function getTeacherAcademicCodes(){
                             FROM Person
                             WHERE   persontype='Teacher'" );
     
-    $stmt->execute(array());
+    $stmt->execute();
     return $stmt->fetchAll();
 }
   function getAllTeachers(){
@@ -152,9 +151,19 @@ function getTeacherAcademicCodes(){
                             FROM Person
                             WHERE   persontype='Teacher'" );
     
-    $stmt->execute(array( ));
+    $stmt->execute();
     return $stmt->fetchAll();
 }
+
+function getPeople(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                            FROM Person" );
+    
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
 function getTeacherWithName($username){
    global $conn;
     $stmt = $conn->prepare("SELECT *
