@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 19:19:55
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 22:35:55
          compiled from "C:\Users\Filipe\Desktop\FEUP\XAMPP\htdocs\LBAW\Product\templates\course\courseCreation.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:8903572a234ed2a218-04104228%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e8fc2d3707899b4af917f136af64cfd1b39270a' => 
     array (
       0 => 'C:\\Users\\Filipe\\Desktop\\FEUP\\XAMPP\\htdocs\\LBAW\\Product\\templates\\course\\courseCreation.tpl',
-      1 => 1462382394,
+      1 => 1462393485,
       2 => 'file',
     ),
   ),
@@ -78,11 +78,13 @@ js/courseFormValidation.js"></script>
                </div>
             </div>
          </div>
+          
          <div class="form-group">
             <label class="col-md-3 control-label">Director</label>  
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    
                   <select name="course_director" id="course_director" placeholder="Course Director" class="form-control" required>
                      <?php $_smarty_tpl->tpl_vars['teachers'] = new Smarty_variable(getAllTeachers(), null, 0);?>
                      <option value="0" selected="selected">Select Course Director</option>
@@ -102,6 +104,7 @@ $_smarty_tpl->tpl_vars['teacher']->_loop = true;
 ");
                   </script>
                   <?php }?>
+                 
                </div>
             </div>
          </div>

@@ -11,11 +11,12 @@
   if($_POST['Action']=='Create'){
     checkArgs();
     $result=createCourse($_POST['course_abbreviation'],$_POST['course_director'], $_POST['course_degree'],$_POST['course_name'],$_POST['course_fundate'], date("Y"),$_POST['course_description']);
-   if($result)
+     if(strpos($result,"true" ))
     echo "true";
-  else 
-    echo $result;
-
+  else
+    echo "false";
+  
+ 
   }
   elseif ($_POST['Action']=='Edit')  {
      if(isset($_POST['courseID'])){

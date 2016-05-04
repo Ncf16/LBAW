@@ -41,11 +41,13 @@
                </div>
             </div>
          </div>
+          
          <div class="form-group">
             <label class="col-md-3 control-label">Director</label>  
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    
                   <select name="course_director" id="course_director" placeholder="Course Director" class="form-control" required>
                      {$teachers=getAllTeachers()}
                      <option value="0" selected="selected">Select Course Director</option>
@@ -58,6 +60,7 @@
                     fillField("course_director","{$infoToEdit["teachercode"]}");
                   </script>
                   {/if}
+                 
                </div>
             </div>
          </div>

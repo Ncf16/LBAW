@@ -1,4 +1,3 @@
-
 <?php
 /*
 CREATE TABLE IF NOT EXISTS Course(
@@ -18,31 +17,62 @@ CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalenda
 
 function createCourse($abbreviation, $regentCode, $courseType, $name, $creationDate, $currentCalendarYear, $description){
   global $conn;
-  $stmt = $conn->prepare("INSERT INTO COURSE(abbreviation,teachercode,courseType,name,creationDate,currentCalendarYear,description) VALUES(?,?,?,?,?,?,?)");
+  $stmt = $conn->prepare("INSERT INTO COURSE(abbreviation,teachercode,courseType,name,creationDate,currentCalendarYear,description) VALUES(?,?,?,?,?,?,?) RETURNING course");
   try {
-    $stmt->execute(array($abbreviation,$regentCode,$courseType,$name,$creationDate,$currentCalendarYear,$description));
+    $res = $stmt->execute(array($abbreviation,$regentCode,$courseType,$name,$creationDate,$currentCalendarYear,$description));
   }
 
   catch(Exception $e) {
     echo 'Caught exception: ', $e->getMessage() , "\n";
-    return $e->getMessage();
+    return "false ".$e->getMessage();
   }
+$search=$conn->prepare("SELECT code FROM COURSE WHERE name=? AND courseType=? AND teachercode=? AND abbreviation=?");
+$search->execute(array($name,$courseType,$regentCode,$abbreviation));
+$code=$search->fetchAll();
 
-  return true;
+var_dump($code[0]['code']);
+echo ( "true ".$code[0]['code']);
+ 
+  return "true ".$code[0]['code'];
 }
 
-function getAllActiveCourseList(){
+function updateCourse($courseID, $abbreviation, $regentCode, $courseType, $name, $creationDate, $currentCalendarYear, $description){
+  global $conn;
+  $stmt = $conn->prepare("UPDATE Course SET abbreviation=? AND teachercode=? AND courseType=? AND name=? AND creationDate=? AND currentCalendarYear=? AND description = ? WHERE code = '?'");
+  try {
+    $res = $stmt->execute(array(
+      $abbreviation,
+      $regentCode,
+      $courseType,
+      $name,
+      $creationDate,
+      $currentCalendarYear,
+      $description,
+      $courseID
+    ));
+    echo $res;
+  }
+
+  catch(Exception $e) {
+    echo 'Caught exception: ', $e->getMessage() , "\n";
+    return "false " + $e->getMessage();
+  }
+}
+
+function getAllActiveCourseList()
+{
   global $conn;
   $stmt = $conn->prepare("SELECT course.*, person.name AS diretorName,COUNT(CourseEnrollment.studentcode),
    FROM  CourseEnrollment, course, person 
                 WHERE CourseEnrollment.courseid = course.code AND CourseEnrollment.finishyear IS NULL    AND course.teachercode = person.academiccode 
                       AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
                       GROUP BY course.code,person.name;");
- $stmt->execute();
+  $stmt->execute();
   return $stmt->fetchAll();
 }
 
-function getVisibleCourses(){
+function getVisibleCourses()
+{
   global $conn;
   $stmt = $conn->prepare("SELECT course.*, person.name as directorname, person.username as directorUsername
                             FROM course, person
@@ -53,7 +83,8 @@ function getVisibleCourses(){
   return $stmt->fetchAll();
 }
 
-function getCourseInfo($courseCode){
+function getCourseInfo($courseCode)
+{
   global $conn;
   $stmt = $conn->prepare("SELECT course.*, person.name as director, person.username as directorUsername, COUNT(CourseEnrollment.studentcode) AS studentcount
                             FROM course, person, courseenrollment
@@ -62,16 +93,19 @@ function getCourseInfo($courseCode){
                             AND course.code = ?
                             AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
                             GROUP BY course.code, person.name, person.username;");
-  $stmt->execute(array( $courseCode));
+  $stmt->execute(array(
+    $courseCode
+  ));
   $result = $stmt->fetch();
   if ($result['coursetype'] !== false) {
     $result['courseYears'] = courseTypeToYears($result['coursetype']);
-  }else
-      $result['courseYears'] =   0;
+  }
+  else $result['courseYears'] = 0;
   return $result;
 }
 
-function getCourseUnits($courseCode, $year){
+function getCourseUnits($courseCode, $year)
+{
   global $conn;
   $stmt = $conn->prepare("SELECT curricularunitoccurrence.*, curricularunit.*, course.coursetype
                             FROM course, syllabus, curricularunitoccurrence, curricularunit
@@ -83,7 +117,10 @@ function getCourseUnits($courseCode, $year){
 
   // The "syllabus.calendaryear = course.currentcalendaryear" condition gets the units for the current year (2016, for instance)
 
-  $stmt->execute(array($courseCode, $year));
+  $stmt->execute(array(
+    $courseCode,
+    $year
+  ));
   return $stmt->fetchAll();
 }
 
@@ -91,22 +128,25 @@ function getCourseUnits($courseCode, $year){
 /* DEPRECATED, AT THE MOMENT IS NOT USED
 /*/
 
-function getCourseYears($courseCode){
+function getCourseYears($courseCode)
+{
   global $conn;
   $stmt = $conn->prepare("SELECT courseType
                             FROM course
                             WHERE code = ?");
-  $stmt->execute(array($courseCode));
+  $stmt->execute(array(
+    $courseCode
+  ));
   $years = $stmt->fetch();
 
   // return $years;
 
-  if ($years['coursetype'] !== false) 
-    return courseTypeToYears($years['coursetype']);
+  if ($years['coursetype'] !== false) return courseTypeToYears($years['coursetype']);
   else return 0;
 }
 
-function courseTypeToYears($type){
+function courseTypeToYears($type)
+{
   switch ($type) {
   case 'PhD':
     return 5;
@@ -114,12 +154,11 @@ function courseTypeToYears($type){
     return 5;
   case 'Bachelor':
     return 3;
-  
   }
-   
 }
 
-function getSyllabusYears($courseCode){
+function getSyllabusYears($courseCode)
+{
   global $conn;
   $stmt = $conn->prepare("SELECT Distinct(syllabus.calendarYear) as year
                             FROM course, syllabus, curricularunitoccurrence, curricularunit
@@ -128,11 +167,14 @@ function getSyllabusYears($courseCode){
                             AND curricularunitoccurrence.syllabusid = syllabus.syllabusid
                             AND curricularunitoccurrence.curricularunitid = curricularunit.curricularid
                             ORDER BY year DESC;");
-  $stmt->execute(array($courseCode));
+  $stmt->execute(array(
+    $courseCode
+  ));
   return $stmt->fetchAll();
 }
 
-function convertTypeToInt($type){
+function convertTypeToInt($type)
+{
   switch ($type) {
   case "Bachelor":
     return 1;
@@ -146,4 +188,3 @@ function convertTypeToInt($type){
 }
 
 ?>
-

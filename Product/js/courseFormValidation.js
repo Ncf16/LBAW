@@ -1,5 +1,4 @@
 $(document).ready(function() {
-console.log("HELLO");
  $("#courseForm").submit( submitNewCourseHandler);
  $("#course_degree").change(updateDuration);
 });
@@ -35,16 +34,16 @@ function courseTypeToYears(type){
 		processData: false,
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
-			console.log("HELLLLLO");
-			if (typeof data.error === 'undefined') {		
-					console.log(data);
-								
-				if (data == 'true') {
-					//location.reload();
-					//window.location.replace("../../index.php");
+			console.log("HELLLLLOs");
+			if (typeof data.error === 'undefined') {	
+			$("#message_status").text("");	
+					console.log(data);	
+				if (data.indexOf("true") > -1) {
+					console.log("Correu bem");
+					$.get( "../../pages/Course/coursePage.php", { course: data[0] } );
 				} else {
-
-					$("#message_status").text("");
+					console.log("Erro");
+					 
 					 $("#message_status").append(data);
 					// console.log(data.search(/\w+_\w+_key/));
 					// console.log(data.substring(130,data.length))
