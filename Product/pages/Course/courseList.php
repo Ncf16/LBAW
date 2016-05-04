@@ -5,5 +5,5 @@
   $activeCourses=getVisibleCourses();
 
   $smarty->assign('activeCourses', $activeCourses);
-  $smarty->display('course/courseList.tpl')
+  $smarty->display('course/courseListPage.tpl')
 ?>

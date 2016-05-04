@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 19:30:50
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 23:43:32
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\person\personalPage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:193405728df2b8c4421-92698472%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e8ee27867bf30f9c3bc75ef90dd6fb9bc6b4045e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\person\\personalPage.tpl',
-      1 => 1462235474,
+      1 => 1462398211,
       2 => 'file',
     ),
   ),
@@ -39,7 +39,8 @@ css/personalPage.css" rel="stylesheet">
       <div class="col-lg-12">
          <h1 class="page-header">Personal Page
             <small><?php echo $_smarty_tpl->tpl_vars['person']->value['name'];?>
-</small>
+  (<?php echo $_smarty_tpl->tpl_vars['person']->value['persontype'];?>
+)</small>
              <a href="#" class="btn btn-xs btn-primary">Edit Page</a> 
          </h1>
       </div>
