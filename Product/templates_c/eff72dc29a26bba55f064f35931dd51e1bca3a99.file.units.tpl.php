@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 00:30:53
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 23:54:27
          compiled from "C:\xampp\htdocs\LBAW\Product\templates\curricularUnit\units.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:77055728afc99420f2-74336181%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eff72dc29a26bba55f064f35931dd51e1bca3a99' => 
     array (
       0 => 'C:\\xampp\\htdocs\\LBAW\\Product\\templates\\curricularUnit\\units.tpl',
-      1 => 1462314604,
+      1 => 1462398866,
       2 => 'file',
     ),
   ),
@@ -28,13 +28,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
       <h2 class="page-header">Curricular Units</small>
       </h2>
     </div>
-  </div>
+    <div class="col-sm-2">
+        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/curricularUnit/createUnit.php">
+          <button class="btn btn-primary" id="createUnit">Create New Unit</button>
+        </a>
+      </div>
+    </div>
 
   <div class="row">
+    <br>
   	<table id="mytable" class="table table-bordred table-striped">
   		<thead>
   			<th class="col-md-5">Name</th>

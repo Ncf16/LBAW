@@ -9,7 +9,6 @@
   }
 
   $uc = getUCO($_GET['uc']);
-  print_r($uc);
   $uc['year'] = $uc['year'] . '/' . ($uc[year] + 1);
 
   if(!$uc){

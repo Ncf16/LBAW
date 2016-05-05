@@ -97,9 +97,95 @@ function getUCO($id){
 		AND CurricularUnitOccurrence.teacherCode = Person.academiccode
 		AND CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid
 		AND Syllabus.coursecode = Course.code
-		AND CurricularUnitOccurrence.visible=1;");
+		AND CurricularUnitOccurrence.visible=1");
 
 	$stmt->execute(array($id));
+	return $stmt->fetch();
+}
+
+function getUCOlist($nbItems,$offset){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT cuoccurrenceid, CurricularUnit.name, Course.name AS course, Syllabus.calendarYear AS year,
+		CurricularUnitOccurrence.curricularsemester, CurricularUnitOccurrence.curricularyear
+		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = Course.code
+		AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
+		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+
+	$stmt->execute(array($nbItems,$offset));
+	return $stmt->fetchAll();
+}
+
+function getUCOlistCourse($course,$nbItems,$offset){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT cuoccurrenceid, CurricularUnit.name, Course.name AS course, Syllabus.calendarYear AS year,
+		CurricularUnitOccurrence.curricularsemester, CurricularUnitOccurrence.curricularyear
+		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
+		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+
+	$stmt->execute(array($course,$nbItems,$offset));
+	return $stmt->fetchAll();
+}
+
+function getUCOlistYear($course,$year,$nbItems,$offset){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT cuoccurrenceid, CurricularUnit.name, Course.name AS course, Syllabus.calendarYear AS year,
+		CurricularUnitOccurrence.curricularsemester, CurricularUnitOccurrence.curricularyear
+		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
+		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+
+	$stmt->execute(array($course,$year,$nbItems,$offset));
+	return $stmt->fetchAll();
+}
+
+function getCourses(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT name FROM Course WHERE visible=1");
+	
+	$stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function getYears(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT DISTINCT(year) FROM Calendar WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
+function countUnitOccurrences(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(*) total FROM CurricularUnitOccurrence WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetch();
+}
+
+function countUnitOccurrencesC($course){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
+		WHERE WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND visible=1");
+
+	$stmt->execute(array($course));
+	return $stmt->fetch();
+}
+
+function countUnitOccurrencesCY($course,$year){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
+		WHERE WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND Syllabus.calendarYear = ? AND visible=1");
+
+	$stmt->execute(array($course,$year));
 	return $stmt->fetch();
 }
 ?>
