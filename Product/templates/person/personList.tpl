@@ -1,20 +1,11 @@
-{include file='common/header.tpl'}
- 
-<link href="{$BASE_URL}css/courseList.css" rel="stylesheet">
-<!-- CONTAINER -->
-<div class="container">
-
-<h2 class="page-header">Person List</h2>
-
-<table class="table table-striped">
+<table class="table table-striped" >
   <thead>
     <tr class="head">
-      <th class="text-center">Name</th>
-      <th class="text-center">Account Type</th>
+      <th>Name</th>
+      <th>Account Type</th>
     </tr>
   </thead>
-  <tbody class="courseListBody">
-
+  <tbody class="courseListBody" id="person_list">
   {foreach from=$people item=person}
      <tr>
       <th scope="row">
@@ -26,12 +17,5 @@
       </td>
     </tr>
    {/foreach}
-  
-  
   </tbody>
 </table>
-
-</div>
-<!-- END OF CONTAINER -->
-
-{include file='common/footer.tpl'}

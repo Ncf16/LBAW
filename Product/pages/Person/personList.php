@@ -5,5 +5,5 @@
   $people = getPeople();
  
   $smarty->assign('people', $people);
-  $smarty->display('person/personList.tpl')
+  $smarty->display('person/personListPage.tpl');
 ?>

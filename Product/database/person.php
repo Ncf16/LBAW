@@ -158,7 +158,8 @@ function getTeacherAcademicCodes(){
 function getPeople(){
   global $conn;
   $stmt = $conn->prepare("SELECT *
-                            FROM Person" );
+                            FROM Person
+                            ORDER BY name" );
     
   $stmt->execute();
   return $stmt->fetchAll();
