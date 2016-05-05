@@ -14,8 +14,9 @@ var pagination = {
 		this.nbItems = typeof nbItems !== 'undefined' ? nbItems : this.nbItems;
 		this.nbItemsPerPage = typeof nbItemsPerPage !== 'undefined' ? nbItemsPerPage : this.nbItemsPerPage;
 		this.nbPages = Math.ceil(this.nbItems/this.nbItemsPerPage);
+		var limPages = this.showPages;
 		if (this.nbPages < this.showPages)
-			this.showPages = this.nbPages;
+			limPages = this.nbPages;
 
 		if(this.nbPages > 1){
 			var pagination = $('.pagination');
@@ -40,9 +41,9 @@ var pagination = {
 				}).addClass('before').append($('<span/>').addClass('glyphicon glyphicon-chevron-left')
 				)));
 
-			var startPage = Math.min(Math.max(1,this.page - Math.floor(this.showPages / 2)),this.nbPages - this.showPages + 1);
+			var startPage = Math.min(Math.max(1,this.page - Math.floor(limPages / 2)),this.nbPages - limPages + 1);
 
-			for (var i = 1; i <= this.showPages; i++) {
+			for (var i = 1; i <= limPages; i++) {
 				var li = $('<li/>');
 				if (startPage == this.page)
 					li.addClass('active');
@@ -98,22 +99,34 @@ $(document).ready(function() {
 	$('#searchUnits').on('click',searchPage);
 	$('.pagination').on('click', 'a', changePage);
 	$('#units').on('click','a.btn-danger',deleteItem);
-
 });
+
+function getType(){
+
+	var course = $('input[name=uco_course]').val();
+	var year = $('input[name=uco_year]').val();
+	if(course.length > 0){
+		if(year.length > 0)
+			return [2,course,year];
+		else
+			return [1, course];
+	}
+	return [0];
+}
 
 function searchPage(event){
 
 	event.preventDefault();
-	var course = $('input[name=uco_course]').val();
-	var year = $('input[name=uco_year]').val();
-	console.log(course);
+	var type = getType();
+	$('.pagination').html('');
+	$('#units').html('');
+	loadPage(type[0],type[1],type[2]);
 };
 
-function loadPage(listType){
+function loadPage(listType,courseName,yearName){
 
 	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, type: listType}, function(data){
-		console.log(data.units);
+	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, type: listType, course: courseName, year: yearName}, function(data){
 		addItens(data.units);
 		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 	}, 'json');
@@ -121,7 +134,7 @@ function loadPage(listType){
 
 function changePage(event){
 
-	/*event.preventDefault();
+	event.preventDefault();
 	var target = $(event.target);
 
 	if(target[0].nodeName == 'SPAN')
@@ -130,31 +143,34 @@ function changePage(event){
 	var newPage = pagination.changePage(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	var listType = getType();
+	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems, type: listType[0], course: listType[1], year: listType[2]}, function(data){
 		$('#units').html('');
 		addItens(data.units);
-	}, 'json');*/
+	}, 'json');
 }
 
 function deleteItem(event){
 
-	/*event.preventDefault();
+	event.preventDefault();
 	var target = $(event.target);
 
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
 	var itemID = target.attr('id');
+	console.log(itemID);
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	var listType = getType();
+	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems, type: listType[0], course: listType[1], year: listType[2]}, function(data){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
 			$('#units').html('');
 			addItens(data.units);
 			pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 		}
-	}, 'json');*/
+	}, 'json');
 }
 
 function addItens(units){
@@ -198,7 +214,7 @@ function addItens(units){
 		var a3 = $('<a/>',{
 			'data-title': 'Delete',
 			'data-toggle': 'modal',
-			'id' : unit.curricularid
+			'id' : unit.cuoccurrenceid
 
 		}).addClass('btn btn-danger btn-xs');
 		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');

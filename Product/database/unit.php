@@ -9,6 +9,15 @@ function getAreaID($area){
 	return $stmt->fetch();
 }
 
+function getCourseID($course){
+	global $conn;
+	$stmt = $conn->prepare("SELECT code
+		FROM Course WHERE name=? AND visible=1");
+	
+	$stmt->execute(array($course));
+	return $stmt->fetch();
+}
+
 function getAreas(){
 	global $conn;
     $stmt = $conn->prepare("SELECT area
@@ -86,6 +95,31 @@ function deleteUnit($unit){
 	}
 }
 
+function deleteUnitOccurrence($unit){
+
+	global $conn;
+	try{
+		$conn->beginTransaction();
+
+		$stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
+			WHERE Class.occurrenceid = ? AND Class.visible = 1
+			AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
+			AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
+
+		$stmt->execute(array($unit,$unit,$unit));
+		if($stmt->rowCount() == 0){
+			$stmt = $conn->prepare("UPDATE CurricularUnitOccurrence SET visible=0 WHERE cuoccurrenceid=?");
+			$stmt->execute(array($unit));
+			$conn->commit();
+			return "Success";
+		}
+		else return "Cannot delete unit, other entities depend on it";
+	} catch (Exception $e) {
+		$conn->rollBack();
+		return "Failed: " . $e->getMessage();
+	}
+}
+
 
 function getUCO($id){
 	global $conn;
@@ -123,8 +157,8 @@ function getUCOlistCourse($course,$nbItems,$offset){
 	$stmt = $conn->prepare("SELECT cuoccurrenceid, CurricularUnit.name, Course.name AS course, Syllabus.calendarYear AS year,
 		CurricularUnitOccurrence.curricularsemester, CurricularUnitOccurrence.curricularyear
 		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
-		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
-		AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = Course.code
+		AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND Course.code = ?
 		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($course,$nbItems,$offset));
@@ -137,9 +171,9 @@ function getUCOlistYear($course,$year,$nbItems,$offset){
 	$stmt = $conn->prepare("SELECT cuoccurrenceid, CurricularUnit.name, Course.name AS course, Syllabus.calendarYear AS year,
 		CurricularUnitOccurrence.curricularsemester, CurricularUnitOccurrence.curricularyear
 		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
-		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = Course.code
 		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
-		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+		AND CurricularUnitOccurrence.visible=1 AND Course.code = ? LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($course,$year,$nbItems,$offset));
 	return $stmt->fetchAll();
@@ -172,8 +206,8 @@ function countUnitOccurrences(){
 function countUnitOccurrencesC($course){
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
-		WHERE WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
-		AND visible=1");
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND CurricularUnitOccurrence.visible=1");
 
 	$stmt->execute(array($course));
 	return $stmt->fetch();
@@ -182,8 +216,8 @@ function countUnitOccurrencesC($course){
 function countUnitOccurrencesCY($course,$year){
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
-		WHERE WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
-		AND Syllabus.calendarYear = ? AND visible=1");
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.visible=1");
 
 	$stmt->execute(array($course,$year));
 	return $stmt->fetch();

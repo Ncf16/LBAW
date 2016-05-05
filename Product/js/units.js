@@ -14,8 +14,9 @@ var pagination = {
 		this.nbItems = typeof nbItems !== 'undefined' ? nbItems : this.nbItems;
 		this.nbItemsPerPage = typeof nbItemsPerPage !== 'undefined' ? nbItemsPerPage : this.nbItemsPerPage;
 		this.nbPages = Math.ceil(this.nbItems/this.nbItemsPerPage);
+		var limPages = this.showPages;
 		if (this.nbPages < this.showPages)
-			this.showPages = this.nbPages;
+			limPages = this.nbPages;
 
 		if(this.nbPages > 1){
 			var pagination = $('.pagination');
@@ -40,9 +41,9 @@ var pagination = {
 				}).addClass('before').append($('<span/>').addClass('glyphicon glyphicon-chevron-left')
 				)));
 
-			var startPage = Math.min(Math.max(1,this.page - Math.floor(this.showPages / 2)),this.nbPages - this.showPages + 1);
+			var startPage = Math.min(Math.max(1,this.page - Math.floor(limPages / 2)),this.nbPages - limPages + 1);
 
-			for (var i = 1; i <= this.showPages; i++) {
+			for (var i = 1; i <= limPages; i++) {
 				var li = $('<li/>');
 				if (startPage == this.page)
 					li.addClass('active');

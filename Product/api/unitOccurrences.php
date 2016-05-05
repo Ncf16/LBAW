@@ -15,9 +15,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$_SESSION['error_messages'][] = 'Type of list not especified';    
 		exit;
 	}
-	else{
+	else
 		$type = $_POST['type'];
-	}
 
 	if($_POST['action']=='list'){
 
@@ -36,20 +35,43 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			$pageNumber = 1;
 		$offset = ($pageNumber - 1) * $itemsPerPage;
 
-		if(!isset($_POST['nbUnits'])){
-			if($type == 0){
+	
+		if($type == 0){
+			if(!isset($_POST['nbUnits']))
 				$totalUnits = countUnitOccurrences();
-				$data['units'] = getUCOlist($itemsPerPage,$offset);
+			$data['units'] = getUCOlist($itemsPerPage,$offset);
+		}
+		else{
+			if(!isset($_POST['course'])){
+				$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
+				exit;
+			}
+			$course = getCourseID($_POST['course'])['code'];
+			if(!$course){
+			    $_SESSION['form_values'] = $_POST;
+			    $_SESSION['error_messages'][] = 'Couldn\'t find a course with that name';
+			    exit;
 			}
 			else if($type == 1){
-				//TODO
+				if(!isset($_POST['nbUnits']))
+					$totalUnits = countUnitOccurrencesC($course);
+				$data['units'] = getUCOlistCourse($course,$itemsPerPage,$offset);
 			}
 			else if ($type == 2){
-				//TODO
+				$year = $_POST['year'];
+				if(!isset($year)){
+					$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
+					exit;
+				}
+				if(!isset($_POST['nbUnits']))
+					$totalUnits = countUnitOccurrencesCY($course,$year);
+				$data['units'] = getUCOlistYear($course,$year,$itemsPerPage,$offset);
 			}
-			$data['nbUnits'] = intval($totalUnits['total']);
 		}
-		else $data['nbUnits'] = intval($_POST['nbUnits']);
+		if(!isset($_POST['nbUnits']))
+			$data['nbUnits'] = intval($totalUnits['total']);
+		else
+			$data['nbUnits'] = intval($_POST['nbUnits']);
 		
 		foreach ($data['units'] as &$unit)
 			$unit['year'] = $unit['year'] . '/' . ($unit[year] + 1);
@@ -59,7 +81,6 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		echo json_encode($data);
 	}
 	
-	/*
 	if($_POST['action']=='delete'){
 		if(!isset($_POST['id'])){
 			$_SESSION['error_messages'][] = 'ID on delete not especified!';    
@@ -80,7 +101,14 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			exit;
 		}
 
-		$data['success'] = deleteUnit($_POST['id']);
+		if(!isset($_POST['type'])){
+			$_SESSION['error_messages'][] = 'Type of list not especified';    
+			exit;
+		}
+		else
+			$type = $_POST['type'];
+
+		$data['success'] = deleteUnitOccurrence($_POST['id']);
 		if($data['success'] == 'Success'){
 
 			$page = intval($_POST['page']);
@@ -92,11 +120,34 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 				$data['page'] = $page;
 
 			$offset = ($data['page'] - 1) * $itemsPerPage;
-			$data['units'] = getUnits($itemsPerPage,$offset);
+
+			if($type == 0)
+				$data['units'] = getUCOlist($itemsPerPage,$offset);
+			else{
+				if(!isset($_POST['course'])){
+					$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
+					exit;
+				}
+				$course = getCourseID($_POST['course'])['code'];
+				if(!$course){
+				    $_SESSION['form_values'] = $_POST;
+				    $_SESSION['error_messages'][] = 'Couldn\'t find a course with that name';
+				    exit;
+				}
+				else if($type == 1)
+					$data['units'] = getUCOlistCourse($course,$itemsPerPage,$offset);
+				else if ($type == 2){
+					$year = $_POST['year'];
+					if(!isset($year)){
+						$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
+						exit;
+					}
+					$data['units'] = getUCOlistYear($course,$year,$itemsPerPage,$offset);
+				}
+			}
 		}
 		echo json_encode($data);
 	}
-	*/
 	else{
 		$_SESSION['error_messages'][] = 'Unknow Action';    
 		exit;

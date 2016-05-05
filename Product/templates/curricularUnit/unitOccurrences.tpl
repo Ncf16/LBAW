@@ -16,8 +16,8 @@
     <div class="row">
       <br>
       <div class="form-group col-md-4">
-        <label class="col-md-4 control-label">Course</label>
-        <input name="uco_course" placeholder="List occurrences of a Course" value="{$FORM_VALUES.uco_course}" list="courses" class="form-control" type="text">
+        <label class="col-md-8 control-label">Course</label>
+        <input name="uco_course" placeholder="List occurrences of a Course" value="{$FORM_VALUES.course}" list="courses" class="form-control" type="text">
             <datalist id="courses">
               {foreach $courses as $course}
               <option value="{$course.name}"></option>
@@ -25,8 +25,8 @@
             </datalist>
       </div>
       <div class="form-group col-md-4">
-        <label class="col-md-4 control-label">School Year</label>
-        <input name="uco_year" placeholder="Specify the School year" value="{$FORM_VALUES.uco_year}" list="years" class="form-control" type="text">
+        <label class="col-md-8 control-label">School Year (Start year)</label>
+        <input name="uco_year" placeholder="Specify the School year" value="{$FORM_VALUES.year}" list="years" class="form-control" type="text">
             <datalist id="years">
               {foreach $years as $year}
               <option value="{$year.year}"></option>
