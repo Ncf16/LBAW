@@ -115,7 +115,7 @@ function loadPage(listType){
 	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, type: listType}, function(data){
 		console.log(data.units);
 		addItens(data.units);
-		//pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 	}, 'json');
 };
 
