@@ -35,7 +35,7 @@
          </div>
 
       <div class="col-sm-2 col-xs-4 text-center">
-               <a href="#" class="btn btn-primary btn-primary" >Create Accounts</a>
+               <a href="{$BASE_URL}pages/Admin/addPerson.php" class="btn btn-primary btn-primary" >Create Accounts</a>
          </div>
    
          <div class="col-sm-2 col-xs-4 text-center">

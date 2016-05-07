@@ -2,13 +2,19 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
       <h2 class="page-header">Curricular Units</small>
       </h2>
     </div>
-  </div>
+    <div class="col-sm-2">
+        <a href="{$BASE_URL}pages/curricularUnit/createUnit.php">
+          <button class="btn btn-primary" id="createUnit">Create New Unit</button>
+        </a>
+      </div>
+    </div>
 
   <div class="row">
+    <br>
   	<table id="mytable" class="table table-bordred table-striped">
   		<thead>
   			<th class="col-md-5">Name</th>

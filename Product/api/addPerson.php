@@ -1,5 +1,6 @@
 <?php
   include_once('../config/init.php');
+  include_once('../lib/util.php');
   include_once($BASE_DIR . 'database/person.php');  
   
 
@@ -11,6 +12,9 @@
 
   $name = $_POST['name'];
   $password = $_POST['password'];
+
+  //TODO: use test_input($data) on these fields, to sanitize them!
+  //TODO: validate fields
 
   $address = !$_POST['address'] ? "" : $_POST['address'];
   $nationality = !$_POST['nationality'] ? "" : $_POST['nationality'];

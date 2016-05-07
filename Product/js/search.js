@@ -3,20 +3,9 @@ $(document).ready(function() {
 	// Login form submition
 	$('#frm').on('submit', loginButtonHandler);
 
-	// Course page syllabus selection
-	$('#syllabus_year').change(syllabusYearHandler); 
-	$('#syllabus_year').change();
-
-	// Person creation toggle and form submition
-	$('#creation_toggle label').click(creationToggleHandler);
-	$('#account_form_individual').on('submit', individualCreationHandler);
-
+	console.log("Loaded");
 
 });
-
-function emptyStatus() {
-	$("#message_status").empty();
-}
 
 function loginButtonHandler(event){
 	event.preventDefault();
@@ -168,29 +157,4 @@ function individualCreationHandler(event){
 			// STOP LOADING SPINNER
 		}
 	});
-}
-
-function verifyName(name){
-
-}
-function verifyAddress(address){
-	
-}
-function verifyNationality(nationality){
-	
-}
-function verifyPhone(phone){
-	
-}
-function verifyNIF(nif){
-	
-}
-function verifyBirth(birthdate){
-	
-}
-function verifyAccountType(type){
-	
-}
-function verifyPassword(password){
-	
 }

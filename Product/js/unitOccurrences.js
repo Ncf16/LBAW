@@ -95,15 +95,38 @@ var pagination = {
 };
 
 $(document).ready(function() {
-	loadPage();
+	loadPage(0);
+	$('#searchUnits').on('click',searchPage);
 	$('.pagination').on('click', 'a', changePage);
 	$('#units').on('click','a.btn-danger',deleteItem);
 });
 
-function loadPage(){
+function getType(){
+
+	var course = $('input[name=uco_course]').val();
+	var year = $('input[name=uco_year]').val();
+	if(course.length > 0){
+		if(year.length > 0)
+			return [2,course,year];
+		else
+			return [1, course];
+	}
+	return [0];
+}
+
+function searchPage(event){
+
+	event.preventDefault();
+	var type = getType();
+	$('.pagination').html('');
+	$('#units').html('');
+	loadPage(type[0],type[1],type[2]);
+};
+
+function loadPage(listType,courseName,yearName){
 
 	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage}, function(data){
+	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, type: listType, course: courseName, year: yearName}, function(data){
 		addItens(data.units);
 		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 	}, 'json');
@@ -120,7 +143,8 @@ function changePage(event){
 	var newPage = pagination.changePage(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	var listType = getType();
+	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems, type: listType[0], course: listType[1], year: listType[2]}, function(data){
 		$('#units').html('');
 		addItens(data.units);
 	}, 'json');
@@ -134,10 +158,12 @@ function deleteItem(event){
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
 	var itemID = target.attr('id');
+	console.log(itemID);
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	var listType = getType();
+	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems, type: listType[0], course: listType[1], year: listType[2]}, function(data){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
 			$('#units').html('');
@@ -154,38 +180,55 @@ function addItens(units){
 		var par = $('<p/>',{
 			'data-placement': 'top',
 			'data-toogle': 'tooltip',
-			'title': 'Edit'
+			'title': 'View'
 		});
 		var a = $('<a/>',{
+			'data-title': 'View',
+			'data-toggle': 'modal',
+			'href': BASE_URL + "pages/CurricularUnit/viewUnitOccurrence.php?uc=" + unit.cuoccurrenceid
+
+		}).addClass('btn btn-primary btn-xs');
+		var glyZoom = $('<span/>').addClass('glyphicon glyphicon-zoom-in');
+		par.append(a);
+		a.append(glyZoom);
+		var par2 = $('<p/>',{
+			'data-placement': 'top',
+			'data-toogle': 'tooltip',
+			'title': 'Edit'
+		});
+		var a2 = $('<a/>',{
 			'data-title': 'Edit',
 			'data-toggle': 'modal',
-			'href': BASE_URL + "pages/CurricularUnit/updateUnit.php?unit=" + unit.curricularid
+			'href': BASE_URL + "pages/CurricularUnit/updateUnitOccurrence.php?uc=" + unit.cuoccurrenceid
 
 		}).addClass('btn btn-primary btn-xs');
 		var glyPencil = $('<span/>').addClass('glyphicon glyphicon-pencil');
-		par.append(a);
-		a.append(glyPencil);
+		par2.append(a2);
+		a2.append(glyPencil);
 
-		var par2 = $('<p/>',{
+		var par3 = $('<p/>',{
 			'data-placement': 'top',
 			'data-toogle': 'tooltip',
 			'title': 'Delete'
 		});
-		var a2 = $('<a/>',{
+		var a3 = $('<a/>',{
 			'data-title': 'Delete',
 			'data-toggle': 'modal',
-			'id' : unit.curricularid
+			'id' : unit.cuoccurrenceid
 
 		}).addClass('btn btn-danger btn-xs');
 		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
-		par2.append(a2);
-		a2.append(glyRemove);
+		par3.append(a3);
+		a3.append(glyRemove);
 
-		tr.append($('<td/>').text(unit.name));
-		tr.append($('<td/>').text(unit.area));
-		tr.append($('<td/>').text(unit.credits));
 		tr.append($('<td/>').append(par));
+		tr.append($('<td/>').text(unit.name));
+		tr.append($('<td/>').text(unit.course));
+		tr.append($('<td/>').text(unit.year));
+		tr.append($('<td/>').text(unit.curricularyear));
+		tr.append($('<td/>').text(unit.curricularsemester));
 		tr.append($('<td/>').append(par2));
+		tr.append($('<td/>').append(par3));
 		$('#units').append(tr);
 	});
 };

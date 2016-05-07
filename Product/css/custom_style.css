@@ -15,6 +15,10 @@ body {
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+.input-group > * {
+  height: 100%;
+}
+
 p{
   word-wrap: break-word;
 }
@@ -127,7 +131,7 @@ creation_toggle .btn:focus{
 .btn{
 	color: #fff;
 	background-color:#122;
-	border-color:#fff;
+	border-color:#000;
 }
 
 .btn:hover,
@@ -161,8 +165,6 @@ a .btn-header:focus{
 
 /* Form Styles */
 #creation_toggle label{
-   margin-left: 100px;
-   margin-right: 100px;
 }
 
 #account_form_multiple{

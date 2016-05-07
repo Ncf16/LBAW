@@ -81,6 +81,28 @@ function getVisibleCourses()
                             ORDER BY course.name;");
   $stmt->execute();
   return $stmt->fetchAll();
+ 
+  }
+  function getVisibleCoursesFromPage($page, $coursesPerPage){
+    global $conn;
+    $stmt = $conn->prepare("SELECT course.*, person.name as directorname, person.username as directorUsername
+                            FROM course, person
+                            WHERE course.teachercode = person.academiccode
+                            AND course.visible=1
+                            ORDER BY course.name
+                            LIMIT ? OFFSET ?;");
+    $stmt->execute(array($coursesPerPage,  (($page-1) * $coursesPerPage)));
+    return $stmt->fetchAll();
+  }
+
+  function countCourses(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT Count(code) as nrcourses
+                            FROM Course");
+    
+  $stmt->execute();
+  return $stmt->fetch();
+>>>>>>> 23a6477a67413869691cfef16499d230ae41c245
 }
 
 function getCourseInfo($courseCode)

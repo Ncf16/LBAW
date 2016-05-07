@@ -23,6 +23,7 @@ function isLoginCorrect($username, $password){
 
   }catch(PDOException $e){
     //echo $query . "<br>" . $e->getMessage();
+    return false;
   }catch(DatabaseException $e){
     //echo "Unexpected Database Error: " . $e->getMessage();
     return false;
@@ -48,7 +49,6 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
                           AND persontype = ?");
     $stmt->execute(array($name, $address, $nationality, $phone, $birth, $type));
   
-
   
     if($stmt->fetch() !== false){
       return "A person with the data provided already exists.";
@@ -142,7 +142,7 @@ function getTeacherAcademicCodes(){
                             FROM Person
                             WHERE   persontype='Teacher'" );
     
-    $stmt->execute(array());
+    $stmt->execute();
     return $stmt->fetchAll();
 }
   function getAllTeachers(){
@@ -151,9 +151,40 @@ function getTeacherAcademicCodes(){
                             FROM Person
                             WHERE   persontype='Teacher'" );
     
-    $stmt->execute(array( ));
+    $stmt->execute();
     return $stmt->fetchAll();
 }
+
+function getAllPeople(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            ORDER BY name" );
+    
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+function getPeople($page, $peoplePerPage){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            ORDER BY name
+                            LIMIT ? OFFSET ?" );
+    
+  $stmt->execute(array($peoplePerPage,  (($page-1) * $peoplePerPage)));
+  return $stmt->fetchAll();
+}
+
+function countPeople(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT Count(academiccode) as nrpeople
+                            FROM Person");
+    
+  $stmt->execute();
+  return $stmt->fetch();
+}
+
 function getTeacherWithName($username){
    global $conn;
     $stmt = $conn->prepare("SELECT *

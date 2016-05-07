@@ -30,12 +30,12 @@
 
       {if !isset($smarty.session.username)}
        <div class="col-sm-3 col-xs-5" >
-            <a href="{$BASE_URL}pages/Person/login.php" class="btn btn-primary btn-primary" >Login </a>
+            <a href="{$BASE_URL}pages/Person/login.php" class="btn btn-primary btn-primary">Login </a>
          </div>
       {else}
        <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE})<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
@@ -67,8 +67,16 @@
                         <a href="{$BASE_URL}index.php">Home</a>
                     </li>
 
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
+                            </li>
+                            <li>
+                                <a href="{$BASE_URL}pages/Person/personList.php">People</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <!-- this should show for students and regent of a course -->
