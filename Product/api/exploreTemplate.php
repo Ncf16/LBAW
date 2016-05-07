@@ -9,15 +9,18 @@
     exit;
   }
 
+  $units = $_POST['units'];
 
   if($_POST['template'] == 'peopleTable'){
 
-    $people = $_POST['units'];
-
-    $smarty->assign('people', $people);
+    $smarty->assign('people', $units);
     $smarty->display('person/personListBody.tpl');
+    
+  }else if($_POST['template'] == 'courseTable'){
+
+    $smarty->assign('activeCourses', $units);
+    $smarty->display('course/courseListBody.tpl');
   }
- 
-  
+
 
 ?>

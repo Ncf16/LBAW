@@ -21,12 +21,6 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		else
 			$itemsPerPage = intval($_POST['itemsPerPage']);
 
-		if(!isset($_POST['nbUnits'])){
-			$totalPeople = countPeople();
-			$data['nbUnits'] = intval($totalPeople['nrpeople']);
-		}
-		else $data['nbUnits'] = intval($_POST['nbUnits']);
-
 		if(isset($_POST['page'])){
 			if(!is_numeric($_POST['page'])){
 				die('Page especified not correct');
@@ -36,6 +30,18 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		else
 			$pageNumber = 1;
 
+
+		$data['nbUnits'] = intval(countPeople()['nrpeople']);
+
+		if(!isset($_POST['nbUnits'])){
+			if(intval($_POST['nbUnits']) != $data['nbUnits']){
+				$nbPages = ceil($data['nbUnits'] / $itemsPerPage);
+				$pageNumber = max(min($nbPages,$pageNumber),1);
+			}
+		}
+
+
+		// Finishing the data
 		$offset = ($pageNumber - 1) * $itemsPerPage;
 		$data['units'] = getPeople($itemsPerPage,$pageNumber);
 		$data['page'] = $pageNumber;
@@ -46,6 +52,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	
 	if($_POST['target']=='course'){
 
+		
 		//INCLUDE DB CONNECTION
 		include_once($BASE_DIR . 'database/course.php');
 
@@ -54,23 +61,31 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		else
 			$itemsPerPage = intval($_POST['itemsPerPage']);
 
-		if(!isset($_POST['nbUnits'])){
-			$totalPeople = countUnits();
-			$data['nbUnits'] = intval($totalPeople['total']);
-		}
-		else $data['nbUnits'] = intval($_POST['nbUnits']);
-
 		if(isset($_POST['page'])){
-			if(!is_numeric($_POST['page']))
+			if(!is_numeric($_POST['page'])){
 				die('Page especified not correct');
+			}
 			$pageNumber = intval($_POST['page']);
 		}
 		else
 			$pageNumber = 1;
 
+
+		$data['nbUnits'] = intval(countCourses()['nrcourses']);
+
+		if(!isset($_POST['nbUnits'])){
+			if(intval($_POST['nbUnits']) != $data['nbUnits']){
+				$nbPages = ceil($data['nbUnits'] / $itemsPerPage);
+				$pageNumber = max(min($nbPages,$pageNumber),1);
+			}
+		}
+
+
+		// Finishing the data
 		$offset = ($pageNumber - 1) * $itemsPerPage;
-		$data['units'] = getUnits($itemsPerPage,$offset);
+		$data['units'] = getVisibleCoursesFromPage($itemsPerPage,$pageNumber);
 		$data['page'] = $pageNumber;
+		
 		echo json_encode($data);
 	}
 	

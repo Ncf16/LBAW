@@ -179,7 +179,8 @@ function getPeople($peoplePerPage, $page){
 function countPeople(){
   global $conn;
   $stmt = $conn->prepare("SELECT Count(academiccode) as nrpeople
-                            FROM Person");
+                            FROM Person
+                            WHERE visible = 1");
     
   $stmt->execute();
   return $stmt->fetch();
