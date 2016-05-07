@@ -17,7 +17,7 @@ CHECK (EXTRACT(YEAR FROM creationDate) <= currentCalendarYear AND currentCalenda
 
 function createCourse($abbreviation, $regentCode, $courseType, $name, $creationDate, $currentCalendarYear, $description){
   global $conn;
-  $stmt = $conn->prepare("INSERT INTO COURSE(abbreviation,teachercode,courseType,name,creationDate,currentCalendarYear,description) VALUES(?,?,?,?,?,?,?) RETURNING course");
+  $stmt = $conn->prepare("INSERT INTO COURSE(abbreviation,teachercode,courseType,name,creationDate,currentCalendarYear,description) VALUES(?,?,?,?,?,?,?) RETURNING code");
   try {
     $res = $stmt->execute(array($abbreviation,$regentCode,$courseType,$name,$creationDate,$currentCalendarYear,$description));
   }
