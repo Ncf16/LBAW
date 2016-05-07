@@ -89,7 +89,6 @@ var pagination = {
 		else if (targetClass == 'page')
 			this.page = target.text();
 
-		this.addPagination();
 		return this.page;
 	}
 };
@@ -123,6 +122,7 @@ function changePage(event){
 	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
 		$('#units').html('');
 		addItens(data.units);
+		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 	}, 'json');
 }
 
