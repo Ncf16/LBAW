@@ -54,8 +54,8 @@ function personSearchHandler(){
 }
 
 
-function loadPersonList(){
-	$('#person_list').empty();
+function loadCourseList(){
+	$('#course_list').empty();
 }
 
 $(document).ready(function() {

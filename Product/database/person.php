@@ -155,7 +155,7 @@ function getTeacherAcademicCodes(){
     return $stmt->fetchAll();
 }
 
-function getPeople(){
+function getAllPeople(){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                             FROM Person
@@ -163,6 +163,26 @@ function getPeople(){
     
   $stmt->execute();
   return $stmt->fetchAll();
+}
+
+function getPeople($page, $peoplePerPage){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            ORDER BY name
+                            LIMIT ? OFFSET ?" );
+    
+  $stmt->execute(array($peoplePerPage,  (($page-1) * $peoplePerPage)));
+  return $stmt->fetchAll();
+}
+
+function countPeople(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT Count(academiccode) as nrpeople
+                            FROM Person");
+    
+  $stmt->execute();
+  return $stmt->fetch();
 }
 
 function getTeacherWithName($username){

@@ -37,3 +37,19 @@
     .search-query:focus + button {
         z-index: 3;   
     }
+
+/* PAGE BUTTONS CSS */
+
+#page_buttons{
+    text-align: center;
+}
+
+.pageClick{
+    padding: 5px;
+    margin: 3px;
+    background-color: #ffff80;
+}
+
+.pageClick.current{
+    background-color: #cce5ff;
+}

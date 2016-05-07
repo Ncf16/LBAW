@@ -8,7 +8,7 @@
       <th>Academic Degree </th>
     </tr>
   </thead>
-  <tbody class="courseListBody">
+  <tbody class="courseListBody" id="course_list">
 
   {foreach from=$activeCourses item=course}
      <tr>
