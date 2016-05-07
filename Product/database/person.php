@@ -165,7 +165,7 @@ function getAllPeople(){
   return $stmt->fetchAll();
 }
 
-function getPeople($page, $peoplePerPage){
+function getPeople($peoplePerPage, $page){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                             FROM Person

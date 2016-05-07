@@ -1,5 +1,8 @@
  <?php
   include_once('../../config/init.php');
+
+
+  /* DEPRECATED GET VERSION
   include_once($BASE_DIR . "database/person.php");
 
   $PEOPLE_PER_PAGE = 10;
@@ -26,5 +29,8 @@
   $people[0]['nrPages'] = $nrPages;
 
   $smarty->assign('people', $people);
+
+  */
+
   $smarty->display('person/personListPage.tpl');
 ?>
