@@ -3,7 +3,7 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR . 'database/course.php'); 
 
-  $course = getCourseInfo($_GET['course']);
+  $course = getCourseInfoView($_GET['course']);
 
   $syllabusYears = getSyllabusYears($_GET['course']);
   $syllabusYears['nrYears'] = sizeof($syllabusYears);
