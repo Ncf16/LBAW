@@ -195,10 +195,10 @@ function getTeacherWithName($username){
     return $stmt->fetch();
 }
 function checkAcademicCodeInArray($array,$valueToCheck){
-      var_dump($valueToCheck);
+     // var_dump($valueToCheck);
   foreach ($array as $value) {
     if($value.academiccode==$valueToCheck){
-      var_dump($value.academiccode);
+      //var_dump($value.academiccode);
       return true;
     }
   }

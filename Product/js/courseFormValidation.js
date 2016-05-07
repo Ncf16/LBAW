@@ -1,3 +1,5 @@
+BASE_URL = '/LBAW/Product/';
+
 $(document).ready(function() {
  $("#courseForm").submit( submitNewCourseHandler);
  $("#course_degree").change(updateDuration);
@@ -34,13 +36,14 @@ function courseTypeToYears(type){
 		processData: false,
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
-			console.log("HELLLLLOs");
 			if (typeof data.error === 'undefined') {	
-			$("#message_status").text("");	
-					console.log(data);	
+					$("#message_status").text("");	
+					console.log("DATA: "+data);	
 				if (data.indexOf("true") > -1) {
-					console.log("Correu bem");
-					$.get( "../../pages/Course/coursePage.php", { course: data[0] } );
+					var course=data.replace(/[^0-9\.]/g, '');
+					console.log(course);
+					console.log( BASE_URL + "pages/Course/coursePage.php?course="+course);
+					  window.location.href =  BASE_URL + "pages/Course/coursePage.php?course="+course;
 				} else {
 					console.log("Erro");
 					 
