@@ -19,9 +19,9 @@
 
 {include file='course/courseList.tpl'}
 
-<div id="page_buttons">
-
-</div>
+<div class="clearfix"></div>
+  <ul class="pagination pull-right">
+  </ul>
 
 </div>
 <!-- END OF CONTAINER -->

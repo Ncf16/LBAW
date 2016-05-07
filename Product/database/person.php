@@ -165,7 +165,7 @@ function getAllPeople(){
   return $stmt->fetchAll();
 }
 
-function getPeople($page, $peoplePerPage){
+function getPeople($peoplePerPage, $page){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                             FROM Person
@@ -179,7 +179,8 @@ function getPeople($page, $peoplePerPage){
 function countPeople(){
   global $conn;
   $stmt = $conn->prepare("SELECT Count(academiccode) as nrpeople
-                            FROM Person");
+                            FROM Person
+                            WHERE visible = 1");
     
   $stmt->execute();
   return $stmt->fetch();

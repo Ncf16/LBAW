@@ -98,7 +98,7 @@ function getVisibleCourses()
     return $stmt->fetchAll();
     
   }
-function getVisibleCoursesFromPage($page, $coursesPerPage)
+function getVisibleCoursesFromPage($coursesPerPage, $page)
   {
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name as directorname, person.username as directorUsername
@@ -118,7 +118,8 @@ function countCourses()
   {
     global $conn;
     $stmt = $conn->prepare("SELECT Count(code) as nrcourses
-                            FROM Course");
+                            FROM Course
+                            WHERE visible = 1");
     
     $stmt->execute();
     return $stmt->fetch();

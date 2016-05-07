@@ -18,19 +18,24 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		else
 			$itemsPerPage = intval($_POST['itemsPerPage']);
 
-		if(!isset($_POST['nbUnits'])){
-			$totalUnits = countUnits();
-			$data['nbUnits'] = intval($totalUnits['total']);
-		}
-		else $data['nbUnits'] = intval($_POST['nbUnits']);
-
 		if(isset($_POST['page'])){
-			if(!is_numeric($_POST['page']))
-				die('Page especified not correct');
+			if(!is_numeric($_POST['page'])){
+				$_SESSION['error_messages'][] = 'Page especified not correct';
+				exit;
+			}
 			$pageNumber = intval($_POST['page']);
 		}
 		else
 			$pageNumber = 1;
+
+		$data['nbUnits'] = intval(countUnits()['total']);
+
+		if(isset($_POST['nbUnits'])){
+			if(intval($_POST['nbUnits']) != $data['nbUnits']){
+				$nbPages = ceil($data['nbUnits'] / $itemsPerPage);
+				$pageNumber = max(min($nbPages,$pageNumber),1);
+			}
+		}
 
 		$offset = ($pageNumber - 1) * $itemsPerPage;
 		$data['units'] = getUnits($itemsPerPage,$offset);
@@ -62,7 +67,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		if($data['success'] == 'Success'){
 
 			$page = intval($_POST['page']);
-			$data['nbUnits'] = $_POST['nbUnits']-1;
+			$data['nbUnits'] = intval(countUnits()['total']);
 			$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
 			if($page > $nbPages)
 				$data['page'] = max($page - 1,1);

@@ -1,5 +1,8 @@
  <?php
   include_once('../../config/init.php');
+
+
+  /* DEPRECATED GET VERSION
   include_once($BASE_DIR . "database/course.php");
 
   $COURSES_PER_PAGE = 10;
@@ -24,5 +27,8 @@
   $activeCourses[0]['nrPages'] = $nrPages;
 
   $smarty->assign('activeCourses', $activeCourses);
+  */
+
+
   $smarty->display('course/courseListPage.tpl')
 ?>

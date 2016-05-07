@@ -27,14 +27,16 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 
 		if(isset($_POST['page'])){
-			if(!is_numeric($_POST['page']))
-				die('Page especified not correct');
+			if(!is_numeric($_POST['page'])){
+				$_SESSION['error_messages'][] = 'Page especified not correct';
+				exit;
+			}
 			$pageNumber = intval($_POST['page']);
 		}
 		else
 			$pageNumber = 1;
+		
 		$offset = ($pageNumber - 1) * $itemsPerPage;
-
 	
 		if($type == 0){
 			if(!isset($_POST['nbUnits']))
