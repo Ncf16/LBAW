@@ -158,7 +158,6 @@ function deleteItem(event){
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
 	var itemID = target.attr('id');
-	console.log(itemID);
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;

@@ -175,7 +175,7 @@ function getUCOlistYear($course,$year,$nbItems,$offset){
 		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
 		AND CurricularUnitOccurrence.visible=1 AND Course.code = ? LIMIT ? OFFSET ?");
 
-	$stmt->execute(array($course,$year,$nbItems,$offset));
+	$stmt->execute(array($year,$course,$nbItems,$offset));
 	return $stmt->fetchAll();
 }
 
