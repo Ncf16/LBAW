@@ -140,6 +140,7 @@ function getCourseInfo($courseCode)
         $courseCode
     ));
     $result = $stmt->fetch();
+
     if ($result['coursetype'] !== false)
       {
         $result['courseYears'] = courseTypeToYears($result['coursetype']);
@@ -148,7 +149,39 @@ function getCourseInfo($courseCode)
         $result['courseYears'] = 0;
     return $result;
   }
+function getCourseInfoView($courseCode)
+  {
+    global $conn;
+    $stmt = $conn->prepare("SELECT course.* ,person.name as director, person.username as directorUsername
+                            FROM course  , person
+                            WHERE course.code = ?
+                            AND  course.teachercode = person.academiccode
+                            AND course.visible=1  AND person.visible=1 ;");
+    $stmt->execute(array($courseCode));
+    $result = $stmt->fetch();
 
+ $stmt = $conn->prepare("SELECT course.*,  COUNT(CourseEnrollment.studentcode) AS studentcount
+                            FROM course, courseenrollment
+                            WHERE course.code = courseenrollment.courseid
+                            AND course.code = ?
+                            AND course.visible=1   AND CourseEnrollment.visible=1
+                            GROUP BY course.code;");
+    $stmt->execute(array($courseCode));
+    $nStudents = $stmt->fetch();
+    
+    if($nStudents!==false){
+      $result['studentcount']=$nStudents['studentcount'];
+    }else
+     $result['studentcount']=0;
+
+    if ($result['coursetype'] !== false)
+      {
+        $result['courseYears'] = courseTypeToYears($result['coursetype']);
+      }
+    else
+        $result['courseYears'] = 0;
+    return $result;
+  }
 function getCourseUnits($courseCode, $year)
   {
     global $conn;
