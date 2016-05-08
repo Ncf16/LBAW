@@ -35,12 +35,17 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		}
 		else
 			$pageNumber = 1;
-		
-		$offset = ($pageNumber - 1) * $itemsPerPage;
 	
 		if($type == 0){
-			if(!isset($_POST['nbUnits']))
-				$totalUnits = countUnitOccurrences();
+			$data['nbUnits'] = intval(countUnitOccurrences()['total']);
+			if(isset($_POST['nbUnits'])){
+				if(intval($_POST['nbUnits']) != $data['nbUnits']){
+					$nbPages = ceil($data['nbUnits'] / $itemsPerPage);
+					$pageNumber = max(min($nbPages,$pageNumber),1);
+				}
+			}
+
+			$offset = ($pageNumber - 1) * $itemsPerPage;
 			$data['units'] = getUCOlist($itemsPerPage,$offset);
 		}
 		else{
@@ -55,8 +60,15 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			    exit;
 			}
 			else if($type == 1){
-				if(!isset($_POST['nbUnits']))
-					$totalUnits = countUnitOccurrencesC($course);
+				$data['nbUnits'] = intval(countUnitOccurrencesC($course)['total']);
+				if(isset($_POST['nbUnits'])){
+					if(intval($_POST['nbUnits']) != $data['nbUnits']){
+						$nbPages = ceil($data['nbUnits'] / $itemsPerPage);
+						$pageNumber = max(min($nbPages,$pageNumber),1);
+					}
+				}
+
+				$offset = ($pageNumber - 1) * $itemsPerPage;
 				$data['units'] = getUCOlistCourse($course,$itemsPerPage,$offset);
 			}
 			else if ($type == 2){
@@ -65,15 +77,18 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 					$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
 					exit;
 				}
-				if(!isset($_POST['nbUnits']))
-					$totalUnits = countUnitOccurrencesCY($course,$year);
+				$data['nbUnits'] = intval(countUnitOccurrencesCY($course,$year)['total']);
+				if(isset($_POST['nbUnits'])){
+					if(intval($_POST['nbUnits']) != $data['nbUnits']){
+						$nbPages = ceil($data['nbUnits'] / $itemsPerPage);
+						$pageNumber = max(min($nbPages,$pageNumber),1);
+					}
+				}
+				
+				$offset = ($pageNumber - 1) * $itemsPerPage;	
 				$data['units'] = getUCOlistYear($course,$year,$itemsPerPage,$offset);
 			}
 		}
-		if(!isset($_POST['nbUnits']))
-			$data['nbUnits'] = intval($totalUnits['total']);
-		else
-			$data['nbUnits'] = intval($_POST['nbUnits']);
 		
 		foreach ($data['units'] as &$unit)
 			$unit['year'] = $unit['year'] . '/' . ($unit[year] + 1);
@@ -83,7 +98,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		echo json_encode($data);
 	}
 	
-	if($_POST['action']=='delete'){
+	else if($_POST['action']=='delete'){
 		if(!isset($_POST['id'])){
 			$_SESSION['error_messages'][] = 'ID on delete not especified!';    
 			exit;
@@ -114,17 +129,18 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		if($data['success'] == 'Success'){
 
 			$page = intval($_POST['page']);
-			$data['nbUnits'] = $_POST['nbUnits']-1;
-			$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
-			if($page > $nbPages)
-				$data['page'] = max($page - 1,1);
-			else
-				$data['page'] = $page;
 
-			$offset = ($data['page'] - 1) * $itemsPerPage;
+			if($type == 0){
+				$data['nbUnits'] = intval(countUnitOccurrences()['total']);
+				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+				if($page > $nbPages)
+					$data['page'] = max($page - 1,1);
+				else
+					$data['page'] = $page;
 
-			if($type == 0)
+				$offset = ($data['page'] - 1) * $itemsPerPage;
 				$data['units'] = getUCOlist($itemsPerPage,$offset);
+			}
 			else{
 				if(!isset($_POST['course'])){
 					$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
@@ -136,18 +152,39 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 				    $_SESSION['error_messages'][] = 'Couldn\'t find a course with that name';
 				    exit;
 				}
-				else if($type == 1)
+				else if($type == 1){
+					$data['nbUnits'] = intval(countUnitOccurrencesC($course)['total']);
+					$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+					if($page > $nbPages)
+						$data['page'] = max($page - 1,1);
+					else
+						$data['page'] = $page;
+
+					$offset = ($data['page'] - 1) * $itemsPerPage;
 					$data['units'] = getUCOlistCourse($course,$itemsPerPage,$offset);
+				}
 				else if ($type == 2){
 					$year = $_POST['year'];
 					if(!isset($year)){
 						$_SESSION['error_messages'][] = 'Type of list doesn\'t match arguments';
 						exit;
 					}
+					$data['nbUnits'] = intval(countUnitOccurrencesCY($course,$year)['total']);
+					$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+					if($page > $nbPages)
+						$data['page'] = max($page - 1,1);
+					else
+						$data['page'] = $page;
+				
+					$offset = ($pageNumber - 1) * $itemsPerPage;	
 					$data['units'] = getUCOlistYear($course,$year,$itemsPerPage,$offset);
 				}
 			}
 		}
+		foreach ($data['units'] as &$unit)
+			$unit['year'] = $unit['year'] . '/' . ($unit[year] + 1);
+		unset($unit);
+
 		echo json_encode($data);
 	}
 	else{

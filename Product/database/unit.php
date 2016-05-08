@@ -222,4 +222,30 @@ function countUnitOccurrencesCY($course,$year){
 	$stmt->execute(array($course,$year));
 	return $stmt->fetch();
 }
+function getTeachers(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT name, username FROM Person
+	WHERE personType = 'Teacher' AND visible=1");
+
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
+function getSyllabusID($course,$year){
+	global $conn;
+	$stmt = $conn->prepare("SELECT syllabusid FROM Syllabus
+		WHERE coursecode=? AND calendaryear=? AND visible=1");
+
+	$stmt->execute(array($course,$year));
+	return $stmt->fetch();
+}
+
+function getUnitID($unit){
+	global $conn;
+	$stmt = $conn->prepare("SELECT curricularid FROM CurricularUnit
+		WHERE name=? AND visible=1");
+
+	$stmt->execute(array($unit));
+	return $stmt->fetch();
+}
 ?>

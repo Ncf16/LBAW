@@ -74,7 +74,7 @@ var pagination = {
 			}
 		}
 	},
-	changePage: function(target){
+	updatePageNb: function(target){
 
 		var targetClass = target.attr('class');
 	
@@ -116,7 +116,7 @@ function changePage(event){
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
 	$('.pagination').html('');
-	var newPage = pagination.changePage(target);
+	var newPage = pagination.updatePageNb(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
 	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){

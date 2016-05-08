@@ -74,7 +74,7 @@ var pagination = {
 			}
 		}
 	},
-	changePage: function(target){
+	updatePageNb: function(target){
 
 		var targetClass = target.attr('class');
 	
@@ -89,7 +89,6 @@ var pagination = {
 		else if (targetClass == 'page')
 			this.page = target.text();
 
-		this.addPagination();
 		return this.page;
 	}
 };
@@ -140,13 +139,14 @@ function changePage(event){
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
 	$('.pagination').html('');
-	var newPage = pagination.changePage(target);
+	var newPage = pagination.updatePageNb(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
 	var listType = getType();
 	$.post(BASE_URL + "api/unitOccurrences.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems, type: listType[0], course: listType[1], year: listType[2]}, function(data){
 		$('#units').html('');
 		addItens(data.units);
+		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
 	}, 'json');
 }
 

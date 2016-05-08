@@ -11,20 +11,11 @@
   	<div class="row">
 	  	<div class="form-group">
 	  		<div class="col-md-6">
-	  			<label class="col-md-2 control-label">Name</label>
+	  			<label class="col-md-3 control-label">Name</label>
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_name" placeholder="Curricular Unit Name" class="form-control" type="text" required>
-	  				</div>
-	  			</div>
-	  		</div>
-	  		<div class="col-md-6">
-	  			<label class="col-md-2 control-label">Initials</label>  
-	  			<div class="col-md-9 inputGroupContainer">
-	  				<div class="input-group">
-	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_abbr" placeholder="Shortname for Curricular Unit" class="form-control" type="text" required>
+	  					<input name="unit_name" placeholder="Curricular Unit Name" value="{$FORM_VALUES.unit_name}" class="form-control" type="text" required>
 	  				</div>
 	  			</div>
 	  		</div>
@@ -32,20 +23,30 @@
 
 	  	<div class="form-group">
 	  		<div class="col-md-6">
-	  			<label class="col-md-2 control-label">External Links</label>
+	  			<label class="col-md-3 control-label">Course</label>  
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
-	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<textarea id="unit_links" placeholder="Pages Pointing to External Resources" class="form-control"></textarea>
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+	  					<input name="unit_course" placeholder="Curricular Course Name" value="{$FORM_VALUES.unit_course}" list="courses" class="form-control" type="text" required>
+	  					<datalist id="courses">
+	  						{foreach $courses as $course}
+	  						<option value="{$course.name}"></option>
+	  						{/foreach}
+	  					</datalist>
 	  				</div>
 	  			</div>
 	  		</div>
 	  		<div class="col-md-6">
-	  			<label class="col-md-2 control-label">Area</label>  
+	  			<label class="col-md-3 control-label">School Year</label>  
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
-	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_area" placeholder="Area" class="form-control" type="text">
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+	  					<input name="unit_year" placeholder="Curricular Year" value="{$FORM_VALUES.unit_year}" list="years" class="form-control" type="text" required>
+	  					<datalist id="years">
+	  						{foreach $years as $year}
+			              	<option value="{$year.year}"></option>
+			              	{/foreach}
+			            </datalist>
 	  				</div>
 	  			</div>
 	  		</div>
@@ -53,11 +54,67 @@
 
 	  	<div class="form-group">
 	  		<div class="col-md-6">
-	  			<label class="col-md-2 control-label">Languague</label>
+	  			<label class="col-md-3 control-label">Course Year</label>
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_links" placeholder="Classes Languague" class="form-control" type="text"></textarea>
+	  					<input name="unit_curricularyear" placeholder="Course Year" value="{$FORM_VALUES.unit_curricularyear}" class="form-control" type="number" min="1" max="7" required>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	
+	  		<div class="col-md-6">
+	  			<label class="col-md-3 control-label">Semester</label>
+	  			<div class="col-md-9 inputGroupContainer">
+	  				<div class="input-group">
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	  					<select name="unit_curricularsemester" value="{$FORM_VALUES.unit_curricularsemester}" class="form-control">
+	  						<option
+	  						{if $FORM_VALUES.unit_curricularsemester == 1}
+	  						selected="selected" {/if}>1</option>
+	  						<option
+	  						{if $FORM_VALUES.unit_curricularsemester == 2}
+	  						selected="selected" {/if}>2</option>
+	  					</select>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+
+	  	<div class="form-group">
+	  		<div class="col-md-6">
+	  			<label class="col-md-3 control-label">Regent</label>  
+	  			<div class="col-md-9 inputGroupContainer">
+	  				<div class="input-group">
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	  					<input name="unit_teacher" placeholder="Teacher name: username" value="{$FORM_VALUES.unit_teacher}" list="teachers" class="form-control" type="text" required>
+	  					<datalist id="teachers">
+	  						{foreach $teachers as $teacher}
+			              	<option value="{$teacher.name}"></option>
+			              	{/foreach}
+			            </datalist>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+
+	  	<div class="form-group">
+	  		<div class="col-md-6">
+	  			<label class="col-md-3 control-label">Languague</label>
+	  			<div class="col-md-9 inputGroupContainer">
+	  				<div class="input-group">
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	  					<input name="unit_language" placeholder="Classes Languague" class="form-control" type="text">
+	  				</div>
+	  			</div>
+	  		</div>
+	  	
+	  		<div class="col-md-6">
+	  			<label class="col-md-3 control-label">External Links</label>
+	  			<div class="col-md-9 inputGroupContainer">
+	  				<div class="input-group">
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" class="form-control">
 	  				</div>
 	  			</div>
 	  		</div>
@@ -74,34 +131,34 @@
   	<div class="form-group">
   		<label class="col-md-2 control-label">Learning Objectives and Competences</label>
   		<div class="col-md-9">
-	  		<textarea id="unit_learning" placeholder="Objectives and Competences" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_competences" placeholder="Objectives and Competences" rows="3" class="form-control"></textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Pre-Requirements and Co-Requirements</label>
   		<div class="col-md-9">
-	  		<textarea id="unit_requirements" placeholder="Pre-Requirements and Co-Requirements" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_requirements" placeholder="Pre-Requirements and Co-Requirements" rows="3" class="form-control"></textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Curricular Programme</label>
   		<div class="col-md-9">
-	  		<textarea id="unit_programme" placeholder="Curricular Programme" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_programme" placeholder="Curricular Programme" rows="3" class="form-control"></textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Evaluation</label>
   		<div class="col-md-9">
-	  		<textarea id="unit_evaluations" placeholder="Evaluation" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_evaluations" placeholder="Evaluation" rows="3" class="form-control"></textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Bibliography</label>
   		<div class="col-md-9">
-	  		<textarea id="unit_bibliography" placeholder="Bibliography" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_bibliography" placeholder="Bibliography" rows="3" class="form-control"></textarea>
 	  	</div>
   	</div>
