@@ -43,7 +43,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		echo json_encode($data);
 	}
 
-	if($_POST['action']=='delete'){
+	else if($_POST['action']=='delete'){
 		if(!isset($_POST['id'])){
 			$_SESSION['error_messages'][] = 'ID on delete not especified!';    
 			exit;

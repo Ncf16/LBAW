@@ -81,7 +81,7 @@ function getAllActiveCourseList()
    FROM  CourseEnrollment, course, person 
                 WHERE CourseEnrollment.courseid = course.code AND CourseEnrollment.finishyear IS NULL    AND course.teachercode = person.academiccode 
                       AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
-                      GROUP BY course.code,person.name;");
+                      GROUP BY course.code,person.name");
     $stmt->execute();
     return $stmt->fetchAll();
   }
