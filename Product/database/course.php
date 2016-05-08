@@ -21,15 +21,7 @@ function createCourse($abbreviation, $regentCode, $courseType, $name, $creationD
     $stmt = $conn->prepare("INSERT INTO COURSE(abbreviation,teachercode,courseType,name,creationDate,currentCalendarYear,description) VALUES(?,?,?,?,?,?,?) RETURNING code");
     try
       {
-        $res = $stmt->execute(array(
-            $abbreviation,
-            $regentCode,
-            $courseType,
-            $name,
-            $creationDate,
-            $currentCalendarYear,
-            $description
-        ));
+        $res = $stmt->execute(array($abbreviation,$regentCode,$courseType,$name,$creationDate,$currentCalendarYear,$description));
       } catch (Exception $e)
       {
         echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -73,7 +65,20 @@ function updateCourse($courseID, $abbreviation, $regentCode, $courseType, $name,
         return "false " + $e->getMessage();
       }
   }
+function deleteCourse($courseCode){
+   {
+    global $conn;
+    $stmt = $conn->prepare("UPDATE Course SET visible= 0 WHERE code = '?'");
+    try
+      {
+        $res = $stmt->execute(array(
+            $courseCode
+        ));
+        echo $res;
+      }
+  }
 
+}
 function getAllActiveCourseList()
   {
     global $conn;
@@ -126,8 +131,7 @@ function countCourses()
     
   }
 
-function getCourseInfo($courseCode)
-  {
+function getCourseInfo($courseCode)  {
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name as director, person.username as directorUsername, COUNT(CourseEnrollment.studentcode) AS studentcount
                             FROM course, person, courseenrollment
