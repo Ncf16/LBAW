@@ -15,7 +15,12 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_name" placeholder="Curricular Unit Name" value="{$FORM_VALUES.unit_name}" class="form-control" type="text" required>
+	  					<input name="unit_name" placeholder="Curricular Unit Name" value="{$FORM_VALUES.unit_name}" list="units" class="form-control" type="text" required>
+	  					<datalist id="units">
+	  						{foreach $units as $unit}
+	  						<option value="{$unit.name}"></option>
+	  						{/foreach}
+	  					</datalist>
 	  				</div>
 	  			</div>
 	  		</div>
@@ -104,7 +109,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_language" placeholder="Classes Languague" class="form-control" type="text">
+	  					<input name="unit_language" placeholder="Classes Languague" value="{$FORM_VALUES.unit_language}" class="form-control" type="text">
 	  				</div>
 	  			</div>
 	  		</div>
@@ -114,7 +119,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" class="form-control">
+	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" value="{$FORM_VALUES.unit_links}" class="form-control">
 	  				</div>
 	  			</div>
 	  		</div>
@@ -131,34 +136,34 @@
   	<div class="form-group">
   		<label class="col-md-2 control-label">Learning Objectives and Competences</label>
   		<div class="col-md-9">
-	  		<textarea name="unit_competences" placeholder="Objectives and Competences" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_competences" placeholder="Objectives and Competences" rows="3" class="form-control">{$FORM_VALUES.unit_competences}</textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Pre-Requirements and Co-Requirements</label>
   		<div class="col-md-9">
-	  		<textarea name="unit_requirements" placeholder="Pre-Requirements and Co-Requirements" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_requirements" placeholder="Pre-Requirements and Co-Requirements" rows="3" class="form-control">{$FORM_VALUES.unit_requirements}</textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Curricular Programme</label>
   		<div class="col-md-9">
-	  		<textarea name="unit_programme" placeholder="Curricular Programme" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_programme" placeholder="Curricular Programme" rows="3" class="form-control">{$FORM_VALUES.unit_programme}</textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Evaluation</label>
   		<div class="col-md-9">
-	  		<textarea name="unit_evaluations" placeholder="Evaluation" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_evaluations" placeholder="Evaluation" rows="3" class="form-control">{$FORM_VALUES.unit_evaluations}</textarea>
 	  	</div>
   	</div>
 
   	<div class="form-group">
   		<label class="col-md-2 control-label">Bibliography</label>
   		<div class="col-md-9">
-	  		<textarea name="unit_bibliography" placeholder="Bibliography" rows="3" class="form-control"></textarea>
+	  		<textarea name="unit_bibliography" placeholder="Bibliography" rows="3" class="form-control">{$FORM_VALUES.unit_bibliography}</textarea>
 	  	</div>
   	</div>

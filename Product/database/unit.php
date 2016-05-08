@@ -248,4 +248,38 @@ function getUnitID($unit){
 	$stmt->execute(array($unit));
 	return $stmt->fetch();
 }
+
+function getUnitsName(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT name FROM CurricularUnit
+		WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
+function getTeacherID($username){
+	global $conn;
+	$stmt = $conn->prepare("SELECT academiccode FROM Person
+		WHERE username = ? AND visible = 1");
+
+	$stmt->execute(array($username));
+	return $stmt->fetch();
+}
+
+function createUnitOccurrence($syllabus,$unit,$teacher,$bibliography,$competences,$curricularSemester,$curricularYear,
+          $evaluations,$links,$language,$programme,$requirements){
+	global $conn;
+	$stmt = $conn->prepare("INSERT INTO CurricularUnitOccurrence(syllabusid, curricularunitid, teachercode, bibliography, 
+            competences, curricularsemester, curricularyear, evaluation, 
+            externalpage, language, programme, requirements)
+	VALUES (?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?) RETURNING cuoccurrenceid");
+
+	$stmt->execute(array($syllabus,$unit,$teacher,$bibliography,
+		$competences,$curricularSemester,$curricularYear,$evaluations,
+		$links,$language,$programme,$requirements));
+	return $stmt->fetch();
+}
 ?>

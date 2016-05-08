@@ -27,7 +27,7 @@ include_once($BASE_DIR . 'database/unit.php');
     $default['unit_bibliography'] = '';
     checkDefault($_POST, $default);
 
-    $course = getCourseID($_POST['unit_course'])['code'];
+    $course = getCourseID($_POST['unit_course']);//code
     if(!$course){
       $_SESSION['form_values'] = $_POST;
       $_SESSION['error_messages'][] = 'Couldn\'t find a course with given name';
@@ -35,8 +35,14 @@ include_once($BASE_DIR . 'database/unit.php');
       exit;
     }
 
-    $year = explode('/', $_POST['unit_year'])[0];
-    $syllabus = getSyllabusID($course,$year);
+    $year = explode('/', $_POST['unit_year']);
+    if(!isset($year[0])){
+      $_SESSION['form_values'] = $_POST;
+      $_SESSION['error_messages'][] = 'Couldn\'t find a syllabus year with given School year';
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit;
+    }
+    $syllabus = getSyllabusID($course['code'],intval($year[0]));//syllabusid
     if(!$syllabus){
       $_SESSION['form_values'] = $_POST;
       $_SESSION['error_messages'][] = 'Couldn\'t find a syllabus with given course and year';
@@ -44,7 +50,7 @@ include_once($BASE_DIR . 'database/unit.php');
       exit;
     }
 
-    $unit = getUnitID($_POST['unit_name']);
+    $unit = getUnitID($_POST['unit_name']);//curricularid
     if(!$unit){
       $_SESSION['form_values'] = $_POST;
       $_SESSION['error_messages'][] = 'Couldn\'t find a unit with that name';
@@ -52,50 +58,87 @@ include_once($BASE_DIR . 'database/unit.php');
       exit;
     }
 
-
-
-    /*
-    $name = $_POST['unit_name'];
-    $area = getAreaID($_POST['unit_area']);
-    if(!$area){
+    $teacher = explode(':',$_POST['unit_teacher']);
+    if(!isset($teacher[1])){
       $_SESSION['form_values'] = $_POST;
-      $_SESSION['error_messages'][] = 'Couldn\'t find an area with that name';
+      $_SESSION['error_messages'][] = 'Couldn\'t find the teacher username';
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit;
+    }
+    $teacher = substr($teacher[1],1);
+
+    if($teacher == false){
+      $_SESSION['form_values'] = $_POST;
+      $_SESSION['error_messages'][] = 'Couldn\'t find a teacher with given username';
       header("Location: " . $_SERVER['HTTP_REFERER']);
       exit;
     }
 
-    $credits = intval($_POST['unit_credits']);
-    if(!isset($id)|| strlen($id) == 0){
-      try {
-        createUnit($name,$area['areaid'],$credits);
+    $teacher = getTeacherID($teacher);//academiccode
+    if(!$teacher){
+      $_SESSION['form_values'] = $_POST;
+      $_SESSION['error_messages'][] = 'Couldn\'t find a teacher with given username';
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+    }
+
+    $language = 'PT';
+
+    $curricularYear = intval($_POST['unit_curricularyear']);
+    if($curricularYear < 1 || $curricularYear > 7){
+      $_SESSION['form_values'] = $_POST;
+      $_SESSION['error_messages'][] = 'Invalid course year';
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit;
+    }
+
+    $curricularSemester = intval($_POST['unit_curricularsemester']);
+    if($curricularSemester != 1 && $curricularSemester != 2){
+      $_SESSION['form_values'] = $_POST;
+      $_SESSION['error_messages'][] = 'Invalid course semester';
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit;
+    }
+
+    $id = $_POST['unit_id'];
+    if(!isset($id) || strlen($id) == 0){
+      try{
+        createUnitOccurrence($syllabus['syllabusid'],$unit['curricularid'],$teacher['academiccode'],
+          $_POST['unit_bibliography'],$_POST['unit_competences'],$curricularSemester,$curricularYear,
+          $_POST['unit_evaluations'],$_POST['unit_links'],$language,$_POST['unit_programme'],$_POST['unit_requirements']);
       }
-      catch (PDOException $e) {
+      catch (PDOException $e){
         $_SESSION['form_values'] = $_POST;
-        $_SESSION['error_messages'][] = 'Error creating unit: ' . $e->getMessage();
+        $_SESSION['error_messages'][] = 'Error creating unit occurrence: ' . $e->getMessage();
         header("Location:".$_SERVER['HTTP_REFERER']);
         exit;
       }
     }
     else{
+      /*
       try{
-        updateUnit($_POST['unit_id'],$name,$area['areaid'],$credits);
+        updateUnitOccurrence(intval($_POST['unit_id']),$syllabus['syllabusid'],$unit['curricularid'],$teacher['academiccode'],
+          $_POST['unit_bibliography'],$_POST['unit_competences'],$curricularSemester,$curricularYear,
+          $_POST['unit_evaluations'],$_POST['unit_links'],$language,$_POST['unit_programme'],$_POST['unit_requirements']);
       }
-      catch (PDOException $e) {
+      catch (PDOException $e){
         $_SESSION['form_values'] = $_POST;
-        $_SESSION['error_messages'][] = 'No changes made to be unit: ' . $e->getMessage();
+        $_SESSION['error_messages'][] = 'Error updating unit occurrence: ' . $e->getMessage();
         header("Location:".$_SERVER['HTTP_REFERER']);
         exit;
       }
+      */
     }
 
-    $smarty->clearAssign('areas');
-    header("Location:" . $BASE_URL . 'pages/CurricularUnit/units.php');
+    $smarty->clearAssign('courses');
+    $smarty->clearAssign('years');
+    $smarty->clearAssign('teachers');
+    $smarty->clearAssign('units');
+    header("Location:" . $BASE_URL . 'pages/CurricularUnit/unitOccurrences.php');
     exit;
-    */
   }
   else{
     $_SESSION['error_messages'][] = 'Server couldn\'t respond';
-    header("Location:".$_SERVER['HTTP_REFERER']);
+    //header("Location:".$_SERVER['HTTP_REFERER']);
     exit;
   }
 ?>
