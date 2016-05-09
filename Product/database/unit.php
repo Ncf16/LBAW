@@ -1,5 +1,40 @@
 <?php
 
+function getYears(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT DISTINCT(year) FROM Calendar WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
+function getTeacherID($username){
+	global $conn;
+	$stmt = $conn->prepare("SELECT academiccode FROM Person
+		WHERE username = ? AND visible = 1");
+
+	$stmt->execute(array($username));
+	return $stmt->fetch();
+}
+
+function getTeachers(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT name, username FROM Person
+	WHERE personType = 'Teacher' AND visible=1");
+
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
+function getSyllabusID($course,$year){
+	global $conn;
+	$stmt = $conn->prepare("SELECT syllabusid FROM Syllabus
+		WHERE coursecode=? AND calendaryear=? AND visible=1");
+
+	$stmt->execute(array($course,$year));
+	return $stmt->fetch();
+}
+
 function getAreaID($area){
 	global $conn;
 	$stmt = $conn->prepare("SELECT areaid
@@ -7,6 +42,15 @@ function getAreaID($area){
 	
 	$stmt->execute(array($area));
 	return $stmt->fetch();
+}
+
+function getAreas(){
+	global $conn;
+    $stmt = $conn->prepare("SELECT area
+                            FROM Area WHERE visible=1");
+    
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function getCourseID($course){
@@ -18,12 +62,11 @@ function getCourseID($course){
 	return $stmt->fetch();
 }
 
-function getAreas(){
+function getCourses(){
 	global $conn;
-    $stmt = $conn->prepare("SELECT area
-                            FROM Area WHERE visible=1");
-    
-    $stmt->execute();
+	$stmt = $conn->prepare("SELECT name FROM Course WHERE visible=1");
+	
+	$stmt->execute();
     return $stmt->fetchAll();
 }
 
@@ -40,7 +83,7 @@ function updateUnit($id,$name,$area,$credits){
 	$stmt = $conn->prepare("UPDATE CurricularUnit
 		SET name =?,areaid=?,credits=? WHERE curricularid = ?");
 	
-	$stmt->execute(array($name,$area,$credits,$id));
+	return $stmt->execute(array($name,$area,$credits,$id));
 }
 
 function countUnits(){
@@ -49,6 +92,34 @@ function countUnits(){
 
 	$stmt->execute();
 	return $stmt->fetch();
+}
+
+function getUnit($id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT curricularID, name, area, credits
+		FROM CurricularUnit, Area
+		WHERE CurricularUnit.areaid = Area.areaid AND CurricularUnit.visible=1 AND CurricularUnit.curricularID = ?");
+
+	$stmt->execute(array($id));
+	return $stmt->fetch();
+}
+
+function getUnitID($unit){
+	global $conn;
+	$stmt = $conn->prepare("SELECT curricularid FROM CurricularUnit
+		WHERE name=? AND visible=1");
+
+	$stmt->execute(array($unit));
+	return $stmt->fetch();
+}
+
+function getUnitsName(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT name FROM CurricularUnit
+		WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetchAll();
 }
 
 function getUnits($nbItems,$offset){
@@ -60,16 +131,6 @@ function getUnits($nbItems,$offset){
 
 	$stmt->execute(array($nbItems,$offset));
 	return $stmt->fetchAll();
-}
-
-function getUnit($id){
-	global $conn;
-	$stmt = $conn->prepare("SELECT curricularID, name, area, credits
-		FROM CurricularUnit, Area
-		WHERE CurricularUnit.areaid = Area.areaid AND CurricularUnit.visible=1 AND CurricularUnit.curricularID = ?");
-
-	$stmt->execute(array($id));
-	return $stmt->fetch();
 }
 
 function deleteUnit($unit){
@@ -95,31 +156,62 @@ function deleteUnit($unit){
 	}
 }
 
-function deleteUnitOccurrence($unit){
-
+function createUnitOccurrence($syllabus,$unit,$teacher,$bibliography,$competences,$curricularSemester,$curricularYear,
+          $evaluations,$links,$language,$programme,$requirements){
 	global $conn;
-	try{
-		$conn->beginTransaction();
+	$stmt = $conn->prepare("INSERT INTO CurricularUnitOccurrence(syllabusid, curricularunitid, teachercode, bibliography, 
+            competences, curricularsemester, curricularyear, evaluation, 
+            externalpage, language, programme, requirements)
+	VALUES (?, ?, ?, ?, 
+            ?, ?, ?, ?, 
+            ?, ?, ?, ?) RETURNING cuoccurrenceid");
 
-		$stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
-			WHERE Class.occurrenceid = ? AND Class.visible = 1
-			AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
-			AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
-
-		$stmt->execute(array($unit,$unit,$unit));
-		if($stmt->rowCount() == 0){
-			$stmt = $conn->prepare("UPDATE CurricularUnitOccurrence SET visible=0 WHERE cuoccurrenceid=?");
-			$stmt->execute(array($unit));
-			$conn->commit();
-			return "Success";
-		}
-		else return "Cannot delete unit, other entities depend on it";
-	} catch (Exception $e) {
-		$conn->rollBack();
-		return "Failed: " . $e->getMessage();
-	}
+	$stmt->execute(array($syllabus,$unit,$teacher,$bibliography,
+		$competences,$curricularSemester,$curricularYear,$evaluations,
+		$links,$language,$programme,$requirements));
+	return $stmt->fetch();
 }
 
+function updateUnitOccurrence($uco,$syllabus,$unit,$teacher,$bibliography,$competences,$curricularSemester,$curricularYear,
+          $evaluations,$links,$language,$programme,$requirements){
+	global $conn;
+	$stmt = $conn->prepare("UPDATE CurricularUnitOccurrence SET syllabusid=?, curricularunitid=?, teachercode=?, bibliography=?, 
+            competences=?, curricularsemester=?, curricularyear=?, evaluation=?, 
+            externalpage=?, language=?, programme=?, requirements=?
+            WHERE cuoccurrenceid = ?");
+
+	return $stmt->execute(array($syllabus,$unit,$teacher,$bibliography,
+		$competences,$curricularSemester,$curricularYear,$evaluations,
+		$links,$language,$programme,$requirements,$uco));
+}
+
+function countUnitOccurrences(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(*) total FROM CurricularUnitOccurrence WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetch();
+}
+
+function countUnitOccurrencesC($course){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND CurricularUnitOccurrence.visible=1");
+
+	$stmt->execute(array($course));
+	return $stmt->fetch();
+}
+
+function countUnitOccurrencesCY($course,$year){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
+		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
+		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.visible=1");
+
+	$stmt->execute(array($course,$year));
+	return $stmt->fetch();
+}
 
 function getUCO($id){
 	global $conn;
@@ -179,107 +271,28 @@ function getUCOlistYear($course,$year,$nbItems,$offset){
 	return $stmt->fetchAll();
 }
 
-function getCourses(){
+function deleteUnitOccurrence($unit){
+
 	global $conn;
-	$stmt = $conn->prepare("SELECT name FROM Course WHERE visible=1");
-	
-	$stmt->execute();
-    return $stmt->fetchAll();
-}
+	try{
+		$conn->beginTransaction();
 
-function getYears(){
-	global $conn;
-	$stmt = $conn->prepare("SELECT DISTINCT(year) FROM Calendar WHERE visible=1");
+		$stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
+			WHERE Class.occurrenceid = ? AND Class.visible = 1
+			AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
+			AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
 
-	$stmt->execute();
-	return $stmt->fetchAll();
-}
-
-function countUnitOccurrences(){
-	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*) total FROM CurricularUnitOccurrence WHERE visible=1");
-
-	$stmt->execute();
-	return $stmt->fetch();
-}
-
-function countUnitOccurrencesC($course){
-	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
-		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
-		AND CurricularUnitOccurrence.visible=1");
-
-	$stmt->execute(array($course));
-	return $stmt->fetch();
-}
-
-function countUnitOccurrencesCY($course,$year){
-	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
-		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
-		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.visible=1");
-
-	$stmt->execute(array($course,$year));
-	return $stmt->fetch();
-}
-function getTeachers(){
-	global $conn;
-	$stmt = $conn->prepare("SELECT name, username FROM Person
-	WHERE personType = 'Teacher' AND visible=1");
-
-	$stmt->execute();
-	return $stmt->fetchAll();
-}
-
-function getSyllabusID($course,$year){
-	global $conn;
-	$stmt = $conn->prepare("SELECT syllabusid FROM Syllabus
-		WHERE coursecode=? AND calendaryear=? AND visible=1");
-
-	$stmt->execute(array($course,$year));
-	return $stmt->fetch();
-}
-
-function getUnitID($unit){
-	global $conn;
-	$stmt = $conn->prepare("SELECT curricularid FROM CurricularUnit
-		WHERE name=? AND visible=1");
-
-	$stmt->execute(array($unit));
-	return $stmt->fetch();
-}
-
-function getUnitsName(){
-	global $conn;
-	$stmt = $conn->prepare("SELECT name FROM CurricularUnit
-		WHERE visible=1");
-
-	$stmt->execute();
-	return $stmt->fetchAll();
-}
-
-function getTeacherID($username){
-	global $conn;
-	$stmt = $conn->prepare("SELECT academiccode FROM Person
-		WHERE username = ? AND visible = 1");
-
-	$stmt->execute(array($username));
-	return $stmt->fetch();
-}
-
-function createUnitOccurrence($syllabus,$unit,$teacher,$bibliography,$competences,$curricularSemester,$curricularYear,
-          $evaluations,$links,$language,$programme,$requirements){
-	global $conn;
-	$stmt = $conn->prepare("INSERT INTO CurricularUnitOccurrence(syllabusid, curricularunitid, teachercode, bibliography, 
-            competences, curricularsemester, curricularyear, evaluation, 
-            externalpage, language, programme, requirements)
-	VALUES (?, ?, ?, ?, 
-            ?, ?, ?, ?, 
-            ?, ?, ?, ?) RETURNING cuoccurrenceid");
-
-	$stmt->execute(array($syllabus,$unit,$teacher,$bibliography,
-		$competences,$curricularSemester,$curricularYear,$evaluations,
-		$links,$language,$programme,$requirements));
-	return $stmt->fetch();
+		$stmt->execute(array($unit,$unit,$unit));
+		if($stmt->rowCount() == 0){
+			$stmt = $conn->prepare("UPDATE CurricularUnitOccurrence SET visible=0 WHERE cuoccurrenceid=?");
+			$stmt->execute(array($unit));
+			$conn->commit();
+			return "Success";
+		}
+		else return "Cannot delete unit, other entities depend on it";
+	} catch (Exception $e) {
+		$conn->rollBack();
+		return "Failed: " . $e->getMessage();
+	}
 }
 ?>
