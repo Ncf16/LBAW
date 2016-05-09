@@ -2,16 +2,13 @@
 <script src="{$BASE_URL}js/courseFormValidation.js"></script>
 <div class="container">
 <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-12">
       <h2 class="page-header">Create Course</h2>
       <form id="courseForm" class="well form-horizontal" action="#" method="post" id="courseCreation_form">
-         {if isset($smarty.get.courseID) }
+         {if $edit==true  }
          <input id="Action" name="Action" hidden value="Edit">
-         {$edit=true}
-         {$infoToEdit=getCourseInfo($smarty.get.courseID)}
          {else}
          <input id="Action" name="Action" hidden value="Create">
-         {$edit=false}
          {/if}
          <div class="form-group">
             <label class="col-md-3 control-label">Name</label>  
@@ -47,23 +44,22 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <!--
+             
                   <input name="course_director" id="course_director" placeholder="Course Director" value="" list="course_director_list" class="form-control" type="text" required >
                   <datalist name="course_director_list" id="course_director_list" >
-                     {$teachers=getAllTeachers()}
                      <option value="0" selected="selected">Select Course Director</option>
                      {foreach from=$teachers item=teacher}
                      <option value={$teacher.academiccode}>{$teacher.name}</option>
                      {/foreach} 
                   </datalist>
-                    -->
+                 <!--
                   <select name="course_director" id="course_director" placeholder="Course Director" class="form-control" required>
-                     {$teachers=getAllTeachers()}
+                   
                      <option value="0" selected="selected">Select Course Director</option>
                      {foreach from=$teachers item=teacher}
-                     <option value={$teacher.academiccode}>{$teacher.name}</option>
+                     <option value={$teacher.academiccode}>{$teacher.name}:{$teacher.username}</option>
                      {/foreach} 
-                  </select>
+                  </select>-->
                   {if $edit==true }
                   <script >
                     fillField("course_director","{$infoToEdit["teachercode"]}");

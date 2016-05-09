@@ -40,8 +40,7 @@ function createCourse($abbreviation, $regentCode, $courseType, $name, $creationD
     
   }
 
-function updateCourse($courseID, $abbreviation, $regentCode, $courseType, $name, $creationDate, $currentCalendarYear, $description)
-  {
+function updateCourse($courseID, $abbreviation, $regentCode, $courseType, $name, $creationDate, $currentCalendarYear, $description) {
     global $conn;
     $stmt = $conn->prepare("UPDATE Course SET abbreviation=? AND teachercode=? AND courseType=? AND name=? AND creationDate=? AND currentCalendarYear=? AND description = ? WHERE code = '?'");
     try
@@ -66,21 +65,17 @@ function updateCourse($courseID, $abbreviation, $regentCode, $courseType, $name,
       }
   }
 function deleteCourse($courseCode){
-   {
     global $conn;
     $stmt = $conn->prepare("UPDATE Course SET visible= 0 WHERE code = '?'");
-    try
-      {
+  
         $res = $stmt->execute(array(
             $courseCode
         ));
         echo $res;
-      }
-  }
+ 
 
 }
-function getAllActiveCourseList()
-  {
+function getAllActiveCourseList() {
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name AS diretorName,COUNT(CourseEnrollment.studentcode),
    FROM  CourseEnrollment, course, person 
@@ -91,8 +86,7 @@ function getAllActiveCourseList()
     return $stmt->fetchAll();
   }
 
-function getVisibleCourses()
-  {
+function getVisibleCourses() {
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name as directorname, person.username as directorUsername
                             FROM course, person
@@ -103,8 +97,7 @@ function getVisibleCourses()
     return $stmt->fetchAll();
     
   }
-function getVisibleCoursesFromPage($coursesPerPage, $page)
-  {
+function getVisibleCoursesFromPage($coursesPerPage, $page){
     global $conn;
     $stmt = $conn->prepare("SELECT course.*, person.name as directorname, person.username as directorUsername
                             FROM course, person
@@ -119,8 +112,7 @@ function getVisibleCoursesFromPage($coursesPerPage, $page)
     return $stmt->fetchAll();
   }
 
-function countCourses()
-  {
+function countCourses() {
     global $conn;
     $stmt = $conn->prepare("SELECT Count(code) as nrcourses
                             FROM Course

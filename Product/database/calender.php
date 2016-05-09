@@ -1,6 +1,4 @@
-
 <?php 
-
 /*CREATE TABLE IF NOT EXISTS Calendar(
 year INTEGER,
 semester INTEGER,
