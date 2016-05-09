@@ -5,6 +5,7 @@ include_once($BASE_DIR . 'database/unit.php');
 $courses = getCourses();
 $years = getYears();
 $teachers = getTeachers();
+$units = getUnitsName();
 
 foreach ($years as &$year)
 	$year['year'] = $year['year'] . '/' . ($year[year] + 1);
@@ -17,5 +18,6 @@ unset($teacher);
 $smarty->assign('courses', $courses);
 $smarty->assign('years', $years);
 $smarty->assign('teachers', $teachers);
+$smarty->assign('units', $units);
 $smarty->display('curricularUnit/createUnitOccurrence.tpl');
 ?>
