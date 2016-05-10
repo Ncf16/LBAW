@@ -36,5 +36,35 @@ function getCalendarInfo($currentYear,$currentSemester){
     $stmt->execute(array($currentYear,$currentSemester));
     return  $stmt->fetch();
 }
+function validateDate($dateToCheck,$currentSemester,$currentYear){
+     global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM calendar
+                            WHERE  year = ? AND currentSemester = ?  AND visible =1 AND BETWEEN beginDate AND endDate");
+    $stmt->execute(array($currentYear,$currentSemester,$dateToCheck));
+
+     $result= $stmt->fetch();
+     if($result==false)
+        return false;
+    else
+        return true;
+
+}
+function listCalendar($limit,$offset){
+ global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM calendar
+                            WHERE  visible =1 LIMIT ? OFFSET ? ;");
+    $stmt->execute(array($limit,$offset));
+    return  $stmt->fetchAll();
+}
+function countCalendar(){
+global $conn;
+    $stmt = $conn->prepare("SELECT COUNT(*)
+                            FROM calendar
+                            WHERE visible =1 ;");
+    $stmt->execute(array());
+    return  $stmt->fetch ();
+}
 
 ?>
