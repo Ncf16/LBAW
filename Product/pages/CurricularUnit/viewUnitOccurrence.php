@@ -15,7 +15,13 @@
     exit;
   }
 
+  $languages = array();
+  $languages['PT']='Portuguese';
+  $languages['EN']='English';
+  $languages['ES']='Spanish';
+
   $uc['year'] = $uc['year'] . '/' . ($uc[year] + 1);
+  $uc['language'] = $languages[$uc['language']];
 
   if(!$uc){
   	$_SESSION['error_messages'][] = 'unit occcurrence id not found!';

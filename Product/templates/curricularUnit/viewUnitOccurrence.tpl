@@ -60,7 +60,7 @@
           <td>Regent: <a href="{$BASE_URL}pages/Person/personalPage.php?person={$unit.regent}">{$unit.regentname}</a></td>
         </tr>
         <tr>
-          <td>Language: Português</td>
+          <td>Language: {$unit.language}</td>
         </tr>
         <tr>
           <td>Page: <a href="{$unit.externalpage}">{$unit.externalpage}</a> </td>
