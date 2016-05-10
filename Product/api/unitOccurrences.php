@@ -1,12 +1,12 @@
 <?php
 include_once('../config/init.php');
 
-// $account_type = $_SESSION['account_type'];
-// if(!$account_type || $account_type != 'Admin' || $account_type != 'Teacher'){
-// 	$_SESSION['error_messages'][] = 'Unauthorized Access';
-//  	header("Location: " . $BASE_URL . "index.php");
-//  	exit;
-// }
+$account_type = $_SESSION['account_type'];
+if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
+	$_SESSION['error_messages'][] = 'Unauthorized Access';
+ 	header("Location: " . $BASE_URL . "index.php");
+ 	exit;
+}
 
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 

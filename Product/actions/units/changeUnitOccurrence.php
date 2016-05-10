@@ -42,6 +42,7 @@ include_once($BASE_DIR . 'database/unit.php');
       header("Location: " . $_SERVER['HTTP_REFERER']);
       exit;
     }
+
     $syllabus = getSyllabusID($course['code'],intval($year[0]));//syllabusid
     if(!$syllabus){
       $_SESSION['form_values'] = $_POST;
@@ -81,7 +82,7 @@ include_once($BASE_DIR . 'database/unit.php');
       header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 
-    $language = 'PT';
+    $language = $_POST['language'];
 
     $curricularYear = intval($_POST['unit_curricularyear']);
     if($curricularYear < 1 || $curricularYear > 7){
@@ -102,7 +103,7 @@ include_once($BASE_DIR . 'database/unit.php');
     $id = $_POST['unit_id'];
     if(!isset($id) || strlen($id) == 0){
       try{
-        createUnitOccurrence($syllabus['syllabusid'],$unit['curricularid'],$teacher['academiccode'],
+        $unit = createUnitOccurrence($syllabus['syllabusid'],$unit['curricularid'],$teacher['academiccode'],
           $_POST['unit_bibliography'],$_POST['unit_competences'],$curricularSemester,$curricularYear,
           $_POST['unit_evaluations'],$_POST['unit_links'],$language,$_POST['unit_programme'],$_POST['unit_requirements']);
       }
@@ -133,7 +134,7 @@ include_once($BASE_DIR . 'database/unit.php');
     $smarty->clearAssign('years');
     $smarty->clearAssign('teachers');
     $smarty->clearAssign('units');
-    header("Location:" . $BASE_URL . 'pages/CurricularUnit/unitOccurrences.php');
+    header("Location:" . $BASE_URL . 'pages/CurricularUnit/viewUnitOccurrence.php?uc=' . $unit['cuoccurrenceid']);
     exit;
   }
   else{

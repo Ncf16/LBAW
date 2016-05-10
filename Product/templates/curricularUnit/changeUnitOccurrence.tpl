@@ -109,7 +109,11 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_language" placeholder="Classes Languague" value="{$FORM_VALUES.unit_language}" class="form-control" type="text">
+	  					<select name="unit_language" value="{$FORM_VALUES.unit_curricularsemester}" class="form-control">
+	  						{foreach from=$languages item=value key=key}
+	  						<option value="{$key}">{$value}</option>
+	  						{/foreach}
+	  					</select>
 	  				</div>
 	  			</div>
 	  		</div>
@@ -119,7 +123,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" value="{$FORM_VALUES.unit_links}" class="form-control">
+	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" value='<a href="{$FORM_VALUES.unit_links}">{$FORM_VALUES.unit_links}</a>' class="form-control">
 	  				</div>
 	  			</div>
 	  		</div>
