@@ -92,7 +92,7 @@ function getVisibleCourses() {
                             FROM course, person
                             WHERE course.teachercode = person.academiccode
                             AND course.visible=1
-                            ORDER BY course.name;");
+                            ORDER BY course.name");
     $stmt->execute();
     return $stmt->fetchAll();
     
@@ -104,7 +104,7 @@ function getVisibleCoursesFromPage($coursesPerPage, $page){
                             WHERE course.teachercode = person.academiccode
                             AND course.visible=1
                             ORDER BY course.name
-                            LIMIT ? OFFSET ?;");
+                            LIMIT ? OFFSET ?");
     $stmt->execute(array(
         $coursesPerPage,
         (($page - 1) * $coursesPerPage)
@@ -131,7 +131,7 @@ function getCourseInfo($courseCode)  {
                             AND course.teachercode = person.academiccode
                             AND course.code = ?
                             AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
-                            GROUP BY course.code, person.name, person.username;");
+                            GROUP BY course.code, person.name, person.username");
     $stmt->execute(array(
         $courseCode
     ));
@@ -152,7 +152,7 @@ function getCourseInfoView($courseCode)
                             FROM course  , person
                             WHERE course.code = ?
                             AND  course.teachercode = person.academiccode
-                            AND course.visible=1  AND person.visible=1 ;");
+                            AND course.visible=1  AND person.visible=1 ");
     $stmt->execute(array($courseCode));
     $result = $stmt->fetch();
 
@@ -161,7 +161,7 @@ function getCourseInfoView($courseCode)
                             WHERE course.code = courseenrollment.courseid
                             AND course.code = ?
                             AND course.visible=1   AND CourseEnrollment.visible=1
-                            GROUP BY course.code;");
+                            GROUP BY course.code");
     $stmt->execute(array($courseCode));
     $nStudents = $stmt->fetch();
     
@@ -243,7 +243,7 @@ function getSyllabusYears($courseCode)
                             AND course.code = syllabus.coursecode
                             AND curricularunitoccurrence.syllabusid = syllabus.syllabusid
                             AND curricularunitoccurrence.curricularunitid = curricularunit.curricularid
-                            ORDER BY year DESC;");
+                            ORDER BY year DESC");
     $stmt->execute(array(
         $courseCode
     ));

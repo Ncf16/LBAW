@@ -44,22 +44,20 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-             
+             <!--
                   <input name="course_director" id="course_director" placeholder="Course Director" value="" list="course_director_list" class="form-control" type="text" required >
-                  <datalist name="course_director_list" id="course_director_list" >
+                      <datalist name="course_director_list" id="course_director_list" >
                      <option value="0" selected="selected">Select Course Director</option>
                      {foreach from=$teachers item=teacher}
                      <option value={$teacher.academiccode}>{$teacher.name}</option>
                      {/foreach} 
-                  </datalist>
-                 <!--
+                  </datalist>-->
                   <select name="course_director" id="course_director" placeholder="Course Director" class="form-control" required>
-                   
                      <option value="0" selected="selected">Select Course Director</option>
                      {foreach from=$teachers item=teacher}
                      <option value={$teacher.academiccode}>{$teacher.name}:{$teacher.username}</option>
                      {/foreach} 
-                  </select>-->
+                  </select>
                   {if $edit==true }
                   <script >
                     fillField("course_director","{$infoToEdit["teachercode"]}");
@@ -118,15 +116,13 @@
          </div>
          <div class="form-group">
             <label class="col-md-3 control-label">Description</label>  
-            <div class="col-md-8 inputGroupContainer">
-               <div class="input-group">
+               <div class="col-md-8">
                   <textarea class="form-control"  name="course_description" id="course_description" cols="50" row="5"  ></textarea>
                   {if $edit==true }
                   <script >
                     fillField("course_description","{$infoToEdit["description"]}");
                   </script>
                   {/if}
-               </div>
             </div>
          </div>
          

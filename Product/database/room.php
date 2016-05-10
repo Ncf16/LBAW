@@ -35,5 +35,33 @@ function getRoomInfo($roomID){
     $stmt->execute(array($roomID));
     return  $stmt->fetch();
 }
+function getAvailableRoom($timeStamp){
+     global $conn;
+    $stmt = $conn->prepare("SELECT room.*
+                            FROM room 
+                            WHERE room.visible =1 AND class.visible = 1 
+                            AND room.roomdID NOT IN 
+                            (SELECT class.roomid FROM class WHERE (classDate::TIMESTAMP, interval '1' minute * class.duration) OVERLAPS ( ?::TIMESTAMP);"); 
+    $stmt->execute(array($timeStamp));
+    return  $stmt->fetch();
+}
+function countRooms(){
+
+     global $conn;
+    $stmt = $conn->prepare("SELECT COUNT(*)
+                            FROM room
+                            WHERE  visible =1 ;");
+    $stmt->execute(array());
+    return  $stmt->fetch();
+}
+function listRooms(){
+
+     global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM room
+                            WHERE  visible =1 ;");
+    $stmt->execute(array());
+    return  $stmt->fetchAll();
+}
 
 ?>
