@@ -56,7 +56,6 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$inputs['id'] = 'ID on delete not especified!';
 		$inputs['page'] = 'Page where delete happens not specified';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
-		$inputs['nbUnits'] = 'Number of units on display not especified';
  		if(!checkInputs($_POST, $inputs)){
  			//SEASION ERRORS inside checkInputs  
 			exit;

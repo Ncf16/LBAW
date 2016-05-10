@@ -5,18 +5,12 @@ include_once($BASE_DIR . 'database/unit.php');
   // form handler
   if($_POST && isset($_POST['unitSubmit'])){
 
-    if(!isset($_POST['unit_name'])){
-      $_SESSION['error_messages'][] = 'Must provide a name';
-      header("Location: " . $_SERVER['HTTP_REFERER']);
-      exit;
-    }
-    if(!isset($_POST['unit_area'])){
-      $_SESSION['error_messages'][] = 'Must provide an area';
-      header("Location: " . $_SERVER['HTTP_REFERER']);
-      exit;
-    }
-    if(!isset($_POST['unit_credits'])){
-      $_SESSION['error_messages'][] = 'Credits must be set';
+    $inputs = array();
+    $inputs['unit_name'] = 'Must provide a name';
+    $inputs['unit_area'] = 'Must provide an area';
+    $inputs['unit_credits'] = 'Credits must be set';
+    if(!checkInputs($_POST, $inputs)){
+      //SEASION ERRORS inside checkInputs
       header("Location: " . $_SERVER['HTTP_REFERER']);
       exit;
     }
@@ -31,13 +25,20 @@ include_once($BASE_DIR . 'database/unit.php');
     }
 
     $credits = intval($_POST['unit_credits']);
+    if($credits == 0){
+      $_SESSION['error_messages'][] = 'Credits not a number';
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit;
+    }
+
+    $id = $_POST['unit_id'];
     if(!isset($id)|| strlen($id) == 0){
       try {
         createUnit($name,$area['areaid'],$credits);
       }
       catch (PDOException $e) {
         $_SESSION['form_values'] = $_POST;
-        $_SESSION['error_messages'][] = 'Error creating unit: ' . $e->getMessage();
+        $_SESSION['error_messages'][] = 'Error creating unit: duplicated name';
         header("Location:".$_SERVER['HTTP_REFERER']);
         exit;
       }
@@ -63,4 +64,17 @@ include_once($BASE_DIR . 'database/unit.php');
     header("Location:".$_SERVER['HTTP_REFERER']);
     exit;
   }
+?>
+
+<?php
+function checkInputs($post, $inputs){
+  $result = true;
+  foreach($inputs as $key => $value)
+    if(!isset($post[$key])){
+      $_SESSION['error_messages'][] = $value;
+      $result = false;
+    }
+
+  return $result;
+}
 ?>

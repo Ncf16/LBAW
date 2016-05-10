@@ -277,19 +277,19 @@ function deleteUnitOccurrence($unit){
 	try{
 		$conn->beginTransaction();
 
-		$stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
-			WHERE Class.occurrenceid = ? AND Class.visible = 1
-			AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
-			AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
+		// $stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
+		// 	WHERE Class.occurrenceid = ? AND Class.visible = 1
+		// 	AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
+		// 	AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
 
-		$stmt->execute(array($unit,$unit,$unit));
-		if($stmt->rowCount() == 0){
+		// $stmt->execute(array($unit,$unit,$unit));
+		// if($stmt->rowCount() == 0){
 			$stmt = $conn->prepare("UPDATE CurricularUnitOccurrence SET visible=0 WHERE cuoccurrenceid=?");
 			$stmt->execute(array($unit));
 			$conn->commit();
-			return "Success";
-		}
-		else return "Cannot delete unit, other entities depend on it";
+		 	return "Success";
+		// }
+		// else return "Cannot delete unit, other entities depend on it";
 	} catch (Exception $e) {
 		$conn->rollBack();
 		return "Failed: " . $e->getMessage();

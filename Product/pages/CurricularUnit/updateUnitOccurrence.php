@@ -6,14 +6,14 @@ $areas = getAreas();
 
 if(!isset($_GET['unit'])){
 	$_SESSION['error_messages'][] = 'unit not especified!';
-	header("Location: " . $BASE_URL);
+	header("Location: " . $BASE_URL . "index.php");
 	exit;
 }
 
 $unit = getUnit($_GET['unit']);
 if(!$unit){
 	$_SESSION['error_messages'][] = 'unit id not found!';
-	header("Location: " . $BASE_URL);
+	header("Location: " . $BASE_URL . "index.php");
 	exit;
 }
 
