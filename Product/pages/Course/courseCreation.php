@@ -14,10 +14,12 @@
  		exit;
 }
     */
+$_GET['courseID']=15;
   if (isset($_GET['courseID'])) {
       $infoToEdit=getCourseInfo($_GET['courseID']);
       $edit=true;
       $smarty->assign('infoToEdit',$infoToEdit);
+      var_dump($infoToEdit);
     }
     else
       $edit=false;
@@ -27,7 +29,7 @@
   $smarty->assign('edit',$edit);
  
 
-  $smarty->display('course/courseCreation.tpl');
+   $smarty->display('course/courseCreation.tpl');
 ?>
  ?>
  

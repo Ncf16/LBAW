@@ -6,6 +6,7 @@
       <h2 class="page-header">Create Course</h2>
       <form id="courseForm" class="well form-horizontal" action="#" method="post" id="courseCreation_form">
          {if $edit==true  }
+         <input hidden id="courseID" name="courseID" value="{$infoToEdit.code}" />
          <input id="Action" name="Action" hidden value="Edit">
          {else}
          <input id="Action" name="Action" hidden value="Create">

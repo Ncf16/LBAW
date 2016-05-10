@@ -40,29 +40,18 @@ function createCourse($abbreviation, $regentCode, $courseType, $name, $creationD
     
   }
 
-function updateCourse($courseID, $abbreviation, $regentCode, $courseType, $name, $creationDate, $currentCalendarYear, $description) {
+function updateCourse($code, $abbreviation, $teacherCode, $courseType, $name, $creationDate, $currentCalendarYear, $description) {
     global $conn;
-    $stmt = $conn->prepare("UPDATE Course SET abbreviation=? AND teachercode=? AND courseType=? AND name=? AND creationDate=? AND currentCalendarYear=? AND description = ? WHERE code = '?'");
-    try
-      {
-        $res = $stmt->execute(array(
-            $abbreviation,
-            $regentCode,
-            $courseType,
-            $name,
-            $creationDate,
-            $currentCalendarYear,
-            $description,
-            $courseID
-        ));
-        echo $res;
+    $stmt = $conn->prepare("UPDATE Course SET abbreviation=?, teacherCode=?, courseType=?, name=?, creationDate=?, currentCalendarYear=?, description = ? WHERE code = ?");
+ 
+    try {
+        $res = $stmt->execute(array($abbreviation,$teacherCode,$courseType,$name,$creationDate,$currentCalendarYear,$description,$code));
       }
-    
-    catch (Exception $e)
-      {
+     catch (Exception $e)  {
         echo 'Caught exception: ', $e->getMessage(), "\n";
         return "false " + $e->getMessage();
       }
+    echo ("true " . $code);
   }
 function deleteCourse($courseCode){
     global $conn;

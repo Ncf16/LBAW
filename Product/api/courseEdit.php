@@ -16,6 +16,10 @@
   elseif ($_POST['Action']=='Edit')  {
      if(isset($_POST['courseID'])){
       checkArgs();
+       $result= updateCourse($_POST['courseID'],$_POST['course_abbreviation'],$_POST['course_director'], $_POST['course_degree'],$_POST['course_name'],$_POST['course_fundate'], date("Y"), 
+        $_POST['course_description']);
+       echo $result;
+       exit;
       }
       else{
         echo "No courseID given";

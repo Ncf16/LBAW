@@ -43,7 +43,7 @@ function courseTypeToYears(type){
 					var course=data.replace(/[^0-9\.]/g, '');
 					console.log(course);
 					console.log( BASE_URL + "pages/Course/coursePage.php?course="+course);
-					  window.location.href =  BASE_URL + "pages/Course/coursePage.php?course="+course;
+					window.location.href =  BASE_URL + "pages/Course/coursePage.php?course="+course;
 				} else {
 					console.log("Erro");
 					 
