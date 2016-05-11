@@ -1,117 +1,201 @@
 <?php
-function createClass($uco,$teacher,$duration,$room,$classDate,$summary){
-	global $conn;
-	$stmt = $conn->prepare("INSERT INTO Class(occurrenceid, teachercode, duration, roomid, classdate, summary)
-    VALUES (?, ?, ?, ?, ?, ?) RETURNING classid");
-
-    $stmt->execute(array($uco,$teacher,$duration,$room,$classDate,$summary));
-	return $stmt->fetch();
-}
-
-function updateClass($class,$uco,$teacher,$duration,$room,$classDate,$summary){
+function updateEvaluation($evaluation,$date,$weight){
 
 	global $conn;
-	$stmt = $conn->prepare("UPDATE Class SET occurrenceid=?, teachercode=?, duration=?, roomid=?,
-		classdate=?, summary=? WHERE classid = ?");
+	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate=?, weight = ?
+		classdate=?, summary=? WHERE evaluationid = ?");
 	
-	$stmt->execute(array($uco,$teacher,$duration,$room,$classDate,$summary,$class));
+	$stmt->execute(array($date,$weight,$evaluation));
 }
 
-function countClass(){
+function createExam($duration,$uco,$date,$weight){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*) FROM Class WHERE visible=1");
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("INSERT INTO Evaluation(cuoccurrenceid, evaluationdate, weight, evaluationtype)
+	VALUES(?,?,?,'Exam') RETURNING evaluationid");
 
-	$stmt->execute();
-	return $stmt->fetch();
+	$stmt->execute(array($uco,$date,$weight));
+	$examID = $stmt->fetch();
+	if(isset($examID)){
+		$examID = intval($examID['evaluationid']);
+		if($examID > 0){
+			$stmt = $conn->prepare("INSERT INTO Exam(evaluationid,duration)
+				VALUES(?,?)");
+
+			$stmt->execute(array($examID,$duration));
+			$conn->commit();
+			return $examID;
+		}
+	}
+	$conn->rollBack();
+	return false;
 }
 
-function countUCOClass($uco){
+function createTest($duration,$uco,$date,$weight){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*) FROM Class
-		WHERE occurrenceid=? AND visible=1");
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("INSERT INTO Evaluation(cuoccurrenceid, evaluationdate, weight, evaluationtype)
+	VALUES(?,?,?,'Test') RETURNING evaluationid");
+
+	$stmt->execute(array($uco,$date,$weight));
+	$examID = $stmt->fetch();
+	if(isset($examID)){
+		$examID = intval($examID['evaluationid']);
+		if($examID > 0){
+			$stmt = $conn->prepare("INSERT INTO Test(evaluationid,duration)
+				VALUES(?,?)");
+
+			$stmt->execute(array($examID,$duration));
+			$conn->commit();
+			return $examID;
+		}
+	}
+	$conn->rollBack();
+	return false;
+}
+
+function createGroupWork($min,$max,$uco,$date,$weight){
+
+	global $conn;
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("INSERT INTO Evaluation(cuoccurrenceid, evaluationdate, weight, evaluationtype)
+	VALUES(?,?,?,'GroupWork') RETURNING evaluationid");
+
+	$stmt->execute(array($uco,$date,$weight));
+	$examID = $stmt->fetch();
+	if(isset($examID)){
+		$examID = intval($examID['evaluationid']);
+		if($examID > 0){
+			$stmt = $conn->prepare("INSERT INTO GroupWork(evaluationid,minelements,maxelements)
+				VALUES(?,?,?)");
+
+			$stmt->execute(array($examID,$min,$max));
+			$conn->commit();
+			return $examID;
+		}
+	}
+	$conn->rollBack();
+	return false;
+}
+
+function countEvaluations($uco){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(*) FROM Evaluation
+		WHERE cuoccurrenceid = ? AND visible=1");
 
 	$stmt->execute(array($uco));
 	return $stmt->fetch();
 }
 
-function countTeacherClass($teacher){
+function getTest($test){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*) FROM Class
-		WHERE teachercode=? AND visible=1");
+	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, evaluationdate, Curricularunit.name
+		FROM Test, Evaluation, CurricularUnit, CurricularUnitOccurrence
+		WHERE Test.evaluationid = Evaluation.evaluationid AND
+		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
+		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+		Evaluation.evaluationid = ? AND Evaluation.visible=1");
 
-	$stmt->execute(array($teacher));
+	$stmt->execute(array($test));
 	return $stmt->fetch();
 }
 
-function getClass($class){
+function getExam($exam){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT Class.summary, Class.classdate, Person.name, 
-		Syllabus.calendaryear, Curricularunit.name AS unit, Class.duration, Room.room
-		FROM Class, Person, Curricularunitoccurrence, Syllabus, Curricularunit, Room
-		WHERE Class.teachercode = Person.academiccode AND
-		Class.occurrenceid = Curricularunitoccurrence.cuoccurrenceid AND
-		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
-		Curricularunitoccurrence.curricularunitid = Curricularunit.curricularid AND
-		Class.roomid = Room.roomid AND
-		Class.classid = ?");
+	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, evaluationdate, Curricularunit.name
+		FROM Exam, Evaluation, CurricularUnit, CurricularUnitOccurrence
+		WHERE Exam.evaluationid = Evaluation.evaluationid AND
+		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
+		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+		Evaluation.evaluationid = ? AND Evaluation.visible=1");
 
-	$stmt->execute(array($class));
+	$stmt->execute(array($exam));
 	return $stmt->fetch();
 }
 
-function getClasses($nbClasses,$offset){
+function getGroupWork($groupWork){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT Class.classdate, Syllabus.calendaryear, Curricularunit.name AS unit, Room.room
-		FROM Class, Curricularunitoccurrence, Syllabus, Curricularunit, Room
-		WHERE Class.occurrenceid = Curricularunitoccurrence.cuoccurrenceid AND
-		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
-		Curricularunitoccurrence.curricularunitid = Curricularunit.curricularid AND
-		Class.roomid = Room.roomid LIMIT ? OFFSET ?");
+	$stmt = $conn->prepare("SELECT minelements, maxelements, evaluationtype, weight, evaluationdate, Curricularunit.name
+		FROM GroupWork, Evaluation, CurricularUnit, CurricularUnitOccurrence
+		WHERE GroupWork.evaluationid = Evaluation.evaluationid AND
+		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
+		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+		Evaluation.evaluationid = ? AND Evaluation.visible=1");
 
-	$stmt->execute(array($nbClasses,$offset));
+	$stmt->execute(array($groupWork));
+	return $stmt->fetch();
+}
+
+function getExams($nbEvaluations,$offset){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT evaluationtype, weight, evaluationdate, Curricularunit.name
+		FROM Evaluation, CurricularUnit, CurricularUnitOccurrence
+		WHERE Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
+		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+		Evaluation.visible=1 LIMIT ? OFFSET ?");
+
+	$stmt->execute(array($nbEvaluations,$offset));
 	return $stmt->fetchAll();
 }
 
-function getUCOClasses($uco,$nbClasses,$offset){
-
+function deleteTest($test){
 	global $conn;
-	$stmt = $conn->prepare("SELECT Class.classdate, Syllabus.calendaryear, Curricularunit.name AS unit, Room.room
-		FROM Class, Curricularunitoccurrence, Syllabus, Curricularunit, Room
-		WHERE Class.occurrenceid = Curricularunitoccurrence.cuoccurrenceid AND
-		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
-		Curricularunitoccurrence.curricularunitid = Curricularunit.curricularid AND
-		Class.roomid = Room.roomid AND
-		Class.occurrenceid = ? LIMIT ? OFFSET ?");
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("UPDATE Test SET visible=0
+		WHERE evaluationid =?");
 
-	$stmt->execute(array($uco,$nbClasses,$offset));
-	return $stmt->fetchAll();
+	$count = $stm->execute(array($test));
+	if($count > 0){
+		$conn->prepare("UPDATE Evaluation SET visible=0
+			WHERE evaluationid=?");
+		$stmt->execute(array($test));
+		$conn->commit();
+		return;
+	}
+
+	$conn->rollBack();
 }
 
-function getTeacherClasses($teacher,$nbClasses,$offset){
-
+function deleteExam($exam){
 	global $conn;
-	$stmt = $conn->prepare("SELECT Class.classdate, Syllabus.calendaryear, Curricularunit.name AS unit, Room.room
-		FROM Class, Curricularunitoccurrence, Syllabus, Curricularunit, Room
-		WHERE Class.occurrenceid = Curricularunitoccurrence.cuoccurrenceid AND
-		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
-		Curricularunitoccurrence.curricularunitid = Curricularunit.curricularid AND
-		Class.roomid = Room.roomid AND
-		Class.teacherCode = ? LIMIT ? OFFSET ?");
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("UPDATE Exam SET visible=0
+		WHERE evaluationid =?");
 
-	$stmt->execute(array($teacher,$nbClasses,$offset));
-	return $stmt->fetchAll();
+	$count = $stm->execute(array($exam));
+	if($count > 0){
+		$conn->prepare("UPDATE Evaluation SET visible=0
+			WHERE evaluationid=?");
+		$stmt->execute(array($exam));
+		$conn->commit();
+		return;
+	}
+
+	$conn->rollBack();
 }
 
-function deleteClass($class){
+function deleteGroupWork($groupWork){
 	global $conn;
-	$stmt = $conn->prepare("UPDATE Class SET visible=0
-		WHERE classid =?");
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("UPDATE GroupWork SET visible=0
+		WHERE evaluationid =?");
 
-	$stmt->execute(array($class));
+	$count = $stm->execute(array($groupWork));
+	if($count > 0){
+		$conn->prepare("UPDATE Evaluation SET visible=0
+			WHERE evaluationid=?");
+		$stmt->execute(array($groupWork));
+		$conn->commit();
+		return;
+	}
+
+	$conn->rollBack();
 }
 ?>
