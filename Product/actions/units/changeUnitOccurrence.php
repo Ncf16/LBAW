@@ -82,7 +82,7 @@ include_once($BASE_DIR . 'database/unit.php');
       header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 
-    $language = $_POST['language'];
+    $language = $_POST['unit_language'];
 
     $curricularYear = intval($_POST['unit_curricularyear']);
     if($curricularYear < 1 || $curricularYear > 7){

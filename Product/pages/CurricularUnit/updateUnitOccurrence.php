@@ -43,13 +43,13 @@ unset($teacher);
 
 $unit['year'] = $unit['year'] . '/' . ($unit[year] + 1);
 $unit['teacher'] = $unit['regentname'] . ': ' . $unit['regent'];
+$unit['language'] = $languages[$unit['language']];
 
 $fValues = array('unit_id' => $_GET['uc'], 'unit_name' => $unit['name'], 'unit_course' => $unit['course'], 'unit_year' => $unit['year'],
 	'unit_curricularyear' => $unit['curricularyear'], 'unit_curricularsemester' => $unit['curricularsemester'],
-	'unit_teacher' => $unit['teacher'], 'unit_language' => '', 'unit_links' => '', 'unit_competences' => $unit['competences'],
+	'unit_teacher' => $unit['teacher'], 'unit_language' => $unit['language'], 'unit_links' => $unit['externalpage'], 'unit_competences' => $unit['competences'],
 	'unit_requirements' => $unit['requirements'],'unit_programme' => $unit['programme'], 'unit_evaluations' => $unit['evaluation'], 'unit_bibliography' => $unit['bibliography']);
 
-print_r($unit);
 $smarty->assign('FORM_VALUES', $fValues);
 $smarty->assign('courses', $courses);
 $smarty->assign('years', $years);

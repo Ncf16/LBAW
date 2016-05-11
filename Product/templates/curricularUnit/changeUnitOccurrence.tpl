@@ -73,7 +73,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<select name="unit_curricularsemester" value="{$FORM_VALUES.unit_curricularsemester}" class="form-control">
+	  					<select name="unit_curricularsemester" class="form-control">
 	  						<option
 	  						{if $FORM_VALUES.unit_curricularsemester == 1}
 	  						selected="selected" {/if}>1</option>
@@ -109,9 +109,10 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<select name="unit_language" value="{$FORM_VALUES.unit_curricularsemester}" class="form-control">
+	  					<select name="unit_language" class="form-control">
 	  						{foreach from=$languages item=value key=key}
-	  						<option value="{$key}">{$value}</option>
+	  						<option {if $FORM_VALUES.unit_language == $value}
+	  						selected="selected" {/if} value="{$key}">{$value}</option>
 	  						{/foreach}
 	  					</select>
 	  				</div>
@@ -123,7 +124,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" value='<a href="{$FORM_VALUES.unit_links}">{$FORM_VALUES.unit_links}</a>' class="form-control">
+	  					<input name="unit_links" placeholder="Pages Pointing to External Resources" value="{$FORM_VALUES.unit_links}" class="form-control">
 	  				</div>
 	  			</div>
 	  		</div>
