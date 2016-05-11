@@ -25,7 +25,7 @@
             </datalist>
       </div>
       <div class="form-group col-md-4">
-        <label class="col-md-8 control-label">School Year (Start year)</label>
+        <label class="col-md-8 control-label">School Year</label>
         <input name="uco_year" placeholder="Specify the School year" value="{$FORM_VALUES.year}" list="years" class="form-control" type="text">
             <datalist id="years">
               {foreach $years as $year}

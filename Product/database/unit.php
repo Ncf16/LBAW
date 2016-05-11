@@ -321,10 +321,12 @@ function deleteUnitOccurrence($unit){
 	try{
 		$conn->beginTransaction();
 
-		$stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
-			WHERE Class.occurrenceid = ? AND Class.visible = 1
-		 	AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
-		 	AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
+		$stmt = $conn->prepare("SELECT occurrenceid FROM Class
+			WHERE occurrenceid = ? AND visible = 1 UNION
+			SELECT cuoccurrenceid FROM Evaluation
+			WHERE cuoccurrenceid = ? AND visible = 1 UNION
+			SELECT cuoccurrenceid FROM CurricularEnrollment
+			cuoccurrenceid = ? AND visible=1");
 
 		$stmt->execute(array($unit,$unit,$unit));
 		if($stmt->rowCount() == 0){

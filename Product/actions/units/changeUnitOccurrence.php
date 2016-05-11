@@ -105,7 +105,7 @@ include_once($BASE_DIR . 'database/unit.php');
       try{
         $unit = createUnitOccurrence($syllabus['syllabusid'],$unit['curricularid'],$teacher['academiccode'],
           $_POST['unit_bibliography'],$_POST['unit_competences'],$curricularSemester,$curricularYear,
-          $_POST['unit_evaluations'],$_POST['unit_links'],$language,$_POST['unit_programme'],$_POST['unit_requirements']);
+          $_POST['unit_evaluations'],$_POST['unit_links'],$language,$_POST['unit_programme'],$_POST['unit_requirements'])['cuoccurrenceid'];
       }
       catch (PDOException $e){
         $_SESSION['form_values'] = $_POST;
@@ -115,8 +115,8 @@ include_once($BASE_DIR . 'database/unit.php');
       }
     }
     else{
-      /*
       try{
+        $unit = $_POST['unit_id'];
         updateUnitOccurrence(intval($_POST['unit_id']),$syllabus['syllabusid'],$unit['curricularid'],$teacher['academiccode'],
           $_POST['unit_bibliography'],$_POST['unit_competences'],$curricularSemester,$curricularYear,
           $_POST['unit_evaluations'],$_POST['unit_links'],$language,$_POST['unit_programme'],$_POST['unit_requirements']);
@@ -127,19 +127,18 @@ include_once($BASE_DIR . 'database/unit.php');
         header("Location:".$_SERVER['HTTP_REFERER']);
         exit;
       }
-      */
     }
 
     $smarty->clearAssign('courses');
     $smarty->clearAssign('years');
     $smarty->clearAssign('teachers');
     $smarty->clearAssign('units');
-    header("Location:" . $BASE_URL . 'pages/CurricularUnit/viewUnitOccurrence.php?uc=' . $unit['cuoccurrenceid']);
+    header("Location:" . $BASE_URL . 'pages/CurricularUnit/viewUnitOccurrence.php?uc=' . $unit);
     exit;
   }
   else{
     $_SESSION['error_messages'][] = 'Server couldn\'t respond';
-    //header("Location:".$_SERVER['HTTP_REFERER']);
+    header("Location:".$_SERVER['HTTP_REFERER']);
     exit;
   }
 ?>
