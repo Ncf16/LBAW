@@ -101,11 +101,11 @@
               	<div class="col-md-8 inputGroupContainer">
                 	<div class="input-group">
                   		<span class="input-group-addon"><i class="glyphicon glyphicon-option-vertical"></i></span>
-                		<select name="account_type" class="form-control">
-  							<option value="Student" selected="selected">Student</option>
-  							<option value="Teacher">Teacher</option>
-  							<option value="Admin">Admin</option>
-						</select>
+                		<select name="account_type" class="form-control" id="account_type_select">
+  							       <option value="Student" selected="selected">Student</option>
+  							       <option value="Teacher">Teacher</option>
+  							       <option value="Admin">Admin</option>
+						        </select>
 
                   		<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                 	</div>
@@ -153,7 +153,7 @@
 
             <!-- NAME -->
             <div class="form-group">
-                <label class="col-md-3 control-label">Name</label>  
+                <label class="col-md-3 control-label">Work In Progress</label>  
                 <div class="col-md-8 inputGroupContainer">
                   <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
@@ -171,17 +171,14 @@
           </strong>
         </div>
 
-            <div class="form-group">
-                <div class="col-md-4 col-md-offset-1">
-                  <button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
-                </div>
-                <div id="creation_success" class="col-md-4 col-md-offset-1">
+            
+          <div id="creation_success" class="col-md-4 col-md-offset-1">
             Account Created.
             <a  href="{$BASE_URL}pages/Person/personalPage.php?person="> User Account </a>
           </div>
 
           <div id="creation_failure" class="col-md-4 col-md-offset-1">
-            hi
+            Error
           </div>
             </div>
     </form>
