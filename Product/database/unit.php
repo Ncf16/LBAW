@@ -35,6 +35,31 @@ function getSyllabusID($course,$year){
 	return $stmt->fetch();
 }
 
+function createArea($area){
+	global $conn;
+	$stmt = $conn->prepare("INSERT INTO Area(area)
+		VALUES(?) RETURNING areaid");
+
+	$stmt->execute(array($area));
+	return $stmt->fetch();
+}
+
+function updateArea($areaid,$area){
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Area SET area=?
+		WHERE areaid=?");
+
+	$stmt->execute(array($area,$areaid));
+}
+
+function deleteArea($area){
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Area SET visible=0
+		WHERE areaid =?");
+
+	$stmt->execute(array($area));
+}
+
 function getAreaID($area){
 	global $conn;
 	$stmt = $conn->prepare("SELECT areaid
@@ -44,13 +69,31 @@ function getAreaID($area){
 	return $stmt->fetch();
 }
 
+function countAreas(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(*)
+		FROM Area WHERE visible=1");
+
+	$stmt->execute();
+	return $stmt->fetch();
+}
+
 function getAreas(){
 	global $conn;
     $stmt = $conn->prepare("SELECT area
-                            FROM Area WHERE visible=1");
+    	FROM Area WHERE visible=1");
     
     $stmt->execute();
     return $stmt->fetchAll();
+}
+
+function getAreasList($nbAreas,$offset){
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM Area
+		WHERE visible=1 LIMIT ? OFFSET ?");
+
+	$stmt->execute(array($nbAreas,$offset));
+	return $stmt->fetchall();
 }
 
 function getCourseID($course){
@@ -73,9 +116,10 @@ function getCourses(){
 function createUnit($name,$area,$credits){
 	global $conn;
 	$stmt = $conn->prepare("INSERT INTO CurricularUnit(name,areaid,credits)
-		VALUES(?,?,?)");
+		VALUES(?,?,?) RETURNING curricularid");
 	
 	$stmt->execute(array($name,$area,$credits));
+	return $stmt->fetch();
 }
 
 function updateUnit($id,$name,$area,$credits){
@@ -83,7 +127,7 @@ function updateUnit($id,$name,$area,$credits){
 	$stmt = $conn->prepare("UPDATE CurricularUnit
 		SET name =?,areaid=?,credits=? WHERE curricularid = ?");
 	
-	return $stmt->execute(array($name,$area,$credits,$id));
+	$stmt->execute(array($name,$area,$credits,$id));
 }
 
 function countUnits(){
@@ -180,7 +224,7 @@ function updateUnitOccurrence($uco,$syllabus,$unit,$teacher,$bibliography,$compe
             externalpage=?, language=?, programme=?, requirements=?
             WHERE cuoccurrenceid = ?");
 
-	return $stmt->execute(array($syllabus,$unit,$teacher,$bibliography,
+	$stmt->execute(array($syllabus,$unit,$teacher,$bibliography,
 		$competences,$curricularSemester,$curricularYear,$evaluations,
 		$links,$language,$programme,$requirements,$uco));
 }
@@ -277,19 +321,19 @@ function deleteUnitOccurrence($unit){
 	try{
 		$conn->beginTransaction();
 
-		// $stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
-		// 	WHERE Class.occurrenceid = ? AND Class.visible = 1
-		// 	AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
-		// 	AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
+		$stmt = $conn->prepare("SELECT occurrenceid FROM Class, Evaluation, CurricularEnrollment
+			WHERE Class.occurrenceid = ? AND Class.visible = 1
+		 	AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1
+		 	AND CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.visible = 1");
 
-		// $stmt->execute(array($unit,$unit,$unit));
-		// if($stmt->rowCount() == 0){
+		$stmt->execute(array($unit,$unit,$unit));
+		if($stmt->rowCount() == 0){
 			$stmt = $conn->prepare("UPDATE CurricularUnitOccurrence SET visible=0 WHERE cuoccurrenceid=?");
 			$stmt->execute(array($unit));
 			$conn->commit();
 		 	return "Success";
-		// }
-		// else return "Cannot delete unit, other entities depend on it";
+		}
+		else return "Cannot delete unit, other entities depend on it";
 	} catch (Exception $e) {
 		$conn->rollBack();
 		return "Failed: " . $e->getMessage();
