@@ -173,10 +173,12 @@ a .btn-header:focus{
 
 #creation_success{
   display: none;
+  color: green;
 }
 
 #creation_failure{
   display: none;
+  color: red;
 }
 
 
