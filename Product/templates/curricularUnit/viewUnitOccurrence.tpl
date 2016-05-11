@@ -11,7 +11,7 @@
         <button class="btn btn-primary dropdown-toggle" id="actionsButton" type="button" data-toggle="dropdown">Actions
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="classes.php">Classes</a></li>
+          <li><a href="#">Classes</a></li>
           <li><a href="#">Attendance</a></li>
           <li><a href="#">Content</a></li>
           <li><a href="unitEvaluations.php">Evaluations</a></li>
@@ -63,7 +63,7 @@
           <td>Language: {$unit.language}</td>
         </tr>
         <tr>
-          <td>Page: <a href="{$unit.externalpage}">{$unit.externalpage}</a> </td>
+          <td>Page: <a href="#">{$unit.externalpage}</a> </td>
         </tr>
       </table>
       <!-- teachers table end-->

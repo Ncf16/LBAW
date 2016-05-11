@@ -4,6 +4,7 @@ FROM Person, CurricularEnrollment, CurricularUnitOccurrence
 WHERE Person.academiccode = curricularenrollment.studentcode
 AND curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid
 AND Person.academiccode = :academiccode
+AND curricularenrollment.grade IS NOT null
 ORDER BY curricularunitoccurrence.curricularyear;
 
 -- List CU enrollments for a certain CU Occurrence: group by year
