@@ -190,8 +190,8 @@ PRIMARY KEY(evaluationID)
 CREATE TABLE IF NOT EXISTS CourseEnrollment(
 courseID INTEGER REFERENCES Course(code),
 studentCode INTEGER REFERENCES Person(academicCode),
-startYear DATE NOT NULL DEFAULT CURRENT_DATE,
-finishYear DATE,
+startYear INTEGER NOT NULL DEFAULT EXTRACT(YEAR FROM CURRENT_DATE),
+finishYear INTEGER,
 curricularYear INTEGER NOT NULL,
 courseGrade REAL,
 visible INTEGER DEFAULT 1,
@@ -203,7 +203,7 @@ PRIMARY KEY(courseID,studentCode)
 CREATE TABLE IF NOT EXISTS CurricularEnrollment(
 cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 studentCode INTEGER REFERENCES Person(academicCode),
-finalGrade INTEGER DEFAULT 0,
+finalGrade INTEGER,
 visible INTEGER DEFAULT 1,
 CHECK(finalGrade >= 0 AND finalGrade <= 20),
 PRIMARY KEY(cuOccurrenceID,studentCode)
