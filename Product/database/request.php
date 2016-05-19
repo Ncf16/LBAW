@@ -15,7 +15,7 @@ CHECK(reasonForChange <> '')
 //With Admin
 function createRequest($studentCode,$adminCode,$newCourse_Code,$approved,$resonForChange){
      global $conn;
-    $stmt = $conn->prepare("INSERT INTO request(studentCode,adminCode,newCourse_Code,approved,resonForChange) VALUES (?,?,?,?,?);");
+    $stmt = $conn->prepare("INSERT INTO request(studentCode,adminCode,newCourse_Code,approved,reasonForChange) VALUES (?,?,?,?,?);");
     $stmt->execute(array($studentCode,$adminCode,$newCourse_Code,$approved,$resonForChange));
 }
 //Without Admin
@@ -41,7 +41,7 @@ function validateRequest($requestID,$isApproved){
 function setAdmin($adminCode,$requestID){
 
  $stmt = $conn->prepare("UPDATE request SET adminCode = ?
-                            WHERE  requestID = ?;");
+                            WHERE  requestID = ? AND visible=1;");
  $stmt->execute(array($adminCode,$requestID));
 }
 function deleteRequest($requestID){
