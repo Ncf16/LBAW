@@ -231,4 +231,23 @@ function checkTeacherCodeInArray($array,$code){
   }
   return false;
 }
+
+function getTeacherID($username){
+  global $conn;
+  $stmt = $conn->prepare("SELECT academiccode FROM Person
+    WHERE username = ? AND visible = 1");
+
+  $stmt->execute(array($username));
+  return $stmt->fetch();
+}
+
+function getTeachers(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT name, username FROM Person
+  WHERE personType = 'Teacher' AND visible=1");
+
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
 ?>

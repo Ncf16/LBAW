@@ -66,5 +66,12 @@ global $conn;
     $stmt->execute(array());
     return  $stmt->fetch ();
 }
+function getYears(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT DISTINCT(year) FROM Calendar WHERE visible=1");
+
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
 
 ?>

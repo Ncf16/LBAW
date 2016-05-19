@@ -134,6 +134,10 @@ function getCourseInfo($courseCode)  {
         $result['courseYears'] = 0;
     return $result;
   }
+
+ 
+ 
+
 function getCourseInfoView($courseCode)
   {
     global $conn;
@@ -253,5 +257,21 @@ function convertTypeToInt($type)
             return -1;
     }
   }
+function getCourseIDByName($courseName){
+    global $conn;
+    $stmt = $conn->prepare("SELECT code
+        FROM Course WHERE name=? AND visible=1");
+    
+    $stmt->execute(array($courseName));
+    return $stmt->fetch();
+}
+
+function getCourses(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT name FROM Course WHERE visible=1");
+    
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
 
 ?>
