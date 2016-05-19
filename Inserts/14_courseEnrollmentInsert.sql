@@ -43,13 +43,11 @@ INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,sta
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (8,2,13.28,1,'2016');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (728,2,8.29,2,'2015');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (92,2,2.80,1,'2015');
-INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (92,2,3.26,1,'2016');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (534,3,5.05,4,'2012');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (439,3,1.99,5,'2012');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (321,3,1.12,5,'2012');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (903,3,17.99,4,'2013');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (754,1,11.88,4,'2013');
-INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (298,1,7.53,2,'2015');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (698,1,8.68,2,'2015');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (739,1,19.34,1,'2016');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (756,1,16.08,1,'2016');

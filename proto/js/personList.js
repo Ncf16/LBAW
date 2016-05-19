@@ -1,6 +1,10 @@
 // GLOBAL STUFF
-
-BASE_URL = '/LBAW/Product/';
+console.log("wtf");
+BASE_URL = window.location.pathname;
+console.log(BASE_URL);
+var url_array = BASE_URL.split("/");
+var BASE_URL = url_array[0]+ "/"+ url_array[1];
+console.log(BASE_URL);
 
 var pagination = {
 
