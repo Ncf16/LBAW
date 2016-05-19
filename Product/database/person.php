@@ -215,4 +215,20 @@ function  checkUserType($type,$id){
     $stmt->execute(array($id,$type));
     return $stmt->fetch();
 }
+function getCourseDirectorsIDs(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT teacherCode
+                            FROM courseDirectors " );
+    
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
+function checkTeacherCodeInArray($array,$code){
+  foreach ($array as $toCheck) {
+    if($toCheck['teacherCode']==$code)
+      return true;
+  }
+  return false;
+}
 ?>

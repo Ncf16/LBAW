@@ -28,7 +28,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
           {if !isset($smarty.session.username)}
            <div class="col-sm-3 col-xs-5" >
                 <a href="{$BASE_URL}pages/Person/login.php" class="btn btn-primary btn-primary">Login </a>
@@ -56,7 +55,6 @@
                 </li>
             </ul>
           {/if}
-                     
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="CollapsibleMenu">

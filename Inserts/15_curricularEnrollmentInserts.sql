@@ -1,6 +1,10 @@
 --CurricularEnrollment
  SET SCHEMA 'proto';
-INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (468,17.62,32);
+INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (2,18,1);
+INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (2,15,2);
+INSERT INTO CurricularEnrollment(studentCode,cuOccurrenceID) VALUES (2,13);
+INSERT INTO CurricularEnrollment(studentCode,cuOccurrenceID) VALUES (2,14);
+
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (100,3.91,22);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (73,11.86,37);
 INSERT INTO CurricularEnrollment(studentCode,finalGrade,cuOccurrenceID) VALUES (583,14.88,34);

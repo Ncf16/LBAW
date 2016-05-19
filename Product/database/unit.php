@@ -341,4 +341,21 @@ function deleteUnitOccurrence($unit){
 		return "Failed: " . $e->getMessage();
 	}
 }
+function isRegent($cuoID,$academiccode){
+ 
+	global $conn;
+	$stmt = $conn->prepare("SELECT curricularID
+		FROM CurricularUnitOccurrence,Syllabus
+		WHERE Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID   AND CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teacherCode = ?
+			 AND Syllabus.calendarYear = ? AND Syllabus.visible=1 AND  CurricularUnitOccurrence.visible=1 ");
+
+	$stmt->execute(array($cuoID,$academiccode,date("Y")));
+	 if($stmt->fetch()!= false)
+	 	return true;
+	 else
+	 	return false;
+);
+
+
+}
 ?>

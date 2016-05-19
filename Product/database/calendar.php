@@ -32,7 +32,7 @@ function getCalendarInfo($currentYear,$currentSemester){
 	 global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM calendar
-                            WHERE  year = ? AND currentSemester = ? AND visible =1 ;");
+                            WHERE  year = ? AND semester = ? AND visible =1 ;");
     $stmt->execute(array($currentYear,$currentSemester));
     return  $stmt->fetch();
 }
@@ -40,7 +40,7 @@ function validateDate($dateToCheck,$currentSemester,$currentYear){
      global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM calendar
-                            WHERE  year = ? AND currentSemester = ?  AND visible =1 AND BETWEEN beginDate AND endDate");
+                            WHERE  year = ? AND semester = ?  AND visible =1 AND ? BETWEEN beginDate AND endDate");
     $stmt->execute(array($currentYear,$currentSemester,$dateToCheck));
 
      $result= $stmt->fetch();
