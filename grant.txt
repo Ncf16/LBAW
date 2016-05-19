@@ -1,6 +1,0 @@
-Node.js
-npm
-grant
-uglify -> tornar o código ilegivel 
-copy -> seleção dos ficheiros 
-grantssh -> manda o ficheiros por fstp e permite e executar as permissões
