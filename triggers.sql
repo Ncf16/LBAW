@@ -53,7 +53,7 @@ type:=getPersonType(NEW.studentCode);
  THEN 
  RETURN NEW;
  ELSE
- RETURN NULL; -- RAISE EXCEPTION 'User is not a Student';
+ RAISE EXCEPTION 'User is not a Student';
  END IF;
 END 
 $$ LANGUAGE 'plpgsql'; 
@@ -94,7 +94,7 @@ type:=getPersonType(NEW.teacherCode);
  THEN 
  RETURN NEW;
  ELSE
- RETURN NULL;-- RAISE EXCEPTION 'User is not a Teacher';
+RAISE EXCEPTION 'User is not a Teacher';
  END IF;
 END 
 $$ LANGUAGE 'plpgsql';
@@ -125,7 +125,7 @@ type:=getPersonType(NEW.adminCode);
  THEN 
  RETURN NEW;
  ELSE
- RETURN NULL;-- RAISE EXCEPTION 'User is not an Admin';
+ RAISE EXCEPTION 'User is not an Admin';
  END IF;
 END 
 $$ LANGUAGE 'plpgsql';
@@ -162,7 +162,7 @@ BEGIN
  Evaluation.visible = 1;
  IF(numberOfExams > 1)
  THEN
-  RETURN NULL; --RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+ RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
  ELSE
   RETURN NEW;
   END IF;
@@ -233,7 +233,7 @@ WHERE
 
  IF (NEW.classDate::date BETWEEN beginDate AND endDate)
  THEN RETURN NEW;
- ELSE RETURN NULL;
+ ELSE RAISE EXCEPTION 'Class Date is not valid';
  END IF; 
 END
 $$ LANGUAGE 'plpgsql';
@@ -257,7 +257,7 @@ AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
 
 IF (count = 0)
 THEN RETURN NEW;
-ELSE RETURN NULL;
+ELSE RAISE EXCEPTION 'Room is not available at the specified time';
 END IF;
 END
 $$ LANGUAGE 'plpgsql';
@@ -271,16 +271,16 @@ EXECUTE PROCEDURE isRoomAvailable();
 
 CREATE OR REPLACE FUNCTION isCourseAvailable() RETURNS trigger AS $$
 DECLARE
-creation DATE;
+creationYear INTEGER;
 BEGIN
 SELECT 
- course.creationdate INTO creation
+ EXTRACT(YEAR FROM course.creationdate) INTO creationYear
 FROM 
  course
 WHERE 
  course.code = NEW.courseid;
 
-IF (NEW.startYear >= creation)
+IF (NEW.startYear >= creationYear)
 THEN RETURN NEW;
 ELSE RETURN NULL;
 END IF;

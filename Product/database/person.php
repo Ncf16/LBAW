@@ -77,7 +77,6 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
     $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password,PASSWORD_DEFAULT)));
     
 
-    return true;
 
   }catch(PDOException $e){
     echo $query . "<br>" . $e->getMessage();
@@ -111,18 +110,18 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
 }
 
 
-  function getStudentInfo($id) {
+  function getStudentInfoByUsername($username) {
     global $conn;
     $stmt = $conn->prepare("SELECT Person.*, Course.abbreviation AS courseName, CourseEnrollment.curricularYear AS currentYear, EXTRACT(YEAR FROM CourseEnrollment.startYear) AS startYear, CourseEnrollment.finishYear AS finishYear, CourseEnrollment.courseGrade As courseGrade
             FROM  Course, CourseEnrollment, Person
             WHERE Course.code = CourseEnrollment.courseID
             AND CourseEnrollment.studentCode = Person.academiccode
             AND Person.username = ?");
-    $stmt->execute(array($id));
+    $stmt->execute(array($username));
     return $stmt->fetch();
   }
 
-  function getPersonInfoUser($username){
+  function getPersonInfoByUser($username){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM Person
@@ -132,7 +131,7 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
     return $stmt->fetch();
   }
 
-  function getPersonInfoID($id){
+  function getPersonInfoByID($id){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM Person
@@ -151,25 +150,6 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
     $stmt->execute(array($username));
     return $stmt->fetch();
   }
-
-function getTeacherAcademicCodes(){
-     global $conn;
-    $stmt = $conn->prepare("SELECT academiccode
-                            FROM Person
-                            WHERE   persontype='Teacher'" );
-    
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
-  function getAllTeachers(){
-     global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM Person
-                            WHERE   persontype='Teacher'" );
-    
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
 
 function getAllPeople(){
   global $conn;
@@ -202,15 +182,7 @@ function countPeople(){
   return $stmt->fetch();
 }
 
-function getTeacherWithName($username){
-   global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM Person
-                            WHERE username = ? AND persontype='Teacher'" );
-    
-    $stmt->execute(array($username));
-    return $stmt->fetch();
-}
+
 function checkAcademicCodeInArray($array,$valueToCheck){
      // var_dump($valueToCheck);
   foreach ($array as $value) {
@@ -231,39 +203,4 @@ function  checkUserType($type,$id){
     $stmt->execute(array($id,$type));
     return $stmt->fetch();
 }
-function getCourseDirectorsIDs(){
-    global $conn;
-    $stmt = $conn->prepare("SELECT teacherCode
-                            FROM courseDirectors " );
-    
-    $stmt->execute(array());
-    return $stmt->fetchAll();
-}
-
-function checkTeacherCodeInArray($array,$code){
-  foreach ($array as $toCheck) {
-    if($toCheck['teacherCode']==$code)
-      return true;
-  }
-  return false;
-}
-
-function getTeacherID($username){
-  global $conn;
-  $stmt = $conn->prepare("SELECT academiccode FROM Person
-    WHERE username = ? AND visible = 1");
-
-  $stmt->execute(array($username));
-  return $stmt->fetch();
-}
-
-function getTeachers(){
-  global $conn;
-  $stmt = $conn->prepare("SELECT name, username FROM Person
-  WHERE personType = 'Teacher' AND visible=1");
-
-  $stmt->execute();
-  return $stmt->fetchAll();
-}
-
 ?>
