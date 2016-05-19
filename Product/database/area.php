@@ -1,4 +1,11 @@
 <?php
+/*
+CREATE TABLE IF NOT EXISTS Area(
+areaID SERIAL PRIMARY KEY,
+area VARCHAR(64) NOT NULL UNIQUE,
+visible INTEGER DEFAULT 1
+);
+*/
 function createArea($area){
 	global $conn;
 	$stmt = $conn->prepare("INSERT INTO Area(area)

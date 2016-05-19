@@ -1,7 +1,23 @@
 <?php
   include_once($BASE_DIR . '/config/init.php');
   require_once($BASE_DIR . "lib/password.php");
-
+/*
+CREATE TABLE IF NOT EXISTS Person(
+academicCode SERIAL PRIMARY KEY,
+personType PersonType,
+name VARCHAR(120) NOT NULL,
+username VARCHAR(15),
+address VARCHAR(256),
+birthdate DATE,
+nationality VARCHAR(30),
+nif CHAR(9) UNIQUE NOT NULL,
+password VARCHAR(256) NOT NULL,
+phoneNumber VARCHAR(12),
+imageURL VARCHAR(256),
+visible INTEGER DEFAULT 1,
+tsv tsvector
+);
+*/
 function isLoginCorrect($username, $password){
   global $conn;
 

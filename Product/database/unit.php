@@ -1,5 +1,15 @@
 <?php
-
+/*
+CREATE TABLE IF NOT EXISTS CurricularUnit(
+curricularID SERIAL PRIMARY KEY,
+name VARCHAR(64) NOT NULL UNIQUE,
+areaID INTEGER REFERENCES Area(areaID),
+credits INTEGER NOT NULL,
+visible INTEGER DEFAULT 1,
+tsv tsvector,
+CHECK(credits > 0)
+);
+*/
 function createUnit($name,$area,$credits){
 	global $conn;
 	$stmt = $conn->prepare("INSERT INTO CurricularUnit(name,areaid,credits)

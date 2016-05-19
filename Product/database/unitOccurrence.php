@@ -1,5 +1,25 @@
 <?php
+ /*
+CREATE TABLE IF NOT EXISTS CurricularUnitOccurrence(
+cuOccurrenceID SERIAL PRIMARY KEY,
+syllabusID INTEGER REFERENCES Syllabus(syllabusID),
+curricularUnitID INTEGER REFERENCES CurricularUnit(curricularID),
+teacherCode INTEGER REFERENCES Person(academicCode),
+bibliography TEXT NOT NULL,
+competences TEXT NOT NULL,
+curricularSemester INTEGER NOT NULL,
+curricularYear INTEGER NOT NULL,
+evaluation TEXT NOT NULL,
+externalPage VARCHAR(128) NOT NULL,
+language Language,
+programme TEXT NOT NULL,
+requirements TEXT NOT NULL,
+visible INTEGER DEFAULT 1,
+CHECK(curricularSemester = 1 OR curricularSemester = 2),
+CHECK(curricularYear > 0 AND curricularYear <=  8)
+);
  
+ */
 function createUnitOccurrence($syllabus,$unit,$teacher,$bibliography,$competences,$curricularSemester,$curricularYear,
           $evaluations,$links,$language,$programme,$requirements){
 	global $conn;
