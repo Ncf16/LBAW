@@ -53,7 +53,7 @@ type:=getPersonType(NEW.studentCode);
  THEN 
  RETURN NEW;
  ELSE
- RAISE EXCEPTION 'User is not a Student';
+ RETURN NULL;   --RAISE EXCEPTION 'User is not a Student';
  END IF;
 END 
 $$ LANGUAGE 'plpgsql'; 
