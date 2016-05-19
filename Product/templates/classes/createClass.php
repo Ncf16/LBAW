@@ -45,15 +45,8 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-             <!--
-                  <input name="course_director" id="course_director" placeholder="Course Director" value="" list="course_director_list" class="form-control" type="text" required >
-                      <datalist name="course_director_list" id="course_director_list" >
-                     <option value="0" selected="selected">Select Course Director</option>
-                     {foreach from=$teachers item=teacher}
-                     <option value={$teacher.academiccode}>{$teacher.name}</option>
-                     {/foreach} 
-                  </datalist>-->
-                  <select name="course_director" id="course_director" placeholder="Course Director" class="form-control" required>
+             
+                  <select name="teacher" id="teacher" placeholder="Course Director" class="form-control" required>
                      <option value="0" selected="selected">Select Course Director</option>
                      {foreach from=$teachers item=teacher}
                      <option value={$teacher.academiccode}>{$teacher.name}:{$teacher.username}</option>
@@ -61,7 +54,7 @@
                   </select>
                   {if $edit==true }
                   <script >
-                    fillField("course_director","{$infoToEdit["teachercode"]}");
+                    fillField("teacher","{$infoToEdit["teachercode"]}");
                   </script>
                   {/if}
                  

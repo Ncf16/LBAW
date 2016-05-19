@@ -16,7 +16,6 @@
  		exit;
 }
     
-$_GET['courseID']=15;
   if (isset($_GET['courseID'])) {
       $infoToEdit=getCourseInfo($_GET['courseID']);
       $edit=true;
