@@ -7,7 +7,7 @@ function createAttendance($student,$class,$attend){
     $stmt->execute(array($student,$class,$attend));
 }
 
-function updateClass($student,$class,$attended){
+function updateAttendance($student,$class,$attended){
 
 	global $conn;
 	$stmt = $conn->prepare("UPDATE Attendance SET attended=?

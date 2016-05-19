@@ -3,7 +3,7 @@ function updateEvaluation($evaluation,$date,$weight){
 
 	global $conn;
 	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate=?, weight = ?
-		classdate=?, summary=? WHERE evaluationid = ?");
+		summary=? WHERE evaluationid = ?");
 	
 	$stmt->execute(array($date,$weight,$evaluation));
 }
