@@ -1,5 +1,4 @@
 <?php
-  include_once($BASE_DIR . '/config/init.php');
 
   function getAllTeachers(){
      global $conn;
