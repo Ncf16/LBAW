@@ -16,6 +16,7 @@
     <link href="{$BASE_URL}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+    
   <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -28,41 +29,39 @@
                     <span class="icon-bar"></span>
                 </button>
 
-      {if !isset($smarty.session.username)}
-       <div class="col-sm-3 col-xs-5" >
-            <a href="{$BASE_URL}pages/Person/login.php" class="btn btn-primary btn-primary">Login </a>
-         </div>
-      {else}
-       <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
-                            </li>
-                            {if $ACCOUNT_TYPE == 'Admin'}
-                             <li>
-                                <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
-                            </li>
-                            {/if}
-                            <li>
-                                <a href="{$BASE_URL}pages/login.php">Request</a>
-                            </li>
-                            <li>
-                                <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-      {/if}
-                 
-                 
-                 
+          {if !isset($smarty.session.username)}
+           <div class="col-sm-3 col-xs-5" >
+                <a href="{$BASE_URL}pages/Person/login.php" class="btn btn-primary btn-primary">Login </a>
+            </div>
+          {else}
+           <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
+                        </li>
+                        {if $ACCOUNT_TYPE == 'Admin'}
+                        <li>
+                            <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
+                        </li>
+                        {/if}
+                        <li>
+                            <a href="{$BASE_URL}pages/login.php">Request</a>
+                        </li>
+                        <li>
+                            <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+          {/if}
+                     
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="CollapsibleMenu">
                 <ul class="nav navbar-nav navbar-left">
-                  
+                      
                     <li class="nav-brand">
                         <a href="{$BASE_URL}index.php">Home</a>
                     </li>
@@ -95,7 +94,7 @@
                         <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
                     </li>
                     {/if}
-                    
+                        
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

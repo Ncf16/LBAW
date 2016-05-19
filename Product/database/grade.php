@@ -16,6 +16,15 @@ function updateGrade($student,$evaluation,$grade){
 	$stmt->execute(array($attended,$evaluation,$grade));
 }
 
+function countEvaluations(){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT COUNT(*) FROM Grade WHERE visible=1");
+
+	$stmt->execute(array($evaluation));
+	return $stmt->fetch();
+}
+
 function countEvaluationGrades($evaluation){
 
 	global $conn;

@@ -107,5 +107,7 @@
             </div>
         </div>
         <!-- /.row -->
+    </div>
+    <!-- /.container -->
 
 {include file='common/footer.tpl'}

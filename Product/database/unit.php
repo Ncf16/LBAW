@@ -326,7 +326,7 @@ function deleteUnitOccurrence($unit){
 			SELECT cuoccurrenceid FROM Evaluation
 			WHERE cuoccurrenceid = ? AND visible = 1 UNION
 			SELECT cuoccurrenceid FROM CurricularEnrollment
-			cuoccurrenceid = ? AND visible=1");
+			WHERE cuoccurrenceid = ? AND visible=1");
 
 		$stmt->execute(array($unit,$unit,$unit));
 		if($stmt->rowCount() == 0){
