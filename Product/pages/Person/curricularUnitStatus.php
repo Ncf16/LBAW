@@ -7,6 +7,10 @@ include_once($BASE_DIR . 'database/courseEnrollment.php');
 // get al the CUO of the student get the ones he has grades on and pick the highest grade
 $_SESSION['username']=20162;
 $_GET['username']=20162;
+if(!$_SESSION['username'] || !$_GET['username'] || $_GET['username'] !== $_SESSION['username'] ){
+   header("Location: " . $BASE_URL . "index.php");
+   exit;
+}
 
  
 $studentID = getPersonIDByUserName($_GET['username']);
