@@ -11,6 +11,11 @@ $(document).ready(function() {
 	$('#creation_toggle label').click(creationToggleHandler);
 	$('#account_form_individual').on('submit', individualCreationHandler);
 
+	if($(cu_response).length > 0) {
+ 	 curricularUnitsHandler();
+	}
+	 
+
 
 });
 
@@ -68,6 +73,31 @@ function syllabusYearHandler(event){
 		url: '../../api/syllabus.php',           //TODO: MIGHT HAVE TO FIX THIS
 		type: 'POST',
 		data: {course: course, year: year},
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {		
+				
+				$('#cu_response').html(data);
+
+			} else {
+				// Handle errors here
+				console.log('ERRORS: ' + data.error);
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			console.log('ERRORS: ' + textStatus);
+			// STOP LOADING SPINNER
+		}
+	});
+}
+function curricularUnitsHandler(){
+	var student = $('#student').val();
+	var course = $('#course').val();
+
+	$.ajax({
+		url: '../../api/studentCurricularUnits.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: {course: course,student: student},
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {		
 				

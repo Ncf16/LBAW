@@ -169,7 +169,15 @@ function countPeople(){
   $stmt->execute();
   return $stmt->fetch();
 }
-
+function getPersonIDByUserName($username){
+  global $conn;
+  $stmt = $conn->prepare("SELECT academiccode 
+                            FROM Person
+                            WHERE username = ? AND  visible = 1");
+    
+  $stmt->execute(array($username));
+  return $stmt->fetch();
+}
 
 function checkAcademicCodeInArray($array,$valueToCheck){
      // var_dump($valueToCheck);
