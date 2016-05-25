@@ -57,13 +57,8 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
   try{
 
     $stmt = $conn->prepare("SELECT * FROM person WHERE 
-                              lower(name) = lower(?)
-                          AND lower(address) = lower(?)
-                          AND lower(nationality) = lower (?)
-                          AND lower(phonenumber) = lower(?)
-                          AND birthdate = ?
-                          AND persontype = ?");
-    $stmt->execute(array($name, $address, $nationality, $phone, $birth, $type));
+                              lower(nif) = lower(?)");
+    $stmt->execute(array($nif));
   
   
     if($stmt->fetch() !== false){
@@ -76,7 +71,7 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
     $stmt = $conn->prepare($query);
     $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password,PASSWORD_DEFAULT)));
     
-
+    return true;
 
   }catch(PDOException $e){
     echo $query . "<br>" . $e->getMessage();
@@ -109,6 +104,21 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
     }
 }
  
+function getPersonUsernameByNIF($nif){
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * FROM person WHERE 
+                              lower(nif) = lower(?)");
+    $stmt->execute(array($nif));
+  
+    $person = $stmt->fetch();
+
+    if($person !== false){
+      return $person['username'];
+    }
+}
+
+
   function getPersonInfoByUser($username){
     global $conn;
     $stmt = $conn->prepare("SELECT *
