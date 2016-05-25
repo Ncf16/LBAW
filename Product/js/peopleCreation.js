@@ -1,3 +1,5 @@
+var jsonFileContents;
+var isJsonLoaded = false;
 
 $(document).ready(function() {
 
@@ -9,9 +11,30 @@ $(document).ready(function() {
 	$('#account_form_individual').on('submit', individualCreationHandler);
 	$('#account_form_multiple').on('submit', multipleCreationHandler);
 
-
 });
 
+
+function clearErrors(){
+	$("#creation_success").empty();
+	$("#creation_failure").empty();
+	$("#creation_success_multiple").empty();
+	$("#creation_failure_multiple").empty();
+}
+
+function displayErrors(errors){
+	$("#creation_success_multiple").empty();
+	$("#creation_failure_multiple").empty();
+
+	var error = false;
+	for(x in errors){
+		console.log("here");
+		if(errors[x] !== true){
+			console.log("hi");
+			$("#creation_failure_multiple").show();
+			$("#creation_failure_multiple").prepend(errors[x] + "<br>");
+		}
+	}
+}
 
 function creationToggleHandler(event){
 
@@ -34,31 +57,50 @@ function creationToggleHandler(event){
 
 function onOpenChange(e) {
 	
-	console.log("changed");
-	
-	var filePath = $("#input_open").val();
-    var startIndex = filePath.indexOf('\\') >= 0 ? filePath.lastIndexOf('\\') : filePath.lastIndexOf('/');
-    var filename = filePath.substring(startIndex);
-    if(filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-        filename = filename.substring(1);
-    }
+	clearErrors();
 
-	var fileContent = getTxt(filename);
-	//var jsonData = JSON.parse(fileContent);
-	
-}
+	var fileTypes = ['json'];
+	var files = event.target.files;
+	var file;
+	var errors = [];
 
-function getTxt(filename){
-	/*
-	$.ajax({
-		url:filename,
-		success: function (data){
-			fileContent = data;           
-			return data; 
+	// VALIDATION
+
+	// Validate file existence
+	if(files.length == 0)
+		return;
+	else
+		file = files[0];
+
+	// Check if it is a JSON file
+	var extension = file.name.split('.').pop().toLowerCase();
+	var isSuccess = fileTypes.indexOf(extension) > -1;
+
+	if(isSuccess){
+		var reader = new FileReader();
+		reader.readAsText(files[0]);
+
+		reader.onload = function(e) {
+			fileContent = e.target.result;
+			try {
+				JSON.parse(fileContent);
+			}catch (e) {
+      			// IS INVALID
+      			console.log("JSON file is invalid.");
+      		}
+      		isJsonLoaded = true;
+      		console.log(fileContent);
 		}
-	});
-	*/
+	}else{
+		$('#input_open').val($('#input_open').defaultValue);
+		errors.push("Invalid file type.");
+		displayErrors(errors);
+		console.log("Invalid file type."); // put this on error stuffie
+	}
+
 }
+
+
 
 function individualCreationHandler(event){
 	event.preventDefault();
@@ -151,6 +193,15 @@ function multipleCreationHandler(event){
 	event.preventDefault();
 	event.stopPropagation();
 	
+	if(isJsonLoaded){
+		// Verify Stuff ?
+
+		// Send to PHP
+	}else{
+		//No File Loaded yet
+		return;
+	}
+
 	console.log("multiple");
 
 	/*
@@ -239,7 +290,7 @@ function multipleCreationHandler(event){
 
 function verifyName(name2){
 
-	if(name2 == ''){
+	if(name2 == '' || name2 == null){
 		return 'Name cannot be empty';
 	}
 
@@ -296,7 +347,7 @@ function verifyPhone(phone){
 
 function verifyNIF(nif){
 
-	if(nif == ''){
+	if(nif == '' || nif == null){
 		return 'NIF cannot be empty';
 	}
 
@@ -329,7 +380,7 @@ function verifyAccountType(type){
 
 function verifyPassword(password, minLen, maxLen){
 
-	if(password == ''){
+	if(password == '' || password == null){
 		return 'Password cannot be empty';
 	}
 

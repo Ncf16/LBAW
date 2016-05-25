@@ -39,12 +39,11 @@
 	</div>
 
 
-	<div id="creation_success" class="col-md-4 col-md-offset-1">
-		Account Created.
-		<a  href="{$BASE_URL}pages/Person/personalPage.php?person="> User Account </a>
+	<div id="creation_success_multiple" class="col-md-4 col-md-offset-1">
+		
 	</div>
 
-	<div id="creation_failure" class="col-md-4 col-md-offset-1">
-		Error
+	<div id="creation_failure_multiple" class="col-md-4 col-md-offset-1">
+		STUFF IS HERE
 	</div>
 </form>
