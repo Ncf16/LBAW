@@ -2,13 +2,15 @@
   '{{repeat(5, 7)}}',
   {
     name: '{{firstName()}} {{surname()}}',
-    address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    address: '{{integer(100, 999)}} {{street()}} {{city()}} {{state()}} {{integer(100, 10000)}}',
     nationality: '{{country()}}',
     phone: '{{integer(10000000, 999999999)}}',
     nif: '{{integer(10000000, 999999999)}}',
-    birth_date: '{{date(new Date(1970, 0, 1), new Date(1998,0,1), "YYYY-MM-dd")}}',
+    birth: '{{date(new Date(1970, 0, 1), new Date(1998,0,1), "YYYY-MM-dd")}}',
+    account: 'Student',
     password: '{{integer(10000000, 999999999)}}'
   }
 ]
+
 
 -> use on: http://www.json-generator.com/

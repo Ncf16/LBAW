@@ -1,5 +1,7 @@
 var jsonFileContents;
 var isJsonLoaded = false;
+var jsonParsed = false;
+var jsonValid = false;
 
 $(document).ready(function() {
 
@@ -21,9 +23,8 @@ function clearErrors(){
 	$("#creation_failure_multiple").empty();
 }
 
-function displayErrors(errors){
-	$("#creation_success_multiple").empty();
-	$("#creation_failure_multiple").empty();
+function displayErrorsMultiple(errors){
+	clearErrors();
 
 	var error = false;
 	for(x in errors){
@@ -34,6 +35,37 @@ function displayErrors(errors){
 			$("#creation_failure_multiple").prepend(errors[x] + "<br>");
 		}
 	}
+}
+
+function verifyPersonJSON(person){
+	var errors = [];
+
+	//The verify functions return true when valid
+	console.log(person);
+
+	errors["name"] = verifyName(person['name']);
+	errors["address"] = verifyAddress(person['address']);
+	errors["nationality"] = verifyNationality(person['nationality']);
+	errors["phone"] = verifyPhone(person['phone']);
+	errors["nif"] = verifyNIF(person['nif']);
+	errors["birth"] = verifyBirth(person['birth']);
+	errors["account"] = verifyAccountType(person['account']);
+	errors["password"] = verifyPassword(person['password']);
+
+
+	var error = false;
+	for(x in errors){
+		if(errors[x] !== true){
+
+			error = true;
+			console.log(errors[x]);
+			$("#creation_failure").prepend(errors[x] + "<br>");
+			$("#creation_failure").show();
+
+		}
+	}
+
+	return error;
 }
 
 function creationToggleHandler(event){
@@ -55,59 +87,15 @@ function creationToggleHandler(event){
 	}
 }
 
-function onOpenChange(e) {
-	
-	clearErrors();
-
-	var fileTypes = ['json'];
-	var files = event.target.files;
-	var file;
-	var errors = [];
-
-	// VALIDATION
-
-	// Validate file existence
-	if(files.length == 0)
-		return;
-	else
-		file = files[0];
-
-	// Check if it is a JSON file
-	var extension = file.name.split('.').pop().toLowerCase();
-	var isSuccess = fileTypes.indexOf(extension) > -1;
-
-	if(isSuccess){
-		var reader = new FileReader();
-		reader.readAsText(files[0]);
-
-		reader.onload = function(e) {
-			fileContent = e.target.result;
-			try {
-				JSON.parse(fileContent);
-			}catch (e) {
-      			// IS INVALID
-      			console.log("JSON file is invalid.");
-      		}
-      		isJsonLoaded = true;
-      		console.log(fileContent);
-		}
-	}else{
-		$('#input_open').val($('#input_open').defaultValue);
-		errors.push("Invalid file type.");
-		displayErrors(errors);
-		console.log("Invalid file type."); // put this on error stuffie
-	}
-
-}
-
-
 
 function individualCreationHandler(event){
 	event.preventDefault();
 	event.stopPropagation();
 	
 	// FAZER VERIFICAÇÕES MANUAIS DOS CAMPOS!
-	
+	// verify functions return true if ok. therefore errors['something'] == true
+	// means that 'something' field is valid
+
 	errors = [];
 	errors["name"] = verifyName( $('#account_form_individual input[name="name"]').val() );
 	errors["address"] = verifyAddress( $('#account_form_individual input[name="address"]').val() );
@@ -189,59 +177,115 @@ function individualCreationHandler(event){
 	});
 }
 
+function onOpenChange(e) {
+	
+	clearErrors();
+
+	var fileTypes = ['json'];
+	var files = event.target.files;
+	var file;
+	var errors = [];
+	isJsonLoaded = false;
+
+	// VALIDATION
+
+	// Validate file existence
+	if(files.length == 0)
+		return;
+	else
+		file = files[0];
+
+	// Check if it is a JSON file
+	var extension = file.name.split('.').pop().toLowerCase();
+	var isSuccess = fileTypes.indexOf(extension) > -1;
+
+	// If it trully is a JSON file, check if contents are ok!
+	if(isSuccess){
+		var reader = new FileReader();
+		reader.readAsText(files[0]);
+
+		reader.onload = function(e) {
+
+			isJsonLoaded = true; // is loaded but not yet parsed
+			fileContent = e.target.result;
+
+			// Will attempt to parse fileContent
+			try {
+				jsonFileContents = JSON.parse(fileContent);
+				jsonValid = true;
+			}catch (e) {
+      			// IS INVALID -> UNLOADS FILE
+      			jsonValid = false;
+      			isJsonLoaded = false;
+
+      			$('#input_open').val($('#input_open').defaultValue);
+				errors.push("JSON file is invalid.");
+				displayErrorsMultiple(errors);
+
+      			console.log("JSON file is invalid.");
+      		}
+
+      		jsonParsed = true;
+
+      		//console.log(fileContent);
+		}
+	}else{
+		$('#input_open').val($('#input_open').defaultValue);
+		errors.push("Invalid file type.");
+		displayErrorsMultiple(errors);
+		console.log("Invalid file type."); // put this on error stuffie
+	}
+
+}
+
+
 function multipleCreationHandler(event){
 	event.preventDefault();
 	event.stopPropagation();
 	
-	if(isJsonLoaded){
-		// Verify Stuff ?
+	clearErrors();
+	$("#submit_multiple").blur();
 
-		// Send to PHP
+	if(isJsonLoaded){
+		
+		while(!jsonParsed){ // Wait for it to finish parsing, only then we know if it is valid
+			// IS LOADED... BUT NOT FINISHED PARSING YET
+		}
+		
+		if(jsonValid){
+		// Verify Stuff ?
+			var validUsers = [];
+			var counter = 1;
+
+			for(x in jsonFileContents){
+				var error = verifyPersonJSON(jsonFileContents[x]);
+
+				if(!error){
+					validUsers.push(jsonFileContents[x]);
+					
+				}else{
+					console.log("JSON Object nr."+ counter + " is not valid:" + jsonFileContents[x]);
+				}
+				counter++;
+			}
+
+	
+			console.log("Json is valid");
+			console.log(jsonFileContents);
+					// Send to PHP
+		}
+
+		//if it aint valid... too bad
+		
 	}else{
-		//No File Loaded yet
+		errors = ['No valid file loaded.'];
+		displayErrorsMultiple(errors);
 		return;
 	}
 
 	console.log("multiple");
 
 	/*
-	
-	errors = [];
-	errors["name"] = verifyName( $('#account_form_individual input[name="name"]').val() );
-	errors["address"] = verifyAddress( $('#account_form_individual input[name="address"]').val() );
-	errors["nationality"] = verifyNationality( $('#account_form_individual input[name="nationality"]').val() );
-	errors["phone"] = verifyPhone( $('#account_form_individual input[name="phone"]').val() );
-	errors["nif"] = verifyNIF( $('#account_form_individual input[name="nif"]').val() );
-	errors["birth"] = verifyBirth( $('#account_form_individual input[name="birth_date"]').val() );
-	errors["account"] = verifyAccountType( $('#account_type_select option:selected').val() );
-	errors["password"] = verifyPassword( $('#account_form_individual input[name="password"]').val() );
-
-
-	$("#creation_success").hide();
-	$("#creation_failure").empty();
-
-	var error = false;
-	for(x in errors){
-		console.log(errors[x]);
-		if(errors[x] !== true){
-
-			error = true;
-
-			$("#creation_failure").prepend(errors[x] + "<br>");
-			$("#creation_failure").show();
-
-		}
-	}
-
-	if(error === true)  // If any gave an error, no point in even making an ajax call
-		return;
-
-	// Percorrer tudo. Se alguma nao tiver "", é porque tem erro, e dá-se skip ao pedido ajax
-	// dando os erros instead
-	
-
-	console.log("was clicked!");
-	$("#submit_individual").blur();
 
 	$.ajax({
 		url: '../../api/addPerson.php',           //TODO: MIGHT HAVE TO FIX THIS
@@ -294,7 +338,7 @@ function verifyName(name2){
 		return 'Name cannot be empty';
 	}
 
-	var letters = /^[A-Za-z]+$/;  
+	var letters = /^[A-Za-z0-9'\.\-\s\,]+$/;  
 
 	if(name2.match(letters))  
 	{  
@@ -309,7 +353,7 @@ function verifyName(name2){
 
 function verifyAddress(address){
 
-	var letters = /^[0-9a-zA-Z]?$/;  
+	var letters = /^[A-Za-z0-9'\.\-\s\,]*$/;
 
 	if(address.match(letters))  
 	{  
@@ -322,8 +366,8 @@ function verifyAddress(address){
 }
 
 function verifyNationality(nationality){
-	var letters = /^[A-Za-z]?$/;  
-	if(name.match(letters))  
+	var letters = /^[A-Za-z'\s\-\.]*$/;  
+	if(nationality.match(letters))  
 	{  
 		return true;  
 	}  
@@ -334,10 +378,17 @@ function verifyNationality(nationality){
 }
 
 function verifyPhone(phone){
-	var numbers = /^[0-9]?$/;  
+
+	var numbers = /^[0-9]*$/;
+
+	var phone = phone.toString();
+	
 	if(phone.match(numbers))  
 	{  
-		return true;  
+		if(phone.length > 15){
+			return 'Phone code must not be longer than 15 characters';
+		}else
+			return true;  
 	}  
 	else  
 	{  
@@ -346,6 +397,8 @@ function verifyPhone(phone){
 }
 
 function verifyNIF(nif){
+
+	var nif = nif.toString();
 
 	if(nif == '' || nif == null){
 		return 'NIF cannot be empty';
@@ -371,7 +424,6 @@ function verifyBirth(birthdate){
 
 function verifyAccountType(type){
 
-	console.log(type);
 	if (type != 'Student' && type != 'Admin' && type != 'Teacher')
 		return 'Account type must be either Student, Admin or Teacher.';
 	else
@@ -379,6 +431,8 @@ function verifyAccountType(type){
 }
 
 function verifyPassword(password, minLen, maxLen){
+
+	var password = password.toString();
 
 	if(password == '' || password == null){
 		return 'Password cannot be empty';

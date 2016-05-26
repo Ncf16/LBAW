@@ -25,25 +25,16 @@
 
 	<div class="form-group">
 		<div class="col-md-4 col-md-offset-1">
-			<button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
+			<button id="submit_multiple" type="submit" class="btn btn-primary">ADD</button>
 		</div>
 		<!-- SUCCESS MESSAGE -->        
-		<div id="creation_success" class="col-md-4 col-md-offset-1">
-			Accounts Created.
+		<div id="creation_success_multiple" class="col-md-4 col-md-offset-1">
+			
 		</div>
 		<!-- FAILURE MESSAGE -->
-		<div id="creation_failure" class="col-md-4 col-md-offset-1">
+		<div id="creation_failure_multiple" class="col-md-4 col-md-offset-1">
 			
 		</div>
 
-	</div>
-
-
-	<div id="creation_success_multiple" class="col-md-4 col-md-offset-1">
-		
-	</div>
-
-	<div id="creation_failure_multiple" class="col-md-4 col-md-offset-1">
-		STUFF IS HERE
 	</div>
 </form>
