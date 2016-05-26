@@ -12,7 +12,7 @@
   $password = $_POST['password'];
 
   if (isLoginCorrect($username, $password)) {
-    $user = getPersonInfoUser($username);
+    $user = getPersonInfoByUser($username);
     $_SESSION['username'] = $username;
     $_SESSION['account_type'] = $user['persontype'];
     $_SESSION['userID'] = $user['academiccode'];
