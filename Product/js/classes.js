@@ -97,17 +97,18 @@ var pagination = {
 };
 
 $(document).ready(function() {
+	var uc = window.location.search.substring(window.location.search.indexOf("uc=")+"uc=".length);
 	loadPage();
 	$('.pagination').on('click', 'a', changePage);
-	$('#units').on('click','a.btn-danger',deleteItem);
+	$('#classes').on('click','a.btn-danger',deleteItem);
 });
 
 function loadPage(){
 
 	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage}, function(data){
-		addItens(data.units);
-		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+	$.post(BASE_URL + "api/classes.php", {action: 'list', itemsPerPage : nbItemsPerPage, unit : uc}, function(data){
+		addItens(data.classes);
+		pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
 	}, 'json');
 };
 
@@ -122,10 +123,10 @@ function changePage(event){
 	var newPage = pagination.updatePageNb(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	$.post(BASE_URL + "api/classes.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbClasses: nbItems}, function(data){
 		$('#units').html('');
-		addItens(data.units);
-		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+		addItens(data.classes);
+		pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
 	}, 'json');
 }
 
@@ -140,18 +141,19 @@ function deleteItem(event){
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	$.post(BASE_URL + "api/classes.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbClasses: nbItems}, function(data){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
 			$('#units').html('');
-			addItens(data.units);
-			pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+			addItens(data.classes);
+			pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
 		}
 	}, 'json');
 }
 
-function addItens(units){
+function addItens(classes){
 
+	/*
 	$.each(units, function(i, unit){
 		var tr = $('<tr/>');
 		var par = $('<p/>',{
@@ -191,6 +193,7 @@ function addItens(units){
 		tr.append($('<td/>').append(par2));
 		$('#units').append(tr);
 	});
+*/
 };
 
 

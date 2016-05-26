@@ -1,4 +1,7 @@
-BASE_URL = '/LBAW/Product/';
+BASE_URL = window.location.pathname;
+
+var url_array = BASE_URL.split("/");
+var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
 var pagination = {
 

@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2 class="page-header">Curricular Unit Occurrence</small>
+      <h2 class="page-header">Curricular Unit Occurrence
       </h2>
     </div>
     <div class="col-sm-2">

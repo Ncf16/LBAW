@@ -9,6 +9,7 @@ PRIMARY KEY(year, semester),
 CHECK(beginDate < endDate)
 );*/ 
 
+
 function createCalendar($year,$semester,$beginDate,$endDate){
 	 global $conn;
     $stmt = $conn->prepare("INSERT INTO calendar(year,semester,beginDate,endDate) VALUES (?,?,?,?);");
@@ -26,6 +27,7 @@ function deleteCalendar($currentYear,$currentSemester){
 	 $stmt = $conn->prepare("UPDATE calendar SET visible=0
                             WHERE  year = ? AND semester=? ;");
     $stmt->execute(array($currentYear,$currentSemester));
+}
 
 function getCalendarInfo($currentYear,$currentSemester){
 
@@ -66,6 +68,7 @@ global $conn;
     $stmt->execute(array());
     return  $stmt->fetch ();
 }
+
 function getYears(){
     global $conn;
     $stmt = $conn->prepare("SELECT DISTINCT(year) FROM Calendar WHERE visible=1");

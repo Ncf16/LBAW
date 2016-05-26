@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2 class="page-header">Curricular Units</small>
+      <h2 class="page-header">Curricular Units
       </h2>
     </div>
     <div class="col-sm-2">
