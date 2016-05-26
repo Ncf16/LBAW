@@ -88,8 +88,6 @@ function syllabusYearHandler(event){
 		}
 	});
 }
-<<<<<<< HEAD
-=======
 function curricularUnitsHandler(){
 	var student = $('#student').val();
 	var course = $('#course').val();
@@ -318,4 +316,3 @@ function verifyPassword(password, minLen, maxLen){
 	return true; 
 	
 }
->>>>>>> master
