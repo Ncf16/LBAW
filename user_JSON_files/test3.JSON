@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Bethany Casey",
+    "address": "462 Campus Place Bloomington Delaware 6336",
+    "nationality": "Ethiopia",
+    "phone": 147815663,
+    "nif": 863087662,
+    "birth": "1991-12-27",
+    "account": "Student",
+    "password": 805925878
+  },
+  {
+    "name": "Joyce Burnett",
+    "address": "129 McClancy Place Kerby Colorado 7734",
+    "nationality": "Honduras",
+    "phone": 521753199,
+    "nif": 505484739,
+    "birth": "1980-12-27",
+    "account": "Student",
+    "password": 530759126
+  },
+  {
+    "name": "Kim Guy",
+    "address": "563 Clara Street Babb Iowa 772",
+    "nationality": "Svalbard",
+    "phone": 644425303,
+    "nif": 733033402,
+    "birth": "1979-02-01",
+    "account": "Student",
+    "password": 982161516
+  },
+  {
+    "name": "Norma Lawson",
+    "address": "690 Navy Street Sterling New Mexico 9060",
+    "nationality": "Viet Nam",
+    "phone": 61714486,
+    "nif": 524415249,
+    "birth": "1996-08-22",
+    "account": "Student",
+    "password": 344373410
+  },
+  {
+    "name": "Bridges Franco",
+    "address": "602 Kathleen Court Kanauga Rhode Island 374",
+    "nationality": "Antigua and Barbuda",
+    "phone": 557100537,
+    "nif": 269095727,
+    "birth": "1984-12-03",
+    "account": "Student",
+    "password": 710893491
+  }
+]

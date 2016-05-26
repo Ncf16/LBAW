@@ -11,12 +11,10 @@ $(document).ready(function() {
 	$('#creation_toggle label').click(creationToggleHandler);
 	$('#account_form_individual').on('submit', individualCreationHandler);
 
-	if($(cu_response).length > 0) {
+	//check if exists
+	if($('#cu_response').length > 0) {
  	 curricularUnitsHandler();
 	}
-	 
-
-
 });
 
 function emptyStatus() {
@@ -90,6 +88,8 @@ function syllabusYearHandler(event){
 		}
 	});
 }
+<<<<<<< HEAD
+=======
 function curricularUnitsHandler(){
 	var student = $('#student').val();
 	var course = $('#course').val();
@@ -318,3 +318,4 @@ function verifyPassword(password, minLen, maxLen){
 	return true; 
 	
 }
+>>>>>>> master

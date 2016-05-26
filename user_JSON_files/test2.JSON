@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Coffey Duke",
+    "address": "108 Kenmore Terrace Cumberland Illinois 5311",
+    "nationality": "Dominican Republic",
+    "phone": 437596028,
+    "nif": 674869942,
+    "birth": "1980-07-17",
+    "account": "Student",
+    "password": 711844895
+  },
+  {
+    "name": "Alison Banks",
+    "address": "916 Florence Avenue Hannasville Alaska 346",
+    "nationality": "Comoros",
+    "phone": 935496031,
+    "nif": 550562008,
+    "birth": "1995-02-23",
+    "account": "Student",
+    "password": 300696569
+  },
+  {
+    "name": "Erma Sandoval",
+    "address": "419 Highland Avenue Elizaville Louisiana 803",
+    "nationality": "Latvia",
+    "phone": 706295245,
+    "nif": 778440281,
+    "birth": "1996-02-29",
+    "account": "Student",
+    "password": 217892119
+  },
+  {
+    "name": "Della Daugherty",
+    "address": "279 Hewes Street Drummond New Mexico 9979",
+    "nationality": "Denmark",
+    "phone": 301670260,
+    "nif": 533634756,
+    "birth": "1995-03-19",
+    "account": "Student",
+    "password": 166742624
+  },
+  {
+    "name": "Angela Bryant",
+    "address": "449 Ditmars Street Windsor Virgin Islands 2706",
+    "nationality": "Oman",
+    "phone": 981636009,
+    "nif": 179410132,
+    "birth": "1971-07-27",
+    "account": "Student",
+    "password": 759977292
+  },
+  {
+    "name": "Deena Holcomb",
+    "address": "952 Seigel Court Templeton Massachusetts 8329",
+    "nationality": "Italy",
+    "phone": 381966972,
+    "nif": 582470785,
+    "birth": "1995-06-10",
+    "account": "Student",
+    "password": 874420234
+  },
+  {
+    "name": "Wanda Barr",
+    "address": "759 Blake Court Hobucken Idaho 8517",
+    "nationality": "Virgin Islands",
+    "phone": 188938414,
+    "nif": 79997374,
+    "birth": "1977-03-25",
+    "account": "Student",
+    "password": 543630965
+  }
+]

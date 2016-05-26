@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Adrienne Bailey",
+    "address": "819 Diamond Street Bellfountain New Mexico 5223",
+    "nationality": "Iceland",
+    "phone": 16762072,
+    "nif": 273101229,
+    "birth": "1980-06-14",
+    "account": "Student",
+    "password": 823361800
+  },
+  {
+    "name": "Angel Newman",
+    "address": "123 Locust Avenue Islandia Connecticut 5111",
+    "nationality": "Denmark",
+    "phone": 811194829,
+    "nif": 795884203,
+    "birth": "1972-04-07",
+    "account": "Student",
+    "password": 480857208
+  },
+  {
+    "name": "Cherry Berry",
+    "address": "111 Gaylord Drive Fairhaven Maryland 9574",
+    "nationality": "Greece",
+    "phone": 264861812,
+    "nif": 818230312,
+    "birth": "1988-08-25",
+    "account": "Student",
+    "password": 469888684
+  },
+  {
+    "name": "Pate Clay",
+    "address": "375 Lincoln Avenue Ypsilanti",
+    "nationality": "Mali",
+    "phone": 945517871,
+    "nif": 495826940,
+    "birth": "1976-02-15",
+    "account": "Student",
+    "password": 250306844
+  },
+  {
+    "name": "Reyna Miranda",
+    "address": "949 Ebony Court Newkirk Rhode Island 5210",
+    "nationality": "Seychelles",
+    "phone": 309121679,
+    "nif": 934811574,
+    "birth": "1984-04-14",
+    "account": "Student",
+    "password": 362246138
+  },
+  {
+    "name": "Nannie Andrews",
+    "address": "547 Cooke Court Dorneyville Hawaii 7448",
+    "nationality": "Cambodia",
+    "phone": 366134266,
+    "nif": 755614659,
+    "birth": "1988-12-13",
+    "account": "Student",
+    "password": 359606498
+  },
+  {
+    "name": "Kerr Chang",
+    "address": "408 Langham Street Tioga South Carolina 7024",
+    "nationality": "Belgium",
+    "phone": 177462721,
+    "nif": 836001062,
+    "birth": "1994-04-18",
+    "account": "Student",
+    "password": 32612936
+  }
+]
