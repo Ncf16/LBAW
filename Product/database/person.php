@@ -53,9 +53,9 @@ function isLoginCorrect($username, $password){
 function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type, $password){
   global $conn;
 
-  //return $address;
-  try{
 
+  try{
+    /*
     $stmt = $conn->prepare("SELECT * FROM person WHERE 
                               lower(nif) = lower(?)");
     $stmt->execute(array($nif));
@@ -64,7 +64,7 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
     if($stmt->fetch() !== false){
       return "A person with the data provided already exists.";
     }
-
+    */
     
     $query = 'INSERT INTO Person (name,address,nationality,phoneNumber,nif,birthdate,personType,password) VALUES (?,?,?,?,?,?,?,?);';    
 
@@ -74,11 +74,19 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
     return true;
 
   }catch(PDOException $e){
-    echo $query . "<br>" . $e->getMessage();
-    return "ERROR REGISTERING (PDO).";
+    //echo $query . "<br>" . $e->getMessage();
+    if($e->getCode() == 23505){
+      return "User $name with NIF $nif already exists.";
+    }else{
+      return "ERROR REGISTERING (PDO Error).";
+    }
   }catch(DatabaseException $e){
+    if($e->getCode() == 23505)
+      return "User with NIF $nif already exists.";
+    else{
     //echo "Unexpected Database Error: " . $e->getMessage();
-     return "ERROR REGISTERING (DB).";
+     return "ERROR REGISTERING (DB) USER WITH NIF $nif.";
+   }
   }catch(Exception $e){
     //echo "Unexpected Database Error: " . $e->getMessage();
     return "ERROR REGISTERING (Other).";

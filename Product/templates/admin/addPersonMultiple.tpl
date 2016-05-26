@@ -8,20 +8,10 @@
 
 				<input id="input_open" class="input_file" type="file">
 				
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-asterisk">
-					</span>
-				</span>
 			</div>
 		</div>
 	</div>
 
-	<div class="row">
-		<strong>
-			<span class="glyphicon glyphicon-asterisk"></span> 
-			Required Field
-		</strong>
-	</div>
 
 	<div class="form-group">
 		<div class="col-md-4 col-md-offset-1">
