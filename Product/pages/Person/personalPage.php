@@ -16,8 +16,7 @@
   }
 
   if($person['persontype'] == 'Student'){
-  	$student=getStudentInfoByUsername($_GET['person']);
-  	$smarty->assign('student', $student);
+  	$smarty->assign('student', $person);
   }
 
   $smarty->assign('person', $person);
