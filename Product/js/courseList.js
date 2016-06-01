@@ -5,6 +5,8 @@ console.log(BASE_URL);
 var url_array = BASE_URL.split("/");
 var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
+var query = "";
+
 var pagination = {
 
 	page: 1,
@@ -104,15 +106,41 @@ var pagination = {
 $(document).ready(function() {
 	loadPage();
 	$('.pagination').on('click', 'a', changePage);
+
+	$('#search_button').click(listSearch);
+	$('#custom-search-input .search-query').keyup(listSearch);
 });
 
-function loadPage(){
-	console.log("loadPage");
+function listSearch(event) {
+
+	if (event.keyCode != 13 && event.keyCode != undefined) {
+		return;
+	}
+
+	query = $('#custom-search-input .search-query').val();
+
+	if(query != ""){
+		loadPage(query);
+	}
+
+}
+
+function loadPage(courseQuery){
+	console.log("loadPage: " + courseQuery);
+
+	if(courseQuery == undefined)
+		var courseQuery = "";
+
+	$('.pagination').html('');
 	var nbItemsPerPage = 10;
 	$.post(
 		BASE_URL + "api/exploreList.php", 
-		{target: 'course', itemsPerPage : nbItemsPerPage}, 
+		{target: 'course',
+			query: courseQuery,
+			itemsPerPage : nbItemsPerPage},
 		function(data){
+			console.log("hi");
+			console.log(data);
 			addItens(data.units);
 			console.log(data.nbUnits);
 			pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
@@ -131,7 +159,9 @@ function changePage(event){
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
 	$.post(BASE_URL + "api/exploreList.php", 
-		{target: 'course', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, 
+		{target: 'course',
+			query: query,
+			itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems},
 		function(data){
 			$('#units').html('');
 			addItens(data.units);
