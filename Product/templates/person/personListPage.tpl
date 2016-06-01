@@ -9,7 +9,6 @@
 <div class="container">
 
 <h2 class="page-header">Person List</h2>
-<input type="hidden" id="pageCount" value="{$people.0.nrPages}">
 
 {include file='common/search.tpl'}
 

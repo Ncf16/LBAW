@@ -198,15 +198,50 @@ function getPeople($peoplePerPage, $page){
   return $stmt->fetchAll();
 }
 
+
+
+function searchPeople($query, $peoplePerPage, $page){
+  global $conn;
+  $stmt = $conn->prepare("SELECT * FROM
+                            (SELECT *, tsv @@ to_tsquery(?) as found
+                            From Person
+                            WHERE visible = 1
+                            ) as tsv_search
+                            WHERE found = true
+                            ORDER BY name
+                            LIMIT ? OFFSET ?" );
+
+  $stmt->execute(array($query, $peoplePerPage,  (($page-1) * $peoplePerPage)));
+  return $stmt->fetchAll();
+}
+
 function countPeople(){
   global $conn;
   $stmt = $conn->prepare("SELECT Count(academiccode) as nrpeople
                             FROM Person
                             WHERE visible = 1");
-    
+
   $stmt->execute();
   return $stmt->fetch();
 }
+
+function countPeopleQuery($query){
+
+  if($query)
+
+  global $conn;
+  $stmt = $conn->prepare("SELECT Count(academiccode) as nrpeople 
+                          FROM 
+                            (SELECT academiccode, tsv @@ to_tsquery(?) as found
+                            From Person
+                            WHERE visible = 1
+                            ) as tsv_search
+                            WHERE found = true");
+
+  $stmt->execute(array($query));
+  return $stmt->fetch();
+}
+
 function getPersonIDByUserName($username){
   global $conn;
   $stmt = $conn->prepare("SELECT academiccode 
