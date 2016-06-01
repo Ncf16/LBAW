@@ -126,6 +126,26 @@ function getPersonUsernameByNIF($nif){
     }
 }
 
+function createUpdateQuery($arrayValues,$id,$idName){
+  global $conn;
+  $values=array();
+  $query="UPDATE Person SET ";
+
+  foreach ($arrayValues as $key => $value) {
+
+    if($value != "false" && $value != "true" && !empty ($value)){
+     $query.=" ".$key." = ?, ";
+     array_push($values,$value);
+     }
+  }
+ $query=substr($query, 0, -2);
+  $query.=" WHERE ".$idName." =  ?;";
+
+  array_push($values, $id);
+  $stmt = $conn->prepare($query);
+  return $stmt->execute($values);
+ 
+}
 
   function getPersonInfoByUser($username){
     global $conn;

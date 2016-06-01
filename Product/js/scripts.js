@@ -2,7 +2,6 @@
 $(document).ready(function() {
 	// Login form submition
 	$('#frm').on('submit', loginButtonHandler);
-console.log("rebelo says hi");
 	// Course page syllabus selection
 	$('#syllabus_year').change(syllabusYearHandler); 
 	$('#syllabus_year').change();
@@ -13,7 +12,6 @@ console.log("rebelo says hi");
 
 	//check if exists
 	if($('#cu_response').length > 0) {
-		console.log("here");
  	 	 curricularUnitsHandler();
 	}
 });

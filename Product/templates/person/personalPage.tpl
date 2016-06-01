@@ -34,7 +34,7 @@
             <ul>
                <li>Mobile Phone: {$person.phonenumber}</li>
                <li>Current Status:
-                   {if isset($person.finishyear) && $person.coursegrade > 10}
+                   {if isset($person.finishyear) and $person.coursegrade > 10}
                    Course completed
                   {elseif isset($person.finishyear)}
                   Not valid

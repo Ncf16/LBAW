@@ -9,7 +9,7 @@
  		exit;
 	}
  	
-  if(!$_SESSION['account_type'] || $_SESSION['account_type'] != 'Admin' || ! checkUserType("Admin",$USERID) ){
+  if(!$_SESSION['account_type'] || $_SESSION['account_type'] !== 'Admin' || ! checkUserType("Admin",$_SESSION['userID']) ){
  	?>
 		<h1>ERROR NOT A VALID PERMISSION</h1>
  	<?php
@@ -32,5 +32,4 @@
 
    $smarty->display('course/courseCreation.tpl');
 ?>
- ?>
  
