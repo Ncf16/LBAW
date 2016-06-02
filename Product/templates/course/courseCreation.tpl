@@ -134,13 +134,12 @@
             </div>
              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
          </div>
-         <div class="row">
-      <strong>
+           <div class="row">
          <span class="glyphicon glyphicon-asterisk"></span> 
+             <strong>
          Required Field
       </strong>
       </div>
-
          <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
               {if $edit==true }
@@ -150,6 +149,7 @@
               {/if}
             </div>
          </div>
+         
          <div id="message_status">
          </div>
          <div id="error_messages">

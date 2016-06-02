@@ -4,15 +4,8 @@
   include_once($BASE_DIR . 'database/person.php'); 
   include_once($BASE_DIR . 'database/teacher.php'); 
 
- if(!$_SESSION['account_type'] || $_SESSION['account_type'] != 'Admin' ){
- 		header("Location: " . $BASE_URL . "index.php");
- 		exit;
-	}
- 	
   if(!$_SESSION['account_type'] || $_SESSION['account_type'] !== 'Admin' || ! checkUserType("Admin",$_SESSION['userID']) ){
- 	?>
-		<h1>ERROR NOT A VALID PERMISSION</h1>
- 	<?php
+    header("Location: " . $BASE_URL . "index.php");
  		exit;
 }
     

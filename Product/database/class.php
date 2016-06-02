@@ -1,4 +1,18 @@
 <?php
+/*
+CREATE TABLE IF NOT EXISTS Class(
+classID SERIAL PRIMARY KEY, n
+occurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID), y
+teacherCode INTEGER REFERENCES Person(academicCode),y dropdown
+duration INTEGER NOT NULL, y integervalues
+roomID INTEGER REFERENCES Room(roomID),y dropdown
+classDate TIMESTAMP NOT NULL, y calendar+horas
+summary TEXT,y
+visible INTEGER DEFAULT 1,
+CHECK(duration > 0)
+);
+
+*/
 function createClass($uco,$teacher,$duration,$room,$classDate,$summary){
 	global $conn;
 	$stmt = $conn->prepare("INSERT INTO Class(occurrenceid, teachercode, duration, roomid, classdate, summary)

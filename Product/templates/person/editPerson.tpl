@@ -96,12 +96,17 @@
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 				<input name="password" placeholder="New Password" class="form-control" type="password">
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+				<span class="input-group-addon"><span id="emptySpan"></span></span>
 				<span class="input-group-addon"><input type="checkbox" disabled /></span>
 			</div>
 		</div>
 	</div> 
-
+     <div class="row">
+         <span class="glyphicon glyphicon-asterisk"></span> 
+             <strong>
+         Required Field
+      </strong>
+      </div>
          <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
                 <button id="editPersonSubmit" type="submit" class="btn btn-primary">Edit Person</button>
