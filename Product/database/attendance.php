@@ -7,13 +7,24 @@ function createAttendance($student,$class,$attend){
     $stmt->execute(array($student,$class,$attend));
 }
 
+function updateAllAttendances($class,$attended){
+
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Attendance SET attended=?
+		WHERE classid = ? RETURNING attended");
+	
+	$stmt->execute(array($attended,$class));
+	return $stmt->fetch();
+}
+
 function updateAttendance($student,$class,$attended){
 
 	global $conn;
 	$stmt = $conn->prepare("UPDATE Attendance SET attended=?
-		WHERE studentcode = ? AND classid = ?");
+		WHERE studentcode = ? AND classid = ? RETURNING attended");
 	
 	$stmt->execute(array($attended,$student,$class));
+	return $stmt->fetch();
 }
 
 function countClassAttendances($class){
@@ -38,7 +49,7 @@ function countStudentUCOAttendances($student,$uco){
 	return $stmt->fetch();
 }
 
-function getAttendance($student,$class){
+/*function getAttendance($student,$class){
 
 	global $conn;
 	$stmt = $conn->prepare("SELECT Person.name, Person.username, Attendance.attended, Class.classdate, Curricularunit.name AS unit
@@ -51,7 +62,7 @@ function getAttendance($student,$class){
 
 	$stmt->execute(array($student,$class));
 	return $stmt->fetch();
-}
+}*/
 
 function getClassesAttendances($class,$nbAttendances,$offset){
 

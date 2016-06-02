@@ -34,3 +34,7 @@ button.btn.btn-default {
 #summaryPanel{
 	padding-top: 60px;
 }
+
+table#attendancesTable {
+    margin-top: 30px;
+}

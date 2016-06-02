@@ -104,6 +104,8 @@ $(document).ready(function() {
 	$('.pagination').on('click', 'a', changePage);
 	$('#attendances').on('click','a.btn-danger',deleteItem);
 	$('#attendances').on('click','button',toggleAttendance);
+	$('#checkAll').on('click',allAttendances);
+	$('#uncheckAll').on('click',noneAttendances);
 });
 
 function loadPage(){
@@ -140,7 +142,7 @@ function deleteItem(event){
 
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
-	var itemID = target.attr('id');
+	var itemID = target.attr('attendance');
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
@@ -166,9 +168,50 @@ function toggleAttendance(event){
 	if(parms.length != 2)
 		return;
 	$.post(BASE_URL + "api/attendances.php", {action: 'update', classid: parms[0], student: parms[1], attendanceVal : attended}, function(data){
-
+		updateAttendance(data.attended,itemID);
 	},'json');
 };
+
+function updateAttendance(attendanceVal,itemID){
+
+	var attValid = $('button[attended=true][attendance=\''+itemID+'\']');
+	var attInvalid = $('button[attended=false][attendance=\''+itemID+'\']');
+	attValid.empty();
+	attInvalid.empty();
+
+	if(attendanceVal){
+		attValid.attr('class','btn btn-success btn-xs');
+		attValid.append($('<span class="glyphicon glyphicon-ok"></span>'));
+		attInvalid.attr('class','btn btn-default btn-xs');
+		attInvalid.append($('<span class="glyphicon glyphicon-minus"></span>'));
+	}
+	else{
+		attValid.attr('class','btn btn-default btn-xs');
+		attValid.append($('<span class="glyphicon glyphicon-minus"></span>'));
+		attInvalid.attr('class','btn btn-danger btn-xs');
+		attInvalid.append($('<span class="glyphicon glyphicon-remove"></span>'));
+	}
+};
+
+function allAttendances(){
+
+	$.post(BASE_URL + "api/attendances.php", {action: 'update', classid: classTbl, attendanceVal : true}, function(data){
+		console.log("All");
+		$('.pagination').html('');
+		$('#attendances').html('');
+		loadPage();
+	},'json');
+};
+
+function noneAttendances(){
+
+	$.post(BASE_URL + "api/attendances.php", {action: 'update', classid: classTbl, attendanceVal : false}, function(data){
+		$('.pagination').html('');
+		$('#attendances').html('');
+		loadPage();
+	},'json');
+};
+
 
 function addItens(attendances){
 

@@ -65,7 +65,14 @@
     <div class="col-md-10 col-md-offset-1">
       <h3>Attendances</h3>
       <br>
-      <table id="mytable" class="table table-bordred table-striped">
+      <div class="col-md-2">
+        <button class="btn btn-primary" id="checkAll">Mark all Attended</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary" id="uncheckAll">Mark all Not Attended</button>
+      </div>
+      <br>
+      <table id="attendancesTable" class="table table-bordred table-striped">
          <thead>
             <th class="col-md-1" colspan="2">Presence</th>
             <th class="col-md-10">Student Name</th>

@@ -20,8 +20,35 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$_SESSION['error_messages'][] = 'Action not especified';
 		exit;
 	}
+	if($_POST['action']=='update'){
 
-	if($_POST['action']=='list'){
+		$inputs = array();
+		$inputs['classid'] = 'Class not especified';
+		$inputs['attendanceVal'] = 'Attendance value not specified';
+ 		if(!checkInputs($_POST, $inputs)){
+ 			//SEASION ERRORS inside checkInputs  
+			exit;
+		}
+
+		try{
+			if(isset($_POST['student'])){
+		       $attended = updateAttendance($_POST['student'],$_POST['classid'],$_POST['attendanceVal']);
+		       echo json_encode($attended);
+		   }
+		   else{
+		   		$attended = updateAllAttendances($_POST['classid'],$_POST['attendanceVal']);
+		   		echo json_encode($attended);
+		   }
+	    }
+	    catch (PDOException $e) {
+	        $_SESSION['form_values'] = $_POST;
+	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
+	        header("Location:".$_SERVER['HTTP_REFERER']);
+	        exit;
+	    }
+	}
+	
+	else if($_POST['action']=='list'){
 
 		if(!isset($_POST['itemsPerPage']))
 			$itemsPerPage = 10;
@@ -51,8 +78,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			$offset = ($pageNumber - 1) * $itemsPerPage;
 			$data['attendances'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
 		}
-		else if ($_POST['student']){
-			/*
+		/*else if ($_POST['student']){
+			
 			$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
 			if(isset($_POST['nbAttendances'])){
@@ -64,8 +91,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 			$offset = ($pageNumber - 1) * $itemsPerPage;
 			$data['classes'] = getTeacherClasses($_POST['teacher'],$itemsPerPage,$offset);
-			*/
-		}
+			
+		}*/
 		else{
 			$_SESSION['error_messages'][] = 'Parameters not especified';
 			exit;
@@ -83,7 +110,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else if($_POST['action']=='delete'){
 
 		$inputs = array();
-		$inputs['id'] = 'ID on delete not especified!';
+		$inputs['id'] = 'ID on delete not especified';
 		$inputs['page'] = 'Page where delete happens not specified';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
  		if(!checkInputs($_POST, $inputs)){
@@ -91,19 +118,20 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			exit;
 		}
 
-		$itemsPerPage = $_POST['itemsPerPage'];
-
-		if($id = intval($_POST['id']) == 0){
-			$_SESSION['error_messages'][] = 'Attendance provided not valid';
+		$params = explode('.',$_POST['id']);
+		if(count($params) != 2 || $id = intval($_POST['id']) == 0){
+			$_SESSION['error_messages'][] = 'ID provided not valid';
 			exit;
 		}
 
-		$data['success'] = deleteAttendance($_POST['id']);
+		$itemsPerPage = $_POST['itemsPerPage'];
+
+		$data['success'] = deleteAttendance($params[1],$params[0]);
 		if($data['success'] == 'Success'){
 
 			$page = intval($_POST['page']);
 
-			if(isset($_POST['class'])){
+			if(isset($_POST['classid'])){
 				$data['nbAttendances'] = intval(countClassAttendances($_POST['classid'])['total']);
 
 				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
@@ -113,9 +141,9 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 					$data['page'] = $page;
 
 				$offset = ($data['page'] - 1) * $itemsPerPage;
-				$data['classes'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
+				$data['attendances'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
 			}
-			else if(isset($_POST['student'])){
+			/*else if(isset($_POST['student'])){
 				/*
 				$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
@@ -127,8 +155,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 				$offset = ($data['page'] - 1) * $itemsPerPage;
 				$data['classes'] = getTeacherClasses($_POST['teacher'],$itemsPerPage,$offset);
-				*/
-			}
+				
+			}*/
 			else{
 				$_SESSION['error_messages'][] = 'Parameters not especified';
 				exit;
