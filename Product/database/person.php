@@ -146,7 +146,7 @@ function createUpdateQuery($arrayValues,$id,$idName){
   try{
    $res= $stmt->execute($values);
   }catch (Exception $e)  {
-    echo "false" . $e->getMessage();
+    echo "false " . $e->getMessage();
   }
     return $res;
 }
