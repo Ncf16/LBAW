@@ -3,7 +3,11 @@
 <div class="container">
 <div class="row">
    <div class="col-md-12">
+     {if $edit==true }
+     <h2 class="page-header">Edit Course</h2>
+     {else}
       <h2 class="page-header">Create Course</h2>
+      {/if}
       <form id="courseForm" class="well form-horizontal" action="#" method="post">
          {if $edit==true  }
          <input hidden id="courseID" name="courseID" value="{$infoToEdit.code}" />
