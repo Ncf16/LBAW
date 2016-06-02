@@ -3,7 +3,11 @@
 <div class="container">
 <div class="row">
    <div class="col-md-12">
+     {if $edit==true }
+     <h2 class="page-header">Edit Course</h2>
+     {else}
       <h2 class="page-header">Create Course</h2>
+      {/if}
       <form id="courseForm" class="well form-horizontal" action="#" method="post">
          {if $edit==true  }
          <input hidden id="courseID" name="courseID" value="{$infoToEdit.code}" />
@@ -134,13 +138,12 @@
             </div>
              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
          </div>
-         <div class="row">
-      <strong>
+           <div class="row">
          <span class="glyphicon glyphicon-asterisk"></span> 
+             <strong>
          Required Field
       </strong>
       </div>
-
          <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
               {if $edit==true }
@@ -150,6 +153,7 @@
               {/if}
             </div>
          </div>
+         
          <div id="message_status">
          </div>
          <div id="error_messages">

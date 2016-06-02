@@ -3,7 +3,12 @@
 <div class="container ">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="page-header">{$course.name} ({$course.abbreviation})</h2>
+      <h2 class="page-header">{$course.name} ({$course.abbreviation}) 
+        <a href="{$BASE_URL}pages/Course/course.php?courseID={$course.code}" class="btn btn-xs btn-primary">Edit Page</a> 
+        {if $canAddCU==true  }
+         <a href="{$BASE_URL}pages/Course/addCU.php?courseID={$course.code}" class="btn btn-xs btn-primary">Add CU</a> 
+        {/if}
+        </h2>
     </div>
   </div>
 

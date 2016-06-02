@@ -9,7 +9,7 @@
          <div class="col-lg-12">
             <h1 class="page-header">Personal Page
                <small>{$person.name}  ({$person.persontype})</small>
-                <a href="#" class="btn btn-xs btn-primary">Edit Page</a> 
+                <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
             </h1>
          </div>
       </div>
