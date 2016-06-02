@@ -274,4 +274,11 @@ function getCourses(){
     return $stmt->fetchAll();
 }
 
+function isCourseRegent($course,$regent){
+       global $conn;
+    $stmt = $conn->prepare("SELECT * FROM Course WHERE code = ?  AND teacherCode = ? AND visible=1");
+    
+    $stmt->execute(array($course,$regent));
+    return $stmt->fetchAll();
+}
 ?>

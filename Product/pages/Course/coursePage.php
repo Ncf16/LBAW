@@ -8,8 +8,13 @@
   $syllabusYears = getSyllabusYears($_GET['course']);
   $syllabusYears['nrYears'] = sizeof($syllabusYears);
 
-  //var_dump($syllabusYears);
-
+	if( $_SESSION['account_type'] === 'Admin' || isCourseRegent($_GET['course'], $_SESSION['userID'])){
+		 $canAddCU=true;
+	}
+	else
+	 $canAddCU=false;
+  
+  $smarty->assign('canAddCU', $canAddCU);
   $smarty->assign('course', $course);
   $smarty->assign('syllabusYears', $syllabusYears);
   $smarty->display('course/coursePage.tpl');
