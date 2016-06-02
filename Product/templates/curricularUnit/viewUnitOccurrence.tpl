@@ -12,7 +12,6 @@
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><a href="#">Classes</a></li>
-          <li><a href="#">Attendance</a></li>
           <li><a href="#">Content</a></li>
           <li><a href="unitEvaluations.php">Evaluations</a></li>
           <li><a href="#">Create Evaluation</a></li>         
@@ -124,4 +123,5 @@
       </div>
     </div>
   </p>
-  {include file='common/footer.tpl'}
+</div>
+{include file='common/footer.tpl'}

@@ -252,6 +252,7 @@ BEGIN
 SELECT COUNT(class.classid) INTO count
 FROM Class
 WHERE Class.visible=1 AND Class.roomid = NEW.roomid 
+AND NEW.classid <> Class.classid
 AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
 (Class.classDate, interval '1' minute * class.duration);
 

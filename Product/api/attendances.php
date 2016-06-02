@@ -12,7 +12,7 @@ if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
 
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
-	include_once($BASE_DIR . 'database/class.php');
+	include_once($BASE_DIR . 'database/attendance.php');
 
 	$data = array();
 
@@ -38,53 +38,44 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			exit;
 		}
 
-		if($_POST['unit']){
-			$data['nbClasses'] = intval(countUCOClass($_POST['unit'])['total']);
+		if($_POST['classid']){
+			$data['nbAttendances'] = intval(countClassAttendances($_POST['classid'])['total']);
 
-			if(isset($_POST['nbClasses'])){
-				if(intval($_POST['nbClasses']) != $data['nbClasses']){
-					$nbPages = ceil($data['nbClasses'] / $itemsPerPage);
+			if(isset($_POST['nbAttendances'])){
+				if(intval($_POST['nbAttendances']) != $data['nbAttendances']){
+					$nbPages = ceil($data['nbAttendances'] / $itemsPerPage);
 					$pageNumber = max(min($nbPages,$pageNumber),1);
 				}
 			}
 
 			$offset = ($pageNumber - 1) * $itemsPerPage;
-			$data['classes'] = getUCOClasses($_POST['unit'],$itemsPerPage,$offset);
+			$data['attendances'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
 		}
-		else if ($_POST['teacher']){
-			$data['nbClasses'] = intval(countTeacherClass($_POST['teacher'])['total']);
+		else if ($_POST['student']){
+			/*
+			$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
-			if(isset($_POST['nbClasses'])){
-				if(intval($_POST['nbClasses']) != $data['nbClasses']){
-					$nbPages = ceil($data['nbClasses'] / $itemsPerPage);
+			if(isset($_POST['nbAttendances'])){
+				if(intval($_POST['nbAttendances']) != $data['nbAttendances']){
+					$nbPages = ceil($data['nbAttendances'] / $itemsPerPage);
 					$pageNumber = max(min($nbPages,$pageNumber),1);
 				}
 			}
 
 			$offset = ($pageNumber - 1) * $itemsPerPage;
 			$data['classes'] = getTeacherClasses($_POST['teacher'],$itemsPerPage,$offset);
+			*/
 		}
 		else{
-			$data['nbClasses'] = intval(countClass()['total']);
-
-			if(isset($_POST['nbClasses'])){
-				if(intval($_POST['nbClasses']) != $data['nbClasses']){
-					$nbPages = ceil($data['nbClasses'] / $itemsPerPage);
-					$pageNumber = max(min($nbPages,$pageNumber),1);
-				}
-			}
-
-			$offset = ($pageNumber - 1) * $itemsPerPage;
-			$data['classes'] = getClasses($itemsPerPage,$offset);
+			$_SESSION['error_messages'][] = 'Parameters not especified';
+			exit;
 		}
 
-		if(!isset($_POST['unit'])){
-			foreach ($data['classes'] as &$class)
-				$class['unit'] = $class['unit'] . ' : ' .$class['calendaryear'] . '/' . ($class['calendaryear'] + 1);
-			unset($class);
-		}
+		foreach ($data['attendances'] as &$attendance)
+			$attendance['id'] = $attendance['classid'] . '.' . $attendance['academiccode'];
+		unset($attendance);
 
-		$smarty->clearAssign('classes');
+		$smarty->clearAssign('class');
 		$data['page'] = $pageNumber;
 		echo json_encode($data);
 	}
@@ -103,17 +94,17 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		$itemsPerPage = $_POST['itemsPerPage'];
 
 		if($id = intval($_POST['id']) == 0){
-			$_SESSION['error_messages'][] = 'Class provided not valid';
+			$_SESSION['error_messages'][] = 'Attendance provided not valid';
 			exit;
 		}
 
-		$data['success'] = deleteClass($_POST['id']);
+		$data['success'] = deleteAttendance($_POST['id']);
 		if($data['success'] == 'Success'){
 
 			$page = intval($_POST['page']);
 
-			if(isset($_POST['unit'])){
-				$data['nbClasses'] = intval(countUCOClass($_POST['unit'])['total']);
+			if(isset($_POST['class'])){
+				$data['nbAttendances'] = intval(countClassAttendances($_POST['classid'])['total']);
 
 				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
@@ -122,10 +113,11 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 					$data['page'] = $page;
 
 				$offset = ($data['page'] - 1) * $itemsPerPage;
-				$data['classes'] = getUCOClasses($_POST['unit'],$itemsPerPage,$offset);
+				$data['classes'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
 			}
-			else if(isset($_POST['teacher'])){
-				$data['nbClasses'] = intval(countTeacherClass($_POST['teacher'])['total']);
+			else if(isset($_POST['student'])){
+				/*
+				$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
 				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
@@ -135,28 +127,19 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 				$offset = ($data['page'] - 1) * $itemsPerPage;
 				$data['classes'] = getTeacherClasses($_POST['teacher'],$itemsPerPage,$offset);
+				*/
 			}
 			else{
-				$data['nbClasses'] = intval(countClass()['total']);
-
-				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
-				if($page > $nbPages)
-					$data['page'] = max($page - 1,1);
-				else
-					$data['page'] = $page;
-
-				$offset = ($data['page'] - 1) * $itemsPerPage;
-				$data['classes'] = getClasses($itemsPerPage,$offset);
+				$_SESSION['error_messages'][] = 'Parameters not especified';
+				exit;
 			}
 		}
 
-		if(!isset($_POST['unit'])){
-			foreach ($data['classes'] as &$class)
-				$class['unit'] = $class['unit'] . ' : ' .$class['calendaryear'] . '/' . ($class['calendaryear'] + 1);
-			unset($class);
-		}
+		foreach ($data['attendances'] as &$attendance)
+			$attendance['id'] = $attendance['classid'] . '.' . $attendance['classid'];
+		unset($attendance);
 
-		$smarty->clearAssign('classes');
+		$smarty->clearAssign('class');
 		echo json_encode($data);
 	}
 	else{

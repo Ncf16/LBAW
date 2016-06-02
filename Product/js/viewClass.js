@@ -3,7 +3,7 @@ BASE_URL = window.location.pathname;
 var url_array = BASE_URL.split("/");
 var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
-var uc,classTeacher;
+var classTbl;
 
 var pagination = {
 
@@ -99,19 +99,19 @@ var pagination = {
 };
 
 $(document).ready(function() {
-	uc = processFormData("uc=");
-	classTeacher = processFormData("teacher=");
-	loadPage(uc,classTeacher);
+	classTbl = processFormData("class=");
+	loadPage();
 	$('.pagination').on('click', 'a', changePage);
-	$('#classes').on('click','a.btn-danger',deleteItem);
+	$('#attendances').on('click','a.btn-danger',deleteItem);
+	$('#attendances').on('click','button',toggleAttendance);
 });
 
 function loadPage(){
 
 	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/classes.php", {action: 'list', itemsPerPage : nbItemsPerPage, unit : uc, teacher: classTeacher}, function(data){
-		addItens(data.classes);
-		pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
+	$.post(BASE_URL + "api/attendances.php", {action: 'list', itemsPerPage : nbItemsPerPage, classid : classTbl}, function(data){
+		addItens(data.attendances);
+		pagination.addPagination(data.page,data.nbAttendances,nbItemsPerPage);
 	}, 'json');
 };
 
@@ -126,10 +126,10 @@ function changePage(event){
 	var newPage = pagination.updatePageNb(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/classes.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbClasses: nbItems, unit : uc, teacher: classTeacher}, function(data){
-		$('#classes').html('');
-		addItens(data.classes);
-		pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
+	$.post(BASE_URL + "api/attendances.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbAttendances: nbItems, classid : classTbl}, function(data){
+		$('#attendances').html('');
+		addItens(data.attendances);
+		pagination.addPagination(data.page,data.nbAttendances,nbItemsPerPage);
 	}, 'json');
 }
 
@@ -144,74 +144,77 @@ function deleteItem(event){
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/classes.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbClasses: nbItems, unit : uc, teacher: classTeacher}, function(data){
+	$.post(BASE_URL + "api/attendances.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbAttendances: nbItems, classid : classTbl}, function(data){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
-			$('#classes').html('');
-			addItens(data.classes);
-			pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
+			$('#attendances').html('');
+			addItens(data.attendances);
+			pagination.addPagination(data.page,data.nbAttendances,nbItemsPerPage);
 		}
 	}, 'json');
-}
+};
 
-function addItens(classes){
+function toggleAttendance(event){
 
-	$.each(classes, function(i, classObj){
+	event.preventDefault();
+	var target = $(event.target);
+	if(target[0].nodeName == 'SPAN')
+		target = target.parent();
+	var itemID = target.attr('attendance');
+	var attended = target.attr('attended');
+	var parms = itemID.split(".");
+	if(parms.length != 2)
+		return;
+	$.post(BASE_URL + "api/attendances.php", {action: 'update', classid: parms[0], student: parms[1], attendanceVal : attended}, function(data){
+
+	},'json');
+};
+
+function addItens(attendances){
+
+	$.each(attendances, function(i, attendance){
 		var tr = $('<tr/>');
+		var btnDefault = $('<button/>',{
+			'attendance' : attendance.id
+		}).addClass('btn btn-default btn-xs').append($('<span class="glyphicon glyphicon-minus"></span>'));
+
 		var par = $('<p/>',{
-			'data-placement': 'top',
-			'data-toogle': 'tooltip',
-			'title': 'View'
-		});
-		var a = $('<a/>',{
-			'data-title': 'View',
-			'data-toggle': 'modal',
-			'href': BASE_URL + "pages/CurricularUnit/viewClass.php?class=" + classObj.classid
-
-		}).addClass('btn btn-primary btn-xs');
-		var glyZoom = $('<span/>').addClass('glyphicon glyphicon-zoom-in');
-		par.append(a);
-		a.append(glyZoom);
-		var par2 = $('<p/>',{
-			'data-placement': 'top',
-			'data-toogle': 'tooltip',
-			'title': 'Edit'
-		});
-		var a2 = $('<a/>',{
-			'data-title': 'Edit',
-			'data-toggle': 'modal',
-			'href': BASE_URL + "pages/CurricularUnit/updateClass?class=" + classObj.classid
-
-		}).addClass('btn btn-primary btn-xs');
-		var glyPencil = $('<span/>').addClass('glyphicon glyphicon-pencil');
-		par2.append(a2);
-		a2.append(glyPencil);
-
-		var par3 = $('<p/>',{
 			'data-placement': 'top',
 			'data-toogle': 'tooltip',
 			'title': 'Delete'
 		});
-		var a3 = $('<a/>',{
+		var a = $('<a/>',{
 			'data-title': 'Delete',
 			'data-toggle': 'modal',
-			'id' : classObj.classid
+			'attendance' : attendance.id
 
 		}).addClass('btn btn-danger btn-xs');
 		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
-		par3.append(a3);
-		a3.append(glyRemove);
+		par.append(a);
+		a.append(glyRemove);
 
+		if(attendance.attended){
+			var btnValid = $('<button/>',{
+				'attendance' : attendance.id,
+				'attended' : true
+			}).addClass('btn btn-success btn-xs').append($('<span class="glyphicon glyphicon-ok"></span>'));
+			tr.append($('<td/>').append(btnValid));
+			btnDefault.attr('attended',false);
+			tr.append($('<td/>').append(btnDefault));
+		}
+		else{
+			btnDefault.attr('attended',true);
+			tr.append($('<td/>').append(btnDefault));
+			var btnInvalid = $('<button/>',{
+				'attendance' : attendance.id,
+				'attended' : false
+			}).addClass('btn btn-danger btn-xs').append($('<span class="glyphicon glyphicon-remove"></span>'));
+			tr.append($('<td/>').append(btnInvalid));
+		}
+
+		tr.append($('<td/>').append(attendance.name));
 		tr.append($('<td/>').append(par));
-		tr.append($('<td/>').text(classObj.classdate));
-		if(classObj.teacher)
-			tr.append($('<td/>').text(classObj.teacher));
-		if(classObj.unit)
-			tr.append($('<td/>').text(classObj.unit))
-		tr.append($('<td/>').text(classObj.room));
-		tr.append($('<td/>').append(par2));
-		tr.append($('<td/>').append(par3));
-		$('#classes').append(tr);
+		$('#attendances').append(tr);
 	});
 };
 
