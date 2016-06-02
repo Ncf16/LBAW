@@ -39,7 +39,7 @@
         exit;
       }
       $teacherCodes=getTeacherAcademicCodes();
-      if (!isset($_POST['course_director'])||checkAcademicCodeInArray($teacherCodes,$_POST['course_director'])) {
+      if (!isset($_POST['course_director'])|| !is_numeric($_POST['course_director'])||checkAcademicCodeInArray($teacherCodes,$_POST['course_director'])) {
         echo "course_director error";
         exit;
       }
@@ -56,7 +56,7 @@
        echo "course_fundate";
         exit;
       }
-      if (!isset($_POST['course_duration'])) {
+      if (!isset($_POST['course_duration']) || !is_numeric($_POST['course_duration']) ) {
        echo "course_duration";
         exit;
       }

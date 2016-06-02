@@ -210,3 +210,8 @@ footer {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+#emptySpan{
+    padding: 6px 6px;
+    background-color: #eee;
+  
+}

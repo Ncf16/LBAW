@@ -57,7 +57,7 @@ function countUnitOccurrences(){
 	return $stmt->fetch();
 }
 
-function countUnitOccurrencesC($course){
+function countUnitOccurrencesCourse($course){
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
 		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?
@@ -67,7 +67,7 @@ function countUnitOccurrencesC($course){
 	return $stmt->fetch();
 }
 
-function countUnitOccurrencesCY($course,$year){
+function countUnitOccurrencesCourseYear($course,$year){
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(CurricularUnitOccurrence.*) total FROM CurricularUnitOccurrence, Syllabus
 		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = ?

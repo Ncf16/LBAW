@@ -45,8 +45,8 @@ function updateCourse($code, $abbreviation, $teacherCode, $courseType, $name, $c
 
     try {
         $res = $stmt->execute(array($abbreviation, $teacherCode, $courseType, $name, $creationDate, $currentCalendarYear, $description, $code));
-    } catch (Exception $e) {
-        echo 'Caught exception: ', $e->getMessage(), "\n";
+    }catch (Exception $e)  {
+        //echo 'Caught exception: ', $e->getMessage(), "\n";
         return "false " + $e->getMessage();
     }
     echo("true " . $code);
@@ -315,4 +315,15 @@ function getCourses()
     return $stmt->fetchAll();
 }
 
+function isCourseDirector($course,$regent){
+       global $conn;
+    $stmt = $conn->prepare("SELECT * FROM Course WHERE code = ?  AND teacherCode = ? AND visible=1");
+    
+    $stmt->execute(array($course,$regent));
+    $return $stmt->fetchAll();
+    if($return == false)
+        return false;
+    else
+        return true;
+}
 ?>
