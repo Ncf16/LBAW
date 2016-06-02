@@ -138,13 +138,17 @@ function createUpdateQuery($arrayValues,$id,$idName){
      array_push($values,$value);
      }
   }
- $query=substr($query, 0, -2);
+  $query=substr($query, 0, -2);
   $query.=" WHERE ".$idName." =  ?;";
 
   array_push($values, $id);
   $stmt = $conn->prepare($query);
-  return $stmt->execute($values);
- 
+  try{
+   $res= $stmt->execute($values);
+  }catch (Exception $e)  {
+    echo "false" . $e->getMessage();
+  }
+    return $res;
 }
 
   function getPersonInfoByUser($username){

@@ -24,7 +24,7 @@ $(document).ready(function() {
   		contentType: false,
 		success: function(data, textStatus, jqXHR) {
 		 	if (typeof data.error === 'undefined') {	
-					$("#message_status").text("");	
+					$("#message_status").empty();	
 					console.log("DATA: "+data);	
 				if (data.indexOf("true") > -1) {
 					 
