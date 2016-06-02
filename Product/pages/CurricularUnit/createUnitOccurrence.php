@@ -1,6 +1,10 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/unit.php');
+include_once($BASE_DIR . 'database/unitOccurrence.php');
+include_once($BASE_DIR . 'database/course.php');
+include_once($BASE_DIR . 'database/calendar.php');
+include_once($BASE_DIR . 'database/teacher.php');
 
 $account_type = $_SESSION['account_type'];
 

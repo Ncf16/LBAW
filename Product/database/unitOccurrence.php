@@ -175,8 +175,5 @@ function isRegent($cuoID,$academiccode){
 	 	return true;
 	 else
 	 	return false;
-);
-
-
 }
 ?>

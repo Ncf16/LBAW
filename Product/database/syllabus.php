@@ -8,6 +8,7 @@ visible INTEGER DEFAULT 1,
 CHECK (calendarYear >= 1990)
 );
 */
+ /*
  function createSyllabus($courseCode,$calendaryear){
  	 global $conn;
     $stmt = $conn->prepare("INSERT INTO Syllabus(courseCode,calendarYear) VALUES (?,?);");
@@ -42,7 +43,8 @@ CHECK (calendarYear >= 1990)
     $stmt->execute(array());
     return $stmt->fetch();
 }
- }
+*/
+
 function getSyllabusID($course,$year){
 	global $conn;
 	$stmt = $conn->prepare("SELECT syllabusid FROM Syllabus

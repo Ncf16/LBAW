@@ -1,6 +1,7 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/unit.php');
+include_once($BASE_DIR . 'database/area.php');
 
 $account_type = $_SESSION['account_type'];
 

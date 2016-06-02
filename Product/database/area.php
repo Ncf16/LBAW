@@ -66,6 +66,4 @@ function getAreasList($nbAreas,$offset){
 	$stmt->execute(array($nbAreas,$offset));
 	return $stmt->fetchall();
 }
-
-}
 ?>

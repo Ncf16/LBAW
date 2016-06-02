@@ -3,6 +3,8 @@ BASE_URL = window.location.pathname;
 var url_array = BASE_URL.split("/");
 var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
+var uc,classTeacher;
+
 var pagination = {
 
 	page: 1,
@@ -97,17 +99,19 @@ var pagination = {
 };
 
 $(document).ready(function() {
-	loadPage();
+	uc = processFormData("uc=");
+	classTeacher = processFormData("teacher=");
+	loadPage(uc,classTeacher);
 	$('.pagination').on('click', 'a', changePage);
-	$('#units').on('click','a.btn-danger',deleteItem);
+	$('#classes').on('click','a.btn-danger',deleteItem);
 });
 
 function loadPage(){
 
 	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage}, function(data){
-		addItens(data.units);
-		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+	$.post(BASE_URL + "api/classes.php", {action: 'list', itemsPerPage : nbItemsPerPage, unit : uc, teacher: classTeacher}, function(data){
+		addItens(data.classes);
+		pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
 	}, 'json');
 };
 
@@ -122,10 +126,10 @@ function changePage(event){
 	var newPage = pagination.updatePageNb(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
-		$('#units').html('');
-		addItens(data.units);
-		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+	$.post(BASE_URL + "api/classes.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbClasses: nbItems, unit : uc, teacher: classTeacher}, function(data){
+		$('#classes').html('');
+		addItens(data.classes);
+		pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
 	}, 'json');
 }
 
@@ -140,58 +144,80 @@ function deleteItem(event){
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/units.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
+	$.post(BASE_URL + "api/classes.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbClasses: nbItems, unit : uc, teacher: classTeacher}, function(data){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
-			$('#units').html('');
-			addItens(data.units);
-			pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+			$('#classes').html('');
+			addItens(data.classes);
+			pagination.addPagination(data.page,data.nbClasses,nbItemsPerPage);
 		}
 	}, 'json');
 }
 
-function addItens(units){
+function addItens(classes){
 
-	$.each(units, function(i, unit){
+	$.each(classes, function(i, classObj){
 		var tr = $('<tr/>');
 		var par = $('<p/>',{
 			'data-placement': 'top',
 			'data-toogle': 'tooltip',
-			'title': 'Edit'
+			'title': 'View'
 		});
 		var a = $('<a/>',{
+			'data-title': 'View',
+			'data-toggle': 'modal',
+			'href': BASE_URL + "pages/CurricularUnit/viewClass.php?class=" + classObj.classid
+
+		}).addClass('btn btn-primary btn-xs');
+		var glyZoom = $('<span/>').addClass('glyphicon glyphicon-zoom-in');
+		par.append(a);
+		a.append(glyZoom);
+		var par2 = $('<p/>',{
+			'data-placement': 'top',
+			'data-toogle': 'tooltip',
+			'title': 'Edit'
+		});
+		var a2 = $('<a/>',{
 			'data-title': 'Edit',
 			'data-toggle': 'modal',
-			'href': BASE_URL + "pages/CurricularUnit/updateUnit.php?unit=" + unit.curricularid
+			'href': BASE_URL + "pages/CurricularUnit/updateClass?class=" + classObj.classid
 
 		}).addClass('btn btn-primary btn-xs');
 		var glyPencil = $('<span/>').addClass('glyphicon glyphicon-pencil');
-		par.append(a);
-		a.append(glyPencil);
+		par2.append(a2);
+		a2.append(glyPencil);
 
-		var par2 = $('<p/>',{
+		var par3 = $('<p/>',{
 			'data-placement': 'top',
 			'data-toogle': 'tooltip',
 			'title': 'Delete'
 		});
-		var a2 = $('<a/>',{
+		var a3 = $('<a/>',{
 			'data-title': 'Delete',
 			'data-toggle': 'modal',
-			'id' : unit.curricularid
+			'id' : classObj.classid
 
 		}).addClass('btn btn-danger btn-xs');
 		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
-		par2.append(a2);
-		a2.append(glyRemove);
+		par3.append(a3);
+		a3.append(glyRemove);
 
-		tr.append($('<td/>').text(unit.name));
-		tr.append($('<td/>').text(unit.area));
-		tr.append($('<td/>').text(unit.credits));
 		tr.append($('<td/>').append(par));
+		tr.append($('<td/>').text(classObj.classdate));
+		if(classObj.teacher)
+			tr.append($('<td/>').text(classObj.teacher));
+		if(classObj.unit)
+			tr.append($('<td/>').text(classObj.unit))
+		tr.append($('<td/>').text(classObj.room));
 		tr.append($('<td/>').append(par2));
-		$('#units').append(tr);
+		tr.append($('<td/>').append(par3));
+		$('#classes').append(tr);
 	});
 };
 
-
-
+function processFormData(data){
+	
+	var index = window.location.search.indexOf(data);
+	if (index != -1)
+		return window.location.search.substring(index+data.length);
+}

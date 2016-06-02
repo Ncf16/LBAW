@@ -11,6 +11,8 @@ if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
 	include_once($BASE_DIR . 'database/unit.php');
+	include_once($BASE_DIR . 'database/unitOccurrence.php');
+	include_once($BASE_DIR . 'database/course.php');
 
 	$data = array();
 	$inputs = array();

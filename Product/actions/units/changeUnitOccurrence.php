@@ -1,6 +1,10 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/unit.php');
+include_once($BASE_DIR . 'database/unitOccurrence.php');
+include_once($BASE_DIR . 'database/course.php');
+include_once($BASE_DIR . 'database/syllabus.php');
+include_once($BASE_DIR . 'database/teacher.php');
 
   // form handler
   if($_POST && isset($_POST['unitSubmit'])){
@@ -27,7 +31,7 @@ include_once($BASE_DIR . 'database/unit.php');
     $default['unit_bibliography'] = '';
     checkDefault($_POST, $default);
 
-    $course = getCourseID($_POST['unit_course']);//code
+    $course = getCourseIDByName($_POST['unit_course']);//code
     if(!$course){
       $_SESSION['form_values'] = $_POST;
       $_SESSION['error_messages'][] = 'Couldn\'t find a course with given name';
