@@ -46,7 +46,7 @@
                         </li>
                         {/if}
                         <li>
-                            <a href="{$BASE_URL}pages/login.php">Request</a>
+                            <a href="{$BASE_URL}pages/Request/requestList.php">Request</a>
                         </li>
                         <li>
                             <a href="{$BASE_URL}actions/users/logout.php">Logout</a>

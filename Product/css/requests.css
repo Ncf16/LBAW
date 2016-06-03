@@ -1,0 +1,85 @@
+.ucInfo,
+.ucInfo td,
+.ucInfo th,
+.ucInfo tr{
+	border: 2px solid black;
+	padding:2px;
+}
+
+.navPills li a{
+	color:#000;
+	border: 2px solid black;
+}
+
+.navPills li a:hover{
+	background: #ffe6e6;
+}
+
+.navPills li.active a {
+	background: #b33c00;
+}
+
+.navPills li.active a:hover {
+	background: #b33c00;
+}
+
+.navPills li.active a:focus {
+	background: #b33c00;
+}
+
+.navPills li.active a:visited {
+	background: white;
+}
+
+.tab-pane {
+
+}
+
+.page-header {
+     border: none;
+}
+
+#unitPage > .row:first-of-type {
+	margin-top: 15px;
+}
+
+#unitPage h1 {
+	margin: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bot: 5px;
+}
+
+#actionsButton{
+	background: #222;
+}
+#actionsButton:hover,
+#actionsButton:focus,
+#actionsButton:active{
+	background: #333;
+	color: #fff;
+}
+
+
+/* TABLE STUFF */
+
+
+table[class="table table-striped"]  {
+	padding-right: 70px;
+	padding-left: 70px;
+}
+table[class="table table-striped"]  tr.head {
+  color: #000000;
+  background-color:   #b33c00;
+} 
+  img{
+    width:100%;
+    max-height: 40%;
+}
+ 
+ 

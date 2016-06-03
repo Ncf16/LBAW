@@ -20,6 +20,12 @@
     $smarty->assign('activeCourses', $units);
     $smarty->display('course/courseListBody.tpl');
   }
+  else if($_POST['template'] == 'requests'){
+
+    $smarty->assign('requests', $units);
+    $smarty->display('request/requestListBody.tpl');
+  }
+
 
 
 ?>
