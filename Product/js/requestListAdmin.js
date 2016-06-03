@@ -53,14 +53,14 @@ function loadTab(){
 	$(tabSelector + ' .requestListBody').html('');
 	$(tabSelector + ' .pagination').html('');
 	
-	pagination.updateNbItemsPerPage(2);
+	currentPagination.updateNbItemsPerPage(2);
 
 	$.post(
 		BASE_URL + "api/requestList.php", 
 		{target: 'admin',
 			userID: userID,
 			tab: tabSelector,
-			itemsPerPage : nbItemsPerPage,
+			itemsPerPage : currentPagination.nbItemsPerPage,
 			page: currentPagination.page
 		},
 		function(data){
