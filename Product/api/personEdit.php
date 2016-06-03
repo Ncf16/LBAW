@@ -2,17 +2,23 @@
 include_once('../config/init.php');
 include_once($BASE_DIR . 'database/person.php');
 
-checkArgs()
+checkArgs();
+
 $username=$_POST['username'];
 unset($_POST['username']);
-echo createUpdateQuery($_POST,$username,"username");
+var_dump( createUpdateQuery($_POST,$username,"username"));
 
     function checkArgs(){
-    	$phonePattern= '/^[0-9]*$/';
-    	$nifPatter = '/^\d{9}$/'; 
+    	   $phonePattern = '/^[0-9]*$/';
+    	  $nifPattern = '/^\d{9}$/'; 
     	$erroToken=false;
+         preg_match($nifPattern, $_POST['nif'],$nifMatch);
+           
+         var_dump(sizeof($nifMatch));
+         exit;
+         preg_match($phonePattern, $_POST['phonenumber'],$phoneMatch);
     	//Username
-    	if(!isset($_POST['username'])|| empty($_POST['username']) || !is_numeric($_POST['username'])){
+    	 if(!isset($_POST['username'])|| empty($_POST['username']) || !is_numeric($_POST['username'])){
     		echo  $erroToken." invalid user";
     	} //Name
     	else if(!isset($_POST['name'])|| empty($_POST['name']) ){
@@ -27,18 +33,18 @@ echo createUpdateQuery($_POST,$username,"username");
     		echo $erroToken." please fill the Nationality";
 
     	}//PhoneNumber
-    	else if(!isset($_POST['phonenumber'])|| empty($_POST['phonenumber']) || !preg_match($phonePattern, $_POST['phonenumber'])){
+    	else if(!isset($_POST['phonenumber'])|| empty($_POST['phonenumber']) || sizeof($phoneMatch) !=1){
     		echo $erroToken." please check the PhoneNumber";
 
     	} //NIF
-   		 else if(!isset($_POST['nif'])|| empty($_POST['nif']) || !preg_match($nifPattern, $_POST['nif'])) {
+   		 else if(!isset($_POST['nif'])|| empty($_POST['nif']) || sizeof($nifMatch) !=1) {
    		 	echo $erroToken." please check NIF";
 
     	} //BirthDate
    		 else if(!isset($_POST['nif'])|| empty($_POST['nif'])) {
    		 	echo $erroToken." please check the BirthDate";
 
-    	}  //Password
-   
+    	}  //Password 
     } 
+
 ?>

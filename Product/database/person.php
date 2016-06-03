@@ -133,7 +133,7 @@ function createUpdateQuery($arrayValues,$id,$idName){
 
   foreach ($arrayValues as $key => $value) {
 
-    if($value != "false" && $value != "true" && !empty ($value)){
+    if(!empty ($value)){
      $query.=" ".$key." = ?, ";
      array_push($values,$value);
      }
