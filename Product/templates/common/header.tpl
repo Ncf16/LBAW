@@ -45,9 +45,11 @@
                             <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
                         </li>
                         {/if}
+                        {if $ACCOUNT_TYPE != 'Teacher'}
                         <li>
                             <a href="{$BASE_URL}pages/Request/requestList.php">Request</a>
                         </li>
+                        {/if}
                         <li>
                             <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
                         </li>

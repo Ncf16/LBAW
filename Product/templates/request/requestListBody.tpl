@@ -9,8 +9,15 @@
       <td>
           <a href='{$BASE_URL}pages/Person/personalPage.php?person={$request.adminusername}'>{$request.adminname}</a>
       </td>
-      <td>{if $request.approved == null}Not Answered{/if}{$request.approved}</td>
-         <td></td>
+      <td>
+          {if $request.approved == null}Not Answered
+          {elseif $request.approved == 'true'} Approved
+          {elseif $request.approved == 'false'} Not Approved
+          {else} {$request.approved}
+          {/if}
+      </td>
+
+         <td>Date Here</td>
 
     </tr>
    {/foreach}

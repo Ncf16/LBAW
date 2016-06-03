@@ -20,7 +20,6 @@ $(document).ready(function() {
 	$('.pagination').on('click', 'a', changePage);
 
 	$('#openRequests').on('shown.bs.tab', openTab);
-	$('#answeredRequests').on('shown.bs.tab', answeredTab);
 	$('#closedRequests').on('shown.bs.tab', closedTab);
 
 });
@@ -30,17 +29,11 @@ function openTab(event){
 	tabSelector = event.target.getAttribute('href');
 	loadTab();
 }
-function answeredTab(event){
-	currentPagination = answeredPagination;
-	tabSelector = event.target.getAttribute('href');
-	loadTab();
-}
 function closedTab(event){
 	currentPagination = closedPagination;
 	tabSelector = event.target.getAttribute('href');
 	loadTab();
 }
-
 
 function loadTab(){
 
@@ -52,15 +45,16 @@ function loadTab(){
 	// Reset table body and pagination
 	$(tabSelector + ' .requestListBody').html('');
 	$(tabSelector + ' .pagination').html('');
-	
-	pagination.updateNbItemsPerPage(2);
+
+	// Set the page to show 3 items
+	currentPagination.updateNbItemsPerPage(3);
 
 	$.post(
 		BASE_URL + "api/requestList.php", 
-		{target: 'admin',
+		{target: 'student',
 			userID: userID,
 			tab: tabSelector,
-			itemsPerPage : nbItemsPerPage,
+			itemsPerPage : currentPagination.nbItemsPerPage,
 			page: currentPagination.page
 		},
 		function(data){
@@ -88,7 +82,7 @@ function changePage(event){
 	var nbItemsPerPage = currentPagination.nbItemsPerPage;
 
 	$.post(BASE_URL + "api/requestList.php",
-		{target: 'admin',
+		{target: 'student',
 			userID: userID,
 			tab: tabSelector,
 			itemsPerPage : nbItemsPerPage,

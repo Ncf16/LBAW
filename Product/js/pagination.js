@@ -7,6 +7,10 @@ function Pagination(){
 	this.nbItemsPerPage = 2;
 }
 
+Pagination.prototype.updateNbItemsPerPage = function(nbItemsPerPage){
+	this.nbItemsPerPage = nbItemsPerPage;
+}
+
 Pagination.prototype.addPagination = function(page,nbItems,nbItemsPerPage,showPages){
 
 	this.page = typeof page !== 'undefined' ? page : this.page;
