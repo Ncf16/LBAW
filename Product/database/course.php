@@ -320,7 +320,7 @@ function isCourseDirector($course,$regent){
     $stmt = $conn->prepare("SELECT * FROM Course WHERE code = ?  AND teacherCode = ? AND visible=1");
     
     $stmt->execute(array($course,$regent));
-    $return $stmt->fetchAll();
+    $return = $stmt->fetchAll();
     if($return == false)
         return false;
     else

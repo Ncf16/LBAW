@@ -18,9 +18,9 @@
   if($person['persontype'] == 'Student'){
   	$smarty->assign('student', $person);
   if(isset($_SESSION['username']) && isset($_GET['person']) && $_GET['person'] === $_SESSION['username'] ){
-    include_once($BASE_DIR . 'database/course.php'); 
-    include_once($BASE_DIR . 'database/cuEnrollment.php'); 
-    include_once($BASE_DIR . 'database/courseEnrollment.php'); 
+     include_once($BASE_DIR . 'database/course.php'); 
+     include_once($BASE_DIR . 'database/cuEnrollment.php'); 
+     include_once($BASE_DIR . 'database/courseEnrollment.php'); 
     $studentID = getPersonIDByUserName($_GET['person']);
     $getStudentCourse=getStudentCourse($studentID['academiccode']);
     $isCheckProgress=true;
