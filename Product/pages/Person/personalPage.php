@@ -4,7 +4,7 @@
   include_once($BASE_DIR . 'database/student.php'); 
 
   if(!$_GET['person']){
-   header('Location: ' . $_SERVER['HTTP_REFERER']);
+   header('Location: ' . $BASE_URL .  'index.php');
    exit;
   }
 
