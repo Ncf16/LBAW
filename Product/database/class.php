@@ -8,13 +8,52 @@ function createClass($uco,$teacher,$duration,$room,$classDate,$summary){
 	return $stmt->fetch();
 }
 
-function updateClass($class,$uco,$teacher,$duration,$room,$classDate,$summary){
+function updateClassSummary($class,$summary){
 
 	global $conn;
-	$stmt = $conn->prepare("UPDATE Class SET occurrenceid=?, teachercode=?, duration=?, roomid=?,
-		classdate=?, summary=? WHERE classid = ?");
+	$stmt = $conn->prepare("UPDATE Class SET summary=? WHERE classid = ?");
 	
-	$stmt->execute(array($uco,$teacher,$duration,$room,$classDate,$summary,$class));
+	$stmt->execute(array($summary,$class));
+}
+
+function updateClassDate($class,$date){
+
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Class SET classdate=?::date + classdate::time WHERE classid = ?");
+	
+	$stmt->execute(array($date,$class));
+}
+
+function updateClassTime($class,$time){
+
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Class SET classdate=classdate::date + ?::time WHERE classid = ?");
+	
+	$stmt->execute(array($time,$class));
+}
+
+function updateClassDuration($class,$duration){
+
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Class SET duration=? WHERE classid = ?");
+	
+	$stmt->execute(array($duration,$class));
+}
+
+function updateClassRoom($class,$room){
+
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Class SET roomid=? WHERE classid = ?");
+	
+	$stmt->execute(array($room,$class));
+}
+
+function updateClassTeacher($class,$teacher){
+
+	global $conn;
+	$stmt = $conn->prepare("UPDATE Class SET teachercode=? WHERE classid = ?");
+	
+	$stmt->execute(array($teacher,$class));
 }
 
 function countClass(){

@@ -106,6 +106,8 @@ $(document).ready(function() {
 	$('#attendances').on('click','button',toggleAttendance);
 	$('#checkAll').on('click',allAttendances);
 	$('#uncheckAll').on('click',noneAttendances);
+	$('#editSummary').on('click',editSummary);
+	$('.editInfo').on('click',editInfo);
 });
 
 function loadPage(){
@@ -196,7 +198,6 @@ function updateAttendance(attendanceVal,itemID){
 function allAttendances(){
 
 	$.post(BASE_URL + "api/attendances.php", {action: 'update', classid: classTbl, attendanceVal : true}, function(data){
-		console.log("All");
 		$('.pagination').html('');
 		$('#attendances').html('');
 		loadPage();
@@ -212,6 +213,140 @@ function noneAttendances(){
 	},'json');
 };
 
+function editSummary(){
+
+	var text = $('#editSummary').text();
+	if(text == 'Submit changes'){
+		var textArea = $('div.panel-body textArea').val();
+		var oldText = $('div.panel-body input').val();
+		$('div.panel-body').html('');
+		$.post(BASE_URL + "api/classes.php", {action: 'update', classid: classTbl, field : 'summary', value : textArea}, function(data){
+			if(data == 'Success')
+				$('div.panel-body').append($('<p/>').text(textArea));
+			else
+				$('div.panel-body').append($('<p/>').text(oldText));
+		},'json');
+
+		
+		$('#editSummary').html('<span class="glyphicon glyphicon-edit"> Edit</span>');
+	}
+	else{
+		var textArea = $('<textarea/>',{
+			'name' : 'summary'
+		}).addClass('form-control');
+		var oldText = $('div.panel-body p').text()
+		textArea.val(oldText);
+		$('div.panel-body').html('');
+		$('div.panel-body').append(textArea);
+		$('div.panel-body').append($('<input/>',{
+			'type' : 'hidden',
+			'val' : oldText
+		}));
+		$('#editSummary').text('Submit changes');
+	}
+};
+
+function postUpdate(edit,oldText,target,type,input){
+
+	$.post(BASE_URL + "api/classes.php", {action: 'update', classid: classTbl, field : type, value : input}, function(data){
+		if(type == 'teacher'){
+			if(data > 0){
+				teacher = input.split(':');
+				if(teacher.length != 2)
+					return;
+				edit.append($('<a/>',{
+					'href' : BASE_URL + 'pages/Person/personalPage.php?person=' + data
+				}).append(teacher[0]));
+			}
+		}
+		else if(data == 'Success'){
+			if(type == 'duration')
+				edit.append(input+ ' minutes');
+			else
+				edit.append(input);
+		}
+		else
+			edit.append(oldText);
+		target.toggleClass('editMode');
+	},'json');
+};
+
+function editInfo(event){
+
+	event.preventDefault();
+	var target = $(event.target);
+	if(target[0].nodeName == 'SPAN')
+		target = target.parent();
+
+	var id = target.attr('id');
+	var edit = target.parent().prev();
+
+	if(target.hasClass('editMode')){
+		var input = edit.find('input').val();
+		var oldText = edit.find('input[type=hidden]').val();
+		var text = edit.text().split(': ');
+		edit.text(text[0] + ': ');
+		target.html('<span class="glyphicon glyphicon-edit"></span>');
+
+		if(id == 'editDate')
+			postUpdate(edit,oldText,target,'date',input);
+		else if(id == 'editTime')
+			postUpdate(edit,oldText,target,'time',input);
+		else if(id == 'editTeacher')
+			postUpdate(edit,oldText,target,'teacher',input);
+		else if(id == 'editDuration')
+			postUpdate(edit,oldText,target,'duration',input);
+		else if(id == 'editRoom')
+			postUpdate(edit,oldText,target,'room',input);
+
+	}
+	else {
+		var text = edit.text().split(': ');
+		if(text.length != 2)
+			return;
+		target.toggleClass('editMode');
+		edit.text(text[0] + ': ');
+		target.html('<span class="glyphicon glyphicon-ok"></span>');
+		if(id == 'editDate'){
+			edit.append($('<input/>',{
+				'type' : 'date',
+				'val' : text[1]
+			}));
+		}
+		else if (id == 'editTime'){
+			edit.append($('<input/>',{
+				'type' : 'time',
+				'val': text[1]
+			}));
+		}
+		else if (id == 'editTeacher'){
+			var teacherName = processName(text[1]);
+			edit.append($('<input/>',{
+				'type' : 'text',
+				'val': teacherName,
+				'list' : 'teachers'
+			}));
+		}
+		else if (id == 'editDuration'){
+			var duration = parseInt(text[1], 10);
+			edit.append($('<input/>',{
+				'type' : 'number',
+				'val': duration
+			}));
+		}
+		else if(id == 'editRoom'){
+			edit.append($('<input/>',{
+				'type' : 'text',
+				'val': text[1],
+				'list' : 'rooms'
+			}));
+		}
+		edit.append($('<input/>',{
+			'type' : 'hidden',
+			'val' : text[1]
+		}));
+	}
+}
 
 function addItens(attendances){
 
@@ -266,4 +401,15 @@ function processFormData(data){
 	var index = window.location.search.indexOf(data);
 	if (index != -1)
 		return window.location.search.substring(index+data.length);
+};
+
+function processName(name){
+
+	var length = name.length;
+  	for(var i=length-1; i >= 0; i--){
+  		if(name.charCodeAt(i) != 32 && name.charCodeAt(i) != 10)
+    		return name.substring(0,i);
+  }
+  
+  return name.substring(0,length);
 }

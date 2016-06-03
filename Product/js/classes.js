@@ -166,7 +166,7 @@ function addItens(classes){
 		var a = $('<a/>',{
 			'data-title': 'View',
 			'data-toggle': 'modal',
-			'href': BASE_URL + "pages/CurricularUnit/viewClass.php?class=" + classObj.classid
+			'href': BASE_URL + "pages/Class/viewClass.php?class=" + classObj.classid
 
 		}).addClass('btn btn-primary btn-xs');
 		var glyZoom = $('<span/>').addClass('glyphicon glyphicon-zoom-in');

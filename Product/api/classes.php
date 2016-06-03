@@ -13,15 +13,77 @@ if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
 	include_once($BASE_DIR . 'database/class.php');
+	include_once($BASE_DIR . 'database/room.php');
+	include_once($BASE_DIR . 'database/teacher.php');
 
 	$data = array();
 
 	if(!isset($_POST['action'])){
-		$_SESSION['error_messages'][] = 'Action not especified';
+		$_SESSION['error_messages'][] = 'Action not specified';
 		exit;
 	}
+	else if($_POST['action']=='update'){
 
-	if($_POST['action']=='list'){
+		$inputs = array();
+		$inputs['classid'] = 'Class not especified';
+		$inputs['field'] = 'No field set to be updated';
+		$inputs['value'] = 'No value specified';
+ 		if(!checkInputs($_POST, $inputs)){
+ 			//SEASION ERRORS inside checkInputs  
+			exit;
+		}
+
+		try{
+			if($_POST['field'] == 'summary'){
+		       updateClassSummary($_POST['classid'],$_POST['value']);
+		       echo json_encode('Success');
+		   }
+		   else if($_POST['field'] == 'date'){
+		   		updateClassDate($_POST['classid'],$_POST['value']);
+		   		echo json_encode('Success');
+		   }
+		   else if($_POST['field'] == 'time'){
+		   		updateClassTime($_POST['classid'],$_POST['value']);
+		   		echo json_encode('Success');
+		   }
+		   else if($_POST['field'] == 'teacher'){
+			   	$teacher = explode(':',$_POST['value']);
+			    if(!isset($teacher[1])){
+			    	$_SESSION['error_messages'][] = 'Couldn\'t find the teacher username';
+			      	exit;
+			      }
+	    		$teacher = substr($teacher[1],1);
+	    		if($teacher == false){
+			      	$_SESSION['error_messages'][] = 'Couldn\'t find a teacher with given username';
+			     	exit;
+			    }
+
+			    $teacher = getTeacherID($teacher);//academiccode
+			    if(!$teacher){
+			    	$_SESSION['error_messages'][] = 'Couldn\'t find a teacher with given username';
+			    	exit;
+			    }
+			    updateClassTeacher($_POST['classid'],$teacher['academiccode']);
+			    echo json_encode($teacher['academiccode']);
+		   }
+		   else if($_POST['field'] == 'duration'){
+		   		updateClassDuration($_POST['classid'],$_POST['value']);
+		   		echo json_encode('Success');
+		   }
+		   else if($_POST['field'] == 'room'){
+		   		$room = getRoomID($_POST['value']);
+		   		updateClassRoom($_POST['classid'],$room['roomid']);
+		   		echo json_encode('Success');
+		   }
+	    }
+	    catch (PDOException $e) {
+	        $_SESSION['form_values'] = $_POST;
+	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
+	        header("Location:".$_SERVER['HTTP_REFERER']);
+	        exit;
+	    }
+	}
+	else if($_POST['action']=='list'){
 
 		if(!isset($_POST['itemsPerPage']))
 			$itemsPerPage = 10;
