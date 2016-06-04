@@ -2,7 +2,7 @@
 <hr>
 <ul class="nav nav-pills navPills">
     <li id="openRequests" class="active"><a href="#open" data-toggle="tab">Open Requests</a></li>
-    <li id="answeredRequests"><a href="#answered" data-toggle="tab">Answered requests</a></li>
+    <li id="answeredRequests"><a href="#answered" data-toggle="tab">My Answered requests</a></li>
     <li id="closedRequests"><a href="#closed" data-toggle="tab">Closed Requests</a></li>
 
 </ul>
@@ -41,7 +41,7 @@
 
     <div class="row tab-pane fade" id="answered">
         <div class="col-lg-12">
-            <h2>Answered Requests</h2>
+            <h2>My Answered Requests</h2>
 
             <!-- TABLE -->
             <table class="table table-striped">

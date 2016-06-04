@@ -25,7 +25,6 @@ function requestItemHandler(event){
 
 function fillModal(requestInfo) {
 
-	console.log(requestInfo);
 
 	$.ajax({
 		url: '../../api/exploreTemplate.php',           //TODO: MIGHT HAVE TO FIX THIS
@@ -36,13 +35,17 @@ function fillModal(requestInfo) {
 		},
 		success: function (data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-				//var elem = $(data);
+				var elem = $(data);
 
-				//Install accept and refuse button handlers here
-				//elem.find('a.requestItem').click(requestItemHandler);
-				console.log(data);
-				$('#myModal').replaceWith(data);
+				// Refresh modal with the new data
+				$('#myModal').replaceWith(elem);
 
+				// Install accept and refuse button handlers here
+				$('#approve_btn').click(approveRequestHandler);
+				$('#reject_btn').click(rejectRequestHandler);
+				$('#cancel_btn').click(cancelRequestHandler);
+
+				// Show the modal
 				$("#myModal").modal("show");
 
 			} else {
@@ -57,3 +60,15 @@ function fillModal(requestInfo) {
 		}
 	});
 };
+
+function approveRequestHandler(event){
+	console.log("approved");
+}
+
+function rejectRequestHandler(event){
+	console.log("rejected");
+}
+
+function cancelRequestHandler(event){
+	console.log("canceled");
+}
