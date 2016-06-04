@@ -103,7 +103,8 @@ function countEvaluations($uco){
 function getTest($test){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, evaluationdate, Curricularunit.name, Syllabus.calendaryear
+	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, Evaluation.evaluationdate::date AS day, Evaluation.evaluationdate::time AS time,
+		Curricularunit.name, Syllabus.calendaryear, Evaluation.cuoccurrenceid
 		FROM Test, Evaluation, CurricularUnit, CurricularUnitOccurrence, Syllabus
 		WHERE Test.evaluationid = Evaluation.evaluationid AND
 		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
@@ -118,7 +119,8 @@ function getTest($test){
 function getExam($exam){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, evaluationdate, Curricularunit.name, Syllabus.calendaryear
+	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, Evaluation.evaluationdate::date AS day, Evaluation.evaluationdate::time AS time,
+		Curricularunit.name, Syllabus.calendaryear, Evaluation.cuoccurrenceid
 		FROM Exam, Evaluation, CurricularUnit, CurricularUnitOccurrence, Syllabus
 		WHERE Exam.evaluationid = Evaluation.evaluationid AND
 		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
@@ -133,7 +135,8 @@ function getExam($exam){
 function getGroupWork($groupWork){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT minelements, maxelements, evaluationtype, weight, evaluationdate, Curricularunit.name, Syllabus.calendaryear
+	$stmt = $conn->prepare("SELECT minelements, maxelements, evaluationtype, weight, Evaluation.evaluationdate::date AS day, 
+		Evaluation.evaluationdate::time AS time, Curricularunit.name, Syllabus.calendaryear, Evaluation.cuoccurrenceid
 		FROM GroupWork, Evaluation, CurricularUnit, CurricularUnitOccurrence, Syllabus
 		WHERE GroupWork.evaluationid = Evaluation.evaluationid AND
 		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
