@@ -7,7 +7,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	$data = array();
 
 	if(!isset($_POST['target'])){
-		$_SESSION['error_messages'][] = 'Action not especified'; 
+		$_SESSION['error_messages'][] = 'Action not specified'; 
 		exit;
 	}
 
@@ -23,7 +23,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 		if(isset($_POST['page'])){
 			if(!is_numeric($_POST['page'])){
-				die('Page especified not correct');
+				die('Page specified not correct');
 			}
 			$pageNumber = intval($_POST['page']);
 		}
@@ -63,7 +63,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 		if(isset($_POST['page'])){
 			if(!is_numeric($_POST['page'])){
-				die('Page especified not correct');
+				die('Page specified not correct');
 			}
 			$pageNumber = intval($_POST['page']);
 		}

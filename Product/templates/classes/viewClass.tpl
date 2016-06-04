@@ -45,7 +45,7 @@
                 {foreach $teachers as $teacher}
                 <option value="{$teacher.name}"></option>
                 {/foreach}
-              </datalist>
+            </datalist>
           </tr>
           <tr>
             <td>Duration: {$class.duration} minutes</td>
@@ -62,7 +62,7 @@
                 {foreach $rooms as $room}
                 <option value="{$room.room}"></option>
                 {/foreach}
-              </datalist>
+            </datalist>
           </tr>
        </table>
     </div>

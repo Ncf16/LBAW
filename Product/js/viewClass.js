@@ -249,19 +249,18 @@ function editSummary(){
 function postUpdate(edit,oldText,target,type,input){
 
 	$.post(BASE_URL + "api/classes.php", {action: 'update', classid: classTbl, field : type, value : input}, function(data){
-		if(type == 'teacher'){
-			if(data > 0){
-				teacher = input.split(':');
+		
+		if(data == 'Success'){
+			if(type == 'duration')
+				edit.append(input+ ' minutes');
+			if(type == 'teacher'){
+				teacher = input.split(': ');
 				if(teacher.length != 2)
 					return;
 				edit.append($('<a/>',{
-					'href' : BASE_URL + 'pages/Person/personalPage.php?person=' + data
+					'href' : BASE_URL + 'pages/Person/personalPage.php?person=' + teacher[1]
 				}).append(teacher[0]));
 			}
-		}
-		else if(data == 'Success'){
-			if(type == 'duration')
-				edit.append(input+ ' minutes');
 			else
 				edit.append(input);
 		}

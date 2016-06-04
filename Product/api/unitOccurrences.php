@@ -16,8 +16,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 	$data = array();
 	$inputs = array();
-	$input['action'] = 'Action not especified';
-	$input['type'] = 'Type of list not especified';
+	$input['action'] = 'Action not specified';
+	$input['type'] = 'Type of list not specified';
 	if(!checkInputs($_POST, $inputs)){
       //SEASION ERRORS inside checkInputs
       exit;
@@ -110,8 +110,8 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	
 	else if($_POST['action']=='delete'){
 
-		$inputs['id'] = 'Unit on delete not especified!';
-		$inputs['page'] = 'Page on Delete not especified!';
+		$inputs['id'] = 'Unit on delete not specified!';
+		$inputs['page'] = 'Page on Delete not specified!';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
 
 		if(!checkInputs($_POST, $inputs)){

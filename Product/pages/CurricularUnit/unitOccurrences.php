@@ -16,7 +16,7 @@ $courses = getCourses();
 $years = getYears();
 
 foreach ($years as &$year)
-	$year['year'] = $year['year'] . '/' . ($year[year] + 1);
+	$year['year'] = $year['year'] . '/' . ($year['year'] + 1);
 unset($year);
 
 $smarty->assign('courses', $courses);

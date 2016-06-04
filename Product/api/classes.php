@@ -25,7 +25,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else if($_POST['action']=='update'){
 
 		$inputs = array();
-		$inputs['classid'] = 'Class not especified';
+		$inputs['classid'] = 'Class not specified';
 		$inputs['field'] = 'No field set to be updated';
 		$inputs['value'] = 'No value specified';
  		if(!checkInputs($_POST, $inputs)){
@@ -64,7 +64,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			    	exit;
 			    }
 			    updateClassTeacher($_POST['classid'],$teacher['academiccode']);
-			    echo json_encode($teacher['academiccode']);
+			    echo json_encode('Success');
 		   }
 		   else if($_POST['field'] == 'duration'){
 		   		updateClassDuration($_POST['classid'],$_POST['value']);
@@ -154,7 +154,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else if($_POST['action']=='delete'){
 
 		$inputs = array();
-		$inputs['id'] = 'ID on delete not especified!';
+		$inputs['id'] = 'ID on delete not specified!';
 		$inputs['page'] = 'Page where delete happens not specified';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
  		if(!checkInputs($_POST, $inputs)){

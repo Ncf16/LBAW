@@ -17,13 +17,13 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	$data = array();
 
 	if(!isset($_POST['action'])){
-		$_SESSION['error_messages'][] = 'Action not especified';
+		$_SESSION['error_messages'][] = 'Action not specified';
 		exit;
 	}
 	if($_POST['action']=='update'){
 
 		$inputs = array();
-		$inputs['classid'] = 'Class not especified';
+		$inputs['classid'] = 'Class not specified';
 		$inputs['attendanceVal'] = 'Attendance value not specified';
  		if(!checkInputs($_POST, $inputs)){
  			//SEASION ERRORS inside checkInputs  
@@ -94,7 +94,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			
 		}*/
 		else{
-			$_SESSION['error_messages'][] = 'Parameters not especified';
+			$_SESSION['error_messages'][] = 'Parameters not specified';
 			exit;
 		}
 
@@ -110,7 +110,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else if($_POST['action']=='delete'){
 
 		$inputs = array();
-		$inputs['id'] = 'ID on delete not especified';
+		$inputs['id'] = 'ID on delete not specified';
 		$inputs['page'] = 'Page where delete happens not specified';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
  		if(!checkInputs($_POST, $inputs)){
@@ -158,7 +158,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 				
 			}*/
 			else{
-				$_SESSION['error_messages'][] = 'Parameters not especified';
+				$_SESSION['error_messages'][] = 'Parameters not specified';
 				exit;
 			}
 		}
