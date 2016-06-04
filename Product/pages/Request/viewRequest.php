@@ -6,29 +6,22 @@
  //                                                  if user, requests he submitted
 
  // VERIFICATIONS
- if(!$_SESSION['account_type'] || !$_SESSION['userID']){
+ if(!isset($_GET['id'])){
+     $_SESSION['error_messages'][] = 'Request ID not specified.';
+     header("Location: " . $BASE_URL . 'index.php');
+     exit;
+ }
+
+ if($_SESSION['account_type'] != 'Student' && $_SESSION['account_type'] != 'Admin'){
      header('Location: ' . $BASE_URL .  'index.php');
      exit;
  }
 
- $person = getPersonInfoByUser($_SESSION['username']);
 
- if($person == NULL){
-    header('Location: ' . $BASE_URL .  'index.php');
-    exit;
- }
-
- $requests = null;
-
- // If admin, at least for now, requests are loaded dinamically with JS, cuz pagination
- if($_SESSION['account_type'] != 'Student' && $_SESSION['account_type'] != 'Admin'){
-      header('Location: ' . $BASE_URL .  'index.php');
-     exit;
- }
 
 // Getting the important information to display
  $smarty->assign(account,  $_SESSION['account_type']);
  $smarty->assign(userID, $_SESSION['userID'] );
 
-  $smarty->display('request/requestListPage.tpl')
+  $smarty->display('request/viewRequest.tpl')
 ?>

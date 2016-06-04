@@ -2,6 +2,7 @@
 
 <link href="{$BASE_URL}css/requests.css" rel="stylesheet">
 <script src="{$BASE_URL}js/pagination.js"></script>
+<script src="{$BASE_URL}js/requestListCommon.js"></script>
 
 {if $account == 'Admin'}
 <script src="{$BASE_URL}js/requestListAdmin.js"></script>

@@ -66,6 +66,30 @@ hr {
 }
 
 
+/* OTHER BUTTON STUFF */
+
+
+.btn{
+	color: #fff;
+	background-color:#122;
+	border-color:#000;
+}
+
+.btn:hover,
+.btn:focus{
+	background-color:#fff;
+	color:#011;
+	border-color:#122;
+}
+
+.btn-header{
+	color: #011;
+	background-color:#cc6600;
+	border-radius: 2px;
+	border-color: #e0e0eb;
+	text-decoration: none;
+}
+
 /* TABLE STUFF */
 
 

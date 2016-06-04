@@ -1,7 +1,7 @@
 {foreach from=$requests item=request}
      <tr>
       <th scope="row">
-          <a href='{$BASE_URL}pages/Request/request.php?id={$request.requestid}'>{$request.requestid}</a>
+          <a class="btn center-block" href='{$BASE_URL}pages/Request/viewRequest.php?id={$request.requestid}'>{$request.requestid}</a>
       </th>
       <td>
           <a href='{$BASE_URL}pages/Person/personalPage.php?person={$request.studentusername}'>{$request.studentname}</a>

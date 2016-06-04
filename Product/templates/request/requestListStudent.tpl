@@ -1,12 +1,10 @@
 <p>
-</p>
-{include file='request/controls.tpl'}
-
-<p>
 <hr>
 <ul class="nav nav-pills navPills">
     <li id="openRequests" class="active"><a href="#open" data-toggle="tab">Open Requests</a></li>
     <li id="closedRequests"><a href="#closed" data-toggle="tab">Closed Requests</a></li>
+
+    <a href="{$BASE_URL}pages/Request/createRequest.php" class="pull-right btn btn" > Create Request</a>
 </ul>
 
 <div class="tab-content">
@@ -33,7 +31,7 @@
 
             <div class="clearfix"></div>
             <ul class="pagination pull-right">
-            a
+
             </ul>
 
         </div>
@@ -63,7 +61,7 @@
 
             <div class="clearfix"></div>
             <ul class="pagination pull-right">
-            d
+
             </ul>
 
         </div>
@@ -92,7 +90,7 @@
 
             <div class="clearfix"></div>
             <ul class="pagination pull-right">
-            h
+
             </ul>
 
         </div>

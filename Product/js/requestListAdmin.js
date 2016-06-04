@@ -53,7 +53,7 @@ function loadTab(){
 	$(tabSelector + ' .requestListBody').html('');
 	$(tabSelector + ' .pagination').html('');
 	
-	currentPagination.updateNbItemsPerPage(2);
+	currentPagination.updateNbItemsPerPage(3);
 
 	$.post(
 		BASE_URL + "api/requestList.php", 
