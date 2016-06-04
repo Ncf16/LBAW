@@ -39,7 +39,7 @@
             </div>
 
             <div class="modal-footer">
-                {if $ACCOUNT_TYPE == 'Admin'}
+                {if $ACCOUNT_TYPE == 'Admin' && $request.approved == null}
                     <button id="approve_btn" type="button" class="btn btn-success" data-dismiss="modal">Approve</button>
                     <button id="reject_btn" type="button" class="btn btn-danger" data-dismiss="modal">Reject</button>
                 {elseif $ACCOUNT_TYPE == 'Student'}
