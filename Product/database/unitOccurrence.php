@@ -162,15 +162,15 @@ function deleteUnitOccurrence($unit){
 	}
 }
 
-function isRegent($cuoID,$academiccode){
+function isRegent($cuoID,$academiccode,$year){
  
 	global $conn;
-	$stmt = $conn->prepare("SELECT curricularID
+	$stmt = $conn->prepare("SELECT CurricularUnitOccurrence.curricularUnitID
 		FROM CurricularUnitOccurrence,Syllabus
 		WHERE Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID   AND CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teacherCode = ?
 			 AND Syllabus.calendarYear = ? AND Syllabus.visible=1 AND  CurricularUnitOccurrence.visible=1 ");
 
-	$stmt->execute(array($cuoID,$academiccode,date("Y")));
+	$stmt->execute(array($cuoID,$academiccode,$year));
 	 if($stmt->fetch()!= false)
 	 	return true;
 	 else

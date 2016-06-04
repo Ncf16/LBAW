@@ -8,6 +8,13 @@ function updateEvaluation($evaluation,$date,$weight){
 	$stmt->execute(array($date,$weight,$evaluation));
 }
 
+function getEvaluationTypes(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT  unnest(enum_range(NULL::evaluationtype));");
+	$stmt->execute(array());
+	return $stmt->fetchAll();
+
+}
 function createExam($duration,$uco,$date,$weight){
 
 	global $conn;
