@@ -4,15 +4,8 @@
   include_once($BASE_DIR . 'database/person.php'); 
   include_once($BASE_DIR . 'database/teacher.php'); 
 
- if(!$_SESSION['account_type'] || $_SESSION['account_type'] != 'Admin' ){
- 		header("Location: " . $BASE_URL . "index.php");
- 		exit;
-	}
- 	
-  if(!$_SESSION['account_type'] || $_SESSION['account_type'] != 'Admin' || ! checkUserType("Admin",$USERID) ){
- 	?>
-		<h1>ERROR NOT A VALID PERMISSION</h1>
- 	<?php
+  if(!$_SESSION['account_type'] || $_SESSION['account_type'] !== 'Admin' || ! checkUserType("Admin",$_SESSION['userID']) ){
+    header("Location: " . $BASE_URL . "index.php");
  		exit;
 }
     
@@ -20,7 +13,6 @@
       $infoToEdit=getCourseInfo($_GET['courseID']);
       $edit=true;
       $smarty->assign('infoToEdit',$infoToEdit);
-      var_dump($infoToEdit);
     }
     else
       $edit=false;
@@ -30,7 +22,6 @@
   $smarty->assign('edit',$edit);
  
 
-   $smarty->display('course/courseCreation.tpl');
+   $smarty->display('course/course.tpl');
 ?>
- ?>
- 
+  

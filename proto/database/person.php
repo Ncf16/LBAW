@@ -1,7 +1,23 @@
 <?php
   include_once($BASE_DIR . '/config/init.php');
   require_once($BASE_DIR . "lib/password.php");
-
+/*
+CREATE TABLE IF NOT EXISTS Person(
+academicCode SERIAL PRIMARY KEY,
+personType PersonType,
+name VARCHAR(120) NOT NULL,
+username VARCHAR(15),
+address VARCHAR(256),
+birthdate DATE,
+nationality VARCHAR(30),
+nif CHAR(9) UNIQUE NOT NULL,
+password VARCHAR(256) NOT NULL,
+phoneNumber VARCHAR(12),
+imageURL VARCHAR(256),
+visible INTEGER DEFAULT 1,
+tsv tsvector
+);
+*/
 function isLoginCorrect($username, $password){
   global $conn;
 
@@ -37,38 +53,40 @@ function isLoginCorrect($username, $password){
 function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type, $password){
   global $conn;
 
-  //return $address;
-  try{
 
+  try{
+    /*
     $stmt = $conn->prepare("SELECT * FROM person WHERE 
-                              lower(name) = lower(?)
-                          AND lower(address) = lower(?)
-                          AND lower(nationality) = lower (?)
-                          AND lower(phonenumber) = lower(?)
-                          AND birthdate = ?
-                          AND persontype = ?");
-    $stmt->execute(array($name, $address, $nationality, $phone, $birth, $type));
+                              lower(nif) = lower(?)");
+    $stmt->execute(array($nif));
   
   
     if($stmt->fetch() !== false){
       return "A person with the data provided already exists.";
     }
-
+    */
     
     $query = 'INSERT INTO Person (name,address,nationality,phoneNumber,nif,birthdate,personType,password) VALUES (?,?,?,?,?,?,?,?);';    
 
     $stmt = $conn->prepare($query);
     $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password,PASSWORD_DEFAULT)));
     
-
     return true;
 
   }catch(PDOException $e){
-    echo $query . "<br>" . $e->getMessage();
-    return "ERROR REGISTERING (PDO).";
+    //echo $query . "<br>" . $e->getMessage();
+    if($e->getCode() == 23505){
+      return "User $name with NIF $nif already exists.";
+    }else{
+      return "ERROR REGISTERING (PDO Error).";
+    }
   }catch(DatabaseException $e){
+    if($e->getCode() == 23505)
+      return "User with NIF $nif already exists.";
+    else{
     //echo "Unexpected Database Error: " . $e->getMessage();
-     return "ERROR REGISTERING (DB).";
+     return "ERROR REGISTERING (DB) USER WITH NIF $nif.";
+   }
   }catch(Exception $e){
     //echo "Unexpected Database Error: " . $e->getMessage();
     return "ERROR REGISTERING (Other).";
@@ -93,20 +111,23 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
       return $person['username'];
     }
 }
+ 
+function getPersonUsernameByNIF($nif){
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * FROM person WHERE 
+                              lower(nif) = lower(?)");
+    $stmt->execute(array($nif));
+  
+    $person = $stmt->fetch();
+
+    if($person !== false){
+      return $person['username'];
+    }
+}
 
 
-  function getStudentInfo($id) {
-    global $conn;
-    $stmt = $conn->prepare("SELECT Person.*, Course.abbreviation AS courseName, CourseEnrollment.curricularYear AS currentYear, EXTRACT(YEAR FROM CourseEnrollment.startYear) AS startYear, CourseEnrollment.finishYear AS finishYear, CourseEnrollment.courseGrade As courseGrade
-            FROM  Course, CourseEnrollment, Person
-            WHERE Course.code = CourseEnrollment.courseID
-            AND CourseEnrollment.studentCode = Person.academiccode
-            AND Person.username = ?");
-    $stmt->execute(array($id));
-    return $stmt->fetch();
-  }
-
-  function getPersonInfoUser($username){
+  function getPersonInfoByUser($username){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM Person
@@ -116,7 +137,7 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
     return $stmt->fetch();
   }
 
-  function getPersonInfoID($id){
+  function getPersonInfoByID($id){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM Person
@@ -135,25 +156,6 @@ function getPersonUsername($name, $address, $nationality, $phone, $birth, $type,
     $stmt->execute(array($username));
     return $stmt->fetch();
   }
-
-function getTeacherAcademicCodes(){
-     global $conn;
-    $stmt = $conn->prepare("SELECT academiccode
-                            FROM Person
-                            WHERE   persontype='Teacher'" );
-    
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
-  function getAllTeachers(){
-     global $conn;
-    $stmt = $conn->prepare("SELECT *
-                            FROM Person
-                            WHERE   persontype='Teacher'" );
-    
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
 
 function getAllPeople(){
   global $conn;
@@ -185,16 +187,16 @@ function countPeople(){
   $stmt->execute();
   return $stmt->fetch();
 }
-
-function getTeacherWithName($username){
-   global $conn;
-    $stmt = $conn->prepare("SELECT *
+function getPersonIDByUserName($username){
+  global $conn;
+  $stmt = $conn->prepare("SELECT academiccode 
                             FROM Person
-                            WHERE username = ? AND persontype='Teacher'" );
+                            WHERE username = ? AND  visible = 1");
     
-    $stmt->execute(array($username));
-    return $stmt->fetch();
+  $stmt->execute(array($username));
+  return $stmt->fetch();
 }
+
 function checkAcademicCodeInArray($array,$valueToCheck){
      // var_dump($valueToCheck);
   foreach ($array as $value) {

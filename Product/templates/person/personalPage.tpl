@@ -9,7 +9,7 @@
          <div class="col-lg-12">
             <h1 class="page-header">Personal Page
                <small>{$person.name}  ({$person.persontype})</small>
-                <a href="#" class="btn btn-xs btn-primary">Edit Page</a> 
+                <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
             </h1>
          </div>
       </div>
@@ -34,7 +34,7 @@
             <ul>
                <li>Mobile Phone: {$person.phonenumber}</li>
                <li>Current Status:
-                   {if isset($person.finishyear) && $person.coursegrade > 10}
+                   {if isset($person.finishyear) and $person.coursegrade > 10}
                    Course completed
                   {elseif isset($person.finishyear)}
                   Not valid
@@ -49,10 +49,10 @@
                <div class="panel panel-default">
                   <div class="panel-heading">
                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#year1">Sociodemographic Data</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#info">Sociodemographic Data</a>
                      </h4>
                   </div>
-                  <div id="year1" class="panel-collapse collapse">
+                  <div id="info" class="panel-collapse collapse">
                      <div class="panel-body">
                         <p>
                            Birth Date: {$person.birthdate}
@@ -105,7 +105,16 @@
 
          {/if}
          <!-- /.row -->
-      
+            {if $person.persontype == 'Student' and $seeUnits == true}
+          <div class="row" id="studentsGrades">
+            <h2>Curricular Units</h2>
+              <input hidden value="{$student}" id="studentID"/>
+         <input hidden value="{$courseCode}" id="courseID"/>
+          
+         <div id="cu_response">
+         </div>
+         </div>
+            {/if}
    </div>
 </div>
 

@@ -1,4 +1,5 @@
 -- List students enrolled in a certain course
+-- move course.code para o inicio?
 SELECT *
 FROM Person, Courseenrollment, Course
 WHERE Person.academiccode = Courseenrollment.studentcode

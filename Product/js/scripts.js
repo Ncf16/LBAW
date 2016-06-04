@@ -2,7 +2,6 @@
 $(document).ready(function() {
 	// Login form submition
 	$('#frm').on('submit', loginButtonHandler);
-
 	// Course page syllabus selection
 	$('#syllabus_year').change(syllabusYearHandler); 
 	$('#syllabus_year').change();
@@ -11,7 +10,10 @@ $(document).ready(function() {
 	$('#creation_toggle label').click(creationToggleHandler);
 	$('#account_form_individual').on('submit', individualCreationHandler);
 
-
+	//check if exists
+	if($('#cu_response').length > 0) {
+ 	 	 curricularUnitsHandler();
+	}
 });
 
 function emptyStatus() {
@@ -42,9 +44,6 @@ function loginButtonHandler(event){
 					emptyStatus();
 					$("#message_status").prepend("Username/Password combination not found.");
 				}
-				
-				
-
 			} else {
 				// Handle errors here
 				console.log('ERRORS: ' + data.error);
@@ -58,7 +57,7 @@ function loginButtonHandler(event){
 	});
 
 }
-
+ 
 function syllabusYearHandler(event){
 	var year = $('#syllabus_year').find(":selected").text();
 	var course = $('#course_code').val();
@@ -71,6 +70,31 @@ function syllabusYearHandler(event){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {		
 				
+				$('#cu_response').html(data);
+
+			} else {
+				// Handle errors here
+				console.log('ERRORS: ' + data.error);
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			console.log('ERRORS: ' + textStatus);
+			// STOP LOADING SPINNER
+		}
+	});
+}
+function curricularUnitsHandler(){
+	var student = $('#studentID').val();
+	var course = $('#courseID').val();
+	console.log("course: "+course+" student: "+student);
+
+	$.ajax({
+		url: '../../api/studentCurricularUnits.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: {course: course,student: student},
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {		
 				$('#cu_response').html(data);
 
 			} else {

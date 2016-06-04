@@ -4,7 +4,7 @@ FROM Person, CurricularEnrollment, CurricularUnitOccurrence
 WHERE Person.academiccode = curricularenrollment.studentcode
 AND curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid
 AND Person.academiccode = :academiccode
-AND curricularenrollment.grade IS NOT null
+AND curricularenrollment.finalgrade IS NOT null
 ORDER BY curricularunitoccurrence.curricularyear;
 
 -- List CU enrollments for a certain CU Occurrence: group by year
@@ -36,3 +36,24 @@ UPDATE curricularenrollment
 SET finalgrade = :finalgrade
 WHERE cuoccurrenceid = :cuoccurrenceid
 	  AND studentcode = :studentcode;
+
+-- List CU enrollments for a certain student: get Max finalgrade 
+SELECT CurricularUnit.name,MAX(curricularenrollment.finalgrade) , 'done' AS curricularStatus
+FROM Person, CurricularEnrollment, CurricularUnitOccurrence, CurricularUnit
+WHERE Person.academiccode = curricularenrollment.studentcode
+AND curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid
+AND CurricularUnitOccurrence.curricularunitid = curricularunit.curricularid
+AND Person.academiccode =  :academiccode  
+AND curricularenrollment.finalgrade IS NOT null
+GROUP BY  curricularunit.name
+
+-- List CU enrollments for a certain student not yet "done" by the student: group by year
+SELECT  CurricularUnit.name,MAX(syllabus.calendarYear) , 'notDone' AS curricularStatus
+FROM Person, CurricularEnrollment, CurricularUnitOccurrence, CurricularUnit,Syllabus
+WHERE Person.academiccode = curricularenrollment.studentcode
+AND curricularenrollment.cuoccurrenceid = curricularunitoccurrence.cuoccurrenceid
+AND Person.academiccode = :academiccode 
+AND CurricularUnitOccurrence.curricularunitid = curricularunit.curricularid
+ AND CurricularUnitOccurrence.syllabusid = syllabus.syllabusid
+ AND curricularenrollment.finalgrade IS NULL
+GROUP BY  curricularunit.name

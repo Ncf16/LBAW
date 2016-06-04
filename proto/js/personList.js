@@ -1,9 +1,9 @@
 // GLOBAL STUFF
-console.log("wtf");
+
 BASE_URL = window.location.pathname;
 console.log(BASE_URL);
 var url_array = BASE_URL.split("/");
-var BASE_URL = url_array[0]+ "/"+ url_array[1];
+var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 console.log(BASE_URL);
 
 var pagination = {

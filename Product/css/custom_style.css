@@ -116,18 +116,6 @@ header.carousel .fill {
 
 /* Button Styles */
 
-creation_toggle .btn input {
-  color: #000;
-  background-color:#FFFCCE;
-}
-
-creation_toggle .btn:hover,
-creation_toggle .btn:focus{
-  background-color:#fff;
-  color:#011;
-  border-color:#122;
-}
-
 .btn{
 	color: #fff;
 	background-color:#122;
@@ -161,27 +149,6 @@ a .btn-header:focus{
 	border-radius: 3px;
     text-decoration: none;
 }
-
-
-/* Form Styles */
-#creation_toggle label{
-}
-
-#account_form_multiple{
-  display: none;
-}
-
-#creation_success{
-  display: none;
-  color: green;
-}
-
-#creation_failure{
-  display: none;
-  color: red;
-}
-
-
 
 /* 404 Page Styles */
 
@@ -242,4 +209,9 @@ footer {
 #newProf{
   margin-top: 5px;
   margin-bottom: 5px;
+}
+#emptySpan{
+    padding: 6px 6px;
+    background-color: #eee;
+  
 }

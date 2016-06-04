@@ -3,8 +3,12 @@
 <div class="container">
 <div class="row">
    <div class="col-md-12">
+     {if $edit==true }
+     <h2 class="page-header">Edit Course</h2>
+     {else}
       <h2 class="page-header">Create Course</h2>
-      <form id="courseForm" class="well form-horizontal" action="#" method="post" id="courseCreation_form">
+      {/if}
+      <form id="courseForm" class="well form-horizontal" action="#" method="post">
          {if $edit==true  }
          <input hidden id="courseID" name="courseID" value="{$infoToEdit.code}" />
          <input id="Action" name="Action" hidden value="Edit">
@@ -22,6 +26,7 @@
                     fillField("course_name","{$infoToEdit["name"]}");
                   </script>
                   {/if}
+                   <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
@@ -36,6 +41,7 @@
                     fillField("course_abbreviation","{$infoToEdit["abbreviation"]}");
                   </script>
                   {/if}
+                   <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
@@ -52,9 +58,11 @@
                      {foreach from=$teachers item=teacher}
                      <option value={$teacher.academiccode}>{$teacher.name}</option>
                      {/foreach} 
+                        <div class="input-group">
+                  </div>
                   </datalist>-->
-                  <select name="course_director" id="course_director" placeholder="Course Director" class="form-control" required>
-                     <option value="0" selected="selected">Select Course Director</option>
+                  <select name="course_director" id="course_director" class="form-control" required>
+                     <option value="" disabled selected>Select Course Director</option>
                      {foreach from=$teachers item=teacher}
                      <option value={$teacher.academiccode}>{$teacher.name}:{$teacher.username}</option>
                      {/foreach} 
@@ -64,7 +72,7 @@
                     fillField("course_director","{$infoToEdit["teachercode"]}");
                   </script>
                   {/if}
-                 
+                   <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
@@ -79,6 +87,7 @@
                     fillField("course_fundate","{$infoToEdit["creationdate"]}");
                   </script>
                   {/if}
+                   <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
@@ -93,6 +102,7 @@
                     fillField("course_duration","{$infoToEdit["courseYears"]}");
                   </script>
                   {/if}
+                   <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
@@ -102,7 +112,7 @@
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
                   <select name="course_degree" id="course_degree" class="form-control" required>
-                     <option selected="selected">Select Academic Degree</option>
+                     <option value="" disabled selected>Select Academic Degree</option>
                      <option>Bachelor</option>
                      <option>Masters</option>
                      <option>PhD</option>
@@ -112,21 +122,28 @@
                     fillField("course_degree","{$infoToEdit["coursetype"]}");
                   </script>
                   {/if}
+                   <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
          <div class="form-group">
             <label class="col-md-3 control-label">Description</label>  
                <div class="col-md-8">
-                  <textarea class="form-control"  name="course_description" id="course_description" cols="50" row="5"  ></textarea>
+                  <textarea class="form-control"  name="course_description" id="course_description" cols="50" ></textarea>
                   {if $edit==true }
                   <script >
                     fillField("course_description","{$infoToEdit["description"]}");
                   </script>
                   {/if}
             </div>
+             <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
          </div>
-         
+           <div class="row">
+         <span class="glyphicon glyphicon-asterisk"></span> 
+             <strong>
+         Required Field
+      </strong>
+      </div>
          <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
               {if $edit==true }
@@ -136,6 +153,7 @@
               {/if}
             </div>
          </div>
+         
          <div id="message_status">
          </div>
          <div id="error_messages">
@@ -151,8 +169,5 @@
       </form>
    </div>
 </div>
+</div>
 {include file='common/footer.tpl'}
-
-<!-- 
-<input name="course_students" placeholder="Course Director" class="form-control" type="hidden">
--->

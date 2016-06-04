@@ -11,7 +11,10 @@ $(document).ready(function() {
 	$('#creation_toggle label').click(creationToggleHandler);
 	$('#account_form_individual').on('submit', individualCreationHandler);
 
-
+	//check if exists
+	if($('#cu_response').length > 0) {
+ 	 curricularUnitsHandler();
+	}
 });
 
 function emptyStatus() {
@@ -68,6 +71,33 @@ function syllabusYearHandler(event){
 		url: '../../api/syllabus.php',           //TODO: MIGHT HAVE TO FIX THIS
 		type: 'POST',
 		data: {course: course, year: year},
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {		
+				
+				$('#cu_response').html(data);
+
+			} else {
+				// Handle errors here
+				console.log('ERRORS: ' + data.error);
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			console.log('ERRORS: ' + textStatus);
+			// STOP LOADING SPINNER
+		}
+	});
+}
+<<<<<<< HEAD
+=======
+function curricularUnitsHandler(){
+	var student = $('#student').val();
+	var course = $('#course').val();
+
+	$.ajax({
+		url: '../../api/studentCurricularUnits.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: {course: course,student: student},
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {		
 				
@@ -288,3 +318,4 @@ function verifyPassword(password, minLen, maxLen){
 	return true; 
 	
 }
+>>>>>>> master
