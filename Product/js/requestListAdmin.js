@@ -109,7 +109,10 @@ function addItens(units, tab){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
 
-				$(tabSelector + ' .requestListBody').html(data);
+				var elem = $(data);
+
+				elem.find('a.requestItem').click(requestItemHandler);
+				$(tabSelector + ' .requestListBody').html(elem);
 
 			} else {
 				// Handle errors here

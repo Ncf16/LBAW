@@ -20,6 +20,7 @@ function createRequest($studentCode,$adminCode,$newCourse_Code,$approved,$resonF
 }
 */
 //Without Admin
+/*
 function createRequest($studentCode, $newCourse_Code, $approved, $resonForChange)
 {
     global $conn;
@@ -34,7 +35,7 @@ function updateRequest($requestID, $studentCode, $adminCode, $newCourse_Code, $a
                             WHERE  requestID = ? AND visible=1 ;");
     $stmt->execute(array($studentCode, $adminCode, $newCourse_Code, $approved, $resonForChange, $requestID));
 }
-
+*/
 function validateRequest($requestID, $isApproved)
 {
     global $conn;
@@ -96,6 +97,7 @@ FROM request
 WHERE approved IS NULL
 AND studentcode = ?
 AND request.visible = 1
+ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
     $stmt->execute(array($userID, $requestsPerPage,  (($page-1) * $requestsPerPage)));
     return $stmt->fetchAll();
@@ -115,6 +117,7 @@ FROM request
 WHERE approved IS NOT NULL
 AND studentcode = ?
 AND request.visible = 1
+ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
     $stmt->execute(array($userID, $requestsPerPage,  (($page-1) * $requestsPerPage)));
     return $stmt->fetchAll();
@@ -161,6 +164,7 @@ function getOpenRequests($requestsPerPage, $page)
 FROM request
 WHERE approved IS NULL
 AND request.visible = 1
+ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
     $stmt->execute(array($requestsPerPage,  (($page-1) * $requestsPerPage)));
     return $stmt->fetchAll();
@@ -178,6 +182,7 @@ FROM request
 WHERE approved IS NOT NULL 
 AND admincode = ?
 AND request.visible = 1
+ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
     $stmt->execute(array($userID, $requestsPerPage,  (($page-1) * $requestsPerPage)));
     return $stmt->fetchAll();
@@ -194,6 +199,7 @@ function getClosedRequests($requestsPerPage, $page)
 FROM request
 WHERE approved IS NOT NULL
 AND request.visible = 1
+ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
     $stmt->execute(array($requestsPerPage,  (($page-1) * $requestsPerPage)));
     return $stmt->fetchAll();

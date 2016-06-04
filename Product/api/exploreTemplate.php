@@ -24,6 +24,9 @@
 
     $smarty->assign('requests', $units);
     $smarty->display('request/requestListBody.tpl');
+  }else if($_POST['template'] == 'modal'){
+    $smarty->assign('request', $units);
+    $smarty->display('request/viewModalRequest.tpl');
   }
 
 
