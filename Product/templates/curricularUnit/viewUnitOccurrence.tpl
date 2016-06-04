@@ -11,7 +11,7 @@
         <button class="btn btn-primary dropdown-toggle" id="actionsButton" type="button" data-toggle="dropdown">Actions
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Classes</a></li>
+          <li><a href="{$BASE_URL}pages/Class/classes.php?uc={$unit.cuoccurrenceid}">Classes</a></li>
           <li><a href="#">Content</a></li>
           <li><a href="unitEvaluations.php">Evaluations</a></li>
           <li><a href="#">Create Evaluation</a></li>         
