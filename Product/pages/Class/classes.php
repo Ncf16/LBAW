@@ -14,6 +14,7 @@ if(isset($_GET['uc'])){
   }
 
    $classes['unitInformation'] = $uc['name'] . ' : ' .$uc['year'] . '/' . ($uc['year'] + 1);
+   $classes['unit'] = $_GET['uc'];
    $smarty->assign('classes',$classes);
 }
 else if(isset($_GET['teacher'])){
