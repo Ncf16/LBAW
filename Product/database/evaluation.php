@@ -21,7 +21,6 @@ function createExam($duration,$uco,$date,$weight){
 	$conn->beginTransaction();
 	$stmt = $conn->prepare("INSERT INTO Evaluation(cuoccurrenceid, evaluationdate, weight, evaluationtype)
 	VALUES(?,?,?,'Exam') RETURNING evaluationid");
-
 	$stmt->execute(array($uco,$date,$weight));
 	$examID = $stmt->fetch();
 	if(isset($examID)){
@@ -32,6 +31,7 @@ function createExam($duration,$uco,$date,$weight){
 
 			$stmt->execute(array($examID,$duration));
 			$conn->commit();
+			var_dump($examID);
 			return $examID;
 		}
 	}
@@ -45,9 +45,10 @@ function createTest($duration,$uco,$date,$weight){
 	$conn->beginTransaction();
 	$stmt = $conn->prepare("INSERT INTO Evaluation(cuoccurrenceid, evaluationdate, weight, evaluationtype)
 	VALUES(?,?,?,'Test') RETURNING evaluationid");
-
+ 
 	$stmt->execute(array($uco,$date,$weight));
 	$examID = $stmt->fetch();
+	var_dump($examID);
 	if(isset($examID)){
 		$examID = intval($examID['evaluationid']);
 		if($examID > 0){
@@ -56,6 +57,7 @@ function createTest($duration,$uco,$date,$weight){
 
 			$stmt->execute(array($examID,$duration));
 			$conn->commit();
+			echo"teste created \n";
 			return $examID;
 		}
 	}
@@ -204,5 +206,17 @@ function deleteGroupWork($groupWork){
 	}
 
 	$conn->rollBack();
+}
+
+function getEvaluation($evaluationID,$cuoID){
+		global $conn;
+	$stmt = $conn->prepare("SELECT Evaluation.*
+		FROM Evaluation, CurricularUnit, CurricularUnitOccurrence
+		WHERE Evaluation.evaluationid = ? AND	 Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid
+		 AND CurricularUnitOccurrence.cuoccurrenceid = ? AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND 
+		 		Evaluation.visible=1 AND CurricularUnitOccurrence.visible = 1 AND CurricularUnit.visible=1; ");
+
+	$stmt->execute(array($evaluationID,$cuoID));
+	return $stmt->fetch();
 }
 ?>

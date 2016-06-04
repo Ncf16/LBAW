@@ -9,8 +9,10 @@
       <h2 class="page-header">Create Evaluation</h2>
       {/if}
       <form id="evaluationForm" class="well form-horizontal" action="#" method="post">
+        <input hidden id="CUO" name="CUO" value="{$CUO}" />
          {if $edit==true  }
-         <input hidden id="courseID" name="courseID" value="{$infoToEdit.code}" />
+         <!-- check the get -->
+         <input hidden id="evaluationID" name="evaluationID" value="{$evaluation.evaluationID}" />
          <input id="Action" name="Action" hidden value="Edit">
          {else}
          <input id="Action" name="Action" hidden value="Create">
@@ -24,7 +26,7 @@
 				
                    {if $edit==true }
                   <script >
-                    fillField("course_name","{$infoToEdit["name"]}");
+                    fillField("evaluationDay","{$dateDay}");
                   </script>
                   {/if}
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
@@ -40,7 +42,7 @@
 				
                    {if $edit==true }
                   <script >
-                    fillField("course_name","{$infoToEdit["name"]}");
+                    fillField("evaluationTime","{$dateTime}");
                   </script>
                   {/if}
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
@@ -56,7 +58,7 @@
                   <input type=number id="weight" name="weight" min=1 max=100 step=1 class="form-control"> <!--15m increments -->
                    {if $edit==true }
                   <script >
-                    fillField("course_name","{$infoToEdit["name"]}");
+                    fillField("weight","{$evaluation['weight']}");
                   </script>
                   {/if}
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
@@ -76,7 +78,7 @@
                   </select>
                    {if $edit==true }
                   <script >
-                    fillField("course_name","{$infoToEdit["name"]}");
+                    	fillField("evaluationType","{$evaluation['evaluationtype']}");
                   </script>
                   {/if}
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>

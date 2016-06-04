@@ -65,6 +65,9 @@ $(document).ready(function() {
 			// STOP LOADING SPINNER
 		}
 	});
+}
+function fillField(fieldID,value){
+	$("#"+fieldID).val(value);
+}
 
- }
  

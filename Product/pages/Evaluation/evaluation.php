@@ -6,6 +6,7 @@ $account_type = $_SESSION['account_type'];
 
 //Ask for their opinion use date("Y") or let it be a arg
 $_GET['CUO']=1;
+$_GET['evalID']=60;
 if(!$_GET['CUO']||!$account_type || ($account_type != 'Admin' && !isRegent($_GET['CUO'], $_SESSION['userID'],date("Y")))){
 	$_SESSION['error_messages'][] = 'Unauthorized Access';
  	header("Location: " . $BASE_URL . "index.php");
@@ -22,17 +23,19 @@ if($cuo  == NULL){
 }
 if(isset($_GET['evalID'])){
 	$edit=true;
-	$eval = getEval($_GET['evalID']);
-	$detailInfo= getDetailEval($_GET['evalID']);
-	if($eval  != NULL || $detailInfo != NULL){
-	$smarty->assign('eval',$eval);
-	$smarty->assign('detailInfo',$detailInfo);
+	$eval = getEvaluation($_GET['evalID'],$_GET['CUO']);
+ 
+	if($eval  != NULL ){
+		$date=  new DateTime($eval['evaluationdate']);
+		$smarty->assign('evaluation',$eval);
+		$smarty->assign('dateDay',$date->format('Y-m-d'));
+		$smarty->assign('dateTime',$date->format('H:i'));
 	}
 }
 else
 	$edit =false;
  $smarty->assign('evalTypes',$evalTypes); 
  $smarty->assign('edit',$edit); 
- $smarty->assign('CUO',$cuo);
+ $smarty->assign('CUO',$_GET['CUO']);
  $smarty->display('evaluation/evaluation.tpl');
 ?>
