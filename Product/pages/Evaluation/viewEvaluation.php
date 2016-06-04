@@ -25,7 +25,6 @@ else{
     header("Location: " . $BASE_URL . "index.php");
     exit;
   }
-  print_r($evaluation);
 
    $evaluation['calendaryear'] = $evaluation['calendaryear'] . '/' . ($evaluation['calendaryear'] + 1);
    $smarty->assign('evaluation',$evaluation);

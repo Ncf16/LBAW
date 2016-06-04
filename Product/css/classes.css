@@ -54,3 +54,6 @@ div.panel-body p{
 .classInfo tr{
     border-top: 2px solid black;
 }
+.classInfo td.border{
+    border-right: 2px solid black;
+}
