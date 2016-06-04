@@ -64,5 +64,20 @@ function listRooms($offset,$limit){
     $stmt->execute(array($offset,$limit));
     return  $stmt->fetchAll();
 }
-
+function getRooms(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT room
+        FROM Room WHERE visible=1");
+    
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+function getRoomID($room){
+    global $conn;
+    $stmt = $conn->prepare("SELECT roomid
+        FROM Room WHERE room=? AND visible=1");
+    
+    $stmt->execute(array($room));
+    return $stmt->fetch();
+};
 ?>

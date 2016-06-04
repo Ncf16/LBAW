@@ -310,30 +310,23 @@ EXECUTE PROCEDURE createUsername();
 
 -----------------------------------------
 
-/*
 CREATE OR REPLACE FUNCTION createClassAttendances() RETURNS trigger AS $$
 DECLARE
 student INTEGER;
 BEGIN
-SELECT COUNT(class.classid) INTO count
-FROM Class
-WHERE Class.visible=1 AND Class.roomid = NEW.roomid 
-AND NEW.classid <> Class.classid
-AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
-(Class.classDate, interval '1' minute * class.duration);
-
-IF (count = 0)
-THEN RETURN NEW;
-ELSE RETURN NULL;--RAISE EXCEPTION 'Room is not available at the specified time';
-END IF;
+FOR student IN SELECT studentcode FROM CurricularEnrollment
+WHERE cuoccurrenceid=NEW.occurrenceid LOOP
+INSERT INTO Attendance(studentcode,classid,attended)
+VALUES(student,NEW.classid,FALSE);
+END LOOP;
+RETURN NEW;
 END
 $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER createAttendances
-BEFORE INSERT ON Class
+AFTER INSERT ON Class
 FOR EACH ROW
 EXECUTE PROCEDURE createClassAttendances();
-*/
 
 -----------------------------------------
 -- FULL TEXT TRIGGERS--

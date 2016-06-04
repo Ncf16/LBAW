@@ -84,6 +84,7 @@ include_once($BASE_DIR . 'database/teacher.php');
       $_SESSION['form_values'] = $_POST;
       $_SESSION['error_messages'][] = 'Couldn\'t find a teacher with given username';
       header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit;
     }
 
     $language = $_POST['unit_language'];

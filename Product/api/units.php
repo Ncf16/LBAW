@@ -14,7 +14,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	$data = array();
 
 	if(!isset($_POST['action'])){
-		$_SESSION['error_messages'][] = 'Action not especified';
+		$_SESSION['error_messages'][] = 'Action not specified';
 		exit;
 	}
 
@@ -53,7 +53,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else if($_POST['action']=='delete'){
 
 		$inputs = array();
-		$inputs['id'] = 'ID on delete not especified!';
+		$inputs['id'] = 'ID on delete not specified!';
 		$inputs['page'] = 'Page where delete happens not specified';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
  		if(!checkInputs($_POST, $inputs)){

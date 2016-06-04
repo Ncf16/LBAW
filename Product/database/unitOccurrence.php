@@ -176,4 +176,15 @@ function isRegent($cuoID,$academiccode){
 	 else
 	 	return false;
 }
+
+function getUCOID($unit,$year){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT cuoccurrenceid FROM CurricularUnitOccurrence, Syllabus
+		WHERE curricularunitid=? AND CurricularUnitOccurrence.syllabusid = Syllabus.syllabusID
+		AND Syllabus.calendarYear=?");
+
+	$stmt->execute(array($unit,$year));
+	return $stmt->fetch();
+}
 ?>

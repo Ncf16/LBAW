@@ -13,7 +13,12 @@
             {/if}
          </h2>
       </div>
-   </div>
+      <div class="col-sm-2">
+        <a href="{$BASE_URL}pages/Class/createClass.php{if $classes.unit}?unit={$classes.unit}{/if}">
+          <button class="btn btn-primary" id="createClass">Create New Class</button>
+        </a>
+      </div>
+    </div>
 
   <div class="row">
       <br>

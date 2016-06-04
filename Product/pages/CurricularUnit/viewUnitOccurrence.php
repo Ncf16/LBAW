@@ -4,7 +4,7 @@
   include_once($BASE_DIR . 'database/unitOccurrence.php');
 
   if(!isset($_GET['uc'])){
-  	$_SESSION['error_messages'][] = 'unit occurrence not especified!';
+  	$_SESSION['error_messages'][] = 'unit occurrence not specified!';
   	header("Location: " . $BASE_URL);
   	exit;
   }
@@ -21,7 +21,7 @@
   $languages['EN']='English';
   $languages['ES']='Spanish';
 
-  $uc['year'] = $uc['year'] . '/' . ($uc[year] + 1);
+  $uc['year'] = $uc['year'] . '/' . ($uc['year'] + 1);
   $uc['language'] = $languages[$uc['language']];
 
   if(!$uc){
