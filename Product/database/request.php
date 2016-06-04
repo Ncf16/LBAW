@@ -95,6 +95,7 @@ function getStudentOpenRequests($userID, $requestsPerPage, $page)
 (SELECT person.username FROM person WHERE request.studentcode = person.academiccode) as studentUsername
 FROM request
 WHERE approved IS NULL
+AND closed = false
 AND studentcode = ?
 AND request.visible = 1
 ORDER BY submitionDate DESC
@@ -114,7 +115,7 @@ function getStudentClosedRequests($userID, $requestsPerPage, $page)
 (SELECT person.name FROM person WHERE request.studentcode = person.academiccode) as studentName,
 (SELECT person.username FROM person WHERE request.studentcode = person.academiccode) as studentUsername
 FROM request
-WHERE approved IS NOT NULL
+WHERE closed = true
 AND studentcode = ?
 AND request.visible = 1
 ORDER BY submitionDate DESC
@@ -129,6 +130,7 @@ function countStudentOpenRequests($userID){
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
                             FROM request
                             WHERE approved IS NULL
+                            AND closed = false
                             AND studentcode = ?
                             AND visible = 1");
 
@@ -142,7 +144,7 @@ function countStudentClosedRequests($userID){
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
                             FROM request
-                            WHERE approved IS NOT NULL
+                            WHERE closed = true
                             AND studentcode = ?
                             AND visible = 1");
 
@@ -163,6 +165,7 @@ function getOpenRequests($requestsPerPage, $page)
 (SELECT person.username FROM person WHERE request.studentcode = person.academiccode) as studentUsername
 FROM request
 WHERE approved IS NULL
+AND closed = false
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
@@ -197,7 +200,7 @@ function getClosedRequests($requestsPerPage, $page)
 (SELECT person.name FROM person WHERE request.studentcode = person.academiccode) as studentName,
 (SELECT person.username FROM person WHERE request.studentcode = person.academiccode) as studentUsername
 FROM request
-WHERE approved IS NOT NULL
+WHERE closed = true
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
@@ -211,6 +214,7 @@ function countOpenRequests(){
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
                             FROM request
                             WHERE approved IS NULL
+                            AND closed = false
                             AND visible = 1");
 
     $stmt->execute();
@@ -235,7 +239,7 @@ function countClosedRequests(){
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
                             FROM request
-                            WHERE approved IS NOT NULL
+                            WHERE closed = true
                             AND visible = 1");
 
     $stmt->execute();

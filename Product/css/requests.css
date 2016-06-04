@@ -145,6 +145,11 @@ table[class="table table-striped"]  tr.head {
 	color: #0c6cff;
 }
 
+.canceled{
+	font-weight: bold;
+	color: #f9c326;
+}
+
 .modal-content{
 	border-top-left-radius: 20px !important;
 	border-top-right-radius: 20px !important;

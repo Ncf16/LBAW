@@ -8,12 +8,17 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"></button>
                 <h4 class="modal-title"><strong>Request Nr. {$request.requestid}</strong></h4>
+                <input type="hidden" name="requestID" value="{$request.requestid}">
             </div>
 
             <div class="modal-body">
                 <p class="pull-right"><strong>Status</strong>:
                     {if $request.approved == null}
-                        <span class="unanswered">Not Answered</span>
+                        {if $request.closed == 'false'}
+                            <span class="unanswered">Not Answered</span>
+                        {elseif  $request.closed == 'true'}
+                            <span class="canceled">Canceled</span>
+                        {/if}
                     {elseif $request.approved == 'true'}
                         <span class="approved">Approved</span>
                     {elseif $request.approved == 'false'}
@@ -40,8 +45,8 @@
 
             <div class="modal-footer">
                 {if $ACCOUNT_TYPE == 'Admin' && $request.approved == null}
-                    <button id="approve_btn" type="button" class="btn btn-success" data-dismiss="modal">Approve</button>
-                    <button id="reject_btn" type="button" class="btn btn-danger" data-dismiss="modal">Reject</button>
+                    <button id="approve_btn" type="button" class="btn btn-success" data-dismiss="modal">Approve <span class="glyphicon glyphicon-ok"></span></button>
+                    <button id="reject_btn" type="button" class="btn btn-danger" data-dismiss="modal">Reject <span class="glyphicon glyphicon-remove"></span></button>
                 {elseif $ACCOUNT_TYPE == 'Student'}
                     <button id="cancel_btn" type="button" class="btn btn-warning" data-dismiss="modal">Cancel Request</button>
                 {/if}

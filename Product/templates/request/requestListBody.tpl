@@ -20,8 +20,13 @@
 
         </td>
         <td>
+
             {if $request.approved == null}
-                <span class="unanswered">Not Answered</span>
+                {if $request.closed == 'false'}
+                    <span class="unanswered">Not Answered</span>
+                {elseif  $request.closed == 'true'}
+                    <span class="canceled">Canceled</span>
+                {/if}
             {elseif $request.approved == 'true'}
                 <span class="approved">Approved</span>
             {elseif $request.approved == 'false'}

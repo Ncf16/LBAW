@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS Request(
 requestID SERIAL PRIMARY KEY,
 studentCode INTEGER REFERENCES Person(academicCode),
 adminCode INTEGER REFERENCES Person(academicCode),
+closed BOOLEAN NOT NULL DEFAULT false,
 approved BOOLEAN,
 title TEXT NOT NULL,
 description TEXT NOT NULL,

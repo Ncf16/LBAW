@@ -62,13 +62,56 @@ function fillModal(requestInfo) {
 };
 
 function approveRequestHandler(event){
+	var requestID = $('.modal-header input').val();
+
+	$.post(
+		BASE_URL + "api/requestAction.php",
+		{
+			action: 'approve',
+			requestID: requestID
+		},
+		function (data) {
+			//console.log(data.units);
+			addItens(data.units);
+			currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+		}, 'json');
+
+
 	console.log("approved");
 }
 
 function rejectRequestHandler(event){
+	var requestID = $('.modal-header input').val();
+
+	$.post(
+		BASE_URL + "api/requestAction.php",
+		{
+			action: 'reject',
+			requestID: requestID
+		},
+		function (data) {
+			//console.log(data.units);
+			addItens(data.units);
+			currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+		}, 'json');
+
 	console.log("rejected");
 }
 
 function cancelRequestHandler(event){
+	var requestID = $('.modal-header input').val();
+
+	$.post(
+		BASE_URL + "api/requestAction.php",
+		{
+			action: 'cancel',
+			requestID: requestID
+		},
+		function (data) {
+			//console.log(data.units);
+			addItens(data.units);
+			currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+		}, 'json');
+
 	console.log("canceled");
 }
