@@ -116,6 +116,18 @@ header.carousel .fill {
 
 /* Button Styles */
 
+#login_btn{
+    color: #fff;
+    background-color: #e89202;
+    border-color:#000;
+}
+
+#login_btn:hover{
+    background-color:#fff;
+    color:#011;
+    border-color:#122;
+}
+
 .btn{
 	color: #fff;
 	background-color:#122;

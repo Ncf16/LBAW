@@ -20,7 +20,7 @@
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 				<input name="address" placeholder="Ex: The Wall" class="form-control" type="text" >
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+
 			</div>
 		</div>
 	</div>
@@ -33,7 +33,6 @@
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 				<input name="nationality" placeholder="Ex: Westerosi" class="form-control" type="text" >
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div>
@@ -46,7 +45,6 @@
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 				<input name="phone" placeholder="Ex: There are no phones in GoT" class="form-control" type="number" >
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div>
@@ -72,7 +70,6 @@
 				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 				<input  name="birth_date" placeholder="Ex: When Snow was born" class="form-control" type="date" min="1900-01-01" max="2016-01-01" value="2000-01-01">
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div>

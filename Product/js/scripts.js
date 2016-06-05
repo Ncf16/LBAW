@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+
 	// Login form submition
 	$('#frm').on('submit', loginButtonHandler);
 	// Course page syllabus selection
