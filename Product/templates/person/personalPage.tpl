@@ -10,6 +10,9 @@
             <h1 class="page-header">Personal Page
                <small>{$person.name}  ({$person.persontype})</small>
                 <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
+                  {if $person.persontype == 'Student' and $viewerType == 'Admin'}
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#studentCourseEdit">Course stuff change</button>
+                {/if}
             </h1>
          </div>
       </div>
@@ -117,5 +120,39 @@
             {/if}
    </div>
 </div>
+<div id="studentCourseEdit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title">Request Nr. </h4>
+            </div>
+
+            <div class="modal-body">
+                <p class="pull-right"> Status:
+                </p>
+                <p> Current Course: {$currentCourse.name} </p>
+                <p class="pull-right"> Last Update: </p>
+                <p> Answered by: </p>
+                <p>Title:</p>
+                <p>Description:</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Approve</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Reject</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 {include file='common/footer.tpl'}
+
+<!-- Modal -->
+
+ 
