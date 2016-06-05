@@ -46,17 +46,19 @@ $(document).ready(function() {
 			if (typeof data.error === 'undefined') {		
 				console.log(data);
 
-			/*	if (data == 'true') {
+		 	if (data.indexOf('false')==-1) {
 					//location.reload();
-					window.location.replace("../../index.php");
+					//window.location.replace($("#$BASE_URL").val()+"pages/Evaluation/");
+					//TODO need to make redirect to created page
+					console.log("worked");
 				} else {
 					emptyStatus();
-					$("#message_status").prepend("Username/Password combination not found.");
+					$("#message_status").prepend(data);
 				}
 			} else {
 				// Handle errors here
 				console.log('ERRORS: ' + data.error);
-			*/}
+			 }
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			// Handle errors here

@@ -10,12 +10,11 @@ if (!$_POST['Action']) {
  
 if ($_POST['Action'] == 'Create') {
 	 checkArgs($_POST);
-	 echo "out of check";
 	$result = createEvaluationL($_POST);
-	 if($result!==false)
-	 	echo "true";
-	 else
-	 	echo "false";
+	if($result !== false)
+		echo $result;
+	else
+		echo "false";
 
 	exit;
 } 
@@ -24,10 +23,12 @@ else if ($_POST['Action'] == 'Edit') {
 		$result=getEvaluationType($_POST['evaluationID']);
 		if($result!==false)
 			$_POST['evaluationType']=$result['evaluationtype'];
-		var_dump($_POST['evaluationType']);
 		 checkArgs($_POST);
 		$result = updateEvaluationL($_POST);
+		if($result !== false)
 		echo $result;
+	else
+		echo "false";
 		exit;
 	}
 	else {
@@ -41,7 +42,6 @@ else {
 } 
  
 function checkArgs($args){
- var_dump($args);
 	if (!isset($args['weight']) || !is_numeric($args['weight'])) {
 		echo "weight error";
 		exit;
@@ -52,7 +52,6 @@ function checkArgs($args){
 		exit;
 	}
   	$type=$args['evaluationType'];
-	var_dump($type);
 	if($type == "Exam"){
 		checkArgsExam($args);
 	}else
@@ -66,7 +65,6 @@ function checkArgs($args){
 		echo "evaluationType error";
 		exit;
 	} 
-	echo "out";
 }
 
 function checkArgsExam($args){
@@ -107,14 +105,11 @@ function createEvaluationL($args){
 	$date = new DateTime($args['evaluationDay'].' '.$args['evaluationTime']);
  
 	if($type == "Exam"){
-		echo "\nExam\n";
 				return createExam($args['duration'], $args['CUO'], $date->format('Y-m-d H:i'), $args['weight']);
 	}else if($type == "GroupWork"){
-		echo "\nGroupWork\n";
 		return createGroupWork($args['minElements'], $args['maxElements'],  $args['CUO'],  $date->format('Y-m-d H:i'), $args['weight']);
 	}
 	else if($type =="Test"){
-		echo "\nTest\n";
 		 return createTest($args['duration'],  $args['CUO'],  $date->format('Y-m-d H:i'), $args['weight']);
 	}
 	else{
@@ -127,18 +122,13 @@ function updateEvaluationL($args){
 	 
 	$type=$args['evaluationType'];
 	$date = new DateTime($args['evaluationDay'].' '.$args['evaluationTime']);
-  //updateTest($evaluationID,$weight,$evaluationDate,$duration)
- //updateExam($evaluationID,$weight,$evaluationDate,$duration)
-// updateGroupWork($evaluationID,$weight,$evaluationDate,$minElement,$maxElements)
+	
 	if($type == "Exam"){
-		echo "\nUpdate Exam\n";
 				return updateExam($args['evaluationID'],$args['weight'],$date->format('Y-m-d H:i'), $args['weight'],$args['duration']);
 	}else if($type == "GroupWork"){
-		echo "\nUpdate GroupWork\n";
 		return updateGroupWork($args['evaluationID'],$args['weight'],$date->format('Y-m-d H:i'),$args['minElements'],$args['maxElements']);
 	}
 	else if($type =="Test"){
-		echo "\nUpdate Test\n";
 		 return updateTest($args['evaluationID'],$args['weight'],$date->format('Y-m-d H:i'), $args['weight'],$args['duration']);
 	}
 	else{

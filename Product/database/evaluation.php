@@ -40,7 +40,6 @@ function createExam($duration,$uco,$date,$weight){
 
 			$stmt->execute(array($examID,$duration));
 			$conn->commit();
-			var_dump($examID);
 			return $examID;
 		}
 	}
@@ -57,7 +56,6 @@ function createTest($duration,$uco,$date,$weight){
  
 	$stmt->execute(array($uco,$date,$weight));
 	$examID = $stmt->fetch();
-	var_dump($examID);
 	if(isset($examID)){
 		$examID = intval($examID['evaluationid']);
 		if($examID > 0){
@@ -265,15 +263,16 @@ function updateTest($evaluationID,$weight,$evaluationDate,$duration){
 	global $conn;
 	$conn->beginTransaction();
 	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?::timestamp, weight = ?
-		WHERE evaluationid =? ;");
+		WHERE evaluationid =? RETURNING evaluationid;");
 
-	$evalID = $stmt->execute(array($test));
-	if($evalID !== false){
+	 $stmt->execute(array($test));
+	$evalID = $stmt->fetch();
+	if(isset($evalID)){
 		$conn->prepare("UPDATE Test SET duration = ?
 			WHERE evaluationid = ? ;");
 		$stmt->execute(array($duration,$evaluationID));
 		$conn->commit();
-		return true;
+		return $evalID['evaluationid'];
 	}
 
 	$conn->rollBack();
@@ -283,15 +282,16 @@ function updateExam($evaluationID,$weight,$evaluationDate,$duration){
 	global $conn;
 	$conn->beginTransaction();
 	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?::timestamp, weight = ?
-		WHERE evaluationid = ? ;");
+		WHERE evaluationid = ?  RETURNING evaluationid;");
 
-	$evalID = $stmt->execute(array($test));
-	if($evalID !== false){
+	 $stmt->execute(array($test));
+	 $evalID = $stmt->fetch();
+	if(isset($evalID)){
 		$conn->prepare("UPDATE Exam SET duration = ?
 			WHERE evaluationid = ? ;");
 		$stmt->execute(array($duration,$evaluationID));
 		$conn->commit();
-		return true;
+		return $evalID['evaluationid'];
 	}
 
 	$conn->rollBack();
@@ -300,18 +300,17 @@ function updateExam($evaluationID,$weight,$evaluationDate,$duration){
 function updateGroupWork($evaluationID,$weight,$evaluationDate,$minElement,$maxElements){
 	global $conn;
 	$conn->beginTransaction();
-	var_dump($evaluationDate);
 	 $stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?, weight = ?
-		WHERE evaluationid = ? ;");
+		WHERE evaluationid = ?  RETURNING evaluationid;");
 
-	$evalID = $stmt->execute(array($evaluationDate,$weight,$evaluationID)); 
-	 if($evalID !== false){
-		var_dump($evalID);
+	  $stmt->execute(array($evaluationDate,$weight,$evaluationID)); 
+	$evalID = $stmt->fetch();
+	 if(isset($evalID)){
 		$stmt=$conn->prepare("UPDATE GroupWork SET minelements = ?, maxelements = ?
 			WHERE evaluationid = ?;");
 		$stmt->execute(array($minElement,$maxElements,$evaluationID));
 		$conn->commit();
-		return true;
+		return $evalID['evaluationid'];
 	 }
 	$conn->rollBack();
 	return false;

@@ -5,8 +5,7 @@ include_once($BASE_DIR . 'database/evaluation.php');
 $account_type = $_SESSION['account_type'];
 
 //Ask for their opinion use date("Y") or let it be a arg
-$_GET['CUO']=1;
-$_GET['evalID']=59;
+
 if(!$_GET['CUO']||!$account_type || ($account_type != 'Admin' && !isRegent($_GET['CUO'], $_SESSION['userID'],date("Y")))){
 	$_SESSION['error_messages'][] = 'Unauthorized Access';
  	header("Location: " . $BASE_URL . "index.php");

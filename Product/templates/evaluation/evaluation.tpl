@@ -2,7 +2,9 @@
   <script src="{$BASE_URL}js/evaluation.js"></script>
 <div class="container">
 <div class="row">
+   <input hidden value="{$BASE_URL}" id="BASE_URL"/>
    <div class="col-md-12">
+
      {if $edit==true }
      <h2 class="page-header">Edit Evaluation</h2>
      {else}
