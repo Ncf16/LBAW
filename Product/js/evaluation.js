@@ -5,15 +5,15 @@ $(document).ready(function() {
 
  function evaluationTypeChangeHandler(){
   
-	$url ='../../api/';
-    $link= $("#evaluationType option:selected" ).text().toLowerCase();
-	$link=$link.concat(".php");
-	$url=$url.concat($link);
-	if($("#evaluationID").length>0)
-		$evalID=$("#evaluationID").val();
+    var link= $("#evaluationType option:selected" ).text().toLowerCase();
+
+	if($("#evaluationID").length>0){
+		var evalID=$("#evaluationID").val();
+	}
+	 console.log('../../api/getEvalCode.php'+" "+link);
 	$.ajax({
-		url:$url  ,           //TODO: MIGHT HAVE TO FIX THIS
-		data:{evalID: $evalID},
+		url:'../../api/getEvalCode.php', 
+		data:{evalType:link,evalID: evalID},
 		type: 'POST',
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {		
@@ -21,19 +21,17 @@ $(document).ready(function() {
 					$("#evalType").html(data);
 			} else {
 				// Handle errors here
-				console.log('ERRORS: ' + data.error);
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			console.log('ERRORS: ' + textStatus);
 		}
-	}); 
+		}); 
  }
   function evaluationSubmitForm(event){
  	event.preventDefault();
 	event.stopPropagation();
 	event.target.blur();
-	console.log("was clicked!");
 
 	$.ajax({
 		url: '../../api/evaluation.php',           //TODO: MIGHT HAVE TO FIX THIS

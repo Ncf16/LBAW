@@ -105,7 +105,13 @@ function countEvaluations($uco){
 	$stmt->execute(array($uco));
 	return $stmt->fetch();
 }
+function getEvaluationByID($id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM Evaluation WHERE evaluationid = ? AND visible=1");
 
+	$stmt->execute(array($id));
+	return $stmt->fetch();
+}
 function getTest($test){
 
 	global $conn;
@@ -265,10 +271,10 @@ function updateTest($evaluationID,$weight,$evaluationDate,$duration){
 	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?::timestamp, weight = ?
 		WHERE evaluationid =? RETURNING evaluationid;");
 
-	 $stmt->execute(array($test));
+	 $stmt->execute(array($evaluationDate,$weight,$evaluationID));
 	$evalID = $stmt->fetch();
 	if(isset($evalID)){
-		$conn->prepare("UPDATE Test SET duration = ?
+	$stmt =	$conn->prepare("UPDATE Test SET duration = ?
 			WHERE evaluationid = ? ;");
 		$stmt->execute(array($duration,$evaluationID));
 		$conn->commit();
@@ -284,10 +290,10 @@ function updateExam($evaluationID,$weight,$evaluationDate,$duration){
 	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?::timestamp, weight = ?
 		WHERE evaluationid = ?  RETURNING evaluationid;");
 
-	 $stmt->execute(array($test));
+	 $stmt->execute(array($evaluationDate,$weight,$evaluationID));
 	 $evalID = $stmt->fetch();
 	if(isset($evalID)){
-		$conn->prepare("UPDATE Exam SET duration = ?
+	$stmt =	$conn->prepare("UPDATE Exam SET duration = ?
 			WHERE evaluationid = ? ;");
 		$stmt->execute(array($duration,$evaluationID));
 		$conn->commit();

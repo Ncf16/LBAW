@@ -8,7 +8,7 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                  <input type=number id="duration" name="duration" min=1 max=100 step=1 class="form-control"> <!--15m increments -->
+                  <input type=number id="duration" name="duration" min=1  step=1 class="form-control"> <!--15m increments -->
                    {if $edit==true }
                   <script >
                     fillField("duration","{$exam['duration']}");

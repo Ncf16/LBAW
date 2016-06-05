@@ -171,7 +171,8 @@ function isRegent($cuoID,$academiccode,$year){
 			 AND Syllabus.calendarYear = ? AND Syllabus.visible=1 AND  CurricularUnitOccurrence.visible=1 ");
 
 	$stmt->execute(array($cuoID,$academiccode,$year));
-	 if($stmt->fetch()!= false)
+	$return=$stmt->fetch() ;
+	 if($return !== false)
 	 	return true;
 	 else
 	 	return false;
