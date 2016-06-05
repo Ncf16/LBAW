@@ -2,7 +2,6 @@
   include_once('../config/init.php');
   include_once($BASE_DIR . 'database/courseEnrollment.php'); 
   
-  var_dump($_POST);
 if(!isset($_POST['student']) || empty($_POST['student'])){
 	echo  "error";
 	exit;
@@ -22,10 +21,13 @@ else{
 		 echo "course is inactive";
 		 $result=restartEnrollment($_POST['student'],$_POST['course'],$_POST['newCourse'],date("Y"),NULL,1);
 		}
-		else
+		else{ 
   		$result=replaceCourseEnrollment($_POST['student'],$_POST['course'],$_POST['newCourse'],date("Y"),NULL,1);
-
-  echo json_encode($result); 
+  		}
+	if($result!='false')
+	  echo ($result); 
+	else
+		echo "Failed To Change Course ";
 }
 
 ?>

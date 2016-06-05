@@ -32,18 +32,17 @@ function changeCourseHandler(){
 		data: {newCourse: newCourse,course: course,student:student},
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-			console.log(data.indexOf ('true')>-1);		
-				if(data.indexOf ('true')>-1)
-			 	location.reload();
-		console.log("worked");
-			} else {
-				$("#modalErrors").text(data);
-				console.log('ERRORS: ' + data.error);
-			}
+				if(data.indexOf ('true')>-1){
+					console.log(data);
+			 		//location.reload();
+				}
+				else {
+				$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");
+				}
+			}  
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			// Handle errors here
-			console.log('ERRORS: ' + textStatus);
 			// STOP LOADING SPINNER
 		}
 });
