@@ -79,7 +79,6 @@ function verifyPersonJSON(person) {
 
         }
     }
-    console.log(errors);
 
 
     return error;
@@ -128,7 +127,6 @@ function individualCreationHandler(event) {
 
     var error = false;
     for (x in errors) {
-        console.log(errors[x]);
         if (errors[x] !== true) {
 
             error = true;
@@ -306,17 +304,15 @@ function multipleCreationHandler(event) {
                 success: function (data, textStatus, jqXHR) {
                     if (typeof data.error === 'undefined') {
                         data = JSON.parse(data);
-                        console.log(data);
 
                         for (var i = 0; i < data.length; i++) {
-                            console.log("error: " + data[i]);
                             errors.push(data[i]);
                         }
 
                         // validUsers.length indicates how many were valid from JS verification
                         // data.length indicates how many of those gave error when trying to be inserted
                         if ((validUsers.length - data.length) > 0) {
-                            console.log("HERE: " + data);
+
                             if (data.length == 0) {
                                 success.push("Valid users were successfuly inserted into the database.");
                             } else {
