@@ -70,7 +70,7 @@ closed BOOLEAN NOT NULL DEFAULT false,
 approved BOOLEAN,
 title TEXT NOT NULL,
 description TEXT NOT NULL,
-submitionDate DATE NOT NULL DEFAULT CURRENT_DATE,
+submitionDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 visible INTEGER DEFAULT 1,
 CHECK(description <> '')
 );

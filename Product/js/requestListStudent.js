@@ -22,13 +22,7 @@ $(document).ready(function () {
     $('#openRequests').on('shown.bs.tab', openTab);
     $('#closedRequests').on('shown.bs.tab', closedTab);
 
-    $('').click(modalCreationForm);
-
 });
-
-function modalCreationForm(event){
-    console.log("hi");
-}
 
 function openTab(event) {
     currentPagination = pagination;
@@ -53,7 +47,7 @@ function loadTab() {
     $(tabSelector + ' .pagination').html('');
 
     // Set the page to show 3 items
-    currentPagination.updateNbItemsPerPage(3);
+    currentPagination.updateNbItemsPerPage(5);
 
     $.post(
         BASE_URL + "api/requestList.php",
@@ -65,9 +59,8 @@ function loadTab() {
             page: currentPagination.page
         },
         function (data) {
-            //console.log(data.units);
             addItens(data.units);
-            currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+            currentPagination.addPagination(data.page, data.nbUnits, data.nbItemsPerPage);
         }, 'json');
 };
 
@@ -100,13 +93,13 @@ function changePage(event) {
         function (data) {
 
             addItens(data.units);
-            currentPagination.addPagination(data.page, data.nbUnits, nbItemsPerPage);
+            currentPagination.addPagination(data.page, data.nbUnits, data.nbItemsPerPage);
         }, 'json');
 }
 
 function addItens(units, tab) {
     $.ajax({
-        url: '../../api/exploreTemplate.php',           //TODO: MIGHT HAVE TO FIX THIS
+        url: '../../api/exploreTemplate.php',          
         type: 'POST',
         data: {
             template: "requests",
@@ -115,7 +108,6 @@ function addItens(units, tab) {
         success: function (data, textStatus, jqXHR) {
             if (typeof data.error === 'undefined') {
                 var elem = $(data);
-
                 elem.find('a.requestItem').click(requestItemHandler);
                 $(tabSelector + ' .requestListBody').html(elem);
 

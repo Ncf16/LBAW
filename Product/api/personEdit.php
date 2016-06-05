@@ -33,12 +33,12 @@ echo createUpdateQuery($_POST,$username,"username");
     	else if{
 
     	}
-    
-   
-    
-     
-    
-    
-   
-    } 
+
+
+
+
+
+
+
+    }
 ?>

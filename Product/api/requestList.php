@@ -31,16 +31,18 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else
 		$itemsPerPage = intval($_POST['itemsPerPage']);
 
-	if(isset($_POST['page'])){
-		if(!is_numeric($_POST['page'])){
-			die('Page specified not correct');
-		}
-		$pageNumber = intval($_POST['page']);
-	}
-	else
+	if(!isset($_POST['page']))
 		$pageNumber = 1;
+	else
+		$pageNumber = intval($_POST['page']);
+
+	if($itemsPerPage == 0 || $pageNumber == 0){ //intval return 0 if failed
+		$_SESSION['error_messages'][] = 'Arguments of page and items per page expected to be integer > 0';
+		exit;
+	}
 
 	$data['page'] = $pageNumber;
+	$data['nbItemsPerPage'] = $itemsPerPage;
 
 
 	// Admin or Student

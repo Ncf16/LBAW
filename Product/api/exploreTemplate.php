@@ -4,7 +4,7 @@
   
  
   if (!$_POST['template'] || !$_POST['units']) {
-    echo "<br> No occurrences were found.";
+    echo "<span><br> No occurrences were found.</span>";
     exit;
   }
 
@@ -22,8 +22,13 @@
   }
   else if($_POST['template'] == 'requests'){
 
-    $smarty->assign('requests', $units);
-    $smarty->display('request/requestListBody.tpl');
+    if (!$_POST['units']) {
+      echo "<br> No occurrences were found.";
+      exit;
+    }
+    echo "<br> No occurrences were found.";
+    //$smarty->assign('requests', $units);
+    //$smarty->display('request/requestListBody.tpl');
   }else if($_POST['template'] == 'modal'){
     $smarty->assign('request', $units);
     $smarty->display('request/viewModalRequest.tpl');

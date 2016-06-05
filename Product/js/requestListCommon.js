@@ -39,7 +39,7 @@ function requestCreationHandler(event){
 				if(data == "true"){
 					$("#creation_success").prepend("<strong>Request submitted successfully. Updating List. </strong>" + "<br>");
 
-					// If successful, close in a certain timeout
+					// If successful, close in 3 seconds
 					setTimeout(function(){
 						clearModalErrors();
 						$("#requestCreationModal").modal('hide');
@@ -87,7 +87,7 @@ function fillModal(requestInfo) {
 
 
 	$.ajax({
-		url: '../../api/exploreTemplate.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../../api/exploreTemplate.php',           
 		type: 'POST',
 		data: {
 			template: "modal",

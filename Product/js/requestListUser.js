@@ -172,7 +172,7 @@ function changePage(event){
 function addItens(units){
 
 	$.ajax({
-		url: '../../api/exploreTemplate.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../../api/exploreTemplate.php',
 		type: 'POST',
 		data: {template: "courseTable", units: units},
 		success: function(data, textStatus, jqXHR) {

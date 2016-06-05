@@ -31,7 +31,7 @@
                     <a href="{$BASE_URL}/pages/Person/personalPage.php?person={$request.studentusername}">{$request.studentname}
                         - {$request.studentusername}</a>
                 </p>
-                <p class="pull-right"> <strong>Last Update: </strong>{$request.submitiondate}</p>
+                <p class="pull-right"> <strong>Last Update: </strong>{$request.submitiondate|date_format:$config.requestDate}</p>
                 <p><strong>Answered by: </strong>
                     {if $request.adminusername == null}
                         None

@@ -35,7 +35,7 @@
             {/if}
         </td>
 
-        <td>{$request.submitiondate}</td>
+        <td>{$request.submitiondate|date_format:$config.requestDate}</td>
 
     </tr>
 {/foreach}
