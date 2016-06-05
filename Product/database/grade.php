@@ -11,15 +11,16 @@ function updateGrade($student,$evaluation,$grade){
 
 	global $conn;
 	$stmt = $conn->prepare("UPDATE Grade SET grade=?
-		WHERE studentcode = ? AND evaluationid = ?");
+		WHERE studentcode = ? AND evaluationid = ? RETURNING grade");
 	
-	$stmt->execute(array($attended,$evaluation,$grade));
+	$stmt->execute(array($grade,$student,$evaluation));
+	return $stmt->fetch();
 }
 
 function countEvaluations(){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*) FROM Grade WHERE visible=1");
+	$stmt = $conn->prepare("SELECT COUNT(*) AS total FROM Grade WHERE visible=1");
 
 	$stmt->execute(array($evaluation));
 	return $stmt->fetch();
@@ -28,7 +29,7 @@ function countEvaluations(){
 function countEvaluationGrades($evaluation){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*) FROM Grade
+	$stmt = $conn->prepare("SELECT COUNT(*) AS total FROM Grade
 		WHERE evaluationid = ? AND visible=1");
 
 	$stmt->execute(array($evaluation));
@@ -40,10 +41,10 @@ function countEvaluationGrades($evaluation){
 function countStudentUCOGrades($student,$uco){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(Grade.*)
+	$stmt = $conn->prepare("SELECT COUNT(Grade.*) AS total
 		FROM Grade,Evaluation
 		WHERE Grade.studentcode = ? AND Grade.evaluationid = Evaluation.evaluationid
-		AND Evaluation.cuoccurrenceid = 15 AND Evaluation.visible=1 AND Grade.visible=1");
+		AND Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1 AND Grade.visible=1");
 
 	$stmt->execute(array($student,$uco));
 	return $stmt->fetch();
@@ -83,7 +84,8 @@ function getGrades($nbEvaluations,$offset){
 function getEvaluationGrades($evaluation,$nbEvaluations,$offset){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT Person.name, Person.username, Grade.grade, Evaluation.evaluationdate, Curricularunit.name AS unit
+	$stmt = $conn->prepare("SELECT Person.name, Person.username, Person.academiccode, Grade.grade,
+		Evaluation.evaluationid, Evaluation.evaluationdate, Curricularunit.name AS unit
 		FROM Grade,Person,Evaluation,CurricularUnitOccurrence,CurricularUnit
 		WHERE Grade.evaluationid = Evaluation.evaluationid AND Person.academiccode = Grade.studentcode AND
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
@@ -98,7 +100,8 @@ function getEvaluationGrades($evaluation,$nbEvaluations,$offset){
 function getStudentUCOGrades($student,$uco,$nbAttendances,$offset){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT Person.name, Person.username, Grade.grade, Evaluation.evaluationdate, Curricularunit.name AS unit
+	$stmt = $conn->prepare("SELECT Person.name, Person.username, Person.academiccode, Grade.grade,
+		Evaluation.evaluationid, Evaluation.evaluationdate, Curricularunit.name AS unit
 		FROM Grade,Person,Evaluation,CurricularUnitOccurrence,CurricularUnit
 		WHERE Grade.evaluationid = Evaluation.evaluationid AND Person.academiccode = Grade.studentcode AND
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
@@ -116,5 +119,6 @@ function deleteGrade($studentCode,$evaluation){
     $stmt = $conn->prepare("UPDATE Grade SET visible=0
     	WHERE studentcode = ? AND evaluationid = ?");	
     $stmt->execute(array($studentCode,$evaluation));
+    return "Success";
 }
 ?>

@@ -80,6 +80,16 @@ function createGroupWork($min,$max,$uco,$date,$weight){
 	return false;
 }
 
+function getEvaluationType($evaluation){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT evaluationtype FROM Evaluation
+		WHERE evaluationid= ? AND visible=1");
+
+	$stmt->execute(array($evaluation));
+	return $stmt->fetch();
+}
+
 function countEvaluations($uco){
 
 	global $conn;
@@ -93,9 +103,11 @@ function countEvaluations($uco){
 function getTest($test){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, evaluationdate, Curricularunit.name
-		FROM Test, Evaluation, CurricularUnit, CurricularUnitOccurrence
+	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, Evaluation.evaluationdate::date AS day, Evaluation.evaluationdate::time AS time,
+		Curricularunit.name, Syllabus.calendaryear, Evaluation.cuoccurrenceid
+		FROM Test, Evaluation, CurricularUnit, CurricularUnitOccurrence, Syllabus
 		WHERE Test.evaluationid = Evaluation.evaluationid AND
+		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
 		Evaluation.evaluationid = ? AND Evaluation.visible=1");
@@ -107,9 +119,11 @@ function getTest($test){
 function getExam($exam){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, evaluationdate, Curricularunit.name
-		FROM Exam, Evaluation, CurricularUnit, CurricularUnitOccurrence
+	$stmt = $conn->prepare("SELECT duration, evaluationtype, weight, Evaluation.evaluationdate::date AS day, Evaluation.evaluationdate::time AS time,
+		Curricularunit.name, Syllabus.calendaryear, Evaluation.cuoccurrenceid
+		FROM Exam, Evaluation, CurricularUnit, CurricularUnitOccurrence, Syllabus
 		WHERE Exam.evaluationid = Evaluation.evaluationid AND
+		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
 		Evaluation.evaluationid = ? AND Evaluation.visible=1");
@@ -121,9 +135,11 @@ function getExam($exam){
 function getGroupWork($groupWork){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT minelements, maxelements, evaluationtype, weight, evaluationdate, Curricularunit.name
-		FROM GroupWork, Evaluation, CurricularUnit, CurricularUnitOccurrence
+	$stmt = $conn->prepare("SELECT minelements, maxelements, evaluationtype, weight, Evaluation.evaluationdate::date AS day, 
+		Evaluation.evaluationdate::time AS time, Curricularunit.name, Syllabus.calendaryear, Evaluation.cuoccurrenceid
+		FROM GroupWork, Evaluation, CurricularUnit, CurricularUnitOccurrence, Syllabus
 		WHERE GroupWork.evaluationid = Evaluation.evaluationid AND
+		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
 		Evaluation.evaluationid = ? AND Evaluation.visible=1");

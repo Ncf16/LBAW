@@ -77,9 +77,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		   }
 	    }
 	    catch (PDOException $e) {
-	        $_SESSION['form_values'] = $_POST;
 	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
-	        header("Location:".$_SERVER['HTTP_REFERER']);
 	        exit;
 	    }
 	}
@@ -177,7 +175,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			if(isset($_POST['unit'])){
 				$data['nbClasses'] = intval(countUCOClass($_POST['unit'])['total']);
 
-				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbClasses'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else
@@ -189,7 +187,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			else if(isset($_POST['teacher'])){
 				$data['nbClasses'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
-				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbClasses'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else
@@ -201,7 +199,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			else{
 				$data['nbClasses'] = intval(countClass()['total']);
 
-				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbClasses'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else

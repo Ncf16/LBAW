@@ -12,7 +12,7 @@ if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
 
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
-	include_once($BASE_DIR . 'database/attendance.php');
+	include_once($BASE_DIR . 'database/grade.php');
 
 	$data = array();
 
@@ -23,22 +23,17 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	if($_POST['action']=='update'){
 
 		$inputs = array();
-		$inputs['classid'] = 'Class not specified';
-		$inputs['attendanceVal'] = 'Attendance value not specified';
+		$inputs['evaluationid'] = 'Evaluation not specified';
+		$inputs['student'] = 'Student not specified';
+		$inputs['gradeVal'] = 'Grade value not specified';
  		if(!checkInputs($_POST, $inputs)){
  			//SEASION ERRORS inside checkInputs  
 			exit;
 		}
 
 		try{
-			if(isset($_POST['student'])){
-		       $attended = updateAttendance($_POST['student'],$_POST['classid'],$_POST['attendanceVal']);
-		       echo json_encode($attended);
-		   }
-		   else{
-		   		$attended = updateAllAttendances($_POST['classid'],$_POST['attendanceVal']);
-		   		echo json_encode($attended);
-		   }
+		   	$grade = updateGrade($_POST['student'],$_POST['evaluationid'],$_POST['gradeVal']);
+		   	echo json_encode($grade);
 	    }
 	    catch (PDOException $e) {
 	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
@@ -63,32 +58,32 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			exit;
 		}
 
-		if($_POST['classid']){
-			$data['nbAttendances'] = intval(countClassAttendances($_POST['classid'])['total']);
+		if($_POST['evaluationid']){
+			$data['nbGrades'] = intval(countEvaluationGrades($_POST['evaluationid'])['total']);
 
-			if(isset($_POST['nbAttendances'])){
-				if(intval($_POST['nbAttendances']) != $data['nbAttendances']){
-					$nbPages = ceil($data['nbAttendances'] / $itemsPerPage);
+			if(isset($_POST['nbGrades'])){
+				if(intval($_POST['nbGrades']) != $data['nbGrades']){
+					$nbPages = ceil($data['nbGrades'] / $itemsPerPage);
 					$pageNumber = max(min($nbPages,$pageNumber),1);
 				}
 			}
 
 			$offset = ($pageNumber - 1) * $itemsPerPage;
-			$data['attendances'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
+			$data['grades'] = getEvaluationGrades($_POST['evaluationid'],$itemsPerPage,$offset);
 		}
 		/*else if ($_POST['student']){
 			
-			$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
+			$data['nbGrades'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
-			if(isset($_POST['nbAttendances'])){
-				if(intval($_POST['nbAttendances']) != $data['nbAttendances']){
-					$nbPages = ceil($data['nbAttendances'] / $itemsPerPage);
+			if(isset($_POST['nbGrades'])){
+				if(intval($_POST['nbGrades']) != $data['nbGrades']){
+					$nbPages = ceil($data['nbGrades'] / $itemsPerPage);
 					$pageNumber = max(min($nbPages,$pageNumber),1);
 				}
 			}
 
 			$offset = ($pageNumber - 1) * $itemsPerPage;
-			$data['classes'] = getTeacherClasses($_POST['teacher'],$itemsPerPage,$offset);
+			$data['grades'] = getTeachergrades($_POST['teacher'],$itemsPerPage,$offset);
 			
 		}*/
 		else{
@@ -96,11 +91,11 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			exit;
 		}
 
-		foreach ($data['attendances'] as &$attendance)
-			$attendance['id'] = $attendance['classid'] . '.' . $attendance['academiccode'];
-		unset($attendance);
+		foreach ($data['grades'] as &$grade)
+			$grade['id'] = $grade['evaluationid'] . '.' . $grade['academiccode'];
+		unset($grade);
 
-		$smarty->clearAssign('class');
+		$smarty->clearAssign('evaluation');
 		$data['page'] = $pageNumber;
 		echo json_encode($data);
 	}
@@ -124,35 +119,35 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 		$itemsPerPage = $_POST['itemsPerPage'];
 
-		$data['success'] = deleteAttendance($params[1],$params[0]);
+		$data['success'] = deleteGrade($params[1],$params[0]);
 		if($data['success'] == 'Success'){
 
 			$page = intval($_POST['page']);
 
-			if(isset($_POST['classid'])){
-				$data['nbAttendances'] = intval(countClassAttendances($_POST['classid'])['total']);
+			if(isset($_POST['evaluationid'])){
+				$data['nbGrades'] = intval(countEvaluationGrades($_POST['evaluationid'])['total']);
 
-				$nbPages = ceil($data['nbAttendances'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbGrades'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else
 					$data['page'] = $page;
 
 				$offset = ($data['page'] - 1) * $itemsPerPage;
-				$data['attendances'] = getClassesAttendances($_POST['classid'],$itemsPerPage,$offset);
+				$data['grades'] = getEvaluationGrades($_POST['evaluationid'],$itemsPerPage,$offset);
 			}
 			/*else if(isset($_POST['student'])){
 				/*
-				$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
+				$data['nbGrades'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
-				$nbPages = ceil($data['nbAttendances'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbGrades'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else
 					$data['page'] = $page;
 
 				$offset = ($data['page'] - 1) * $itemsPerPage;
-				$data['classes'] = getTeacherClasses($_POST['teacher'],$itemsPerPage,$offset);
+				$data['grades'] = getTeachergrades($_POST['teacher'],$itemsPerPage,$offset);
 				
 			}*/
 			else{
@@ -161,11 +156,11 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			}
 		}
 
-		foreach ($data['attendances'] as &$attendance)
-			$attendance['id'] = $attendance['classid'] . '.' . $attendance['classid'];
-		unset($attendance);
+		foreach ($data['grades'] as &$grade)
+			$grade['id'] = $grade['evaluationid'] . '.' . $grade['academiccode'];
+		unset($grade);
 
-		$smarty->clearAssign('class');
+		$smarty->clearAssign('evaluation');
 		echo json_encode($data);
 	}
 	else{
