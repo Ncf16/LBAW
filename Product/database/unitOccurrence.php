@@ -167,8 +167,9 @@ function isRegent($cuoID,$academiccode){
 	global $conn;
 	$stmt = $conn->prepare("SELECT curricularID
 		FROM CurricularUnitOccurrence,Syllabus
-		WHERE Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID   AND CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teacherCode = ?
-			 AND Syllabus.calendarYear = ? AND Syllabus.visible=1 AND  CurricularUnitOccurrence.visible=1 ");
+		WHERE Syllabus.syllabusID = CurricularUnitOccurrence.syllabusID
+		AND CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teacherCode = ?
+		AND Syllabus.calendarYear = ? AND Syllabus.visible=1 AND  CurricularUnitOccurrence.visible=1 ");
 
 	$stmt->execute(array($cuoID,$academiccode,date("Y")));
 	 if($stmt->fetch()!= false)
@@ -186,5 +187,50 @@ function getUCOID($unit,$year){
 
 	$stmt->execute(array($unit,$year));
 	return $stmt->fetch();
+}
+
+function isUCOCourseDirector($person,$uco){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM CurricularUnitOccurrence, Syllabus, Course
+		WHERE CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid
+		AND Syllabus.coursecode = Course.code AND Course.teachercode = ?");
+	$stmt->execute(array($uco,$person));
+	return ($stmt->rowCount() > 0);
+}
+
+function isUCORegent($person,$uco){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM CurricularUnitOccurrence
+		WHERE CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teachercode = ?");
+	$stmt->execute(array($uco,$person));
+	return ($stmt->rowCount() > 0);
+}
+
+function isUCOClassTeacher($person,$uco){
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM Class
+		WHERE Class.occurrenceid = ? AND Class.teachercode = ?");
+	$stmt->execute(array($uco,$person));
+	return ($stmt->rowCount() > 0);
+}
+
+function hasTeacherUCOAccess($person,$uco){
+	
+	if(isUCOCourseDirector($person,$uco))
+		return true;
+	else if(isUCORegent($person,$uco))
+		return true;
+	else return isUCOClassTeacher($person,$uco);
+}
+
+function hasStudentUCOAccess($person,$uco){
+	
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM CurricularEnrollment
+		WHERE CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.studentcode = ?");
+	$stmt->execute(array($uco,$person));
+	return ($stmt->rowCount() > 0);
 }
 ?>
