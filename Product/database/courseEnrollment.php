@@ -40,10 +40,9 @@ function isInactive($academiccode,$course){
 
  	$stmt = $conn->prepare("SELECT * FROM Courseenrollment	WHERE  studentcode = ?
 						   AND courseid = ? AND  visible = 0; ");
- 	var_dump($stmt->execute(array($academiccode,$course)));
+ 	 $stmt->execute(array($academiccode,$course));
   	$value=$stmt->fetch();
 
-  	var_dump($value);
   	if(  $value !== false)
   		return true;
   	else
@@ -85,8 +84,6 @@ function replaceCourseEnrollment($academiccode,$oldCourse,$newCourse,$startYear,
 		return "true";
 		}
 	}
-	var_dump($returnUpdate);
-	var_dump($returnCreate);
 		$conn->rollBack();
 		return "false";
 }
