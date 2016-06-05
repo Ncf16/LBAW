@@ -74,8 +74,8 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
         $stmt = $conn->prepare($query);
         $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password, PASSWORD_DEFAULT)));
 
-        return $stmt->fetch();
-
+        $result =  $stmt->fetch();
+        return $result;
     } catch (PDOException $e) {
         //echo $query . "<br>" . $e->getMessage();
         if ($e->getCode() == 23505) {

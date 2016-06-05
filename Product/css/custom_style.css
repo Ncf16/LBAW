@@ -33,6 +33,10 @@ p{
 
 /* Navbar Style */
 
+.dropdown-toggle{
+    width: 200px;
+}
+
 .navbar-inverse {
   background-color: #1E272A; /*#b33c00*/
   border-color: #DF8712;

@@ -149,27 +149,24 @@ function individualCreationHandler(event){
 		processData: false,
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
-			if (typeof data.error === 'undefined') {		
-				//console.log(data);
-				//var response = JSON.parse(data);
+			if (typeof data.error === 'undefined') {
 
+				data = JSON.parse(data);
 				// Fill errors array with PHP returned data info
 
 				// Use same for as above, to show errors
 
-				if (data !== 'false') {
+				if (data[0] !== false) {
 					$("#creation_failure").hide();
-					console.log(data);
 					//console.log(href);
 					var new_href = $("#creation_success a").attr("href") + data;
-					console.log(new_href);
 
 					$("#creation_success a").attr("href", new_href);
 					$("#creation_success").show();
 				} else {
 					$("#creation_success").hide();
 					$("#creation_failure").empty();
-					$("#creation_failure").prepend("Could not create user. Already exists or fields have been tampered with.");
+					$("#creation_failure").prepend("<strong>"+ data[1]+ " Could not create user. </strong>");
 					$("#creation_failure").show();
 				}
 				
