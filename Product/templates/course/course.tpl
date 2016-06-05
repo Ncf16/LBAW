@@ -51,16 +51,6 @@
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-             <!--
-                  <input name="course_director" id="course_director" placeholder="Course Director" value="" list="course_director_list" class="form-control" type="text" required >
-                      <datalist name="course_director_list" id="course_director_list" >
-                     <option value="0" selected="selected">Select Course Director</option>
-                     {foreach from=$teachers item=teacher}
-                     <option value={$teacher.academiccode}>{$teacher.name}</option>
-                     {/foreach} 
-                        <div class="input-group">
-                  </div>
-                  </datalist>-->
                   <select name="course_director" id="course_director" class="form-control" required>
                      <option value="" disabled selected>Select Course Director</option>
                      {foreach from=$teachers item=teacher}

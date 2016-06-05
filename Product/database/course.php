@@ -65,18 +65,6 @@ function deleteCourse($courseCode)
 
 }
 
-function getAllActiveCourseList()
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT course.*, person.name AS diretorName,COUNT(CourseEnrollment.studentcode)
-   FROM  CourseEnrollment, course, person 
-                WHERE CourseEnrollment.courseid = course.code AND CourseEnrollment.finishyear IS NULL AND course.teachercode = person.academiccode 
-                      AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
-                      GROUP BY course.code,person.name");
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
-
 function getVisibleCourses()
 {
     global $conn;

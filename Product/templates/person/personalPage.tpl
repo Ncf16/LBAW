@@ -11,7 +11,7 @@
                <small>{$person.name}  ({$person.persontype})</small>
                 <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
                   {if $person.persontype == 'Student' and $viewerType == 'Admin'}
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#studentCourseEdit">Course stuff change</button>
+                <a  data-toggle="modal" href="#studentCourseEdit" class="btn btn-xs btn-primary">Change Student Course</a>
                 {/if}
             </h1>
          </div>
@@ -24,8 +24,7 @@
          </div>
          <div class="col-md-2">
             {if $person.persontype == 'Student'}
-            <h3>Course</h3>
-            <a href="CoursePage_MIEIC.html">{$student.coursename}</a>
+            <a href="{$BASE_URL}pages/Course/coursePage.php?course={$currentCourse.code}"> <h3>Course: {$student.coursename} </h3></a>
             <ul>
                <li>Current Year: {$student.currentyear}</li>
                <li>Starting Year: {$student.startyear}</li>
@@ -111,7 +110,7 @@
             {if $person.persontype == 'Student' and $seeUnits == true}
           <div class="row" id="studentsGrades">
             <h2>Curricular Units</h2>
-              <input hidden value="{$student}" id="studentID"/>
+              <input hidden value="{$student.academiccode}" id="studentID"/>
          <input hidden value="{$courseCode}" id="courseID"/>
           
          <div id="cu_response">
@@ -122,33 +121,34 @@
 </div>
 <div id="studentCourseEdit" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-
         <!-- Modal content-->
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"></button>
-                <h4 class="modal-title">Request Nr. </h4>
+                <h4 class="modal-title">Change Course </h4>
             </div>
-
             <div class="modal-body">
-                <p class="pull-right"> Status:
-                </p>
                 <p> Current Course: {$currentCourse.name} </p>
-                <p class="pull-right"> Last Update: </p>
-                <p> Answered by: </p>
-                <p>Title:</p>
-                <p>Description:</p>
+                <input hidden id="currentCourseCode" value="{$currentCourse.code}" />
+                 <input hidden value="{$student.academiccode}" id="studentAcademicCode"/>
+               <select name="chaneCourse" id="chaneCourse" class="form-control" required>
+                     <option value="" disabled selected>Select Course</option>
+                     {foreach from=$courses item=course}
+                     {if $currentCourse.code eq $course.code }
+                     <option value={$course.code} disabled>{$course.name}:{$course.abbreviation}</option>
+                     {else}
+                     <option value={$course.code}>{$course.name}:{$course.abbreviation}</option>
+                     {/if}
+                     {/foreach} 
+                  </select>
+                  <p id="modalErrors">
+                  </p>
             </div>
-
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Approve</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Reject</button>
-
+                <button type="button" id="submitNewCourseStudent" class="btn btn-default" data-dismiss="modal">Change Course</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 {include file='common/footer.tpl'}
