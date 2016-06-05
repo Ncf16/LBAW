@@ -81,7 +81,7 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
         if ($e->getCode() == 23505) {
             return "User $name with NIF $nif already exists.";
         } else {
-            return "ERROR REGISTERING (PDO Error).";
+            return  $e->getMessage();
         }
     } catch (DatabaseException $e) {
         if ($e->getCode() == 23505)

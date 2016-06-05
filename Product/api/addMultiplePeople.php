@@ -32,12 +32,11 @@ foreach($people as $person){
   
   $result = createPerson($name, $address, $nationality, $phone, $nif, $birth_date, $account_type, $password);
   
-  if ($result === true){
+  if (isset($result['username'])){
     // Cool, added the person
   }else{
     array_push($errors, $result);
   }
-
 }
 
 echo json_encode($errors);
