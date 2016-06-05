@@ -15,7 +15,7 @@ if(isset($_POST['student']) &&( !isset($_POST['course']) || empty($_POST['course
 }
 
 if(!$_POST || !$_POST['student']|| !$_POST['course']|| !$_POST['newCourse'] || !is_numeric($_POST['student'])  || !is_numeric($_POST['course']) || !is_numeric($_POST['newCourse'])){
-	echo "false error in input, please check values";
+	echo "false, error in input, please check values";
 	exit;}
 else{
 	if( isInactive($_POST['student'],$_POST['newCourse'])){
