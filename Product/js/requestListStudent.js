@@ -66,7 +66,6 @@ function loadTab() {
 
 function changePage(event) {
 
-
     event.preventDefault();
     var target = $(event.target);
 
@@ -108,6 +107,7 @@ function addItens(units, tab) {
         success: function (data, textStatus, jqXHR) {
             if (typeof data.error === 'undefined') {
                 var elem = $(data);
+
                 elem.find('a.requestItem').click(requestItemHandler);
                 $(tabSelector + ' .requestListBody').html(elem);
 

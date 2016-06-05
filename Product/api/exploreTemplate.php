@@ -21,14 +21,9 @@
     $smarty->display('course/courseListBody.tpl');
   }
   else if($_POST['template'] == 'requests'){
-
-    if (!$_POST['units']) {
-      echo "<br> No occurrences were found.";
-      exit;
-    }
-    echo "<br> No occurrences were found.";
-    //$smarty->assign('requests', $units);
-    //$smarty->display('request/requestListBody.tpl');
+    
+    $smarty->assign('requests', $units);
+    $smarty->display('request/requestListBody.tpl');
   }else if($_POST['template'] == 'modal'){
     $smarty->assign('request', $units);
     $smarty->display('request/viewModalRequest.tpl');
