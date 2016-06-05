@@ -1,6 +1,7 @@
 <?php
 include_once ('../config/init.php');
 include_once ($BASE_DIR . 'database/evaluation.php');
+include_once ($BASE_DIR . 'database/unitOccurrence.php');
 
 if (!$_POST['Action']) {
 	echo "false";
@@ -19,7 +20,12 @@ if ($_POST['Action'] == 'Create') {
 	exit;
 } 
 else if ($_POST['Action'] == 'Edit') {
-	if (isset($_POST['CUO'])) {
+	if (isset($_POST['CUO']) && getUCO($_POST['CUO']) !== NULL) {
+		$result=getEvaluationType($_POST['evaluationID']);
+		if($result!==false)
+			$_POST['evaluationType']=$result['evaluationtype'];
+		var_dump($_POST['evaluationType']);
+		 checkArgs($_POST);
 		$result = updateEvaluationL($_POST);
 		echo $result;
 		exit;
@@ -121,22 +127,24 @@ function updateEvaluationL($args){
 	 
 	$type=$args['evaluationType'];
 	$date = new DateTime($args['evaluationDay'].' '.$args['evaluationTime']);
- 
+  //updateTest($evaluationID,$weight,$evaluationDate,$duration)
+ //updateExam($evaluationID,$weight,$evaluationDate,$duration)
+// updateGroupWork($evaluationID,$weight,$evaluationDate,$minElement,$maxElements)
 	if($type == "Exam"){
 		echo "\nUpdate Exam\n";
-				return updateExam($args['duration'], $args['CUO'], $date->format('Y-m-d H:i'), $args['weight']);
+				return updateExam($args['evaluationID'],$args['weight'],$date->format('Y-m-d H:i'), $args['weight'],$args['duration']);
 	}else if($type == "GroupWork"){
 		echo "\nUpdate GroupWork\n";
-		return updateGroupWork($args['minElements'], $args['maxElements'],  $args['CUO'],  $date->format('Y-m-d H:i'), $args['weight']);
+		return updateGroupWork($args['evaluationID'],$args['weight'],$date->format('Y-m-d H:i'),$args['minElements'],$args['maxElements']);
 	}
 	else if($type =="Test"){
 		echo "\nUpdate Test\n";
-		 return updateTest($args['duration'],  $args['CUO'],  $date->format('Y-m-d H:i'), $args['weight']);
+		 return updateTest($args['evaluationID'],$args['weight'],$date->format('Y-m-d H:i'), $args['weight'],$args['duration']);
 	}
 	else{
 		echo "evaluationType error";
 		exit;
-	}  
+	}   
 }   
 ?>
 

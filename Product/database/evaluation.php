@@ -15,6 +15,15 @@ function getEvaluationTypes(){
 	return $stmt->fetchAll();
 
 }
+function getEvaluationType($id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT evaluationtype FROM Evaluation
+		WHERE evaluationid = ? AND visible=1");
+
+	$stmt->execute(array($id));
+	return $stmt->fetch();
+
+}
 function createExam($duration,$uco,$date,$weight){
 
 	global $conn;
@@ -218,5 +227,93 @@ function getEvaluation($evaluationID,$cuoID){
 
 	$stmt->execute(array($evaluationID,$cuoID));
 	return $stmt->fetch();
+}
+
+function getTestSimple($test){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT Test.*
+		FROM Test ,Evaluation
+		WHERE Test.evaluationid =  ? AND Evaluation.evaluationid = Test.evaluationid AND Evaluation.visible=1 AND Test.visible=1");
+
+	$stmt->execute(array($test));
+	return $stmt->fetch();
+}
+
+function getExamSimple($exam){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT Exam.*
+		FROM Exam ,Evaluation
+		WHERE Exam.evaluationid =  ? AND Evaluation.evaluationid = Exam.evaluationid AND Evaluation.visible=1 AND Exam.visible=1");
+
+	$stmt->execute(array($exam));
+	return $stmt->fetch();
+}
+
+function getGroupWorkSimple($groupWork){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT GroupWork.*
+		FROM GroupWork, Evaluation 
+		WHERE GroupWork.evaluationid = ? AND  GroupWork.evaluationid = Evaluation.evaluationid AND GroupWork.visible=1 AND Evaluation.visible=1");
+
+	$stmt->execute(array($groupWork));
+	return $stmt->fetch();
+}
+function updateTest($evaluationID,$weight,$evaluationDate,$duration){
+	global $conn;
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?::timestamp, weight = ?
+		WHERE evaluationid =? ;");
+
+	$evalID = $stmt->execute(array($test));
+	if($evalID !== false){
+		$conn->prepare("UPDATE Test SET duration = ?
+			WHERE evaluationid = ? ;");
+		$stmt->execute(array($duration,$evaluationID));
+		$conn->commit();
+		return true;
+	}
+
+	$conn->rollBack();
+	return false;
+}
+function updateExam($evaluationID,$weight,$evaluationDate,$duration){
+	global $conn;
+	$conn->beginTransaction();
+	$stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?::timestamp, weight = ?
+		WHERE evaluationid = ? ;");
+
+	$evalID = $stmt->execute(array($test));
+	if($evalID !== false){
+		$conn->prepare("UPDATE Exam SET duration = ?
+			WHERE evaluationid = ? ;");
+		$stmt->execute(array($duration,$evaluationID));
+		$conn->commit();
+		return true;
+	}
+
+	$conn->rollBack();
+	return false;
+}
+function updateGroupWork($evaluationID,$weight,$evaluationDate,$minElement,$maxElements){
+	global $conn;
+	$conn->beginTransaction();
+	var_dump($evaluationDate);
+	 $stmt = $conn->prepare("UPDATE Evaluation SET evaluationdate = ?, weight = ?
+		WHERE evaluationid = ? ;");
+
+	$evalID = $stmt->execute(array($evaluationDate,$weight,$evaluationID)); 
+	 if($evalID !== false){
+		var_dump($evalID);
+		$stmt=$conn->prepare("UPDATE GroupWork SET minelements = ?, maxelements = ?
+			WHERE evaluationid = ?;");
+		$stmt->execute(array($minElement,$maxElements,$evaluationID));
+		$conn->commit();
+		return true;
+	 }
+	$conn->rollBack();
+	return false;
 }
 ?>

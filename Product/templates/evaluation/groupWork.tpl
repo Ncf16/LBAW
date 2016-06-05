@@ -3,12 +3,6 @@
      {else}
       <h4 class="page-header">Create Group Work</h4>
       {/if}
-         {if $edit==true  }
-         <input hidden id="courseID" name="courseID" value="{$infoToEdit.code}" />
-         <input id="Action" name="Action" hidden value="Edit">
-         {else}
-         <input id="Action" name="Action" hidden value="Create">
-         {/if}
           <div class="form-group">
             <label class="col-md-3 control-label">Minimum Elements</label>  
             <div class="col-md-8 inputGroupContainer">
@@ -17,7 +11,7 @@
                   <input type=number id="minElements" name="minElements" min=2 step=1 class="form-control"> <!--15m increments -->
                    {if $edit==true }
                   <script >
-                    fillField("course_name","{$infoToEdit["name"]}");
+                    fillField("minElements","{$groupWork['minelements']}");
                   </script>
                   {/if}
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
@@ -32,7 +26,7 @@
                   <input type=number id="maxElements" name="maxElements" min=2 step=1 class="form-control"> <!--15m increments -->
                    {if $edit==true }
                   <script >
-                    fillField("course_name","{$infoToEdit["name"]}");
+                    fillField("maxElements","{$groupWork['maxelements']}");
                   </script>
                   {/if}
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>

@@ -4,17 +4,16 @@ $(document).ready(function() {
 });
 
  function evaluationTypeChangeHandler(){
- 	console.log("clicked");
- 	event.preventDefault();
-	event.stopPropagation();
-	event.target.blur();
-	console.log("was clicked!");
+  
 	$url ='../../api/';
     $link= $("#evaluationType option:selected" ).text().toLowerCase();
 	$link=$link.concat(".php");
 	$url=$url.concat($link);
+	if($("#evaluationID").length>0)
+		$evalID=$("#evaluationID").val();
 	$.ajax({
 		url:$url  ,           //TODO: MIGHT HAVE TO FIX THIS
+		data:{evalID: $evalID},
 		type: 'POST',
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {		
@@ -30,7 +29,7 @@ $(document).ready(function() {
 		}
 	}); 
  }
-  function evaluationSubmitForm(){
+  function evaluationSubmitForm(event){
  	event.preventDefault();
 	event.stopPropagation();
 	event.target.blur();
@@ -69,5 +68,6 @@ $(document).ready(function() {
 function fillField(fieldID,value){
 	$("#"+fieldID).val(value);
 }
-
- 
+function disableSelect(selectID){
+	 $('#'+selectID).prop('disabled', 'disabled');
+ }

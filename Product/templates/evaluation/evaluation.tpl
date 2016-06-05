@@ -12,7 +12,7 @@
         <input hidden id="CUO" name="CUO" value="{$CUO}" />
          {if $edit==true  }
          <!-- check the get -->
-         <input hidden id="evaluationID" name="evaluationID" value="{$evaluation.evaluationID}" />
+         <input hidden id="evaluationID" name="evaluationID" value="{$evaluation.evaluationid}" />
          <input id="Action" name="Action" hidden value="Edit">
          {else}
          <input id="Action" name="Action" hidden value="Create">
@@ -65,27 +65,33 @@
                </div>
             </div>
          </div>
+           
              <div class="form-group">
             <label class="col-md-3 control-label">Evaluation Type</label>  
             <div class="col-md-8 inputGroupContainer">
                <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                  
                 	<select name="evaluationType" id="evaluationType" class="form-control" required>
+                 
                      <option value="" disabled selected>Select Evaluation Type</option>
                      {foreach from=$evalTypes item=type}
                      <option value={$type.unnest}>{$type.unnest}</option>
                      {/foreach} 
                   </select>
-                   {if $edit==true }
+                    {if $edit==true }
                   <script >
-                    	fillField("evaluationType","{$evaluation['evaluationtype']}");
+                  fillField("evaluationType","{$evaluation['evaluationtype']}")
+                  evaluationTypeChangeHandler();
+                  disableSelect("evaluationType");
                   </script>
                   {/if}
+                  
                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                </div>
             </div>
          </div>
-         	   <div id=evalType>
+       <div id=evalType>
          	   </div>
            <div class="row">
          <span class="glyphicon glyphicon-asterisk"></span> 
