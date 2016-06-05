@@ -41,9 +41,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		   }
 	    }
 	    catch (PDOException $e) {
-	        $_SESSION['form_values'] = $_POST;
 	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
-	        header("Location:".$_SERVER['HTTP_REFERER']);
 	        exit;
 	    }
 	}

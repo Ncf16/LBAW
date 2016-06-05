@@ -3,8 +3,6 @@ BASE_URL = window.location.pathname;
 var url_array = BASE_URL.split("/");
 var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
-var evaluationTbl;
-
 var pagination = {
 
 	page: 1,
@@ -99,23 +97,21 @@ var pagination = {
 };
 
 $(document).ready(function() {
-	evaluationTbl = processFormData("evaluationID=");
 	loadPage();
 	$('.pagination').on('click', 'a', changePage);
-	$('#grades').on('click','a.btn-danger',deleteItem);
-	$('#grades').on('click','button',setGrades);
+	$('#rooms').on('click','a.btn-danger',deleteItem);
+	$('#rooms').on('click','button',setRooms);
+	$('.btn-create').on('click',createRoom);
 });
-
 
 function loadPage(){
 
-	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/grades.php", {action: 'list', itemsPerPage : nbItemsPerPage, evaluationid : evaluationTbl}, function(data){
-		addItens(data.grades);
-		pagination.addPagination(data.page,data.nbGrades,nbItemsPerPage);
+	var nbItemsPerPage = 30;
+	$.post(BASE_URL + "api/rooms.php", {action: 'list', itemsPerPage : nbItemsPerPage}, function(data){
+		addItens(data.rooms);
+		pagination.addPagination(data.page,data.nbRooms,nbItemsPerPage);
 	}, 'json');
 };
-
 
 function changePage(event){
 
@@ -128,10 +124,10 @@ function changePage(event){
 	var newPage = pagination.updatePageNb(target);
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/grades.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbGrades: nbItems, evaluationid : evaluationTbl}, function(data){
-		$('#grades').html('');
-		addItens(data.grades);
-		pagination.addPagination(data.page,data.nbGrades,nbItemsPerPage);
+	$.post(BASE_URL + "api/rooms.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbRooms: nbItems}, function(data){
+		$('#rooms').html('');
+		addItens(data.rooms);
+		pagination.addPagination(data.page,data.nbRooms,nbItemsPerPage);
 	}, 'json');
 }
 
@@ -142,67 +138,94 @@ function deleteItem(event){
 
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
-	var itemID = target.attr('grade');
+	var itemID = target.attr('id');
 	var newPage = pagination.page;
 	var nbItems = pagination.nbItems;
 	var nbItemsPerPage = pagination.nbItemsPerPage;
-	$.post(BASE_URL + "api/grades.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbAttendances: nbItems, evaluationid : evaluationTbl}, function(data){
+	$.post(BASE_URL + "api/rooms.php", {action: 'delete', id: itemID, itemsPerPage: nbItemsPerPage, page: newPage, nbRooms: nbItems}, function(data){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
-			$('#grades').html('');
-			addItens(data.grades);
-			pagination.addPagination(data.page,data.nbGrades,nbItemsPerPage);
+			$('#rooms').html('');
+			addItens(data.rooms);
+			pagination.addPagination(data.page,data.nbRooms,nbItemsPerPage);
 		}
 	}, 'json');
+}
+
+function createRoom(event){
+	
+	event.preventDefault();
+	var target = $(event.target);
+	if(target[0].nodeName == 'SPAN')
+		target = target.parent();
+	var div = target.parent();
+
+	if(target.hasClass('editMode')){
+		var input = div.find('input').val();
+		if(input.length > 4){
+			target.html('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+			target.addClass('btn-danger').removeClass('btn-info');
+			return;
+		}
+		target.addClass('btn-info').removeClass('btn-danger');
+		$.post(BASE_URL + "api/rooms.php", {action: 'create', roomVal : input}, function(data){
+			div.find('input').remove();
+			target.text('Create Room')
+			target.toggleClass('editMode');
+		},'json');
+	}
+	else{
+		target.toggleClass('editMode');
+		target.html('Confirm');
+		div.append($('<input/>',{
+				'type' : 'text'
+			}));
+	}
 };
 
-
-function setGrades(event){
+function setRooms(event){
 
 	event.preventDefault();
 	var target = $(event.target);
 	if(target[0].nodeName == 'SPAN')
 		target = target.parent();
-	var itemID = target.attr('grade');
-	var gradeTD = $('td[grade=\''+itemID+'\']');
+	var itemID = target.attr('room');
+	var roomTD = $('td[room=\''+itemID+'\']');
 
 	if(target.hasClass('editMode')){
-		var parms = itemID.split(".");
-		if(parms.length != 2)
-			return;
-		var input = gradeTD.find('input').val();
-		if(input < 0 || input > 20){
+		var input = roomTD.find('input').val();
+		if(input.length > 4){
 			target.html('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 			target.addClass('btn-danger').removeClass('btn-info');
 			return;
 		}
 		
 		target.addClass('btn-info').removeClass('btn-danger');
-		$.post(BASE_URL + "api/grades.php", {action: 'update', evaluationid: parms[0], student: parms[1], gradeVal : input}, function(data){
-			gradeTD.text(data.grade);
+		$.post(BASE_URL + "api/rooms.php", {action: 'update', roomid : itemID, roomVal : input}, function(data){
+			roomTD.text(input);
 			target.html('<span class="glyphicon glyphicon-edit"></span>');
 			target.toggleClass('editMode');
 		},'json');
 	}
 	else{
-		var grade = gradeTD.text();
+		var room = roomTD.text();
 		target.toggleClass('editMode');
 		target.html('<span class="glyphicon glyphicon-ok"></span>');
-		gradeTD.html($('<input/>',{
-				'type' : 'number',
-				'min' : '0',
-				'step' : '0.01',
-				'val' : grade
+		roomTD.html($('<input/>',{
+				'type' : 'text',
+				'val' : room
 			}));
 	}
 };
 
-function addItens(grades){
+function addItens(rooms){
 
-	$.each(grades, function(i, grade){
-		var tr = $('<tr/>');
+	var tr = $('<tr/>');
+	var index = 0;
+	$.each(rooms, function(i, room){	
+		
 		var btnEdit = $('<button/>',{
-			'grade' : grade.id
+			'room' : room.roomid
 		}).addClass('btn btn-info btn-xs').append($('<span class="glyphicon glyphicon-edit"></span>'));
 
 		var par = $('<p/>',{
@@ -213,7 +236,7 @@ function addItens(grades){
 		var a = $('<a/>',{
 			'data-title': 'Delete',
 			'data-toggle': 'modal',
-			'grade' : grade.id
+			'id' : room.roomid
 
 		}).addClass('btn btn-danger btn-xs');
 		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
@@ -221,18 +244,19 @@ function addItens(grades){
 		a.append(glyRemove);
 
 		tr.append($('<td/>',{
-			'grade' : grade.id
-		}).append(grade.grade));
+			'room' : room.roomid
+		}).text(room.room));
 		tr.append($('<td/>').append(btnEdit));
-		tr.append($('<td/>').append(grade.name));
-		tr.append($('<td/>').append(par));
-		$('#grades').append(tr);
+		if(index % 3 != 2 && index < rooms.length - 1)
+			tr.append($('<td/>').addClass('border').append(par));
+		else{
+			tr.append($('<td/>').append(par));
+			$('#rooms').append(tr);
+			tr = $('<tr/>');
+		}
+		index++;
 	});
 };
 
-function processFormData(data){
-	
-	var index = window.location.search.indexOf(data);
-	if (index != -1)
-		return window.location.search.substring(index+data.length);
-};
+
+

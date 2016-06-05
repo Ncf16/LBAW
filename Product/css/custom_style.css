@@ -215,3 +215,8 @@ footer {
     background-color: #eee;
   
 }
+
+#mytable td.border,
+#mytable th.border{
+  border-right: 2px solid grey;
+}
