@@ -8,7 +8,12 @@ $(document).ready(function () {
     // Person creation toggle and form submition
     $('#creation_toggle label').click(creationToggleHandler);
 
-    $("#input_open").change(onOpenChange);
+    $('#input_btn_pretend').click(function(){
+        $(this).blur();
+        $("#input_btn_real").click();
+    });
+
+    $("#input_btn_real").change(onOpenChange);
 
     $('#account_form_individual').on('submit', individualCreationHandler);
     $('#account_form_multiple').on('submit', multipleCreationHandler);
@@ -156,7 +161,7 @@ function individualCreationHandler(event) {
 
                 data = JSON.parse(data);
                 // Fill errors array with PHP returned data info
-            
+
                 // Use same for as above, to show errors
 
                 if (data[0] !== false) {
@@ -194,6 +199,7 @@ function onOpenChange(e) {
     var fileTypes = ['json'];
     var files = event.target.files;
     var file;
+    var fileName;
     var errors = [];
     isJsonLoaded = false;
 
@@ -205,7 +211,8 @@ function onOpenChange(e) {
     else
         file = files[0];
 
-    // Check if it is a JSON file
+    // Check if it is a JSON file -> Write filename
+    var fileName = file.name;
     var extension = file.name.split('.').pop().toLowerCase();
     var isSuccess = fileTypes.indexOf(extension) > -1;
 
@@ -228,7 +235,9 @@ function onOpenChange(e) {
                 jsonValid = false;
                 isJsonLoaded = false;
 
-                $('#input_open').val($('#input_open').defaultValue);
+                $('#input_btn_real').val($('#input_btn_real').defaultValue);
+                fileName = '<h4>  No file selected</h4>';
+                $('#file_name').html(fileName);
                 errors.push("JSON file is invalid.");
                 displayErrorsMultiple(errors);
 
@@ -240,11 +249,14 @@ function onOpenChange(e) {
             //console.log(fileContent);
         }
     } else {
-        $('#input_open').val($('#input_open').defaultValue);
+        $('#input_btn_real').val($('#input_btn_real').defaultValue);
+        fileName = '<h4>  No file selected</h4>';
         errors.push("Invalid file type.");
         displayErrorsMultiple(errors);
         //console.log("Invalid file type."); // put this on error stuffie
     }
+    // Display file name, if any
+    $('#file_name').html('<h4>'+ fileName + '</h4>');
 
 }
 
