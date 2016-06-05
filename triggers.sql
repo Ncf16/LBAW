@@ -118,10 +118,10 @@ EXECUTE PROCEDURE isPersonTeacher();
 
 CREATE OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
 DECLARE
- type PersonType;
+ type persontype;
 BEGIN
 type:=getPersonType(NEW.adminCode);
- IF (type = 'Admin' )
+ IF (type = 'Admin' OR NEW.adminCode IS NULL)
  THEN 
  RETURN NEW;
  ELSE

@@ -66,11 +66,13 @@ CREATE TABLE IF NOT EXISTS Request(
 requestID SERIAL PRIMARY KEY,
 studentCode INTEGER REFERENCES Person(academicCode),
 adminCode INTEGER REFERENCES Person(academicCode),
-newCourse_Code INTEGER REFERENCES Course(code),
+closed BOOLEAN NOT NULL DEFAULT false,
 approved BOOLEAN,
-reasonForChange TEXT NOT NULL,
+title TEXT NOT NULL,
+description TEXT NOT NULL,
+submitionDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 visible INTEGER DEFAULT 1,
-CHECK(reasonForChange <> '')
+CHECK(description <> '')
 );
 
 CREATE TABLE IF NOT EXISTS Syllabus(
