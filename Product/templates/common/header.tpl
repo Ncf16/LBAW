@@ -31,33 +31,33 @@
 
             {if !isset($smarty.session.username)}
 
-                    <a href="{$BASE_URL}pages/Person/login.php" id="login_btn" class="btn navbar-btn">Login </a>
+            <a href="{$BASE_URL}pages/Person/login.php" id="login_btn" class="btn navbar-btn">Login </a>
 
             {else}
-                <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b
-                                    class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
-                            </li>
-                            {if $ACCOUNT_TYPE == 'Admin'}
-                                <li>
-                                    <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
-                                </li>
-                            {/if}
-                            {if $ACCOUNT_TYPE != 'Teacher'}
-                                <li>
-                                    <a href="{$BASE_URL}pages/Request/requestList.php">Request</a>
-                                </li>
-                            {/if}
-                            <li>
-                                <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
+                        </li>
+                        {if $ACCOUNT_TYPE == 'Admin'}
+                        <li>
+                            <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
+                        </li>
+                        {/if}
+                        {if $ACCOUNT_TYPE != 'Teacher'}
+                        <li>
+                            <a href="{$BASE_URL}pages/Request/requestList.php">Requests</a>
+                        </li>
+                        {/if}
+                        <li>
+                            <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
             {/if}
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -82,18 +82,22 @@
 
                 <!-- this should show for students and regent of a course -->
                 {if $ACCOUNT_TYPE == 'Student'}
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/Course/coursePage.php">My Course</a>
-                    </li>
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/Course/coursePage.php?course={$STUDENT_COURSE}">My Course</a>
+                </li>
                 {/if}
 
-                {if $ACCOUNT_TYPE == 'Student' || $ACCOUNT_TYPE == 'Teacher'}
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
-                    </li>
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
-                    </li>
+                {if $ACCOUNT_TYPE == 'Student'}
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                </li>
+                {elseif $ACCOUNT_TYPE == 'Teacher'}
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
+                </li>
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                </li>
                 {/if}
 
             </ul>

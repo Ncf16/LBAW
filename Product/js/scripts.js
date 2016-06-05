@@ -4,7 +4,7 @@ $(document).ready(function() {
 	// Login form submition
 	$('#frm').on('submit', loginButtonHandler);
 	// Course page syllabus selection
-	$('#syllabus_year').change(syllabusYearHandler); 
+	$('#syllabus_year').change(syllabusYearHandler);
 	$('#syllabus_year').change();
 
 	// Person creation toggle and form submition
@@ -69,9 +69,10 @@ function syllabusYearHandler(event){
 		type: 'POST',
 		data: {course: course, year: year},
 		success: function(data, textStatus, jqXHR) {
-			if (typeof data.error === 'undefined') {		
-				
-				$('#cu_response').html(data);
+			if (typeof data.error === 'undefined') {
+				var elem = $(data);
+				console.log(elem);
+				$('#course_syllabus').html(elem);
 
 			} else {
 				// Handle errors here
@@ -88,10 +89,9 @@ function syllabusYearHandler(event){
 function curricularUnitsHandler(){
 	var student = $('#studentID').val();
 	var course = $('#courseID').val();
-	console.log("course: "+course+" student: "+student);
 
 	$.ajax({
-		url: '../../api/studentCurricularUnits.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../../api/studentCurricularUnits.php',
 		type: 'POST',
 		data: {course: course,student: student},
 		success: function(data, textStatus, jqXHR) {
