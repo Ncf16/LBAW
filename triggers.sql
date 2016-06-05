@@ -121,7 +121,7 @@ DECLARE
  type PersonType;
 BEGIN
 type:=getPersonType(NEW.adminCode);
- IF (type = 'Admin' OR NEW.adminCode IS NULL )
+ IF (type = 'Admin' )
  THEN 
  RETURN NEW;
  ELSE
@@ -137,15 +137,15 @@ EXECUTE PROCEDURE isPersonAdmin();
 
 -----------------------------------------
  
-CREATE OR REPLACE FUNCTION getExamsCurricularOccurrenceID(id INTEGER) 
+CREATE OR REPLACE FUNCTION getEvaluationCurricularOccurrenceID(id INTEGER) 
 RETURNS INTEGER AS $$
 DECLARE
 result INTEGER;
 BEGIN
  SELECT Evaluation.cuOccurrenceID INTO result
- FROM Evaluation,CurricularUnitOccurrence,Exam
- WHERE  CurricularUnitOccurrence.cuOccurrenceID = id AND Evaluation.cuOccurrenceID = id AND Exam.evaluationID = Evaluation.evaluationID AND
- Evaluation.visible = 1 AND CurricularUnitOccurrence.visible=1 AND  Exam.visible=1;
+ FROM Evaluation
+ WHERE Evaluation.evaluationID = id AND
+ Evaluation.visible = 1;
 return result;
 END 
 $$ LANGUAGE 'plpgsql';
@@ -155,14 +155,14 @@ CREATE OR REPLACE FUNCTION onlyOneExam() RETURNS trigger AS $$
  numberOfExams INTEGER;
  curricular INTEGER;
 BEGIN
- curricular:=getExamsCurricularOccurrenceID(NEW.cuOccurrenceID);
+ curricular:=getEvaluationCurricularOccurrenceID(NEW.evaluationID);
  SELECT COUNT(*) INTO numberOfExams
  FROM Evaluation
  WHERE Evaluation.cuOccurrenceID = curricular AND
  Evaluation.visible = 1;
  IF(numberOfExams > 1)
  THEN
- RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+ RETURN NULL;--RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
  ELSE
   RETURN NEW;
   END IF;
