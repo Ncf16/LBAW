@@ -22,7 +22,13 @@ $(document).ready(function () {
     $('#openRequests').on('shown.bs.tab', openTab);
     $('#closedRequests').on('shown.bs.tab', closedTab);
 
+    $('').click(modalCreationForm);
+
 });
+
+function modalCreationForm(event){
+    console.log("hi");
+}
 
 function openTab(event) {
     currentPagination = pagination;

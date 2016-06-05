@@ -20,14 +20,8 @@ function createRequest($studentCode,$adminCode,$newCourse_Code,$approved,$resonF
 }
 */
 //Without Admin
-/*
-function createRequest($studentCode, $newCourse_Code, $approved, $resonForChange)
-{
-    global $conn;
-    $stmt = $conn->prepare("INSERT INTO request(studentCode,newCourse_Code,approved,resonForChange) VALUES (?,?,?,?);");
-    $stmt->execute(array($studentCode, $newCourse_Code, $approved, $resonForChange));
-}
 
+/*
 function updateRequest($requestID, $studentCode, $adminCode, $newCourse_Code, $approved, $resonForChange)
 {
     global $conn;
@@ -36,6 +30,20 @@ function updateRequest($requestID, $studentCode, $adminCode, $newCourse_Code, $a
     $stmt->execute(array($studentCode, $adminCode, $newCourse_Code, $approved, $resonForChange, $requestID));
 }
 */
+
+function createRequest($studentCode, $title, $description)
+{
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO request(studentcode, title, description)
+                            VALUES(?,?,?)");
+    try {
+        $stmt->execute(array($studentCode, $title, $description));
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+    return true;
+}
+
 function validateRequest($requestID, $isApproved)
 {
     global $conn;
@@ -100,10 +108,9 @@ AND studentcode = ?
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
-    $stmt->execute(array($userID, $requestsPerPage,  (($page-1) * $requestsPerPage)));
+    $stmt->execute(array($userID, $requestsPerPage, (($page - 1) * $requestsPerPage)));
     return $stmt->fetchAll();
 }
-
 
 
 function getStudentClosedRequests($userID, $requestsPerPage, $page)
@@ -120,11 +127,12 @@ AND studentcode = ?
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
-    $stmt->execute(array($userID, $requestsPerPage,  (($page-1) * $requestsPerPage)));
+    $stmt->execute(array($userID, $requestsPerPage, (($page - 1) * $requestsPerPage)));
     return $stmt->fetchAll();
 }
 
-function countStudentOpenRequests($userID){
+function countStudentOpenRequests($userID)
+{
 
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
@@ -139,7 +147,8 @@ function countStudentOpenRequests($userID){
 }
 
 
-function countStudentClosedRequests($userID){
+function countStudentClosedRequests($userID)
+{
 
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
@@ -151,7 +160,6 @@ function countStudentClosedRequests($userID){
     $stmt->execute(array($userID));
     return $stmt->fetch();
 }
-
 
 
 // QUERIES USED FOR THE ADMIN
@@ -169,7 +177,7 @@ AND closed = false
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
-    $stmt->execute(array($requestsPerPage,  (($page-1) * $requestsPerPage)));
+    $stmt->execute(array($requestsPerPage, (($page - 1) * $requestsPerPage)));
     return $stmt->fetchAll();
 }
 
@@ -187,7 +195,7 @@ AND admincode = ?
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
-    $stmt->execute(array($userID, $requestsPerPage,  (($page-1) * $requestsPerPage)));
+    $stmt->execute(array($userID, $requestsPerPage, (($page - 1) * $requestsPerPage)));
     return $stmt->fetchAll();
 }
 
@@ -204,11 +212,12 @@ WHERE closed = true
 AND request.visible = 1
 ORDER BY submitionDate DESC
                             LIMIT ? OFFSET ?;");
-    $stmt->execute(array($requestsPerPage,  (($page-1) * $requestsPerPage)));
+    $stmt->execute(array($requestsPerPage, (($page - 1) * $requestsPerPage)));
     return $stmt->fetchAll();
 }
 
-function countOpenRequests(){
+function countOpenRequests()
+{
 
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
@@ -221,7 +230,8 @@ function countOpenRequests(){
     return $stmt->fetch();
 }
 
-function countAdminAnsweredRequests($userID){
+function countAdminAnsweredRequests($userID)
+{
 
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
@@ -234,7 +244,8 @@ function countAdminAnsweredRequests($userID){
     return $stmt->fetch();
 }
 
-function countClosedRequests(){
+function countClosedRequests()
+{
 
     global $conn;
     $stmt = $conn->prepare("SELECT count(requestid) as nropenrequests
@@ -270,13 +281,13 @@ function acceptRequest($requestID, $adminCode)
     try {
         $res = $stmt->execute(array($adminCode, $requestID));
     } catch (Exception $e) {
-        //echo 'Caught exception: ', $e->getMessage(), "\n";
         return $e->getMessage();
     }
     return "true";
 }
 
-function rejectRequest($requestID, $adminCode){
+function rejectRequest($requestID, $adminCode)
+{
     global $conn;
 
     $stmt = $conn->prepare("UPDATE request
@@ -285,14 +296,14 @@ function rejectRequest($requestID, $adminCode){
 
     try {
         $res = $stmt->execute(array($adminCode, $requestID));
-    }catch (Exception $e)  {
-        //echo 'Caught exception: ', $e->getMessage(), "\n";
+    } catch (Exception $e) {
         return "false " + $e->getMessage();
     }
     return "true";
 }
 
-function cancelRequest($requestID){
+function cancelRequest($requestID)
+{
 
     global $conn;
     $stmt = $conn->prepare("UPDATE request
@@ -301,9 +312,8 @@ function cancelRequest($requestID){
 
     try {
         $res = $stmt->execute(array($requestID));
-    }catch (Exception $e)  {
-        //echo 'Caught exception: ', $e->getMessage(), "\n";
-        return  $e->getMessage();
+    } catch (Exception $e) {
+        return $e->getMessage();
     }
     return "true";
 

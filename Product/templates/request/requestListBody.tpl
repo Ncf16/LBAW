@@ -8,7 +8,7 @@
                 {$request.requestid}
             </a>
         </th>
-        <td>
+        <td class="hue">
             <a href='{$BASE_URL}pages/Person/personalPage.php?person={$request.studentusername}'>{$request.studentname}</a>
         </td>
         <td>

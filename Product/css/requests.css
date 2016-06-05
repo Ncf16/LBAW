@@ -94,12 +94,16 @@ a.btn:hover{
 /* TABLE STUFF */
 
 
+.requestListBody td{
+	vertical-align:middle !important;
+}
+
 table[class="table table-striped"]  {
 	padding-right: 70px;
 	padding-left: 70px;
 }
 table[class="table table-striped"]  tr.head {
-  color: #000000;
+  color: #fffff9;
   background-color:   #b33c00;
 } 
   img{
@@ -114,6 +118,7 @@ table[class="table table-striped"]  tr.head {
 	color: #000;
 	background-color: #47d147;
 	border-color:#000;
+	border-width: 3px;
 }
 
 .btn-danger{
@@ -121,6 +126,7 @@ table[class="table table-striped"]  tr.head {
 	color: #000;
 	background-color: #ff471a;
 	border-color:#000;
+	border-width: 3px;
 }
 
 .btn-warning{
@@ -175,4 +181,15 @@ table[class="table table-striped"]  tr.head {
 	background-color: #fff9ec;
 	border-color: #000;
 }
+
+/* CREATION MODAL */
+
+#creation_success{
+	color: #15e500;
+}
+
+#creation_failure{
+	color: #ea4b28;
+}
+
 

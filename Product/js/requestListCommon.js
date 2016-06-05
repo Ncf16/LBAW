@@ -4,16 +4,76 @@ BASE_URL = window.location.pathname;
 var url_array = BASE_URL.split("/");
 var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
+var ACTION_MODAL_TIMEOUT = 1000;
+var SUCCESS_CREATION_TIMEOUT = 800;
+var FAILURE_CREATION_TIMEOUT = 2000;
+
 $(document).ready(function() {
 	userID = $('input[name="userID"').val();
-	//$('th').on('click', 'a.requestItem', requestItemHandler);
-	//&('th').on('click', 'a.requestItem', requestItemHandler);
-	//$('a.requestItem').on('click', requestItemHandler);
-	//$('a.requestItem').click(requestItemHandler);
 
+	$('#requestSubmitBtn').on('click', requestCreationHandler);
+
+	$("#requestCreationModal").on("hidden.bs.modal", function(){
+
+		$(this).find('form')[0].reset();
+		clearModalErrors();
+	});
 
 });
 
+function requestCreationHandler(event){
+	event.preventDefault();
+	event.stopPropagation();
+	event.stopImmediatePropagation();
+	$(this).blur();
+
+	$.ajax({
+		url: BASE_URL + "api/createRequest.php",
+		type: 'POST',
+		data: $('#createRequestForm').serialize(),
+		success: function (data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {
+
+				clearModalErrors();
+
+				if(data == "true"){
+					$("#creation_success").prepend("<strong>Request submitted successfully. Updating List. </strong>" + "<br>");
+
+					// If successful, close in a certain timeout
+					setTimeout(function(){
+						clearModalErrors();
+						$("#requestCreationModal").modal('hide');
+						loadTab();
+					}, SUCCESS_CREATION_TIMEOUT);
+
+				}else{
+					// FAILURE
+					$("#creation_failure").prepend("<strong>Failed to submit request. " + data +"</strong>"+ "<br>");
+
+
+					$("#creation_failure").delay(FAILURE_CREATION_TIMEOUT).fadeOut("slow");
+					$("#creation_failure").show();
+
+				}
+
+			} else {
+				// Handle errors here
+				console.log('ERRORS: ' + data.error);
+			}
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			console.log('ERRORS: ' + textStatus);
+			// STOP LOADING SPINNER
+		}
+	});
+
+
+
+
+}
+
+// This handler is installed on the other JS script that loads the elements that activate it
 function requestItemHandler(event){
 
 	event.preventDefault();
@@ -73,11 +133,11 @@ function approveRequestHandler(event){
 			userID: userID
 		},
 		function (data) {
-			console.log(data);
+			//console.log(data);
 		}, 'json');
 
-	setTimeout(loadTab, 1000);
-	console.log("approved");
+	setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
+	//console.log("approved");
 }
 
 function rejectRequestHandler(event){
@@ -95,8 +155,8 @@ function rejectRequestHandler(event){
 
 		}, 'json');
 
-	setTimeout(loadTab, 1000);
-	console.log("rejected");
+	setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
+	//console.log("rejected");
 }
 
 function cancelRequestHandler(event){
@@ -111,9 +171,14 @@ function cancelRequestHandler(event){
 			userID: userID
 		},
 		function (data) {
-			console.log(data);
+			//console.log(data);
 		}, 'json');
 
-	setTimeout(loadTab, 1000);
-	console.log("canceled");
+	setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
+	//console.log("canceled");
+}
+
+function clearModalErrors() {
+	$("#creation_success").empty();
+	$("#creation_failure").empty();
 }

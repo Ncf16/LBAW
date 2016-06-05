@@ -62,3 +62,69 @@
 
     </div>
 </div>
+
+<!-- Modal -->
+
+<div id="requestCreationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title"><strong>Request Submission</strong></h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="createRequestForm" class="form-horizontal" action="#" method="post" id="request_form">
+
+                    <!-- TITLE -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Title</label>
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <input  name="title" placeholder="Write the title here." class="form-control" type="text"
+                                       required>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Description</label>
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <textarea name="description"
+                                          placeholder="Describe the request, including the reason for it."
+                                          class="form-control" required></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <!-- SUCCESS MESSAGE -->
+                        <div id="creation_success" class="text-center">
+                        </div>
+                        <!-- FAILURE MESSAGE -->
+                        <div id="creation_failure" class="text-center">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button id="requestSubmitBtn" type="submit" class="btn btn-warning" data-dismiss="modal">Submit Request</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
