@@ -2,7 +2,17 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR . 'database/course.php'); 
 
-  $course = getCourseInfoView($_GET['course']);
+ 
+
+  if(!$_GET || empty($_GET['course'])|| !isset($_GET['course']) ){
+    header('Location: ' . $BASE_URL .  'index.php');
+   exit;
+    }
+    $course = getCourseInfoView($_GET['course']);
+    if( $course == NULL || $course == false){
+    header('Location: ' . $BASE_URL .  'index.php');
+   exit;
+    }
 
   $syllabusYears = getSyllabusYears($_GET['course']);
   $syllabusYears['nrYears'] = sizeof($syllabusYears);
