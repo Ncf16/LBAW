@@ -22,15 +22,17 @@
          <div class="col-md-3">
             <img class="img-responsive" src="{$BASE_URL}images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
          </div>
+           {if $person.persontype == 'Student' and $student.currentyear !== null }
          <div class="col-md-2">
-            {if $person.persontype == 'Student'}
+           
             <a href="{$BASE_URL}pages/Course/coursePage.php?course={$currentCourse.code}"> <h3>Course: {$student.coursename} </h3></a>
             <ul>
                <li>Current Year: {$student.currentyear}</li>
                <li>Starting Year: {$student.startyear}</li>
             </ul>
-            {/if}
+           
          </div>
+           {/if}
          <div class="col-md-3">
             <h3>Personal Details</h3>
             <ul>
