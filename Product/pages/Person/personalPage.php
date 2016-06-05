@@ -22,7 +22,10 @@
    include_once($BASE_DIR . 'database/courseEnrollment.php'); 
        
     $student=getStudentInfoByUsername($_GET['person']);
+    if($student !== false)
     $smarty->assign('student', $student);
+  else
+      $smarty->assign('student', $person);
     $studentID = getPersonIDByUserName($_GET['person']);
     $getStudentCourse=getStudentCourse($studentID['academiccode']);
      

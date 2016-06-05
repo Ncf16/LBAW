@@ -38,15 +38,16 @@ function isInactive($academiccode,$course){
 
 	 global $conn;
 
- $stmt = $conn->prepare("SELECT * FROM Courseenrollment	WHERE   Courseenrollment.studentcode = ?
-								AND Courseenrollment.courseid = ? AND  CourseEnrollment.visible = 0; ");
-  $stmt->execute(array($academicCode,$course));
-  $value=$stmt->fetch() ;
-  var_dump($value);
-  if(  $value !== false)
-  	return false;
-  else
-  	return true;
+ 	$stmt = $conn->prepare("SELECT * FROM Courseenrollment	WHERE  studentcode = ?
+						   AND courseid = ? AND  visible = 0; ");
+ 	var_dump($stmt->execute(array($academiccode,$course)));
+  	$value=$stmt->fetch();
+
+  	var_dump($value);
+  	if(  $value !== false)
+  		return true;
+  	else
+  		return false;
 }
 function restartEnrollment($academiccode,$oldCourse,$newCourse,$startYear,$finishYear,$curricularYear){
 

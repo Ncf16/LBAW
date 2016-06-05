@@ -31,10 +31,11 @@ function changeCourseHandler(){
 		type: 'POST',
 		data: {newCourse: newCourse,course: course,student:student},
 		success: function(data, textStatus, jqXHR) {
-			if (typeof data.error === 'undefined') {		
-				if(strpos(data,'true')!==false)
-				location.reload();
-
+			if (typeof data.error === 'undefined') {
+			console.log(data.indexOf ('true')>-1);		
+				if(data.indexOf ('true')>-1)
+			 	location.reload();
+		console.log("worked");
 			} else {
 				$("#modalErrors").text(data);
 				console.log('ERRORS: ' + data.error);

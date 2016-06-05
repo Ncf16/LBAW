@@ -141,8 +141,8 @@
                      {/if}
                      {/foreach} 
                   </select>
-                  <p id="modalErrors">
-                  </p>
+                  <div id="modalErrors">
+                  </div>
             </div>
             <div class="modal-footer">
                 <button type="button" id="submitNewCourseStudent" class="btn btn-default" data-dismiss="modal">Change Course</button>
