@@ -1,7 +1,6 @@
 <?php
 include_once('../config/init.php');
 include_once($BASE_DIR . 'database/person.php');
-
 checkArgs();
 
 $username=$_POST['username'];
@@ -14,8 +13,6 @@ var_dump( createUpdateQuery($_POST,$username,"username"));
     	$erroToken=false;
          preg_match($nifPattern, $_POST['nif'],$nifMatch);
            
-         var_dump(sizeof($nifMatch));
-         exit;
          preg_match($phonePattern, $_POST['phonenumber'],$phoneMatch);
     	//Username
     	 if(!isset($_POST['username'])|| empty($_POST['username']) || !is_numeric($_POST['username'])){
