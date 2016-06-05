@@ -275,7 +275,7 @@ function acceptRequest($requestID, $adminCode)
     global $conn;
 
     $stmt = $conn->prepare("UPDATE request
-                            SET closed = true, approved = true, admincode = ?, submitiondate = current_date
+                            SET closed = true, approved = true, admincode = ?, submitiondate = CURRENT_TIMESTAMP 
                             WHERE requestid = ? AND closed = false");
 
     try {
@@ -291,7 +291,7 @@ function rejectRequest($requestID, $adminCode)
     global $conn;
 
     $stmt = $conn->prepare("UPDATE request
-                            SET closed = true, approved = false, admincode = ?, submitiondate = current_date
+                            SET closed = true, approved = false, admincode = ?, submitiondate = CURRENT_TIMESTAMP
                             WHERE requestid = ? AND closed = false");
 
     try {
@@ -307,7 +307,7 @@ function cancelRequest($requestID)
 
     global $conn;
     $stmt = $conn->prepare("UPDATE request
-                            SET closed = true, submitiondate = current_date
+                            SET closed = true, submitiondate = CURRENT_TIMESTAMP
                             WHERE requestid = ? AND closed = false");
 
     try {

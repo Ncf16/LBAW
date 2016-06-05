@@ -48,7 +48,7 @@
                 {if $ACCOUNT_TYPE == 'Admin' && $request.closed == 'false'}
                     <button id="approve_btn" type="button" class="btn btn-success" data-dismiss="modal">Approve <span class="glyphicon glyphicon-ok"></span></button>
                     <button id="reject_btn" type="button" class="btn btn-danger" data-dismiss="modal">Reject <span class="glyphicon glyphicon-remove"></span></button>
-                {elseif $ACCOUNT_TYPE == 'Student'}
+                {elseif $ACCOUNT_TYPE == 'Student' && $request.closed == 'false'}
                     <button id="cancel_btn" type="button" class="btn btn-warning" data-dismiss="modal">Cancel Request</button>
                 {/if}
                 <button type="button" class=" btn btn-default" data-dismiss="modal">Close</button>

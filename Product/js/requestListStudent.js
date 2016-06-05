@@ -36,7 +36,7 @@ function closedTab(event) {
 }
 
 function loadTab() {
-
+    console.log(tabSelector);
     if (tabSelector == undefined) {
         currentPagination = pagination;
         tabSelector = $('.navPills .active').children('a')[0].getAttribute('href');
