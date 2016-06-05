@@ -90,7 +90,7 @@ function getEvaluationType($evaluation){
 	return $stmt->fetch();
 }
 
-function countEvaluations($uco){
+function countUCOEvaluations($uco){
 
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(*) FROM Evaluation
@@ -148,16 +148,28 @@ function getGroupWork($groupWork){
 	return $stmt->fetch();
 }
 
-function getExams($nbEvaluations,$offset){
+function getUCOEvaluations($uco){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT evaluationtype, weight, evaluationdate, Curricularunit.name
-		FROM Evaluation, CurricularUnit, CurricularUnitOccurrence
-		WHERE Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
-		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
-		Evaluation.visible=1 LIMIT ? OFFSET ?");
+	$stmt = $conn->prepare("SELECT Evaluation.*
+		FROM Evaluation
+		WHERE Evaluation.cuoccurrenceid = ? AND Evaluation.visible=1 ORDER BY evaluationdate");
 
-	$stmt->execute(array($nbEvaluations,$offset));
+	$stmt->execute(array($uco));
+	return $stmt->fetchAll();
+}
+
+function getStudentEvaluations($student){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT Evaluation.*, Curricularunit.name
+		FROM Evaluation, CurricularEnrollment, CurricularUnitOccurrence, Curricularunit
+		WHERE Evaluation.cuoccurrenceid = CurricularEnrollment.cuoccurrenceid AND
+		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
+		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+		CurricularEnrollment.studentcode = ? AND Evaluation.visible=1 ORDER BY evaluationdate");
+
+	$stmt->execute(array($student));
 	return $stmt->fetchAll();
 }
 
