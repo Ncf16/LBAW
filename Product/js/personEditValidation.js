@@ -24,7 +24,7 @@ $(document).ready(function() {
   		contentType: false,
 		success: function(data, textStatus, jqXHR) {
 		 	if (typeof data.error === 'undefined') {	
-					$("#message_status").empty();	
+					$("#success_messages").empty();	
 					console.log("DATA: "+data);	
 				if (data.indexOf("true") > -1) {
 					 
@@ -33,8 +33,8 @@ $(document).ready(function() {
 					 console.log( BASE_URL + "pages/Person/personalPage.php?person="+person);
 					 window.location.href =  BASE_URL + "pages/Person/personalPage.php?person="+person;
 				} else {
-					 
-					 $("#message_status").append(data);
+					  $("#error_messages").empty();
+					 $("#error_messages").append(data);
 					// console.log(data.search(/\w+_\w+_key/));
 					// console.log(data.substring(130,data.length))
 				}

@@ -1,5 +1,6 @@
  {include file='common/header.tpl'}
  <script src="{$BASE_URL}js/personEditValidation.js"></script>
+  <link href="{$BASE_URL}css/personEdit.css" rel="stylesheet">
 <div class="container">
 <div class="row">
    <div class="col-md-12">
