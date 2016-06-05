@@ -25,9 +25,8 @@
   
   $result = createPerson($name, $address, $nationality, $phone, $nif, $birth_date, $account_type, $password);
   
-  if ($result === true){
-    $username = getPersonUsernameByNIF($name, $address, $nationality, $phone, $birth_date, $account_type, $password);
-    echo $username;
+  if ($result !== false){
+    echo $result['username'];
   }else{
     echo "false";
   }

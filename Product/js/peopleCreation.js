@@ -142,7 +142,7 @@ function individualCreationHandler(event){
 	$("#submit_individual").blur();
 
 	$.ajax({
-		url: '../../api/addPerson.php',           //TODO: MIGHT HAVE TO FIX THIS
+		url: '../../api/addPerson.php',
 		type: 'POST',
 		data: new FormData(this),
 		cache: false,
@@ -159,8 +159,10 @@ function individualCreationHandler(event){
 
 				if (data !== 'false') {
 					$("#creation_failure").hide();
-
+					console.log(data);
+					//console.log(href);
 					var new_href = $("#creation_success a").attr("href") + data;
+					console.log(new_href);
 
 					$("#creation_success a").attr("href", new_href);
 					$("#creation_success").show();
@@ -333,13 +335,11 @@ function multipleCreationHandler(event){
 		displayErrorsMultiple(errors);
 		return;
 	}
-
-	
 	
 }
 
 function verifyName(name2){
-	/*
+
 	if(name2 == '' || name2 == null){
 		return 'Name cannot be empty';
 	}
@@ -355,7 +355,7 @@ function verifyName(name2){
 		//alert('Name must have alphabet characters only');   
 		return 'Name must have alphabet characters only.'; 
 	}
-	*/
+
 	return true;
 }
 
@@ -424,10 +424,7 @@ function verifyNIF(nif){
 }
 
 function verifyBirth(birthdate){
-
-	// I'll finish this one later
 	return true;
-
 }
 
 function verifyAccountType(type){
