@@ -21,7 +21,7 @@
                     <th>Submitted by</th>
                     <th>Answered by</th>
                     <th>Status</th>
-                    <th>Date</th>
+                    <th>Last Update</th>
                 </tr>
                 </thead>
                 <tbody class="requestListBody" id="request_list">
@@ -39,34 +39,6 @@
     </div>
 
 
-    <div class="row tab-pane fade" id="answered">
-        <div class="col-lg-12">
-            <h2>Answered Requests</h2>
-
-            <!-- TABLE -->
-            <table class="table table-striped">
-                <thead>
-                <tr class="head">
-                    <th>Request ID</th>
-                    <th>Submitted by</th>
-                    <th>Answered by</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-                <tbody class="requestListBody" id="request_list">
-
-                </tbody>
-            </table>
-            <!-- END TABLE -->
-
-            <div class="clearfix"></div>
-            <ul class="pagination pull-right">
-
-            </ul>
-
-        </div>
-    </div>
 
     <div class="row tab-pane fade" id="closed">
         <div class="col-lg-12">
@@ -80,7 +52,7 @@
                     <th>Submitted by</th>
                     <th>Answered by</th>
                     <th>Status</th>
-                    <th>Date</th>
+                    <th>Last Update</th>
                 </tr>
                 </thead>
                 <tbody class="requestListBody" id="request_list">

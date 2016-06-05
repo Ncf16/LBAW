@@ -21,7 +21,7 @@
                     <th>Submitted by</th>
                     <th>Answered by</th>
                     <th>Status</th>
-                    <th>Date</th>
+                    <th>Last Update</th>
                 </tr>
                 </thead>
                 <tbody class="requestListBody" id="request_list">
@@ -51,7 +51,7 @@
                     <th>Submitted by</th>
                     <th>Answered by</th>
                     <th>Status</th>
-                    <th>Date</th>
+                    <th>Last Update</th>
                 </tr>
                 </thead>
                 <tbody class="requestListBody" id="request_list">
@@ -80,7 +80,7 @@
                     <th>Submitted by</th>
                     <th>Answered by</th>
                     <th>Status</th>
-                    <th>Date</th>
+                    <th>Last Update</th>
                 </tr>
                 </thead>
                 <tbody class="requestListBody" id="request_list">

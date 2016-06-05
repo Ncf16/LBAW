@@ -257,5 +257,57 @@ function countRequests()
     return $stmt->fetch();
 }
 
+// ACCEPT, REJECT AND CANCEL REQUESTS
+
+function acceptRequest($requestID, $adminCode)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE request
+                            SET closed = true, approved = true, admincode = ?, submitiondate = current_date
+                            WHERE requestid = ? AND closed = false");
+
+    try {
+        $res = $stmt->execute(array($adminCode, $requestID));
+    } catch (Exception $e) {
+        //echo 'Caught exception: ', $e->getMessage(), "\n";
+        return $e->getMessage();
+    }
+    return "true";
+}
+
+function rejectRequest($requestID, $adminCode){
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE request
+                            SET closed = true, approved = false, admincode = ?, submitiondate = current_date
+                            WHERE requestid = ? AND closed = false");
+
+    try {
+        $res = $stmt->execute(array($adminCode, $requestID));
+    }catch (Exception $e)  {
+        //echo 'Caught exception: ', $e->getMessage(), "\n";
+        return "false " + $e->getMessage();
+    }
+    return "true";
+}
+
+function cancelRequest($requestID){
+
+    global $conn;
+    $stmt = $conn->prepare("UPDATE request
+                            SET closed = true, submitiondate = current_date
+                            WHERE requestid = ? AND closed = false");
+
+    try {
+        $res = $stmt->execute(array($requestID));
+    }catch (Exception $e)  {
+        //echo 'Caught exception: ', $e->getMessage(), "\n";
+        return  $e->getMessage();
+    }
+    return "true";
+
+}
+
 
 ?>

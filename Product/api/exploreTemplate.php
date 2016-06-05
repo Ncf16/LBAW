@@ -4,7 +4,7 @@
   
  
   if (!$_POST['template'] || !$_POST['units']) {
-    echo "No occurrences were found.";
+    echo "<br> No occurrences were found.";
     exit;
   }
 

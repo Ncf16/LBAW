@@ -62,56 +62,58 @@ function fillModal(requestInfo) {
 };
 
 function approveRequestHandler(event){
-	var requestID = $('.modal-header input').val();
+	var requestID = $('.modal-header input[name="requestID"]').val();
+	var userID =  $('.modal-header input[name="userID"]').val();
 
 	$.post(
 		BASE_URL + "api/requestAction.php",
 		{
 			action: 'approve',
-			requestID: requestID
+			requestID: requestID,
+			userID: userID
 		},
 		function (data) {
-			//console.log(data.units);
-			addItens(data.units);
-			currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+			console.log(data);
 		}, 'json');
 
-
+	setTimeout(loadTab, 1000);
 	console.log("approved");
 }
 
 function rejectRequestHandler(event){
-	var requestID = $('.modal-header input').val();
+	var requestID = $('.modal-header input[name="requestID"]').val();
+	var userID =  $('.modal-header input[name="userID"]').val();
 
 	$.post(
 		BASE_URL + "api/requestAction.php",
 		{
 			action: 'reject',
-			requestID: requestID
+			requestID: requestID,
+			userID: userID
 		},
 		function (data) {
-			//console.log(data.units);
-			addItens(data.units);
-			currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+
 		}, 'json');
 
+	setTimeout(loadTab, 1000);
 	console.log("rejected");
 }
 
 function cancelRequestHandler(event){
-	var requestID = $('.modal-header input').val();
+	var requestID = $('.modal-header input[name="requestID"]').val();
+	var userID =  $('.modal-header input[name="userID"]').val();
 
 	$.post(
 		BASE_URL + "api/requestAction.php",
 		{
 			action: 'cancel',
-			requestID: requestID
+			requestID: requestID,
+			userID: userID
 		},
 		function (data) {
-			//console.log(data.units);
-			addItens(data.units);
-			currentPagination.addPagination(data.page, data.nbUnits, pagination.nbItemsPerPage);
+			console.log(data);
 		}, 'json');
 
+	setTimeout(loadTab, 1000);
 	console.log("canceled");
 }

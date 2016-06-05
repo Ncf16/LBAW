@@ -46,7 +46,7 @@
                 <p class="pull-right"> Status:
                 </p>
                 <p> Submitted by: </p>
-                <p class="pull-right"> Date: </p>
+                <p class="pull-right"> Last Update: </p>
                 <p> Answered by: </p>
                 <p>Title:</p>
                 <p>Description:</p>

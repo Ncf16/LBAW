@@ -1,4 +1,4 @@
-{foreach from=$requests item=request}
+{foreach from=$requests item=request|escape}
     <tr>
         <th scope="row">
             <a class="btn center-block requestItem">
