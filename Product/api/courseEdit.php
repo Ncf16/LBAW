@@ -1,7 +1,8 @@
 <?php
   include_once('../config/init.php');
   include_once($BASE_DIR . 'database/person.php');  
-   include_once($BASE_DIR . 'database/course.php');  
+  include_once($BASE_DIR . 'database/course.php'); 
+  include_once($BASE_DIR . 'database/teacher.php');  
   $courseType=array ('Bachelor','Masters','PhD');
   if (!$_POST['Action']) {
     echo "false";    
@@ -38,8 +39,7 @@
         echo "course_degree";
         exit;
       }
-      $teacherCodes=getTeacherAcademicCodes();
-      if (!isset($_POST['course_director'])|| !is_numeric($_POST['course_director'])||checkAcademicCodeInArray($teacherCodes,$_POST['course_director'])) {
+      if (!isset($_POST['course_director'])|| !is_numeric($_POST['course_director'])||getTeacherWithID($_POST['course_director']) ==false) {
         echo "course_director error";
         exit;
       }

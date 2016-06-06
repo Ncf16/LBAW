@@ -19,14 +19,14 @@ function getTeacherWithName($username){
     $stmt->execute(array($username));
     return $stmt->fetch();
 }
-
-function getCourseDirectorsIDs(){
-    global $conn;
-    $stmt = $conn->prepare("SELECT teacherCode
-                            FROM courseDirectors " );
+function getTeacherWithID($academiccode){
+   global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM Person
+                            WHERE academiccode = ? AND persontype='Teacher'" );
     
-    $stmt->execute(array());
-    return $stmt->fetchAll();
+    $stmt->execute(array($academiccode));
+    return $stmt->fetch();
 }
 
 function checkTeacherCodeInArray($array,$code){
