@@ -36,7 +36,7 @@
             {else}
             <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b
+                    <a href="#" id="user_dropdown" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
