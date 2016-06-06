@@ -36,7 +36,6 @@ function closedTab(event) {
 }
 
 function loadTab() {
-    console.log(tabSelector);
     if (tabSelector == undefined) {
         currentPagination = pagination;
         tabSelector = $('.navPills .active').children('a')[0].getAttribute('href');
@@ -73,7 +72,7 @@ function changePage(event) {
         target = target.parent();
 
     // Reset pagination and table body
-    $('#units').html('');  // maybe $(tabSelector + ' .requestListBody').html(''); too ?
+    console.log(document.getElementById('units'));
     $(tabSelector + ' .pagination').html('');
 
     var newPage = currentPagination.changePage(target);

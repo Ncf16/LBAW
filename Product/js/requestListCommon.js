@@ -4,7 +4,7 @@ BASE_URL = window.location.pathname;
 var url_array = BASE_URL.split("/");
 var BASE_URL =  "/"+ url_array[1] + '/' + url_array[2] + '/';
 
-var ACTION_MODAL_TIMEOUT = 1000;
+var ACTION_MODAL_TIMEOUT = 500;
 var SUCCESS_CREATION_TIMEOUT = 800;
 var FAILURE_CREATION_TIMEOUT = 2000;
 
@@ -133,10 +133,10 @@ function approveRequestHandler(event){
 			userID: userID
 		},
 		function (data) {
-			//console.log(data);
+			setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
 		}, 'json');
 
-	setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
+
 	//console.log("approved");
 }
 
@@ -152,10 +152,10 @@ function rejectRequestHandler(event){
 			userID: userID
 		},
 		function (data) {
-
+			setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
 		}, 'json');
 
-	setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
+
 	//console.log("rejected");
 }
 
@@ -171,10 +171,11 @@ function cancelRequestHandler(event){
 			userID: userID
 		},
 		function (data) {
+			setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
 			//console.log(data);
 		}, 'json');
 
-	setTimeout(loadTab, ACTION_MODAL_TIMEOUT);
+
 	//console.log("canceled");
 }
 

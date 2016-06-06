@@ -33,7 +33,7 @@
 
             <th class="col-md-3">Teacher</th>
 
-            <th class="col-md-1">Delete</th>
+            <th class="col-md-1 col-md-offset-1">Delete</th>
          </thead>
          <tbody class="contentsListBody">
          </tbody>
