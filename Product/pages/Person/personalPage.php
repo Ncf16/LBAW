@@ -42,12 +42,12 @@ if ($person['persontype'] == 'Student') {
      else
        $smarty->assign('student', $person);
 
-     $studentID = getPersonIDByUserName($_GET['person']);
-     $getStudentCourse = getStudentCourse($studentID['academiccode']);
+     $getStudentCourse = getStudentCourse($_GET['person']);
      $currentCourse = getCourseInfo($getStudentCourse['code']);
 
      $smarty->assign('currentCourse', $currentCourse);
      $smarty->assign('courseCode', $getStudentCourse['code']);
+
 
      if (isset($_SESSION['username']) && isset($_GET['person']) && $_GET['person'] === $_SESSION['username']) {
         include_once ($BASE_DIR . 'database/cuEnrollment.php');

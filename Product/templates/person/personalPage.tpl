@@ -29,7 +29,7 @@
            {if $person.persontype == 'Student' and $student.currentyear !== null }
          <div class="col-md-2">
            
-            <a href="{$BASE_URL}pages/Course/coursePage.php?course={$currentCourse.code}"> <h3>Course: {$student.coursename} </h3></a>
+            <a href="{$BASE_URL}pages/Course/coursePage.php?course={$courseCode}"> <h3>Course: {$student.coursename} </h3></a>
             <ul>
                <li>Current Year: {$student.currentyear}</li>
                <li>Starting Year: {$student.startyear}</li>
@@ -127,7 +127,7 @@
               <input hidden value="{$student.academiccode}" id="studentID"/>
          <input hidden value="{$courseCode}" id="courseID"/>
           
-         <div id="cu_response">
+         <div id="cuResponse">
          </div>
          </div>
             {/if}

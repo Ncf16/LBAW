@@ -15,8 +15,9 @@
 
      $course = getStudentCourseByUsername($_GET['student']); 
      $student = getPersonInfoByUser($_GET['student']);
-     $availableToSign=  getAvailableCurricularUnitAvailable( $student['academiccode'],$course['code'],date("Y"),$course['curricularyear'] );
-     $courseYears=getCourseYears($course['code']);
+     $availableToSign = getAvailableCurricularUnitAvailable( $student['academiccode'],$course['code'],date("Y"),$course['curricularyear'] );
+     $courseYears = getCourseYears($course['code']);
+   
      if(count($availableToSign)>0){ 
      $units=array();
      for ($i = 1; $i <=  $courseYears; $i++) {
