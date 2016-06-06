@@ -73,10 +73,10 @@ function createArea(event){
 		var input = div.find('input').val();
 		if(input.length > 64){
 			target.html('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-			target.addClass('btn-danger').removeClass('btn-info');
+			target.addClass('btn-danger').removeClass('btn-create');
 			return;
 		}
-		target.addClass('btn-info').removeClass('btn-danger');
+		target.addClass('btn-create').removeClass('btn-danger');
 		$.post(BASE_URL + "api/areas.php", {action: 'create', areaVal : input}, function(data){
 			div.find('input').remove();
 			target.text('Create Area')

@@ -1,6 +1,6 @@
 
 {include file='common/header.tpl'}
-<link href="{$BASE_URL}css/classes.css" rel="stylesheet">
+<link href="{$BASE_URL}css/listTables.css" rel="stylesheet">
 <div id="evaluationPage" class="container">
   <div class="row">
     <div class="col-sm-10">
@@ -48,11 +48,15 @@
     <div class="col-md-10 col-md-offset-1">
       <h3>Grades</h3>
       <br>
-      <table id="gradesTable" class="table table-bordred table-striped">
+      <table id="mytable" class="table table-bordred table-striped">
          <thead>
             <th class="col-md-2" colspan="2">Grade</th>
+            {if $accountType <> 'Student'}
             <th class="col-md-9">Student Name</th>
             <th class="col-md-1">Delete</th>
+            {else}
+            <th class="col-md-10">Student Name</th>
+            {/if}
          </thead>
          <tbody id="grades">
          </tbody>
@@ -66,5 +70,6 @@
   </p>
 </div>
 
+<script src="{$BASE_URL}js/Pagination.js"></script>
 <script src="{$BASE_URL}js/viewEvaluation.js"></script>
 {include file='common/footer.tpl'}
