@@ -340,4 +340,28 @@ function updateGroupWork($evaluationID,$weight,$evaluationDate,$minElement,$maxE
 	$conn->rollBack();
 	return false;
 }
+
+function getEvaluationUCO($evaluation){
+	global $conn;
+	$stmt = $conn->prepare("SELECT cuoccurrenceid FROM Evaluation WHERE evaluationid = ?");
+
+	$stmt->execute(array($evaluation));
+	return $stmt->fetch();
+}
+
+function hasTeacherEvaluationAccess($person,$evaluation){
+	
+	$uco = getEvaluationUCO($evaluation)['cuoccurrenceid'];
+	if(isUCOCourseDirector($person,$uco))
+		return true;
+	else if(isUCORegent($person,$uco))
+		return true;
+	else return isUCOClassTeacher($person,$uco);
+}
+
+function hasStudentEvaluationAccess($person,$evaluation){
+	
+	$uco = getEvaluationUCO($evaluation)['cuoccurrenceid'];
+	return hasStudentUCOAccess($person,$uco);
+}
 ?>

@@ -75,7 +75,7 @@ function getGrades($nbEvaluations,$offset){
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid  AND
 		Grade.visible = 1 AND Evaluation.visible=1 AND Person.visible=1 AND CurricularUnit.visible=1
-		 AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+		 AND CurricularUnitOccurrence.visible=1 ORDER BY CurricularUnit.name, Person.name LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($nbEvaluations,$offset));
 	return $stmt->fetchAll();
@@ -91,7 +91,7 @@ function getEvaluationGrades($evaluation,$nbEvaluations,$offset){
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
 		Evaluation.evaluationid = ?  AND Grade.visible = 1 AND Evaluation.visible=1 AND Person.visible=1
-		 AND CurricularUnit.visible=1 AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+		 AND CurricularUnit.visible=1 AND CurricularUnitOccurrence.visible=1 ORDER BY Person.name LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($evaluation,$nbEvaluations,$offset));
 	return $stmt->fetchAll();
@@ -108,7 +108,7 @@ function getStudentUCOGrades($student,$uco,$nbAttendances,$offset){
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
 		Grade.studentCode = ? AND Evaluation.cuoccurrenceid = ? AND
 		Grade.visible = 1 AND Evaluation.visible=1 AND Person.visible=1
-		 AND CurricularUnit.visible=1 AND CurricularUnitOccurrence.visible=1  LIMIT ? OFFSET ?");
+		 AND CurricularUnit.visible=1 AND CurricularUnitOccurrence.visible=1 ORDER BY Evaluation.evaluationdate LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($student,$uco,$nbAttendances,$offset));
 	return $stmt->fetchAll();

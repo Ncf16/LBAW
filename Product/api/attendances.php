@@ -40,7 +40,6 @@ function update(){
 	}
 
 	$account_type = $_SESSION['account_type'];
-	$account_type = $_SESSION['account_type'];
 	if(!$account_type || !($account_type == 'Admin' || 
 		($account_type == 'Teacher' && hasTeacherClassAccess($_SESSION['userID'],$_POST['classid'])))){
 			$_SESSION['error_messages'][] = 'Unauthorized Access';
@@ -145,8 +144,7 @@ function deleteView(){
 	}
 
 	$account_type = $_SESSION['account_type'];
-	if(!$account_type || !($account_type == 'Admin' || 
-		($account_type == 'Teacher' && hasTeacherClassAccess($_SESSION['userID'],$_POST['id'])))){
+	if(!$account_type || !($account_type == 'Admin' || $account_type == 'Teacher')){
 		$_SESSION['error_messages'][] = 'Unauthorized Access';
 		exit;
 	}
