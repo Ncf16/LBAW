@@ -29,7 +29,12 @@
             <th class="col-md-1">View</th>
             {if $classes.unitInformation}
             <th class="col-md-3">Date</th>
-            <th class="col-md-5">Teacher</th>
+            <th {if $accountType eq 'Student'}
+              class="col-md-6"
+              {else}
+              class="col-md-5"
+              {/if}
+              >Teacher</th>
             {elseif $classes.teacherInformation}
             <th class="col-md-3">Date</th>
             <th class="col-md-5">Unit</th>
@@ -39,7 +44,9 @@
             <th class="col-md-3">Unit</th>
             {/if}
             <th class="col-md-2">Room</th>
+            {if $accountType <> 'Student'}
             <th class="col-md-1">Delete</th>
+            {/if}
          </thead>
          <tbody id="classes">
          </tbody>
