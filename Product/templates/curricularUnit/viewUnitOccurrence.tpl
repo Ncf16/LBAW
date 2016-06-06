@@ -6,19 +6,22 @@
       <h1 class="page-header hidden-sm hidden-xs">{$unit.name}</h1>
      
     </div>
+     {if $permissionToSeeContent == true}
     <div class="col-sm-2">
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="actionsButton" type="button" data-toggle="dropdown">Actions
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><a href="{$BASE_URL}pages/Class/classes.php?uc={$unit.cuoccurrenceid}">Classes</a></li>
+          
           <li><a href="#">Content</a></li>
+          
           <li><a href="unitEvaluations.php">Evaluations</a></li>
           <li><a href="#">Create Evaluation</a></li>         
         </ul>
       </div>
     </div>
-    
+     {/if}
   </div>
 
       <hr>
