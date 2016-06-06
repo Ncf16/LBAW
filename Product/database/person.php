@@ -74,14 +74,14 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
         $stmt = $conn->prepare($query);
         $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password, PASSWORD_DEFAULT)));
 
-        $result =  $stmt->fetch();
+        $result = $stmt->fetch();
         return $result;
     } catch (PDOException $e) {
         //echo $query . "<br>" . $e->getMessage();
         if ($e->getCode() == 23505) {
             return "User $name with NIF $nif already exists.";
         } else {
-            return  $e->getMessage();
+            return $e->getMessage();
         }
     } catch (DatabaseException $e) {
         if ($e->getCode() == 23505)
@@ -131,34 +131,35 @@ function getPersonUsernameByNIF($nif)
     }
 }
 
-function createUpdateQuery($arrayValues,$id,$idName){
-  global $conn;
-  $values=array();
-  $query="UPDATE Person SET ";
+function createUpdateQuery($arrayValues, $id, $idName)
+{
+    global $conn;
+    $values = array();
+    $query = "UPDATE Person SET ";
 
-  foreach ($arrayValues as $key => $value) {
+    foreach ($arrayValues as $key => $value) {
 
-    if(!empty ($value)){
-     $query.=" ".$key." = ?, ";
-     array_push($values,$value);
-     }
-  }
-  $query=substr($query, 0, -2);
-  $query.=" WHERE ".$idName." =  ? RETURNING ".$idName." ;";
+        if (!empty ($value)) {
+            $query .= " " . $key . " = ?, ";
+            array_push($values, $value);
+        }
+    }
+    $query = substr($query, 0, -2);
+    $query .= " WHERE " . $idName . " =  ? RETURNING " . $idName . " ;";
 
-  array_push($values, $id);
-  $stmt = $conn->prepare($query);
-  try{
-    $stmt->execute($values);
-  }catch (Exception $e)  {
-   return false;
-  }
-  $res= $stmt->fetch();
-  if($res!==false)
-    return true;
-  else
-    return false;
- 
+    array_push($values, $id);
+    $stmt = $conn->prepare($query);
+    try {
+        $stmt->execute($values);
+    } catch (Exception $e) {
+        return false;
+    }
+    $res = $stmt->fetch();
+    if ($res !== false)
+        return true;
+    else
+        return false;
+}
 function getPersonInfoByUser($username)
 {
     global $conn;
