@@ -19,7 +19,7 @@ else{
     exit;
   }
 
-  $evaluation = getEvaluation($_GET['evaluationID'],$type['evaluationtype']);
+  $evaluation = getEvaluationWithType($_GET['evaluationID'],$type['evaluationtype']);
   if(!$evaluation){
     $_SESSION['error_messages'][] = 'evaluation not found!';
     header("Location: " . $BASE_URL . "index.php");
@@ -33,7 +33,7 @@ else{
 ?>
 
 <?php
-function getEvaluation($evaluation,$type){
+function getEvaluationWithType($evaluation,$type){
 
   switch($type){
     case 'Test':

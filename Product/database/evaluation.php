@@ -24,6 +24,7 @@ function getEvaluationType($id){
 	return $stmt->fetch();
 
 }
+
 function createExam($duration,$uco,$date,$weight){
 
 	global $conn;
@@ -64,7 +65,6 @@ function createTest($duration,$uco,$date,$weight){
 
 			$stmt->execute(array($examID,$duration));
 			$conn->commit();
-			echo"teste created \n";
 			return $examID;
 		}
 	}
@@ -96,15 +96,6 @@ function createGroupWork($min,$max,$uco,$date,$weight){
 	return false;
 }
 
-function getEvaluationType($evaluation){
-
-	global $conn;
-	$stmt = $conn->prepare("SELECT evaluationtype FROM Evaluation
-		WHERE evaluationid= ? AND visible=1");
-
-	$stmt->execute(array($evaluation));
-	return $stmt->fetch();
-}
 
 function countUCOEvaluations($uco){
 

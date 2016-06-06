@@ -45,22 +45,18 @@ $(document).ready(function() {
 				console.log(data);
 
 		 	if (data.indexOf('false')==-1) {
-					//location.reload();
-					//window.location.replace($("#$BASE_URL").val()+"pages/Evaluation/");
-					//TODO need to make redirect to created page
-					console.log("worked");
+					 window.location.replace($("#BASE_URL").val()+"pages/Evaluation/viewEvaluation.php?evaluationID="+data);
+					//console.log("worked: "+data);
 				} else {
 					emptyStatus();
 					$("#message_status").prepend(data);
 				}
 			} else {
 				// Handle errors here
-				console.log('ERRORS: ' + data.error);
 			 }
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			// Handle errors here
-			console.log('ERRORS: ' + textStatus);
 			// STOP LOADING SPINNER
 		}
 	});
