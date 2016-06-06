@@ -4,7 +4,7 @@ include_once($BASE_DIR . 'database/person.php');
 checkArgs();
 $username=$_POST['username'];
 unset($_POST['username']);
-var_dump( createUpdateQuery($_POST,$username,"username"));
+echo createUpdateQuery($_POST,$username,"username");
 
     function checkArgs(){
     	   $phonePattern = '/^[0-9]*$/';

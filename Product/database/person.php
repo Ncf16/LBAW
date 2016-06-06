@@ -146,7 +146,7 @@ function createUpdateQuery($arrayValues,$id,$idName){
   try{
     $stmt->execute($values);
   }catch (Exception $e)  {
-    echo "false " ."failed to edit please check the form values";
+   return false;
   }
   $res= $stmt->fetch();
   if($res!==false)
