@@ -54,5 +54,19 @@ function getTeachers(){
   $stmt->execute();
   return $stmt->fetchAll();
 }
+function isTeacherByEvaluation($academiccode,$cuName,$evalID){
+    global $conn;
+  $stmt = $conn->prepare("SELECT  Person.academiccode FROM Person,Evaluation,CurricularUnit,CurricularUnitOccurrence,Class
+  WHERE  Person.academiccode = ? AND Person.personType = 'Teacher' AND Evaluation.evaluationID = ? AND  Evaluation.cuOccurrenceID = CurricularUnitOccurrence.cuOccurrenceID
+   AND  CurricularUnitOccurrence.curricularunitid = curricularunit.curricularid AND CurricularUnit.name = ? AND Class.occurrenceID = CurricularUnitOccurrence.cuOccurrenceID AND 
+   Class.teacherCode = Person.academiccode 
+   AND Person.visible = 1 AND Evaluation.visible = 1 AND CurricularUnit.visible = 1 AND CurricularUnitOccurrence.visible = 1 AND Class.visible = 1;");
 
+  $stmt->execute(array($academiccode,$evalID,$cuName));
+  $return = $stmt->fetchAll();
+  if($return !=false)
+    return true;
+  else
+    return false;
+}
 ?>

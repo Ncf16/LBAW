@@ -50,7 +50,6 @@ function countStudentUCOGrades($student,$uco){
 	return $stmt->fetch();
 }
 
-//Vazia why?
 function getGrade($student,$evaluation){
 
 	global $conn;
@@ -59,7 +58,7 @@ function getGrade($student,$evaluation){
 		WHERE Grade.evaluationid = Evaluation.evaluationid AND Person.academiccode = Grade.studentcode AND
 		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
 		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
-		Grade.studentCode = ? AND Evaluation.evaluationid = ? AND
+		Grade.studentcode = ? AND Evaluation.evaluationid = ? AND Person.persontype ='Student' AND 
 		Grade.visible = 1 AND Evaluation.visible=1 AND Person.visible=1 AND CurricularUnit.visible=1");
 
 	$stmt->execute(array($student,$evaluation));

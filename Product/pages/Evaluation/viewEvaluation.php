@@ -1,7 +1,8 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/evaluation.php');
-
+include_once($BASE_DIR . 'database/teacher.php');
+include_once($BASE_DIR . 'database/grade.php');
 
 if(!$_GET['evaluationID']){
   $_SESSION['error_messages'][] = 'evaluation not found!';
@@ -10,6 +11,8 @@ if(!$_GET['evaluationID']){
 }
 
 else{
+
+ 
 
    $type = getEvaluationType($_GET['evaluationID']);
 
@@ -24,6 +27,12 @@ else{
     $_SESSION['error_messages'][] = 'evaluation not found!';
     header("Location: " . $BASE_URL . "index.php");
     exit;
+  }
+  // Se não for admin nem aluno que fez essa evaluation nem professor dessa CU
+  if($_SESSION['account_type'] !== 'Admin' && !getGrade($_SESSION['userID'],$_GET['evaluationID']) && !isTeacherByEvaluation($_SESSION['userID'],$evaluation['name'],$_GET['evaluationID'])){
+      $_SESSION['error_messages'][] = 'invalid permission';
+      header("Location: " . $BASE_URL . "index.php");
+      exit;
   }
 
    $evaluation['calendaryear'] = $evaluation['calendaryear'] . '/' . ($evaluation['calendaryear'] + 1);

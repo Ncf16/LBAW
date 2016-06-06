@@ -1,5 +1,6 @@
 ﻿ SET SCHEMA 'proto';
 DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
+DROP TRIGGER IF EXISTS createGrade ON evaluation CASCADE ;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkTeacherType ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
@@ -327,6 +328,25 @@ CREATE TRIGGER createAttendances
 AFTER INSERT ON Class
 FOR EACH ROW
 EXECUTE PROCEDURE createClassAttendances();
+
+-----------------------------------------
+CREATE OR REPLACE FUNCTION createGrade() RETURNS trigger AS $$
+DECLARE
+student INTEGER;
+BEGIN
+FOR student IN SELECT studentcode FROM CurricularEnrollment
+WHERE cuoccurrenceid=NEW.cuOccurrenceID LOOP
+INSERT INTO Grade(studentcode,evaluationID)
+VALUES(student,NEW.evaluationID);
+END LOOP;
+RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER createGrade
+AFTER INSERT ON Evaluation
+FOR EACH ROW
+EXECUTE PROCEDURE createGrade();
 
 -----------------------------------------
 -- FULL TEXT TRIGGERS--
