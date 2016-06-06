@@ -30,8 +30,7 @@ function changeCourseHandler(){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
 				if(data.indexOf ('true')>-1){
-					console.log(data);
-			 		//location.reload();
+			 		 location.reload();
 				}
 				else {
 				$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");

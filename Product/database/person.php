@@ -1,23 +1,7 @@
 <?php
 include_once($BASE_DIR . '/config/init.php');
 require_once($BASE_DIR . "lib/password.php");
-/*
-CREATE TABLE IF NOT EXISTS Person(
-academicCode SERIAL PRIMARY KEY,
-personType PersonType,
-name VARCHAR(120) NOT NULL,
-username VARCHAR(15),
-address VARCHAR(256),
-birthdate DATE,
-nationality VARCHAR(30),
-nif CHAR(9) UNIQUE NOT NULL,
-password VARCHAR(256) NOT NULL,
-phoneNumber VARCHAR(12),
-imageURL VARCHAR(256),
-visible INTEGER DEFAULT 1,
-tsv tsvector
-);
-*/
+
 function isLoginCorrect($username, $password)
 {
     global $conn;
@@ -131,35 +115,35 @@ function getPersonUsernameByNIF($nif)
     }
 }
 
-function createUpdateQuery($arrayValues, $id, $idName)
-{
-    global $conn;
-    $values = array();
-    $query = "UPDATE Person SET ";
+function createUpdateQuery($arrayValues,$id,$idName){
+  global $conn;
+  $values=array();
+  $query="UPDATE Person SET ";
 
-    foreach ($arrayValues as $key => $value) {
+  foreach ($arrayValues as $key => $value) {
 
-        if (!empty ($value)) {
-            $query .= " " . $key . " = ?, ";
-            array_push($values, $value);
-        }
-    }
-    $query = substr($query, 0, -2);
-    $query .= " WHERE " . $idName . " =  ? RETURNING " . $idName . " ;";
+    if(!empty ($value)){
+     $query.=" ".$key." = ?, ";
+     array_push($values,$value);
+     }
+  }
+  $query=substr($query, 0, -2);
+  $query.=" WHERE ".$idName." =  ? RETURNING ".$idName." ;";
 
-    array_push($values, $id);
-    $stmt = $conn->prepare($query);
-    try {
-        $stmt->execute($values);
-    } catch (Exception $e) {
-        return false;
-    }
-    $res = $stmt->fetch();
-    if ($res !== false)
-        return true;
-    else
-        return false;
-}
+  array_push($values, $id);
+  $stmt = $conn->prepare($query);
+  try{
+    $stmt->execute($values);
+  }catch (Exception $e)  {
+   return false;
+  }
+  $res= $stmt->fetch();
+  if($res!==false)
+    return true;
+  else
+    return false;
+ }
+ 
 function getPersonInfoByUser($username)
 {
     global $conn;

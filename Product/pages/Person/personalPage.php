@@ -1,4 +1,3 @@
-
  <?php
 include_once ('../../config/init.php');
 include_once ($BASE_DIR . 'database/person.php');
@@ -64,6 +63,7 @@ if ($person['persontype'] == 'Student') {
  }
 }
  
+
   $smarty->assign('privateDate',$privateDate);
   $smarty->assign('privatePhone',$privatePhone );
   $smarty->assign('privateNat', $privateNat);
@@ -71,7 +71,6 @@ if ($person['persontype'] == 'Student') {
   $smarty->assign('privateName', $privateName);
   $smarty->assign('seeUnits' ,$isCheckProgress);
   $smarty->assign('person', $person);
-  $smarty->display('person/personalPage.tpl');
   $smarty->assign('viewerType', $_SESSION['account_type']);
   $smarty->display('person/personalPage.tpl');
 ?>
