@@ -3,33 +3,24 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/unitOccurrence.php');
 include_once($BASE_DIR . 'database/person.php');
 
-if(isset($_GET['uc'])){
 
-   $uc = getUCO($_GET['uc']);
-
-   if(!$uc){
-    $_SESSION['error_messages'][] = 'unit not found!';
-    header("Location: " . $BASE_URL . "index.php");
+if(!isset($_GET['uc'])){
+   header("Location: " . $BASE_URL . "index.php");
     exit;
-  }
+}else{
+    $uc = getUCO($_GET['uc']);
 
-   $classes['unitInformation'] = $uc['name'] . ' : ' .$uc['year'] . '/' . ($uc['year'] + 1);
-   $classes['unit'] = $_GET['uc'];
-   $smarty->assign('classes',$classes);
-}
-else if(isset($_GET['teacher'])){
+    if(!$uc){
+        $_SESSION['error_messages'][] = 'unit not found!';
+        header("Location: " . $BASE_URL . "index.php");
+        exit;
+    }
 
-	$teacher = getPersonInfoByID($_GET['teacher']);
-
-	if(!teacher){
-		$_SESSION['error_messages'][] = 'teacher not found!';
-	    header("Location: " . $BASE_URL . "index.php");
-	    exit;
-	}
-
-	$classes['teacherInformation'] = $teacher['name'];
-	$smarty->assign('classes',$classes);
+    $classes['unitInformation'] = $uc['name'] . ' : ' .$uc['year'] . '/' . ($uc['year'] + 1);
+    $classes['unit'] = $_GET['uc'];
+    $smarty->assign('classes',$classes);
 }
 
-$smarty->display('classes/classes.tpl');
+$smarty->display('CurricularUnit/viewUnitContent.tpl');
+
 ?>

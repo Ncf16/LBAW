@@ -20,6 +20,7 @@ DROP TABLE IF EXISTS GroupWork;
 DROP TABLE IF EXISTS Room;
 DROP TABLE IF EXISTS Area;
 DROP TABLE IF EXISTS Calendar;
+DROP TABLE IF EXISTS CurricularUploads;
 
 DROP TYPE IF EXISTS PersonType CASCADE;
 DROP TYPE IF EXISTS Language CASCADE;
@@ -122,6 +123,12 @@ requirements TEXT NOT NULL,
 visible INTEGER DEFAULT 1,
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear <=  8)
+);
+
+CREATE TABLE IF NOT EXISTS CurricularUploads(
+	uploadID SERIAL PRIMARY KEY,
+	cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
+	filePath TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Class(
