@@ -198,6 +198,7 @@ function addItens(classes){
 			'id' : classObj.classid
 
 		}).addClass('btn btn-danger btn-xs');
+		
 		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
 		par3.append(a3);
 		a3.append(glyRemove);
