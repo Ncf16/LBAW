@@ -4,17 +4,26 @@
 function getStudentCourse($academicCode){
  global $conn;
 
- $stmt = $conn->prepare("SELECT course.code,max(startYear)
-						FROM Person, CourseEnrollment, Course
-							WHERE Person.academiccode = Courseenrollment.studentcode
-								AND Courseenrollment.courseid = course.code
-									AND Person.academiccode = ? AND CourseEnrollment.visible=1 AND course.visible=1
-                  						  GROUP BY course.code; ");
+ $stmt = $conn->prepare("SELECT Course.*,CourseEnrollment.curricularYear
+							FROM Course,Courseenrollment,Person
+								WHERE Course.code = Courseenrollment.courseid AND  Person.username = ?  AND CourseEnrollment.studentcode = Person.academiccode
+								 AND Person.persontype = 'Student'AND Course.visible=1 AND Person.visible=1 AND CourseEnrollment.visible = 1;");
   $stmt->execute(array($academicCode));
   return $stmt->fetch();
 
 }
 
+function getStudentCourseByUsername($username){
+
+ global $conn;
+
+ $stmt = $conn->prepare("SELECT Course.*,CourseEnrollment.curricularYear
+							FROM Course,Courseenrollment,Person
+								WHERE Course.code = Courseenrollment.courseid AND  Person.username = ?  AND CourseEnrollment.studentcode = Person.academiccode
+								 AND Person.persontype = 'Student'AND Course.visible=1 AND Person.visible=1 AND CourseEnrollment.visible = 1;");
+   $stmt->execute(array($username));
+  return $stmt->fetch();
+}
 function deleteCourseEnrollment($academiccode,$course){
 	 global $conn;
 
