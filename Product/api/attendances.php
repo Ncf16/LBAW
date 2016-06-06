@@ -17,13 +17,13 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	$data = array();
 
 	if(!isset($_POST['action'])){
-		$_SESSION['error_messages'][] = 'Action not especified';
+		$_SESSION['error_messages'][] = 'Action not specified';
 		exit;
 	}
 	if($_POST['action']=='update'){
 
 		$inputs = array();
-		$inputs['classid'] = 'Class not especified';
+		$inputs['classid'] = 'Class not specified';
 		$inputs['attendanceVal'] = 'Attendance value not specified';
  		if(!checkInputs($_POST, $inputs)){
  			//SEASION ERRORS inside checkInputs  
@@ -41,9 +41,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		   }
 	    }
 	    catch (PDOException $e) {
-	        $_SESSION['form_values'] = $_POST;
 	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
-	        header("Location:".$_SERVER['HTTP_REFERER']);
 	        exit;
 	    }
 	}
@@ -94,7 +92,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			
 		}*/
 		else{
-			$_SESSION['error_messages'][] = 'Parameters not especified';
+			$_SESSION['error_messages'][] = 'Parameters not specified';
 			exit;
 		}
 
@@ -110,7 +108,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	else if($_POST['action']=='delete'){
 
 		$inputs = array();
-		$inputs['id'] = 'ID on delete not especified';
+		$inputs['id'] = 'ID on delete not specified';
 		$inputs['page'] = 'Page where delete happens not specified';
 		$inputs['itemsPerPage'] = 'Items per page not specified';
  		if(!checkInputs($_POST, $inputs)){
@@ -134,7 +132,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			if(isset($_POST['classid'])){
 				$data['nbAttendances'] = intval(countClassAttendances($_POST['classid'])['total']);
 
-				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbAttendances'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else
@@ -147,7 +145,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 				/*
 				$data['nbAttendances'] = intval(countTeacherClass($_POST['teacher'])['total']);
 
-				$nbPages = ceil($data['nbUnits'] / $_POST['itemsPerPage']);
+				$nbPages = ceil($data['nbAttendances'] / $_POST['itemsPerPage']);
 				if($page > $nbPages)
 					$data['page'] = max($page - 1,1);
 				else
@@ -158,7 +156,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 				
 			}*/
 			else{
-				$_SESSION['error_messages'][] = 'Parameters not especified';
+				$_SESSION['error_messages'][] = 'Parameters not specified';
 				exit;
 			}
 		}

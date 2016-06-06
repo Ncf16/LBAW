@@ -33,6 +33,10 @@ p{
 
 /* Navbar Style */
 
+#user_dropdown{
+    width: 200px;
+}
+
 .navbar-inverse {
   background-color: #1E272A; /*#b33c00*/
   border-color: #DF8712;
@@ -115,6 +119,18 @@ header.carousel .fill {
 }
 
 /* Button Styles */
+
+#login_btn{
+    color: #fff;
+    background-color: #e89202;
+    border-color:#000;
+}
+
+#login_btn:hover{
+    background-color:#fff;
+    color:#011;
+    border-color:#122;
+}
 
 .btn{
 	color: #fff;
@@ -214,4 +230,9 @@ footer {
     padding: 6px 6px;
     background-color: #eee;
   
+}
+
+#mytable td.border,
+#mytable th.border{
+  border-right: 2px solid grey;
 }

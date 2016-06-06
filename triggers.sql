@@ -118,10 +118,10 @@ EXECUTE PROCEDURE isPersonTeacher();
 
 CREATE OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
 DECLARE
- type PersonType;
+ type persontype;
 BEGIN
 type:=getPersonType(NEW.adminCode);
- IF (type = 'Admin' )
+ IF (type = 'Admin' OR NEW.adminCode IS NULL)
  THEN 
  RETURN NEW;
  ELSE
@@ -159,10 +159,11 @@ BEGIN
  SELECT COUNT(*) INTO numberOfExams
  FROM Evaluation
  WHERE Evaluation.cuOccurrenceID = curricular AND
+ Evaluation.evaluationtype = 'Exam' AND
  Evaluation.visible = 1;
  IF(numberOfExams > 1)
  THEN
- RETURN NULL;--RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+ RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
  ELSE
   RETURN NEW;
   END IF;
@@ -172,7 +173,6 @@ CREATE TRIGGER oneExamPerUC
 BEFORE INSERT ON Exam
 FOR EACH ROW
 EXECUTE PROCEDURE onlyOneExam();
-
 -----------------------------------------
  
  CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCodeToGetCourse INTEGER) RETURNS SETOF INTEGER AS $$
@@ -310,30 +310,23 @@ EXECUTE PROCEDURE createUsername();
 
 -----------------------------------------
 
-/*
 CREATE OR REPLACE FUNCTION createClassAttendances() RETURNS trigger AS $$
 DECLARE
 student INTEGER;
 BEGIN
-SELECT COUNT(class.classid) INTO count
-FROM Class
-WHERE Class.visible=1 AND Class.roomid = NEW.roomid 
-AND NEW.classid <> Class.classid
-AND (NEW.classDate, interval '1' minute * NEW.duration) OVERLAPS
-(Class.classDate, interval '1' minute * class.duration);
-
-IF (count = 0)
-THEN RETURN NEW;
-ELSE RETURN NULL;--RAISE EXCEPTION 'Room is not available at the specified time';
-END IF;
+FOR student IN SELECT studentcode FROM CurricularEnrollment
+WHERE cuoccurrenceid=NEW.occurrenceid LOOP
+INSERT INTO Attendance(studentcode,classid,attended)
+VALUES(student,NEW.classid,FALSE);
+END LOOP;
+RETURN NEW;
 END
 $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER createAttendances
-BEFORE INSERT ON Class
+AFTER INSERT ON Class
 FOR EACH ROW
 EXECUTE PROCEDURE createClassAttendances();
-*/
 
 -----------------------------------------
 -- FULL TEXT TRIGGERS--

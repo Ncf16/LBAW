@@ -15,27 +15,54 @@
       <div class="text-center">
         <h2>Information</h2>
       </div>
-      <table class="table table-responsive ucInfo">
+      <table class="table table-responsive classInfo">
           <tr>
-            <td>Curricular Unit: <a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence.php?uc={$class.cuoccurrenceid}">{$class.unit}</a></td>
+            <td colspan="2">
+              Curricular Unit: <a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence.php?uc={$class.cuoccurrenceid}">{$class.unit}</a></td>
           </tr>
           <tr>
-            <td>School Year: {$class.calendaryear}</td>
+            <td colspan="2">School Year: {$class.calendaryear}</td>
           </tr>
           <tr>
-            <td>Date: {$class.day}</td>
+            <td width="90%">Date: {$class.day}</td>
+            <td width="10%">
+              <button type="button" class="btn btn-info btn-xs editInfo" id="editDate"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
           </tr>
           <tr>
             <td>Time: {$class.time}</td>
+            <td>
+              <button type="button" class="btn btn-info btn-xs editInfo" id="editTime"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
           </tr>
            <tr>
-            <td>Teacher: <a href="{$BASE_URL}pages/Person/personalPage.php?person={$class.username}">{$class.name}</a></td>
+            <td>Teacher: <a href="{$BASE_URL}pages/Person/personalPage.php?person={$class.username}">{$class.name}</a>
+            </td>
+            <td>
+              <button type="button" class="btn btn-info btn-xs editInfo" id="editTeacher"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
+            <datalist id="teachers">
+                {foreach $teachers as $teacher}
+                <option value="{$teacher.name}"></option>
+                {/foreach}
+            </datalist>
           </tr>
           <tr>
             <td>Duration: {$class.duration} minutes</td>
+            <td>
+              <button type="button" class="btn btn-info btn-xs editInfo" id="editDuration"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
           </tr>
           <tr>
             <td>Room: {$class.room}</td>
+            <td>
+              <button type="button" class="btn btn-info btn-xs editInfo" id="editRoom"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
+            <datalist id="rooms">
+                {foreach $rooms as $room}
+                <option value="{$room.room}"></option>
+                {/foreach}
+            </datalist>
           </tr>
        </table>
     </div>
@@ -47,11 +74,11 @@
               <h4>Summary</h4>
             </div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-edit"> Edit</span></button>
+              <button type="button" class="btn btn-info" id="editSummary"><span class="glyphicon glyphicon-edit"> Edit</span></button>
             </div>
           </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" id="summaryBody">
           <p>{$class.summary}</p>
         </div>
       </div>

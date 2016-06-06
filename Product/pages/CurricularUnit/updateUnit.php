@@ -14,7 +14,7 @@ if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
 $areas = getAreas();
 
 if(!isset($_GET['unit'])){
-	$_SESSION['error_messages'][] = 'unit not especified!';
+	$_SESSION['error_messages'][] = 'unit not specified!';
 	header("Location: " . $BASE_URL . "index.php");
 	exit;
 }

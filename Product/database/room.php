@@ -8,22 +8,23 @@ visible INTEGER DEFAULT 1
 */
 function createRoom($room){
 	 global $conn;
-    $stmt = $conn->prepare("INSERT INTO room(room) VALUES (?);");
+    $stmt = $conn->prepare("INSERT INTO room(room) VALUES (?)");
     $stmt->execute(array($room));
 }
 
 function updateRoom($roomID,$room){
  global $conn;
     $stmt = $conn->prepare("UPDATE room SET  room=?
-                            WHERE  roomID = ? AND visible=1 ;");
+                            WHERE  roomID = ? AND visible=1");
     $stmt->execute(array($room,$roomID));
 }
 
 function deleteRoom($roomID){
 	 global $conn;
     $stmt = $conn->prepare("UPDATE room SET visible=0
-                            WHERE  roomID = ? ;");
+                            WHERE  roomID = ?");
     $stmt->execute(array($roomID));
+    return "Success";
 }
 
 function getRoomInfo($roomID){
@@ -31,7 +32,7 @@ function getRoomInfo($roomID){
 	 global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM room
-                            WHERE  roomID = ? AND visible =1 ;");
+                            WHERE  roomID = ? AND visible =1");
     $stmt->execute(array($roomID));
     return  $stmt->fetch();
 }
@@ -41,7 +42,7 @@ function getAvailableRoom($timeStamp){
     $stmt = $conn->prepare("SELECT room.*
                             FROM room 
                             WHERE room.visible =1  AND room.roomdID 
-                            NOT IN    (SELECT class.roomid FROM class WHERE (classDate::TIMESTAMP, interval '1' minute * class.duration) OVERLAPS ( ?::TIMESTAMP, interval '1' minute * 0);"); 
+                            NOT IN    (SELECT class.roomid FROM class WHERE (classDate::TIMESTAMP, interval '1' minute * class.duration) OVERLAPS ( ?::TIMESTAMP, interval '1' minute * 0)"); 
  
     $stmt->execute(array($timeStamp));
     return  $stmt->fetch();
@@ -49,9 +50,9 @@ function getAvailableRoom($timeStamp){
 function countRooms(){
 
      global $conn;
-    $stmt = $conn->prepare("SELECT COUNT(*)
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total
                             FROM room
-                            WHERE  visible =1 ;");
+                            WHERE  visible =1");
     $stmt->execute(array());
     return  $stmt->fetch();
 }
@@ -60,9 +61,24 @@ function listRooms($offset,$limit){
      global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM room
-                            WHERE  visible =1 LIMIT ? OFFSET ? ;");
+                            WHERE  visible =1 LIMIT ? OFFSET ?");
     $stmt->execute(array($offset,$limit));
     return  $stmt->fetchAll();
 }
-
+function getRooms(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT room
+        FROM Room WHERE visible=1");
+    
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+function getRoomID($room){
+    global $conn;
+    $stmt = $conn->prepare("SELECT roomid
+        FROM Room WHERE room=? AND visible=1");
+    
+    $stmt->execute(array($room));
+    return $stmt->fetch();
+};
 ?>

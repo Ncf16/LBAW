@@ -29,6 +29,7 @@ function deleteArea($area){
 		WHERE areaid =?");
 
 	$stmt->execute(array($area));
+	return "Success";
 }
 
 function getAreaID($area){
@@ -42,7 +43,7 @@ function getAreaID($area){
 
 function countAreas(){
 	global $conn;
-	$stmt = $conn->prepare("SELECT COUNT(*)
+	$stmt = $conn->prepare("SELECT COUNT(*) AS total
 		FROM Area WHERE visible=1");
 
 	$stmt->execute();

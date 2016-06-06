@@ -25,7 +25,7 @@ $teachers = getTeachers();
 $units = getUnitsName();
 
 foreach ($years as &$year)
-	$year['year'] = $year['year'] . '/' . ($year[year] + 1);
+	$year['year'] = $year['year'] . '/' . ($year['year'] + 1);
 unset($year);
 
 foreach ($teachers as &$teacher)

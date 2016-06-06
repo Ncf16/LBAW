@@ -38,3 +38,22 @@ button.btn.btn-default {
 table#attendancesTable {
     margin-top: 30px;
 }
+
+div.panel-body{
+    padding: 0;
+}
+
+div.panel-body p{
+    padding: 15px;
+}
+
+.classInfo{
+    border: 2px solid black;
+}
+.classInfo td,
+.classInfo tr{
+    border-top: 2px solid black;
+}
+.classInfo td.border{
+    border-right: 2px solid black;
+}

@@ -4,7 +4,11 @@
   include_once($BASE_DIR . 'database/student.php'); 
  
 
-  
+  if(!$_GET['person']){
+   header('Location: ' . $BASE_URL .  'index.php');
+   exit;
+  }
+
 
   if(!$_GET['person'] || ($person = getPersonInfoByUser($_GET['person']))== NULL){ //IF USERNAME CORRESPONDS TO NO PERSON, REDIRECT TO INDEX
   	header('Location: ' . $BASE_URL .  'index.php');
@@ -27,9 +31,6 @@
    $privateName = $person['privatename'];
 
  }
-
- 
-
   if($person['persontype'] == 'Student'){
   	$smarty->assign('student', $person);
   if(isset($_SESSION['username']) && isset($_GET['person']) && $_GET['person'] === $_SESSION['username'] ){

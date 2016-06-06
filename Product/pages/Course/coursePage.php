@@ -1,4 +1,3 @@
- 
  <?php
   include_once('../../config/init.php');
   include_once($BASE_DIR . 'database/course.php'); 
@@ -8,7 +7,7 @@
   $syllabusYears = getSyllabusYears($_GET['course']);
   $syllabusYears['nrYears'] = sizeof($syllabusYears);
 
-	if( $_SESSION['account_type'] === 'Admin' || isCourseRegent($_GET['course'], $_SESSION['userID'])){
+	if( $_SESSION['account_type'] === 'Admin' || isCourseDirector($_GET['course'], $_SESSION['userID'])){
 		 $canAddCU=true;
 	}
 	else

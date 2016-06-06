@@ -44,4 +44,5 @@ echo createUpdateQuery($_POST,$username,"username");
     	}  //Password 
     } 
 
+ 
 ?>

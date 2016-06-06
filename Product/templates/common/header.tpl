@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Bootstrap -->
@@ -14,28 +14,30 @@
     <Title>AcademicManagement Page</Title>
     <!-- Custom Fonts -->
     <link href="{$BASE_URL}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
-    
-  <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header navbar-right">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#CollapsibleMenu">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-          {if !isset($smarty.session.username)}
-           <div class="col-sm-3 col-xs-5" >
-                <a href="{$BASE_URL}pages/Person/login.php" class="btn btn-primary btn-primary">Login </a>
-            </div>
-          {else}
-           <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header navbar-right">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#CollapsibleMenu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            {if !isset($smarty.session.username)}
+
+            <a href="{$BASE_URL}pages/Person/login.php" id="login_btn" class="btn navbar-btn">Login </a>
+
+            {else}
+            <ul class="nav navbar-nav navbar-left" style="max-width:160px;">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b class="caret"></b></a>
+                    <a href="#" id="user_dropdown" class="dropdown-toggle" data-toggle="dropdown">{$USERNAME} ({$ACCOUNT_TYPE}) <b
+                            class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="{$BASE_URL}pages/Person/personalPage.php?person={$USERNAME}">Profile</a>
@@ -45,65 +47,70 @@
                             <a href="{$BASE_URL}pages/Admin/admin.php">Admin Area</a>
                         </li>
                         {/if}
+                        {if $ACCOUNT_TYPE != 'Teacher'}
                         <li>
-                            <a href="{$BASE_URL}pages/login.php">Request</a>
+                            <a href="{$BASE_URL}pages/Request/requestList.php">Requests</a>
                         </li>
+                        {/if}
                         <li>
                             <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
                         </li>
                     </ul>
                 </li>
             </ul>
-          {/if}
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="CollapsibleMenu">
-                <ul class="nav navbar-nav navbar-left">
-                      
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}index.php">Home</a>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
-                            </li>
-                            <li>
-                                <a href="{$BASE_URL}pages/Person/personList.php">People</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- this should show for students and regent of a course -->
-                    {if $ACCOUNT_TYPE == 'Student'}
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/Course/coursePage.php">My Course</a>
-                    </li>
-                    {/if}
-
-                    {if $ACCOUNT_TYPE == 'Student' || $ACCOUNT_TYPE == 'Teacher'} 
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
-                    </li>
-
-                    <li class="nav-brand">
-                        <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
-                    </li>
-                    {/if}
-                        
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            {/if}
         </div>
-        <!-- /.container -->
-    </nav>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="CollapsibleMenu">
+            <ul class="nav navbar-nav navbar-left">
 
-    <!-- jQuery --> 
-    <script src="{$BASE_URL}js/jquery.js"></script>
-    <!-- Other Scripts -->
-    <script src="{$BASE_URL}js/scripts.js"></script>
-   
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}index.php">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{$BASE_URL}pages/Course/courseList.php">Courses</a>
+                        </li>
+                        <li>
+                            <a href="{$BASE_URL}pages/Person/personList.php">People</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- this should show for students and regent of a course -->
+                {if $ACCOUNT_TYPE == 'Student'}
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/Course/coursePage.php?course={$STUDENT_COURSE}">My Course</a>
+                </li>
+                {/if}
+
+                {if $ACCOUNT_TYPE == 'Student'}
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                </li>
+                {elseif $ACCOUNT_TYPE == 'Teacher'}
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
+                </li>
+                <li class="nav-brand">
+                    <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                </li>
+                {/if}
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- jQuery -->
+<script src="{$BASE_URL}js/jquery.js"></script>
+<!-- Other Scripts -->
+<script src="{$BASE_URL}js/scripts.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{$BASE_URL}js/bootstrap.min.js"></script>

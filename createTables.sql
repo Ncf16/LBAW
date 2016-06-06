@@ -20,6 +20,7 @@ DROP TABLE IF EXISTS GroupWork;
 DROP TABLE IF EXISTS Room;
 DROP TABLE IF EXISTS Area;
 DROP TABLE IF EXISTS Calendar;
+DROP TABLE IF EXISTS CurricularUploads;
 
 DROP TYPE IF EXISTS PersonType CASCADE;
 DROP TYPE IF EXISTS Language CASCADE;
@@ -71,11 +72,13 @@ CREATE TABLE IF NOT EXISTS Request(
 requestID SERIAL PRIMARY KEY,
 studentCode INTEGER REFERENCES Person(academicCode),
 adminCode INTEGER REFERENCES Person(academicCode),
-newCourse_Code INTEGER REFERENCES Course(code),
+closed BOOLEAN NOT NULL DEFAULT false,
 approved BOOLEAN,
-reasonForChange TEXT NOT NULL,
+title TEXT NOT NULL,
+description TEXT NOT NULL,
+submitionDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 visible INTEGER DEFAULT 1,
-CHECK(reasonForChange <> '')
+CHECK(description <> '')
 );
 
 CREATE TABLE IF NOT EXISTS Syllabus(
@@ -125,6 +128,12 @@ requirements TEXT NOT NULL,
 visible INTEGER DEFAULT 1,
 CHECK(curricularSemester = 1 OR curricularSemester = 2),
 CHECK(curricularYear > 0 AND curricularYear <=  8)
+);
+
+CREATE TABLE IF NOT EXISTS CurricularUploads(
+	uploadID SERIAL PRIMARY KEY,
+	cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
+	filePath TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Class(
