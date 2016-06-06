@@ -121,4 +121,33 @@ function deleteGrade($studentCode,$evaluation){
     $stmt->execute(array($studentCode,$evaluation));
     return "Success";
 }
+//Or All é só apagar CurricularUnit.curricularID = ?
+
+function getGradesStudentByCU($studentcode,$year,$CU){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT Grade
+		FROM Grade,Evaluation,Person,CourseEnrollment,Syllabus,CurricularUnitOccurrence,CurricularUnit,CurricularEnrollment
+		WHERE Grade.studentcode = ? AND Grade.grade IS NOT NULL 
+		AND Person.academiccode = Grade.studentcode AND  CourseEnrollment.studentCode= Grade.studentcode AND Person.persontype = 'Student' 
+		AND Grade.evaluationid = Evaluation.evaluationid AND Syllabus.courseCode = CourseEnrollment.courseID AND Syllabus.calendarYear = ? 
+		AND CurricularUnitOccurrence.syllabusID = Syllabus.syllabusID AND Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuOccurrenceID 
+	    AND CurricularEnrollment.studentCode  = Grade.studentcode AND CurricularUnit.curricularID = ? AND 
+	    CurricularUnitOccurrence.curricularUnitID = CurricularUnit.curricularID AND CurricularEnrollment.cuOccurrenceID = CurricularUnitOccurrence.cuOccurrenceID 
+	    AND Evaluation.visible=1 AND Grade.visible=1 AND Person.visible = 1 AND CourseEnrollment.visible = 1 AND Syllabus.visible = 1 AND CurricularUnitOccurrence.visible = 1 
+	    AND CurricularUnit.visible = 1 AND CurricularEnrollment.visible=1;");
+		$stmt->execute(array($studentcode,$year,$CU));
+
+	/*
+Grade -> Person
+Grade -> Evalution
+Syllabus -> CourseEnroll
+CourseEnroll -> Person
+Syllabus -> CUO
+Evaluation -> CUO
+CUO -> CU
+CUE -> CUO
+	*/
+	return $stmt->fetchAll();
+}
 ?>
