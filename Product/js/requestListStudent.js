@@ -75,7 +75,7 @@ function changePage(event) {
     console.log(document.getElementById('units'));
     $(tabSelector + ' .pagination').html('');
 
-    var newPage = currentPagination.changePage(target);
+    var newPage = currentPagination.updatePageNb(target);
     var nbItems = currentPagination.nbItems;
     var nbItemsPerPage = currentPagination.nbItemsPerPage;
 

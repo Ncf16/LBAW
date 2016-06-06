@@ -125,7 +125,7 @@ function getClasses($nbClasses,$offset){
 		Class.occurrenceid = Curricularunitoccurrence.cuoccurrenceid AND
 		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
 		Curricularunitoccurrence.curricularunitid = Curricularunit.curricularid AND
-		Class.roomid = Room.roomid  AND Class.visible=1 LIMIT ? OFFSET ?");
+		Class.roomid = Room.roomid  AND Class.visible=1 ORDER BY classdate LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($nbClasses,$offset));
 	return $stmt->fetchAll();
@@ -138,7 +138,7 @@ function getUCOClasses($uco,$nbClasses,$offset){
 		FROM Class, Room, Person
 		WHERE Class.teachercode = Person.academiccode AND
 		Class.roomid = Room.roomid AND
-		Class.occurrenceid = ? AND Class.visible=1 LIMIT ? OFFSET ?");
+		Class.occurrenceid = ? AND Class.visible=1 ORDER BY classdate LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($uco,$nbClasses,$offset));
 	return $stmt->fetchAll();
@@ -153,7 +153,7 @@ function getTeacherClasses($teacher,$nbClasses,$offset){
 		Curricularunitoccurrence.syllabusid = Syllabus.syllabusid AND
 		Curricularunitoccurrence.curricularunitid = Curricularunit.curricularid AND
 		Class.roomid = Room.roomid AND Class.teacherCode = ?
-		AND Class.visible=1 LIMIT ? OFFSET ?");
+		AND Class.visible=1 ORDER BY classdate LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($teacher,$nbClasses,$offset));
 	return $stmt->fetchAll();
@@ -167,4 +167,38 @@ function deleteClass($class){
 	$stmt->execute(array($class));
 	return "Success";
 }
+
+function getClassUCO($class){
+	global $conn;
+	$stmt = $conn->prepare("SELECT occurrenceid FROM Class WHERE classid = ?");
+
+	$stmt->execute(array($class));
+	return $stmt->fetch();
+}
+
+function isClassTeacher($person,$class){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM Class
+		WHERE Class.classid = ? AND Class.teachercode = ?");
+	$stmt->execute(array($class,$person));
+	return ($stmt->rowCount() > 0);
+}
+
+function hasTeacherClassAccess($person,$class){
+	
+	$uco = getClassUCO($class)['occurrenceid'];
+	if(isUCOCourseDirector($person,$uco))
+		return true;
+	else if(isUCORegent($person,$uco))
+		return true;
+	else return isClassTeacher($person,$class);
+}
+
+function hasStudentClassAccess($person,$class){
+	
+	$uco = getClassUCO($class)['occurrenceid'];
+	return hasStudentUCOAccess($person,$uco);
+}
 ?>
+

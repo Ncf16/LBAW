@@ -70,7 +70,7 @@ function getClassesAttendances($class,$nbAttendances,$offset){
 	$stmt = $conn->prepare("SELECT Person.name, Person.username, Person.academiccode, Class.classid, Attendance.attended
 		FROM Attendance,Person,Class
 		WHERE Attendance.classid = Class.classid AND Person.academiccode = Attendance.studentcode AND
-		Attendance.classid = ? AND Attendance.visible = 1 LIMIT ? OFFSET ?");
+		Attendance.classid = ? AND Attendance.visible = 1 ORDER BY Person.name LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($class,$nbAttendances,$offset));
 	return $stmt->fetchAll();
