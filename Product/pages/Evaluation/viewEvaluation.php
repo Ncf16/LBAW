@@ -12,8 +12,6 @@ if(!$_GET['evaluationID']){
 
 else{
 
- 
-
    $type = getEvaluationType($_GET['evaluationID']);
 
    if(!$type){

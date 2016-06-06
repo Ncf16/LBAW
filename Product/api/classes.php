@@ -83,6 +83,12 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 	}
 	else if($_POST['action']=='list'){
 
+		 //what should I do in an api???
+		if(!$_SESSION || isset($_SESSION)){
+		    $_SESSION['error_messages'][] = 'invalid access!';
+		    exit;
+		  }
+
 		if(!isset($_POST['itemsPerPage']))
 			$itemsPerPage = 10;
 		else

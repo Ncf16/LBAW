@@ -330,7 +330,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE createClassAttendances();
 
 -----------------------------------------
-CREATE OR REPLACE FUNCTION createGrade() RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION createGrades() RETURNS trigger AS $$
 DECLARE
 student INTEGER;
 BEGIN
@@ -346,7 +346,7 @@ $$ LANGUAGE 'plpgsql';
 CREATE TRIGGER createGrade
 AFTER INSERT ON Evaluation
 FOR EACH ROW
-EXECUTE PROCEDURE createGrade();
+EXECUTE PROCEDURE createGrades();
 
 -----------------------------------------
 -- FULL TEXT TRIGGERS--

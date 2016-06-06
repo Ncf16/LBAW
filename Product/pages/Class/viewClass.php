@@ -4,6 +4,12 @@ include_once($BASE_DIR . 'database/class.php');
 include_once($BASE_DIR . 'database/room.php');
 include_once($BASE_DIR . 'database/teacher.php');
 
+if(!$_SESSION || isset($_SESSION)||empty($_SESSION)){
+    $_SESSION['error_messages'][] = 'invalid access!';
+    header("Location: " . $BASE_URL . "index.php");
+    exit;
+  }
+
 if(isset($_GET['class'])){
 
    $class = getClass($_GET['class']);

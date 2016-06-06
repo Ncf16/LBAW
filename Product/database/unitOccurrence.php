@@ -195,7 +195,7 @@ function isUCOCourseDirector($person,$uco){
 	global $conn;
 	$stmt = $conn->prepare("SELECT * FROM CurricularUnitOccurrence, Syllabus, Course
 		WHERE CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid
-		AND Syllabus.coursecode = Course.code AND Course.teachercode = ?");
+		AND Syllabus.coursecode = Course.code AND Course.teachercode = ? AND Course.visible=1 AND Syllabus.visible=1 AND CurricularUnitOccurrence.visible=1  ");
 	$stmt->execute(array($uco,$person));
 	return ($stmt->rowCount() > 0);
 }
@@ -204,7 +204,7 @@ function isUCORegent($person,$uco){
 
 	global $conn;
 	$stmt = $conn->prepare("SELECT * FROM CurricularUnitOccurrence
-		WHERE CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teachercode = ?");
+		WHERE CurricularUnitOccurrence.cuOccurrenceID = ? AND CurricularUnitOccurrence.teachercode = ? AND CurricularUnitOccurrence.visible=1");
 	$stmt->execute(array($uco,$person));
 	return ($stmt->rowCount() > 0);
 }
@@ -212,7 +212,7 @@ function isUCORegent($person,$uco){
 function isUCOClassTeacher($person,$uco){
 	global $conn;
 	$stmt = $conn->prepare("SELECT * FROM Class
-		WHERE Class.occurrenceid = ? AND Class.teachercode = ?");
+		WHERE Class.occurrenceid = ? AND Class.teachercode = ? AND Class.visible=1");
 	$stmt->execute(array($uco,$person));
 	return ($stmt->rowCount() > 0);
 }
@@ -230,7 +230,7 @@ function hasStudentUCOAccess($person,$uco){
 	
 	global $conn;
 	$stmt = $conn->prepare("SELECT * FROM CurricularEnrollment
-		WHERE CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.studentcode = ?");
+		WHERE CurricularEnrollment.cuoccurrenceid = ? AND CurricularEnrollment.studentcode = ? AND CurricularEnrollment.visible= 1 ");
 	$stmt->execute(array($uco,$person));
 	return ($stmt->rowCount() > 0);
 }
