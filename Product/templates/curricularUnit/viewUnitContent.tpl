@@ -2,46 +2,47 @@
 <link href="{$BASE_URL}css/classes.css" rel="stylesheet">
 
 <div class="container" id="classesPage">
+   <div class="row">
+      <div class="col-md-12">
+         <h2 class="page-header">
+            Unit Contents
+            {if $classes.unitInformation}
+            <small>{$classes.unitInformation}</small>
+            {elseif $classes.teacherInformation}
+            <small>{$classes.teacherInformation}</small>
+            {/if}
+         </h2>
+      </div>
+      <div class="col-sm-2">
+          <input id="input_btn_pretend" class="btn btn-default btn-file hidden" type="button"
+                 value="Select JSON File">
+          <div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="page-header">
-                Unit Contents
-                {if $classes.unitInformation}
-                <small>{$classes.unitInformation}</small>
-                {elseif $classes.teacherInformation}
-                <small>{$classes.teacherInformation}</small>
-                {/if}
-            </h2>
-        </div>
-        <div class="col-sm-2">
-            <input id="input_btn_pretend" class="btn btn-default btn-file hidden" type="button"
-                   value="Select JSON File">
-            <div>
+              <div>
+                  <input id="input_btn_real" class="input_file" type="file">
+              </div>
 
-                <div>
-                    <input id="input_btn_real" class="input_file" type="file">
-                </div>
-
-            </div>
-        </div>
+          </div>
+      </div>
     </div>
 
-    <div class="row">
-        <br>
-        <table id="mytable" class="table table-bordered table-striped">
-            <thead>
+  <div class="row">
+      <br>
+      <table id="mytable" class="table bordered table-striped">
+         <thead>
+
             <th class="col-md-3">Teacher</th>
-            <th class="col-md-1">Delete</th>
-            </thead>
-            <tbody id="contentsListBody">
-            </tbody>
-        </table>
 
-        <div class="clearfix"></div>
-        <ul class="pagination pull-right">
-        </ul>
-    </div>
+            <th class="col-md-1">Delete</th>
+         </thead>
+         <tbody class="contentsListBody">
+         </tbody>
+      </table>
+
+      <div class="clearfix"></div>
+      <ul class="pagination pull-right">
+      </ul>
+   </div>
 </div>
 
 <script src="{$BASE_URL}js/pagination.js"></script>
@@ -72,8 +73,8 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                <input name="title" placeholder="Write the title here." class="form-control" type="text"
-                                       required>
+                                <input  name="title" placeholder="Write the title here." class="form-control" type="text"
+                                        required>
 
                             </div>
                         </div>
@@ -107,9 +108,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="requestSubmitBtn" type="submit" class="btn btn-warning" data-dismiss="modal">Submit
-                    Request
-                </button>
+                <button id="requestSubmitBtn" type="submit" class="btn btn-warning" data-dismiss="modal">Submit Request</button>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>

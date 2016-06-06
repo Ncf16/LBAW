@@ -39,4 +39,3 @@
 
     </tr>
 {/foreach}
-<script> var sample = "{$requests}";</script>

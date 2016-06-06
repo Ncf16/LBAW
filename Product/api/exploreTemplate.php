@@ -27,6 +27,9 @@
   }else if($_POST['template'] == 'modal'){
     $smarty->assign('request', $units);
     $smarty->display('request/viewModalRequest.tpl');
+  }else if($_POST['template'] == 'unitContents'){
+    $smarty->assign('contents', $units);
+    $smarty->display('curricularUnit/viewUnitContentBody.tpl');
   }
 
 

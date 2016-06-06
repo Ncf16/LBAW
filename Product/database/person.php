@@ -58,14 +58,14 @@ function createPerson($name, $address, $nationality, $phone, $nif, $birth, $type
         $stmt = $conn->prepare($query);
         $stmt->execute(array($name, $address, $nationality, $phone, $nif, $birth, $type, password_hash($password, PASSWORD_DEFAULT)));
 
-        $result =  $stmt->fetch();
+        $result = $stmt->fetch();
         return $result;
     } catch (PDOException $e) {
         //echo $query . "<br>" . $e->getMessage();
         if ($e->getCode() == 23505) {
             return "User $name with NIF $nif already exists.";
         } else {
-            return  $e->getMessage();
+            return $e->getMessage();
         }
     } catch (DatabaseException $e) {
         if ($e->getCode() == 23505)
@@ -143,6 +143,7 @@ function createUpdateQuery($arrayValues,$id,$idName){
   else
     return false;
  }
+ 
 function getPersonInfoByUser($username)
 {
     global $conn;

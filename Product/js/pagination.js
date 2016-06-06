@@ -22,7 +22,7 @@ Pagination.prototype.addPagination = function(page,nbItems,nbItemsPerPage,showPa
 	if (this.nbPages < this.showPages)
 		limPages = this.nbPages;
 
-
+	console.log(page+ " " + nbItems + " "+ nbItemsPerPage+ " " + showPages)
 	if(this.nbPages > 1){
 		var pagination = $('.pagination');
 
