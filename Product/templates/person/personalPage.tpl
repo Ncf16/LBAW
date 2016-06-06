@@ -8,8 +8,15 @@
       <div class="row">
          <div class="col-lg-12">
             <h1 class="page-header">Personal Page
+            {if $privateName == false}
                <small>{$person.name}  ({$person.persontype})</small>
+               {/if}
+               {if $seeUnits == true}
                 <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
+                {/if}
+                  {if $person.persontype == 'Student' and $viewerType == 'Admin'}
+                <a  data-toggle="modal" href="#studentCourseEdit" class="btn btn-xs btn-primary">Change Student Course</a>
+                {/if}
             </h1>
          </div>
       </div>
@@ -19,20 +26,23 @@
          <div class="col-md-3">
             <img class="img-responsive" src="{$BASE_URL}images/Students/avatar.png" alt="studentImg"> <!--  src="http://placehold.it/750x500"-->
          </div>
+           {if $person.persontype == 'Student' and $student.currentyear !== null }
          <div class="col-md-2">
-            {if $person.persontype == 'Student'}
-            <h3>Course</h3>
-            <a href="CoursePage_MIEIC.html">{$student.coursename}</a>
+           
+            <a href="{$BASE_URL}pages/Course/coursePage.php?course={$currentCourse.code}"> <h3>Course: {$student.coursename} </h3></a>
             <ul>
                <li>Current Year: {$student.currentyear}</li>
                <li>Starting Year: {$student.startyear}</li>
             </ul>
-            {/if}
+           
          </div>
+           {/if}
          <div class="col-md-3">
             <h3>Personal Details</h3>
             <ul>
+              {if  $privatePhone == false}
                <li>Mobile Phone: {$person.phonenumber}</li>
+               {/if}
                <li>Current Status:
                    {if isset($person.finishyear) and $person.coursegrade > 10}
                    Course completed
@@ -55,13 +65,19 @@
                   <div id="info" class="panel-collapse collapse">
                      <div class="panel-body">
                         <p>
-                           Birth Date: {$person.birthdate}
+                         {if  $privateDate == false}
+                              Birth Date: {$person.birthdate}
                            <br>
-                           Address: {$person.address}
+                         {/if}
+                     
+                         {if  $privateAddr == false}
+                            Address: {$person.address}
                            <br>
-                           NIF: {$person.nif}
-                           <br>
-                           Nationality: {$person.nationality}
+                         {/if}
+         
+                         {if  $privateNat == false}
+                             Nationality: {$person.nationality}
+                         {/if}
                         </p>
                      </div>
                   </div>
@@ -108,7 +124,7 @@
             {if $person.persontype == 'Student' and $seeUnits == true}
           <div class="row" id="studentsGrades">
             <h2>Curricular Units</h2>
-              <input hidden value="{$student}" id="studentID"/>
+              <input hidden value="{$student.academiccode}" id="studentID"/>
          <input hidden value="{$courseCode}" id="courseID"/>
           
          <div id="cu_response">
@@ -117,5 +133,40 @@
             {/if}
    </div>
 </div>
-
+<div id="studentCourseEdit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title">Change Course </h4>
+            </div>
+            <div class="modal-body">
+                <p> Current Course: {$currentCourse.name} </p>
+                <input hidden id="currentCourseCode" value="{$currentCourse.code}" />
+                 <input hidden value="{$student.academiccode}" id="studentAcademicCode"/>
+               <select name="chaneCourse" id="chaneCourse" class="form-control" required>
+                     <option value="" disabled selected>Select Course</option>
+                     {foreach from=$courses item=course}
+                     {if $currentCourse.code eq $course.code }
+                     <option value={$course.code} disabled>{$course.name}:{$course.abbreviation}</option>
+                     {else}
+                     <option value={$course.code}>{$course.name}:{$course.abbreviation}</option>
+                     {/if}
+                     {/foreach} 
+                  </select>
+                  <div id="modalErrors">
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="submitNewCourseStudent" class="btn btn-default" data-dismiss="modal">Change Course</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 {include file='common/footer.tpl'}
+
+<!-- Modal -->
+
+ 

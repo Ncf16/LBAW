@@ -131,32 +131,34 @@ function getPersonUsernameByNIF($nif)
     }
 }
 
-function createUpdateQuery($arrayValues, $id, $idName)
-{
-    global $conn;
-    $values = array();
-    $query = "UPDATE Person SET ";
+function createUpdateQuery($arrayValues,$id,$idName){
+  global $conn;
+  $values=array();
+  $query="UPDATE Person SET ";
 
-    foreach ($arrayValues as $key => $value) {
+  foreach ($arrayValues as $key => $value) {
 
-        if ($value != "false" && $value != "true" && !empty ($value)) {
-            $query .= " " . $key . " = ?, ";
-            array_push($values, $value);
-        }
-    }
-    $query = substr($query, 0, -2);
-    $query .= " WHERE " . $idName . " =  ?;";
+    if(!empty ($value)){
+     $query.=" ".$key." = ?, ";
+     array_push($values,$value);
+     }
+  }
+  $query=substr($query, 0, -2);
+  $query.=" WHERE ".$idName." =  ? RETURNING ".$idName." ;";
 
-    array_push($values, $id);
-    $stmt = $conn->prepare($query);
-    try {
-        $res = $stmt->execute($values);
-    } catch (Exception $e) {
-        echo "false " . $e->getMessage();
-    }
-    return $res;
-}
-
+  array_push($values, $id);
+  $stmt = $conn->prepare($query);
+  try{
+    $stmt->execute($values);
+  }catch (Exception $e)  {
+   return false;
+  }
+  $res= $stmt->fetch();
+  if($res!==false)
+    return true;
+  else
+    return false;
+ 
 function getPersonInfoByUser($username)
 {
     global $conn;

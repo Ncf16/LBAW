@@ -8,3 +8,7 @@
 #personalPage a[class="btn btn-xs btn-primary"]:active{
 background: #b33c00;
 }
+
+#returnError{
+	 color: red;
+}
