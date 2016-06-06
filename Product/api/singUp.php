@@ -6,13 +6,6 @@
   include_once($BASE_DIR . 'database/cuEnrollment.php'); 
   include_once($BASE_DIR . 'database/unit.php'); 
 
-foreach ($_POST as $key => $value) {
-	var_dump($key);
-	echo "  <br>";
-	var_dump($value);
-	echo " <br>";
-}
-
 	if(!$_POST['cCode']){
 		echo "Make sure you are enrolled in a course";
 		exit;
@@ -44,7 +37,11 @@ foreach ($_POST as $key => $value) {
 
 		 //$key = CU_CurricularUnitName
 		// $value = CUO_ID
-		 $return='true';
+		 if(count($_POST)>0)
+		 	$return='true';
+		 else
+		 	$return='false';
+		 
 		foreach ($_POST as $key => $value) {
 		  preg_match($pattern, $key,$match);
 		 

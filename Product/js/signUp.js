@@ -21,12 +21,12 @@ function signUpHandler(event){
 		contentType: false,
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-			/*	if(data.indexOf ('true')>-1){
-			 		 location.reload();
+			 	if(data.indexOf ('true')>-1){
+			 		  window.location.href =  BASE_URL + "pages/Course/coursePage.php?course="+$("#cc").val();
 				}
 				else {
 				$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");
-				}*/
+				} 
 			}  
 		},
 		error: function(jqXHR, textStatus, errorThrown) {

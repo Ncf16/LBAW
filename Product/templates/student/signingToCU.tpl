@@ -1,4 +1,5 @@
  {include file='common/header.tpl'}
+  <link href="{$BASE_URL}css/personEdit.css" rel="stylesheet">
 <div class="container">
    <div class="row">
       <div class="col-md-12">
@@ -41,6 +42,8 @@
                   <button id="signUpFormSubmit" type="submit" class="btn btn-primary">Sign Up</button>
                </div>
             </div>
+           <div id="error_messages">
+          </div>
          </form>
       </div>
    </div>
