@@ -90,7 +90,7 @@
                <a href="#" class="btn btn-primary btn-primary">Curricular Units</a>
             </div>
             <div class="col-sm-3 col-xs-5">
-               <a href="#" class="btn btn-primary btn-primary"> Submitted Requests</a>
+               <a href="{$BASE_URL}pages/Request/requestList.php" class="btn btn-primary btn-primary"> Submitted Requests</a>
             </div>
             <div class="col-sm-3 col-xs-5">
                <a href="#" class="btn btn-primary btn-primary">Currical Units Taken</a>

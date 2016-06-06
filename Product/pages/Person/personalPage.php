@@ -25,8 +25,9 @@ if ($person['persontype'] == 'Student') {
      $student = getStudentInfoByUsername($_GET['person']);
      
      if ($student !== false) 
-      $smarty->assign('student', $student);
-     else $smarty->assign('student', $person);
+       $smarty->assign('student', $student);
+     else
+       $smarty->assign('student', $person);
 
      $studentID = getPersonIDByUserName($_GET['person']);
      $getStudentCourse = getStudentCourse($studentID['academiccode']);
@@ -36,12 +37,12 @@ if ($person['persontype'] == 'Student') {
      $smarty->assign('courseCode', $getStudentCourse['code']);
 
      if (isset($_SESSION['username']) && isset($_GET['person']) && $_GET['person'] === $_SESSION['username']) {
-      include_once ($BASE_DIR . 'database/cuEnrollment.php');
-      $isCheckProgress = true;
+        include_once ($BASE_DIR . 'database/cuEnrollment.php');
+        $isCheckProgress = true;
      }
- else 
-  $isCheckProgress = false;
- 
+     else 
+       $isCheckProgress = false;
+     
  if ($_SESSION['account_type'] == 'Admin') {
   $courses = getVisibleCourses();
   $isCheckProgress = true;

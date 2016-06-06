@@ -1,11 +1,17 @@
 <form class="well form-horizontal" action="#" method="post" id="account_form_individual">
+	<div class="row">
+		<strong>
+			<span class="glyphicon glyphicon-asterisk"></span>
+			Required Field
+		</strong>
+	</div>
 	<!-- NAME -->
 	<div class="form-group">
 		<label class="col-md-3 control-label">Name</label>  
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				<input name="name" placeholder="Ex: Jon Snow" class="form-control" type="text" required>
+				<input name="name" placeholder="Write your name here. Ex: Martha Jones" class="form-control" type="text" required>
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
@@ -18,9 +24,9 @@
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				<input name="address" placeholder="Ex: The Wall" class="form-control" type="text" >
+				<input name="address" placeholder="Write your address here. Ex: 88986 West Comoros Blvd." class="form-control" type="text" >
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+
 			</div>
 		</div>
 	</div>
@@ -31,9 +37,8 @@
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				<input name="nationality" placeholder="Ex: Westerosi" class="form-control" type="text" >
+				<input name="nationality" placeholder="Write your nationality here. Ex: Portugal" class="form-control" type="text" >
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div>
@@ -44,9 +49,8 @@
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				<input name="phone" placeholder="Ex: There are no phones in GoT" class="form-control" type="number" >
+				<input name="phone" placeholder="Write your phone number here Ex: 212045867" class="form-control" type="number" >
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div>
@@ -57,7 +61,7 @@
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				<input name="nif" placeholder="Ex: 123456789" class="form-control" type="number" required>
+				<input name="nif" placeholder="Write your NIF here. Must have 9 characters Ex: 123456789" class="form-control" type="number" required>
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
@@ -70,9 +74,8 @@
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-				<input  name="birth_date" placeholder="Ex: When Snow was born" class="form-control" type="date" min="1900-01-01" max="2016-01-01" value="2000-01-01">
+				<input  name="birth_date" placeholder="Select your birth date." class="form-control" type="date" min="1900-01-01" max="2016-01-01" value="2000-01-01">
 
-				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div>
@@ -93,38 +96,33 @@
 		</div>
 	</div>
 
-	<!-- NIF -->
+	<!-- PASSWORD -->
 	<div class="form-group">
 		<label class="col-md-3 control-label">Password</label>  
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				<input name="password" placeholder="Ex: Ghost" class="form-control" type="password" required>
+				<input name="password" placeholder="Input your password here. Ex: as2A4M2Asj8nsUY" class="form-control" type="password" required>
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 			</div>
 		</div>
 	</div> 
 
-	<div class="row">
-		<strong>
-			<span class="glyphicon glyphicon-asterisk"></span> 
-			Required Field
-		</strong>
-	</div>
 
 	<div class="form-group">
 		<div class="col-md-4 col-md-offset-1">
-			<button id="submit_individual" type="submit" class="btn btn-primary">ADD</button>
+			<button id="submit_individual" type="submit" class="btn btn-success">ADD</button>
 		</div>
 		<!-- SUCCESS MESSAGE -->        
-		<div id="creation_success" class="col-md-4 col-md-offset-1">
+		<div id="creation_success" class="col-md-4 col-md-offset-1"><strong>
 			Account Created.
 			<a  href="{$BASE_URL}pages/Person/personalPage.php?person="> User Account </a>
+		</strong>
 		</div>
 		<!-- FAILURE MESSAGE -->
 		<div id="creation_failure" class="col-md-4 col-md-offset-1">
-			hi
+
 		</div>
 
 	</div>

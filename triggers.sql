@@ -118,10 +118,10 @@ EXECUTE PROCEDURE isPersonTeacher();
 
 CREATE OR REPLACE FUNCTION isPersonAdmin() RETURNS trigger AS $$
 DECLARE
- type PersonType;
+ type persontype;
 BEGIN
 type:=getPersonType(NEW.adminCode);
- IF (type = 'Admin' )
+ IF (type = 'Admin' OR NEW.adminCode IS NULL)
  THEN 
  RETURN NEW;
  ELSE
@@ -159,10 +159,11 @@ BEGIN
  SELECT COUNT(*) INTO numberOfExams
  FROM Evaluation
  WHERE Evaluation.cuOccurrenceID = curricular AND
+ Evaluation.evaluationtype = 'Exam' AND
  Evaluation.visible = 1;
  IF(numberOfExams > 1)
  THEN
- RETURN NULL;--RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
+ RAISE EXCEPTION 'Only 1 exam per Occurrence is allowed';
  ELSE
   RETURN NEW;
   END IF;
@@ -172,7 +173,6 @@ CREATE TRIGGER oneExamPerUC
 BEFORE INSERT ON Exam
 FOR EACH ROW
 EXECUTE PROCEDURE onlyOneExam();
-
 -----------------------------------------
  
  CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCodeToGetCourse INTEGER) RETURNS SETOF INTEGER AS $$

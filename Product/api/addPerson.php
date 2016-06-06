@@ -24,13 +24,14 @@
   $account_type = !$_POST['account_type'] ? "Student" : $_POST['account_type'];  
   
   $result = createPerson($name, $address, $nationality, $phone, $nif, $birth_date, $account_type, $password);
-  
-  if ($result === true){
-    $username = getPersonUsernameByNIF($name, $address, $nationality, $phone, $birth_date, $account_type, $password);
-    echo $username;
+
+  if(isset($result['username'])){
+    echo json_encode($result['username']);
   }else{
-    echo "false";
+    $data[0] = false;
+    $data[1] = $result;
+    echo json_encode($data);
   }
-  
+
 
 ?>
