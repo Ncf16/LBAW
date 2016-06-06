@@ -57,17 +57,17 @@ function isInactive($academiccode,$course){
   	else
   		return false;
 }
-function restartEnrollment($academiccode,$oldCourse,$newCourse,$startYear,$finishYear,$curricularYear){
+function restartEnrollment($academiccode,$oldCourse,$newCourse,$startYear,$finishYear){
 
 	 global $conn;
 	 $conn->beginTransaction();
 	 $returnUpdate = deleteCourseEnrollment($academiccode,$oldCourse);
 	if($returnUpdate['visible'] == 0){
-	 $stmt = $conn->prepare("UPDATE Courseenrollment SET visible =  1, startYear = ?, finishYear = ?, curricularYear = ?
+	 $stmt = $conn->prepare("UPDATE Courseenrollment SET visible =  1, startYear = ?, finishYear = ?
 							WHERE  Courseenrollment.studentcode = ?
 								AND Courseenrollment.courseid = ? RETURNING courseid,studentcode ");
 
-  	 $stmt->execute(array($startYear,$finishYear,$curricularYear,$academiccode,$newCourse));
+  	 $stmt->execute(array($startYear,$finishYear,$academiccode,$newCourse));
   	 $returnCreate=$stmt->fetch();
   	if( $returnCreate['studentcode'] == $academiccode && $returnCreate['courseid'] == $newCourse ){
 		$conn->commit();

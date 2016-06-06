@@ -147,18 +147,14 @@ function countCoursesQuery($query)
 function getCourseInfo($courseCode)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT course.*, person.name as director, person.username as directorUsername, COUNT(CourseEnrollment.studentcode) AS studentcount
-                            FROM course, person, courseenrollment
-                            WHERE course.code = courseenrollment.courseid
-                            AND course.teachercode = person.academiccode
+    $stmt = $conn->prepare("SELECT course.*, person.name as director, person.username as directorUsername
+                            FROM course, person 
+                            WHERE  course.teachercode = person.academiccode
                             AND course.code = ?
-                            AND course.visible=1 AND person.visible=1 AND CourseEnrollment.visible=1
+                            AND course.visible=1 AND person.visible=1  
                             GROUP BY course.code, person.name, person.username");
-    $stmt->execute(array(
-        $courseCode
-    ));
+    $stmt->execute(array($courseCode)); 
     $result = $stmt->fetch();
-
     if ($result['coursetype'] !== false) {
         $result['courseYears'] = courseTypeToYears($result['coursetype']);
     } else
