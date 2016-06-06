@@ -1,5 +1,6 @@
  {include file='common/header.tpl'}
  <script src="{$BASE_URL}js/personEditValidation.js"></script>
+  <link href="{$BASE_URL}css/personEdit.css" rel="stylesheet">
 <div class="container">
 <div class="row">
    <div class="col-md-12">
@@ -13,7 +14,11 @@
 				<input name="name" value="{$person.name}" class="form-control" type="text" required>
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-				<span class="input-group-addon"><input type="checkbox" id="visibleName" name="visibleName"/></span>
+				{if $person.privatename == false}
+				<span class="input-group-addon"><input type="checkbox" id="privateName" name="privateName"/></span>
+				{else}
+				<span class="input-group-addon"><input type="checkbox" id="privateName" checked name="privateName"/></span>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -26,7 +31,11 @@
 				<input name="address" value="{$person.address}" class="form-control" type="text" >
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-				<span class="input-group-addon"><input type="checkbox" id="visibleAddr" name="visibleAddr"/></span>
+				{if $person.privateaddr == false}
+				<span class="input-group-addon"><input type="checkbox" id="privateAddr" name="privateAddr"/></span>
+				{else}
+				<span class="input-group-addon"><input type="checkbox" id="privateAddr" checked name="privateAddr"/></span>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -40,7 +49,11 @@
 				<input name="nationality" value="{$person.nationality}" class="form-control" type="text" >
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-				<span class="input-group-addon"><input type="checkbox" id="visibleNat" name="visibleNat"/></span>
+				{if $person.privatenat == false}
+				<span class="input-group-addon"><input type="checkbox" id="privateNat" name="privateNat"/></span>
+				{else}
+				<span class="input-group-addon"><input type="checkbox" id="privateNat" checked name="privateNat"/></span>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -54,7 +67,11 @@
 				<input name="phonenumber" value="{$person.phonenumber}" class="form-control" type="number" >
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-				<span class="input-group-addon"><input type="checkbox" id="visiblePhone" name="visiblePhone"/></span>
+				{if $person.privatephone == false}
+				<span class="input-group-addon"><input type="checkbox" id="privatePhone" name="privatePhone"/></span>
+				{else}
+				<span class="input-group-addon"><input type="checkbox" id="privatePhone" checked  name="privatePhone"/></span>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -66,9 +83,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 				<input name="nif" value="{$person.nif}" class="form-control" type="number" required>
-
+				 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-			<span class="input-group-addon"><input type="checkbox" disabled /></span>
+				<span class="input-group-addon"><input type="checkbox" disabled /></span>
 			</div>
 		</div>
 	</div>
@@ -82,7 +99,11 @@
 				<input  name="birthdate" value="{$person.birthdate}" class="form-control" type="date" min="1900-01-01" max="2016-01-01">
 
 				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-				<span class="input-group-addon"><input type="checkbox" id="visibleDate" name="visibleDate"/></span>
+				{if $person.privatedate == false}
+				<span class="input-group-addon"><input type="checkbox" id="privateDate" name="privateDate"/></span>
+				{else}
+				<span class="input-group-addon"><input type="checkbox" id="privateDate" checked name="privateDate"/></span>
+				{/if}
 			</div>
 		</div>
 	</div>

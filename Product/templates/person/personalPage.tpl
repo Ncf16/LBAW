@@ -8,8 +8,12 @@
       <div class="row">
          <div class="col-lg-12">
             <h1 class="page-header">Personal Page
+            {if $privateName == false}
                <small>{$person.name}  ({$person.persontype})</small>
+               {/if}
+               {if $seeUnits == true}
                 <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
+                {/if}
                   {if $person.persontype == 'Student' and $viewerType == 'Admin'}
                 <a  data-toggle="modal" href="#studentCourseEdit" class="btn btn-xs btn-primary">Change Student Course</a>
                 {/if}
@@ -36,7 +40,9 @@
          <div class="col-md-3">
             <h3>Personal Details</h3>
             <ul>
+              {if  $privatePhone == false}
                <li>Mobile Phone: {$person.phonenumber}</li>
+               {/if}
                <li>Current Status:
                    {if isset($person.finishyear) and $person.coursegrade > 10}
                    Course completed
@@ -59,13 +65,19 @@
                   <div id="info" class="panel-collapse collapse">
                      <div class="panel-body">
                         <p>
-                           Birth Date: {$person.birthdate}
+                         {if  $privateDate == false}
+                              Birth Date: {$person.birthdate}
                            <br>
-                           Address: {$person.address}
+                         {/if}
+                     
+                         {if  $privateAddr == false}
+                            Address: {$person.address}
                            <br>
-                           NIF: {$person.nif}
-                           <br>
-                           Nationality: {$person.nationality}
+                         {/if}
+         
+                         {if  $privateNat == false}
+                             Nationality: {$person.nationality}
+                         {/if}
                         </p>
                      </div>
                   </div>
