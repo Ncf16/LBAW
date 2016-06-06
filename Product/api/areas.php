@@ -2,11 +2,12 @@
 include_once('../config/init.php');
 
 $account_type = $_SESSION['account_type'];
-if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
+if(!$account_type || $account_type != 'Admin'){
 	$_SESSION['error_messages'][] = 'Unauthorized Access';
  	header("Location: " . $BASE_URL . "index.php");
  	exit;
 }
+
 if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
 	include_once($BASE_DIR . 'database/area.php');
@@ -31,7 +32,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		   echo true;
 	    }
 	    catch (PDOException $e) {
-	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
+	        $_SESSION['error_messages'][] = 'No changes made to area: ' . $e->getMessage();
 	        exit;
 	    }
 	}
@@ -51,7 +52,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 		   echo true;
 	    }
 	    catch (PDOException $e) {
-	        $_SESSION['error_messages'][] = 'No changes made to attendance: ' . $e->getMessage();
+	        $_SESSION['error_messages'][] = 'No changes made to area: ' . $e->getMessage();
 	        exit;
 	    }
 	}

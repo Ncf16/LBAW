@@ -76,7 +76,7 @@ function changePage(event) {
     $('#units').html('');  // maybe $(tabSelector + ' .requestListBody').html(''); too ?
     $(tabSelector + ' .pagination').html('');
 
-    var newPage = currentPagination.changePage(target);
+    var newPage = currentPagination.updatePageNb(target);
     var nbItems = currentPagination.nbItems;
     var nbItemsPerPage = currentPagination.nbItemsPerPage;
 

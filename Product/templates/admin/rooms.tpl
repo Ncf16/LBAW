@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+<link href="{$BASE_URL}css/listTables.css" rel="stylesheet">
 
 <div class="container">
   <div class="row">
@@ -31,6 +32,7 @@
   </div>
 </div>
 
+<script src="{$BASE_URL}js/pagination.js"></script>
 <script src="{$BASE_URL}js/rooms.js"></script>
 
 {include file='common/footer.tpl'}

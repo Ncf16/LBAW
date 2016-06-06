@@ -1,5 +1,5 @@
 {include file='common/header.tpl'}
-<link href="{$BASE_URL}css/classes.css" rel="stylesheet">
+<link href="{$BASE_URL}css/listTables.css" rel="stylesheet">
 
 <div class="container" id="classesPage">
    <div class="row">
@@ -13,12 +13,14 @@
             {/if}
          </h2>
       </div>
+      {if $accountType <> 'Student'}
       <div class="col-sm-2">
         <a href="{$BASE_URL}pages/Class/createClass.php{if $classes.unit}?unit={$classes.unit}{/if}">
           <button class="btn btn-primary" id="createClass">Create New Class</button>
         </a>
       </div>
     </div>
+    {/if}
 
   <div class="row">
       <br>
@@ -27,17 +29,16 @@
             <th class="col-md-1">View</th>
             {if $classes.unitInformation}
             <th class="col-md-3">Date</th>
-            <th class="col-md-4">Teacher</th>
+            <th class="col-md-5">Teacher</th>
             {elseif $classes.teacherInformation}
             <th class="col-md-3">Date</th>
-            <th class="col-md-4">Unit</th>
+            <th class="col-md-5">Unit</th>
             {else}
             <th class="col-md-2">Date</th>
             <th class="col-md-3">Teacher</th>
-            <th class="col-md-2">Unit</th>
+            <th class="col-md-3">Unit</th>
             {/if}
             <th class="col-md-2">Room</th>
-            <th class="col-md-1">Edit</th>
             <th class="col-md-1">Delete</th>
          </thead>
          <tbody id="classes">
@@ -50,6 +51,7 @@
    </div>
 </div>
 
+<script src="{$BASE_URL}js/pagination.js"></script>
 <script src="{$BASE_URL}js/classes.js"></script>
 
 {include file='common/footer.tpl'}
