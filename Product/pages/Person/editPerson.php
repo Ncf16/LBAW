@@ -6,6 +6,7 @@
    header('Location: ' . $BASE_URL.'index.php');
     exit;
   }
+ 
   $smarty->assign('person',$person);
   $smarty->display('person/editPerson.tpl');
 ?>
