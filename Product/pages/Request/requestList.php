@@ -30,5 +30,5 @@
  $smarty->assign(account,  $_SESSION['account_type']);
  $smarty->assign(userID, $_SESSION['userID'] );
 
-  $smarty->display('request/requestListPage.tpl')
+  $smarty->display('request/requestListPage.tpl');
 ?>
