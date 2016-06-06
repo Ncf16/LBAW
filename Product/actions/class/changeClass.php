@@ -106,7 +106,14 @@ include_once($BASE_DIR . 'database/class.php');
 
     try {
       $class = createClass($uco['cuoccurrenceid'],$teacher['academiccode'],$duration,$room['roomid'],$timestamp,$_POST['class_summary']);
-      header("Location:" . $BASE_URL . 'pages/Class/viewClass.php?class='. $class['classid']);
+      if($class)
+        header("Location:" . $BASE_URL . 'pages/Class/viewClass.php?class='. $class['classid']);
+      else{
+        $_SESSION['form_values'] = $_POST;
+        $_SESSION['error_messages'][] = 'Error creating class';
+        header("Location:".$_SERVER['HTTP_REFERER']);
+        exit;
+      }
     }
     catch (PDOException $e) {
       $_SESSION['form_values'] = $_POST;

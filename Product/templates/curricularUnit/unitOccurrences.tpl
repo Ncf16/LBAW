@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+<link href="{$BASE_URL}css/listTables.css" rel="stylesheet">
 
 <div class="container">
   <div class="row">
@@ -61,6 +62,6 @@
   </div>
 </div>
 
+<script src="{$BASE_URL}js/Pagination.js"></script>
 <script src="{$BASE_URL}js/unitOccurrences.js"></script>
-
 {include file='common/footer.tpl'}

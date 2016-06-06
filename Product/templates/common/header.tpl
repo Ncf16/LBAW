@@ -89,7 +89,7 @@
 
                 {if $ACCOUNT_TYPE == 'Student'}
                 <li class="nav-brand">
-                    <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
+                    <a href="{$BASE_URL}pages/Evaluation/evaluations.php?student={$USERID}">Evaluations</a>
                 </li>
                 {elseif $ACCOUNT_TYPE == 'Teacher'}
                 <li class="nav-brand">

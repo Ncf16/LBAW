@@ -19,12 +19,12 @@
           <button class="btn btn-primary" id="createClass">Create New Class</button>
         </a>
       </div>
+       {/if}
     </div>
-    {/if}
 
   <div class="row">
       <br>
-      <table id="mytable" class="table table-bordred table-striped">
+      <table id="mytable" class="table table-striped">
          <thead>
             <th class="col-md-1">View</th>
             {if $classes.unitInformation}

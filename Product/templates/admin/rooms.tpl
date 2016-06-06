@@ -14,7 +14,7 @@
 
   <div class="row">
     <br>
-  	<table id="mytable" class="table table-bordred table-striped">
+  	<table id="mytable" class="table table-striped">
   		<thead>
         {for $table=1 to 3}
   			<th class="col-md-2">Room</th>

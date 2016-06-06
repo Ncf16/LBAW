@@ -1,6 +1,6 @@
 
 {include file='common/header.tpl'}
-<link href="{$BASE_URL}css/classes.css" rel="stylesheet">
+<link href="{$BASE_URL}css/listTables.css" rel="stylesheet">
 <div id="unitPage" class="container">
   <div class="row">
     <div class="col-sm-10">
@@ -24,23 +24,35 @@
             <td colspan="2">School Year: {$class.calendaryear}</td>
           </tr>
           <tr>
+            {if $accountType <> 'Student'}
             <td width="90%">Date: {$class.day}</td>
             <td width="10%">
               <button type="button" class="btn btn-info btn-xs editInfo" id="editDate"><span class="glyphicon glyphicon-edit"></span></button>
+              {else}
+              <td colspan="2" width="90%">Date: {$class.day}</td>
+              {/if}
             </td>
           </tr>
           <tr>
+            {if $accountType <> 'Student'}
             <td>Time: {$class.time}</td>
             <td>
               <button type="button" class="btn btn-info btn-xs editInfo" id="editTime"><span class="glyphicon glyphicon-edit"></span></button>
             </td>
+            {else}
+             <td colspan="2">Time: {$class.time}</td>
+             {/if}
           </tr>
            <tr>
+            {if $accountType <> 'Student'}
             <td>Teacher: <a href="{$BASE_URL}pages/Person/personalPage.php?person={$class.username}">{$class.name}</a>
             </td>
             <td>
               <button type="button" class="btn btn-info btn-xs editInfo" id="editTeacher"><span class="glyphicon glyphicon-edit"></span></button>
             </td>
+             {else}
+             <td colspan="2">Teacher: <a href="{$BASE_URL}pages/Person/personalPage.php?person={$class.username}">{$class.name}</a>
+            {/if}
             <datalist id="teachers">
                 {foreach $teachers as $teacher}
                 <option value="{$teacher.name}"></option>
@@ -48,16 +60,24 @@
             </datalist>
           </tr>
           <tr>
+            {if $accountType <> 'Student'}
             <td>Duration: {$class.duration} minutes</td>
             <td>
               <button type="button" class="btn btn-info btn-xs editInfo" id="editDuration"><span class="glyphicon glyphicon-edit"></span></button>
             </td>
+            {else}
+            <td colspan="2">Duration: {$class.duration} minutes</td>
+            {/if}
           </tr>
           <tr>
+            {if $accountType <> 'Student'}
             <td>Room: {$class.room}</td>
             <td>
               <button type="button" class="btn btn-info btn-xs editInfo" id="editRoom"><span class="glyphicon glyphicon-edit"></span></button>
             </td>
+            {else}
+            <td colspan="2">Room: {$class.room}</td>
+            {/if}
             <datalist id="rooms">
                 {foreach $rooms as $room}
                 <option value="{$room.room}"></option>
@@ -73,9 +93,11 @@
             <div class="col-md-8">
               <h4>Summary</h4>
             </div>
+            {if $accountType <> 'Student'}
             <div class="col-md-4">
               <button type="button" class="btn btn-info" id="editSummary"><span class="glyphicon glyphicon-edit"> Edit</span></button>
             </div>
+            {/if}
           </div>
         </div>
         <div class="panel-body" id="summaryBody">
@@ -92,18 +114,25 @@
     <div class="col-md-10 col-md-offset-1">
       <h3>Attendances</h3>
       <br>
+      {if $accountType <> 'Student'}
       <div class="col-md-2">
         <button class="btn btn-primary" id="checkAll">Mark all Attended</button>
       </div>
       <div class="col-md-2">
         <button class="btn btn-primary" id="uncheckAll">Mark all Not Attended</button>
       </div>
+      {/if}
       <br>
       <table id="attendancesTable" class="table table-bordred table-striped">
          <thead>
+            {if $accountType <> 'Student'}
             <th class="col-md-1" colspan="2">Presence</th>
             <th class="col-md-10">Student Name</th>
             <th class="col-md-1">Delete</th>
+            {else}
+            <th class="col-md-1" colspan="2">Presence</th>
+            <th class="col-md-11">Student Name</th>
+            {/if}
          </thead>
          <tbody id="attendances">
          </tbody>
@@ -117,5 +146,6 @@
   </p>
 </div>
 
+<script src="{$BASE_URL}js/pagination.js"></script>
 <script src="{$BASE_URL}js/viewClass.js"></script>
 {include file='common/footer.tpl'}

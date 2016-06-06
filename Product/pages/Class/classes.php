@@ -31,7 +31,7 @@ else if($_GET['teacher']){
   include_once($BASE_DIR . 'database/person.php');
 	$teacher = getPersonInfoByID($_GET['teacher']);
 
-	if(!$account_type || !($account_type == 'Admin' || $account_type == 'Teacher')){
+	if(!$account_type || !($account_type == 'Admin' || ($account_type == 'Teacher' && $_GET['teacher'] == $_SESSION['userID']))){
 		  $_SESSION['error_messages'][] = 'teacher not found!';
 	    header("Location: " . $BASE_URL . "index.php");
 	    exit;
@@ -48,6 +48,6 @@ else{
   }
 }
 
-$smarty->assign('accountType',$accountType);
+$smarty->assign('accountType',$account_type);
 $smarty->display('classes/classes.tpl');
 ?>

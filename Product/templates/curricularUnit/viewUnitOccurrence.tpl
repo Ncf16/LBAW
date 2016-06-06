@@ -13,7 +13,7 @@
         <ul class="dropdown-menu">
           <li><a href="{$BASE_URL}pages/Class/classes.php?uc={$unit.cuoccurrenceid}">Classes</a></li>
           <li><a href="{$BASE_URL}pages/CurricularUnit/viewUnitContent?uc={$unit.cuoccurrenceid}">Content</a></li>
-          <li><a href="unitEvaluations.php">Evaluations</a></li>
+          <li><a href="{$BASE_URL}pages/Evaluation/evaluations.php?unit={$unit.cuoccurrenceid}">Evaluations</a></li>
           <li><a href="{$BASE_URL}pages/Evaluation/evaluation.php?CUO={$unit.cuoccurrenceid}">Create Evaluation</a></li>         
         </ul>
       </div>
