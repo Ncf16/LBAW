@@ -290,6 +290,16 @@ function getCourseIDByName($courseName)
     return $stmt->fetch();
 }
 
+function getCourseNameByID($courseCode){
+
+    global $conn;
+    $stmt = $conn->prepare("SELECT name
+        FROM Course WHERE code=? AND visible=1");
+
+    $stmt->execute(array($courseCode));
+    return $stmt->fetch();
+}
+
 function getCourses()
 {
     global $conn;

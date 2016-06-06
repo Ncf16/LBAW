@@ -20,9 +20,9 @@ exit;
 
 $uc = getUCO($_GET['uc']);
 if(!$uc){
-  $_SESSION['error_messages'][] = 'unit not found!';
-  header("Location: " . $BASE_URL . "index.php");
-  exit;
+ $_SESSION['error_messages'][] = 'unit occcurrence id not found!';
+ header("Location: " . $BASE_URL . "index.php");
+ exit;
 }
 
 $languages = array();
@@ -33,11 +33,7 @@ $languages['ES']='Spanish';
 $uc['year'] = $uc['year'] . '/' . ($uc['year'] + 1);
 $uc['language'] = $languages[$uc['language']];
 
-if(!$uc){
- $_SESSION['error_messages'][] = 'unit occcurrence id not found!';
- header("Location: " . $BASE_URL . "index.php");
- exit;
-}
+
 
 $smarty->assign('unit',$uc);
 $smarty->display('curricularUnit/viewUnitOccurrence.tpl');

@@ -1,6 +1,7 @@
 <form class="well form-horizontal" action="{$BASE_URL}actions/units/changeUnitOccurrence.php" method="post" id="unitCreation_form">
 
 	<input name="unit_id" type="hidden" value="{$FORM_VALUES.unit_id}">
+	<input name="unit_syllabus" type="hidden" value="{$syllabus}">
   	
   	<div class="row">
   		<div class="col-md-12">
@@ -32,7 +33,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-	  					<input name="unit_course" placeholder="Curricular Course Name" value="{$FORM_VALUES.unit_course}" list="courses" class="form-control" type="text" required>
+	  					<input name="unit_course" placeholder="Curricular Course Name" value="{$FORM_VALUES.unit_course}" list="courses" class="form-control" type="text" required {if $syllabus}disabled{/if}>
 	  					<datalist id="courses">
 	  						{foreach $courses as $course}
 	  						<option value="{$course.name}"></option>
@@ -46,7 +47,7 @@
 	  			<div class="col-md-9 inputGroupContainer">
 	  				<div class="input-group">
 	  					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-	  					<input name="unit_year" placeholder="Curricular Year" value="{$FORM_VALUES.unit_year}" list="years" class="form-control" type="text" required>
+	  					<input name="unit_year" placeholder="Curricular Year" value="{$FORM_VALUES.unit_year}" list="years" class="form-control" type="text" required {if $syllabus}disabled{/if}>
 	  					<datalist id="years">
 	  						{foreach $years as $year}
 			              	<option value="{$year.year}"></option>

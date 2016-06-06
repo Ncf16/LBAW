@@ -7,9 +7,8 @@
              {if $canAddCU==true }
                 <a href="{$BASE_URL}pages/Course/course.php?courseID={$course.code}" class="btn btn-xs btn-primary">Edit
                     Page</a>
-                
-                <a href="{$BASE_URL}pages/Course/addCU.php?courseID={$course.code}" class="btn btn-xs btn-primary">Add
-                    CU</a>
+                <a href="{$BASE_URL}pages/curricularUnit/createUnit.php" class="btn btn-xs btn-primary">Create Unit</a>
+                <button id="syllabusUnit" class="btn btn-xs btn-primary">Associate Unit To Syllabus</button>
                 {/if}
             </h2>
         </div>
@@ -73,4 +72,5 @@
     </div>
 
 </div>
+<script src="{$BASE_URL}js/syllabusUnits.js"></script>
 {include file='common/footer.tpl'}
