@@ -11,8 +11,39 @@ $(document).ready(function() {
 	if($('#cu_response').length > 0) {
  	 	 curricularUnitsHandler();
 	}
+		//check if exists
+	if($('#studentCourseEdit').length > 0) {
+		$('#submitNewCourseStudent').click( changeCourseHandler);
+	}
 });
 
+function changeCourseHandler(){
+	var newCourse = $('#chaneCourse  option:selected').val();
+	var course = $('#currentCourseCode').val();
+	var student = $('#studentAcademicCode').val();
+	console.log("course: "+course+" newCourse: "+newCourse + "student: "+student);
+
+	$.ajax({
+		url: '../../api/changeCourse.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: {newCourse: newCourse,course: course,student:student},
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {
+				if(data.indexOf ('true')>-1){
+					console.log(data);
+			 		//location.reload();
+				}
+				else {
+				$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");
+				}
+			}  
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			// STOP LOADING SPINNER
+		}
+});
+}
 function emptyStatus() {
 	$("#message_status").empty();
 }
