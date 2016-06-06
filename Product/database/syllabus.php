@@ -53,4 +53,25 @@ function getSyllabusID($course,$year){
 	$stmt->execute(array($course,$year));
 	return $stmt->fetch();
 }
+
+function getMostRecentSyllabus($course){
+    global $conn;
+    $stmt = $conn->prepare("SELECT Syllabus.*
+        FROM Syllabus WHERE coursecode = ? ORDER BY calendaryear DESC LIMIT 1");
+
+    $stmt->execute(array($course));
+    return $stmt->fetch();       
+}
+
+function getCourseNameYear($syllabus){
+    global $conn;
+    $stmt = $conn->prepare("SELECT Syllabus.calendaryear, CurricularUnit.name
+        FROM Syllabus, CurricularUnit, CurricularUnitOccurrence
+        WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND
+        CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+        Syllabus.syllabusid = ?");
+
+    $stmt->execute(array($syllabus));
+    return $stmt->fetch(); 
+}
 ?>

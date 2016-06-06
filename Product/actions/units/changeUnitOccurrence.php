@@ -10,14 +10,17 @@ include_once($BASE_DIR . 'database/teacher.php');
   if($_POST && isset($_POST['unitSubmit'])){
 
     $inputs = array();
+    if(!isset($_POST['unit_syllabus'])){
+      $inputs['unit_course'] = 'Must provide a course';
+      $inputs['unit_year'] = 'Must provide a School year';
+    }
     $inputs['unit_name'] = 'Must provide a name';
-    $inputs['unit_course'] = 'Must provide a course';
-    $inputs['unit_year'] = 'Must provide a School year';
     $inputs['unit_curricularyear'] = 'Must provide a Course year';
     $inputs['unit_curricularsemester'] = 'Must provide a Course semester';
     $inputs['unit_teacher'] = 'Must provide a teacher';
     $inputs['unit_language'] = 'Must provide a language';
     if(!checkInputs($_POST, $inputs)){
+      $_SESSION['form_values'] = $_POST;
       header("Location:".$_SERVER['HTTP_REFERER']);
       exit;
     }
@@ -31,29 +34,33 @@ include_once($BASE_DIR . 'database/teacher.php');
     $default['unit_bibliography'] = '';
     checkDefault($_POST, $default);
 
-    $course = getCourseIDByName($_POST['unit_course']);//code
-    if(!$course){
-      $_SESSION['form_values'] = $_POST;
-      $_SESSION['error_messages'][] = 'Couldn\'t find a course with given name';
-      header("Location: " . $_SERVER['HTTP_REFERER']);
-      exit;
-    }
+    if(!$_POST['unit_syllabus']){
+      $course = getCourseIDByName($_POST['unit_course']);//code
+      if(!$course){
+        $_SESSION['form_values'] = $_POST;
+        $_SESSION['error_messages'][] = 'Couldn\'t find a course with given name';
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+      }
 
-    $year = explode('/', $_POST['unit_year']);
-    if(!isset($year[0])){
-      $_SESSION['form_values'] = $_POST;
-      $_SESSION['error_messages'][] = 'Couldn\'t find a syllabus year with given School year';
-      header("Location: " . $_SERVER['HTTP_REFERER']);
-      exit;
-    }
+      $year = explode('/', $_POST['unit_year']);
+      if(!isset($year[0])){
+        $_SESSION['form_values'] = $_POST;
+        $_SESSION['error_messages'][] = 'Couldn\'t find a syllabus year with given School year';
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+      }
 
-    $syllabus = getSyllabusID($course['code'],intval($year[0]));//syllabusid
-    if(!$syllabus){
-      $_SESSION['form_values'] = $_POST;
-      $_SESSION['error_messages'][] = 'Couldn\'t find a syllabus with given course and year';
-      header("Location: " . $_SERVER['HTTP_REFERER']);
-      exit;
+      $syllabus = getSyllabusID($course['code'],intval($year[0]));//syllabusid
+      if(!$syllabus){
+        $_SESSION['form_values'] = $_POST;
+        $_SESSION['error_messages'][] = 'Couldn\'t find a syllabus with given course and year';
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+      }
     }
+    else
+      $syllabus['syllabusid'] = $_POST['unit_syllabus'];
 
     $unit = getUnitID($_POST['unit_name']);//curricularid
     if(!$unit){
