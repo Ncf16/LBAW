@@ -9,20 +9,20 @@ include_once($BASE_DIR . 'database/unitOccurrence.php');
 
 $account_type = $_SESSION['account_type'];
 
-/*
-if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
+if(!$account_type || !($account_type == 'Admin' || $account_type == 'Teacher')){
 	$_SESSION['error_messages'][] = 'Unauthorized Access';
  	header("Location: " . $BASE_URL . "index.php");
  	exit;
 }
-*/
 
 $uco = $_GET['unit'];
 if($uco){
     $smarty->assign('uco', $uco);
     $ucoInfo = getUCO($uco);
-    $formValues = array('class_unit' => $ucoInfo['name'],'class_unit_year' => $ucoInfo['year'] . '/' . ($ucoInfo['year'] + 1));
-    $smarty->assign('FORM_VALUES', $formValues);
+    $myVar = $smarty->getTemplateVars('FORM_VALUES');
+    $myVar['class_unit'] = $ucoInfo['name'];
+    $myVar['class_unit_year'] = $ucoInfo['year'] . '/' . ($ucoInfo['year'] + 1);
+    $smarty->assign('FORM_VALUES', $myVar);
 }
 
 $rooms = getRooms();

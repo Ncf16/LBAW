@@ -80,7 +80,7 @@ Pagination.prototype.addPagination = function(page,nbItems,nbItemsPerPage,showPa
 
 }
 
-Pagination.prototype.changePage = function(target){
+Pagination.prototype.updatePageNb = function(target){
 
 	var targetClass = target.attr('class');
 

@@ -5,7 +5,7 @@ include_once($BASE_DIR . 'database/area.php');
 
 $account_type = $_SESSION['account_type'];
 
-if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
+if(!$account_type || !($account_type == 'Admin' || $account_type == 'Teacher')){
 	$_SESSION['error_messages'][] = 'Unauthorized Access';
  	header("Location: " . $BASE_URL . "index.php");
  	exit;
@@ -13,7 +13,7 @@ if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
 
 $areas = getAreas();
 
-if(!isset($_GET['unit'])){
+if(!$_GET['unit']){
 	$_SESSION['error_messages'][] = 'unit not specified!';
 	header("Location: " . $BASE_URL . "index.php");
 	exit;

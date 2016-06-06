@@ -6,7 +6,7 @@ include_once($BASE_DIR . 'database/calendar.php');
 
 $account_type = $_SESSION['account_type'];
 
-if(!$account_type && $account_type != 'Admin' && $account_type != 'Teacher'){
+if(!$account_type || !($account_type == 'Admin' || $account_type == 'Teacher')){
 	$_SESSION['error_messages'][] = 'Unauthorized Access';
  	header("Location: " . $BASE_URL . "index.php");
  	exit;

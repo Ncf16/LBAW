@@ -67,7 +67,7 @@ function getUnits($nbItems,$offset){
 	global $conn;
 	$stmt = $conn->prepare("SELECT curricularID, name, area, credits
 		FROM CurricularUnit, Area
-		WHERE CurricularUnit.areaid = Area.areaid AND CurricularUnit.visible=1
+		WHERE CurricularUnit.areaid = Area.areaid AND CurricularUnit.visible=1 ORDER BY name
 		LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($nbItems,$offset));

@@ -30,22 +30,23 @@
          <div class="col-lg-12 text-center">
             <h3 class="page-header">Admin Links</h3>
          </div>
-         <div class="col-sm-2 col-xs-4 text-center" >
-            <a href="#" class="btn btn-primary btn-primary" >Main Page </a>
-         </div>
-
-      <div class="col-sm-2 col-xs-4 text-center">
+         <div class="col-sm-2 col-xs-4 text-center">
                <a href="{$BASE_URL}pages/Admin/addPerson.php" class="btn btn-primary btn-primary" >Create Accounts</a>
          </div>
-   
          <div class="col-sm-2 col-xs-4 text-center">
-            <a href="#" class="btn btn-primary btn-primary">Remove Accounts 	</a>
+            <a href="#" class="btn btn-primary btn-primary">Remove Accounts</a>
          </div>
          <div class="col-sm-2 col-xs-4 text-center">
             <a href="#" class="btn btn-primary btn-primary">Create Course</a>
          </div>
-         <div class="col-sm-2 col-xs-4 text-center ">
-            <a href="#" class="btn btn-primary btn-primary">Create Curricular Unit</a>
+         <div class="col-sm-2 col-xs-4 text-center">
+            <a href="{$BASE_URL}pages/CurricularUnit/units.php" class="btn btn-primary btn-primary">Manage Curricular Units</a>
+         </div>
+         <div class="col-sm-2 col-xs-4 text-center">
+            <a href="{$BASE_URL}pages/Admin/rooms.php" class="btn btn-primary btn-primary">Manage Rooms</a>
+         </div>
+         <div class="col-sm-2 col-xs-4 text-center">
+            <a href="{$BASE_URL}pages/Admin/areas.php" class="btn btn-primary btn-primary">Manage Areas</a>
          </div>
          <!--   -->
           </div>

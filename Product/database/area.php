@@ -62,7 +62,7 @@ function getAreas(){
 function getAreasList($nbAreas,$offset){
 	global $conn;
 	$stmt = $conn->prepare("SELECT * FROM Area
-		WHERE visible=1 LIMIT ? OFFSET ?");
+		WHERE visible=1 ORDER BY area LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($nbAreas,$offset));
 	return $stmt->fetchall();

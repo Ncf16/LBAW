@@ -146,9 +146,7 @@ include_once($BASE_DIR . 'database/teacher.php');
     header("Location:".$_SERVER['HTTP_REFERER']);
     exit;
   }
-?>
 
-<?php
 function checkInputs($post, $inputs){
   $result = true;
   foreach($inputs as $key => $value)

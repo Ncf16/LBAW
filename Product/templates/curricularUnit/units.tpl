@@ -1,4 +1,5 @@
 {include file='common/header.tpl'}
+<link href="{$BASE_URL}css/listTables.css" rel="stylesheet">
 
 <div class="container">
   <div class="row">
@@ -15,7 +16,7 @@
 
   <div class="row">
     <br>
-  	<table id="mytable" class="table table-bordred table-striped">
+  	<table id="mytable" class="table table-striped">
   		<thead>
   			<th class="col-md-5">Name</th>
   			<th class="col-md-3">Area</th>
@@ -33,6 +34,7 @@
   </div>
 </div>
 
+<script src="{$BASE_URL}js/Pagination.js"></script>
 <script src="{$BASE_URL}js/units.js"></script>
 
 {include file='common/footer.tpl'}
