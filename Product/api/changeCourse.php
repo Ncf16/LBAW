@@ -19,7 +19,8 @@ if(!$_POST || !$_POST['student']|| !$_POST['course']|| !$_POST['newCourse'] || !
 else{
 	if( isInactive($_POST['student'],$_POST['newCourse'])){
 		 echo "course is inactive";
-		 $result=restartEnrollment($_POST['student'],$_POST['course'],$_POST['newCourse'],date("Y"),NULL,1);
+		 //check caso em que ele esta no ultimo ano
+		 $result=restartEnrollment($_POST['student'],$_POST['course'],$_POST['newCourse'],date("Y"),NULL);
 		}
 		else{ 
   		$result=replaceCourseEnrollment($_POST['student'],$_POST['course'],$_POST['newCourse'],date("Y"),NULL,1);

@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$('#syllabus_year').change();
 
 	//check if exists
-	if($('#cu_response').length > 0) {
+	if($('#cuResponse').length > 0) {
  	 	 curricularUnitsHandler();
 	}
 		//check if exists
@@ -121,8 +121,9 @@ function curricularUnitsHandler(){
 		type: 'POST',
 		data: {course: course,student: student},
 		success: function(data, textStatus, jqXHR) {
-			if (typeof data.error === 'undefined') {		
-				$('#cu_response').html(data);
+			if (typeof data.error === 'undefined') {
+			console.log("done");		
+				$('#cuResponse').html(data);
 
 			} else {
 				// Handle errors here

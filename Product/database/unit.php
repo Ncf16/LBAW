@@ -19,6 +19,16 @@ function createUnit($name,$area,$credits){
 	return $stmt->fetch();
 }
 
+function getCurricularUnitByName($name){
+	global $conn;
+	$stmt = $conn->prepare("SELECT CurricularUnit.*
+		FROM CurricularUnit 
+		WHERE  CurricularUnit.visible=1 AND CurricularUnit.name = ?");
+
+	$stmt->execute(array($name));
+	return $stmt->fetch();
+
+}
 function updateUnit($id,$name,$area,$credits){
 	global $conn;
 	$stmt = $conn->prepare("UPDATE CurricularUnit

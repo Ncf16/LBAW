@@ -25,12 +25,8 @@ $(document).ready(function() {
 		success: function(data, textStatus, jqXHR) {
 		 	if (typeof data.error === 'undefined') {	
 					$("#success_messages").empty();	
-					console.log("DATA: "+data);	
 				if (data.indexOf("true") > -1) {
 					 
-					console.log(person);
-					console.log(BASE_URL);
-					 console.log( BASE_URL + "pages/Person/personalPage.php?person="+person);
 					 window.location.href =  BASE_URL + "pages/Person/personalPage.php?person="+person;
 				} else {
 					  $("#error_messages").empty();
