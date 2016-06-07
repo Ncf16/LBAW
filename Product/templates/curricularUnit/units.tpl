@@ -8,7 +8,7 @@
       </h2>
     </div>
     <div class="col-sm-2">
-        <a href="{$BASE_URL}pages/curricularUnit/createUnit.php">
+        <a href="{$BASE_URL}pages/CurricularUnit/createUnit.php">
           <button class="btn btn-primary" id="createUnit">Create New Unit</button>
         </a>
       </div>
