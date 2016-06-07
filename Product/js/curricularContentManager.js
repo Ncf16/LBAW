@@ -78,6 +78,8 @@ $(function () {
                     );
                     data.formData = {filepresentationname: filePresentationName, action: 'add', unitID: ucID};
                     uploadData = data;
+                    $('#submitButtonPlace').unbind();
+                    $('#submitButtonPlace').css('color','black');
                     $('#submitButtonPlace').html('Uploading...');
                     data.context = $('#submitButtonPlace');
                     data.submit();
@@ -88,23 +90,36 @@ $(function () {
         },
         done: function (e, data) {
             var result = data.response().result;
-
             //DO EXTRA VERIFICATIONS WITH RECEIVED STUFF...
             if(result.error == undefined){
-                console.log("Success");
+                $('#submitButtonPlace').css('color','green');
+                $('#submitButtonPlace').html('Upload Successful ');
             }else{
-                console.log("Error: " + result.error);
+                $('#submitButtonPlace').css('color','red');
+                $('#submitButtonPlace').html('Upload Failed: '+ result.error);
             }
 
-            $('#submitButtonPlace').html('Upload Successful');
             uploadInProgress = false;
 
-            data.context.text('Upload finished.');
         },
         fail: function (e, data) {
-            // TODO: explain why it failed
+            try {
+                var result = JSON.parse(data.jqXHR.responseText);
+            }catch(err){
+                $('#submitButtonPlace').css('color','red');
+                $('#submitButtonPlace').html('Upload Failed');
+                uploadInProgress = false;
+                return;
+            }
 
-            $('#submitButtonPlace').html('Upload Failed');
+            if(result.error == undefined){
+                $('#submitButtonPlace').css('color','red');
+                $('#submitButtonPlace').html('Upload Failed');
+            }else{
+                $('#submitButtonPlace').css('color','red');
+                $('#submitButtonPlace').html('Upload Failed: '+ result.error);
+            }
+
             uploadInProgress = false;
         },
         progressall: function (e, data) {

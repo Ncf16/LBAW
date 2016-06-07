@@ -144,7 +144,11 @@ div.panel-body p{
 }
 
 #closeBtn{
-    background-color: #e8615a;
+    background-color: #f88475;
+}
+
+#submitButtonPlace{
+    font-weight:bold;
 }
 
 .bar {
@@ -156,6 +160,10 @@ div.panel-body p{
     border-width: 0px;
     border-style: solid;
     border-color: #000000;
+}
+
+.btn-danger{
+    background-color: #f88475;
 }
 
 .btn-file {
