@@ -86,22 +86,25 @@ function enrollInCU($person ,$CUO_ID ){
   else
     return true;
 }
-function getGradesStudentByCUO($CUO_ID,){
+function getAllStudentsCUO($CUO_ID){
    global $conn;
 $stmt = $conn->prepare("SELECT curricularenrollment.studentcode
                             FROM CurricularEnrollment 
                               WHERE  curricularenrollment.cuoccurrenceid = ? ;");
 
   $stmt->execute(array($CUO_ID));
-  $return = $stmt->fetchAll();
+  return $stmt->fetchAll();
 }
-  function updateGradeCUO($CUO_ID,$student,$grade){
+  function updateGradeCUEnroll($CUO_ID,$student,$grade){
   global $conn;
-  $stmt = $conn->prepare("UPDATE CurricularEnrollment SET grade = ?
-    WHERE CurricularEnrollment.cuOccurrenceID  = ? AND CurricularEnrollment.studentCode = ? AND CurricularEnrollment.visible=1 RETURNING cuOccurrenceID,studentCode; ");
-   $stmt->execute(array($grade,$CUO_ID,$student));
+  $grade=intval(ceil ($grade));
+
+  $stmt = $conn->prepare("UPDATE CurricularEnrollment SET finalgrade = ?
+    WHERE  CurricularEnrollment.cuOccurrenceID  = ? AND CurricularEnrollment.studentCode = ? AND CurricularEnrollment.visible=1 RETURNING cuOccurrenceID,studentCode; ");
+   $stmt->execute(array($grade ,$CUO_ID,$student));
    $return = $stmt->fetch();
-    if($return['studentcode'] != $person || $return['cuoccurrenceid'] != $CUO_ID)
+  
+    if($return == false || $return['studentcode'] != $student || $return['cuoccurrenceid'] != $CUO_ID)
     return false;
   else
     return true;

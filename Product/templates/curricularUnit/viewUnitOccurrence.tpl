@@ -8,13 +8,15 @@
     </div>
     <div class="col-sm-2">
       <div class="dropdown">
+      <input hidden value="{$unit.cuoccurrenceid}" id="CUO_ID"/>
         <button class="btn btn-primary dropdown-toggle" id="actionsButton" type="button" data-toggle="dropdown">Actions
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><a href="{$BASE_URL}pages/Class/classes.php?uc={$unit.cuoccurrenceid}">Classes</a></li>
           <li><a href="{$BASE_URL}pages/CurricularUnit/viewUnitContent?uc={$unit.cuoccurrenceid}">Content</a></li>
           <li><a href="{$BASE_URL}pages/Evaluation/evaluations.php?unit={$unit.cuoccurrenceid}">Evaluations</a></li>
-          <li><a href="{$BASE_URL}pages/Evaluation/evaluation.php?CUO={$unit.cuoccurrenceid}">Create Evaluation</a></li>         
+          <li><a href="{$BASE_URL}pages/Evaluation/evaluation.php?CUO={$unit.cuoccurrenceid}">Create Evaluation</a></li>  
+          <li> <a href="#" id="gradeStudents">Grade Students</a></li>         
         </ul>
       </div>
     </div>

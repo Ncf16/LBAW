@@ -15,7 +15,34 @@ $(document).ready(function() {
 	if($('#studentCourseEdit').length > 0) {
 		$('#submitNewCourseStudent').click( changeCourseHandler);
 	}
+	if($('#gradeStudents').length > 0) {
+		$('#gradeStudents').click( gradeAssignHandler);
+	}
 });
+
+function gradeAssignHandler(event){
+	console.log("Hello");
+	var cuoID = $("#CUO_ID").val();
+	$.ajax({
+		url: '../../api/cuGrades.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: {CUO_ID: cuoID},
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {
+				if(data.indexOf ('true')>-1){
+			 	//	 location.reload();
+				}
+				else {
+				//$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");
+				}
+			}  
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			// STOP LOADING SPINNER
+		}
+});
+}
 
 function changeCourseHandler(){
 	var newCourse = $('#chaneCourse  option:selected').val();

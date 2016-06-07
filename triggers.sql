@@ -3,6 +3,7 @@ DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkTeacherType ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
+DROP TRIGGER IF EXISTS createGrade ON Evaluation CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
@@ -173,6 +174,24 @@ CREATE TRIGGER oneExamPerUC
 BEFORE INSERT ON Exam
 FOR EACH ROW
 EXECUTE PROCEDURE onlyOneExam();
+-----------------------------------------
+CREATE OR REPLACE FUNCTION createEvaluationGrades() RETURNS trigger AS $$
+DECLARE
+student INTEGER;
+BEGIN
+FOR student IN SELECT studentcode FROM CurricularEnrollment
+WHERE cuoccurrenceid=NEW.cuoccurrenceid LOOP
+INSERT INTO Grade(studentcode,evaluationid)
+VALUES(student,NEW.evaluationid);
+END LOOP;
+RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER createGrades
+AFTER INSERT ON Evaluation
+FOR EACH ROW
+EXECUTE PROCEDURE createEvaluationGrades();
 -----------------------------------------
  
  CREATE OR REPLACE FUNCTION getStudentCurrentCourse(studentCodeToGetCourse INTEGER) RETURNS SETOF INTEGER AS $$
