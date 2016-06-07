@@ -51,61 +51,34 @@
     <div class="container">
 
         <!-- Evaluation Section -->
-        <div class="row">
+        {if $ACCOUNT_TYPE eq 'Student'}
+         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Upcoming Evaluations
                 </h1>
             </div>
+
+            {foreach $evaluations as $evaluation}
             <div class="col-md-4">
                 <div class="panel panel-default">
-                	<a href="#"  >
+                	<a href="{$BASE_URL}/pages/CurricularUnit/viewUnitOccurrence.php?uc={$evaluation.cuoccurrenceid}">
                     	<div class="panel-heading text-center btn-header">
-                        	<h3> <b>LBAW</b></h3>
+                        	<h3> <b>{$evaluation.name}</b></h3>
                     	</div>
                 	</a>
                     <div class="panel-body">
                         <p>
-                        	<h4> Name: Assignment 3 </h4>
+                        	<h4>Type: {$evaluation.evaluationtype} </h4>
                         	<hr>
-                        	<h4> Date: 17/03/2016 </h4>
+                        	<h4>Date: {$evaluation.evaluationdate}</h4>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default ">
-                    <a href="#"  >
-                    	<div class="panel-heading text-center btn-header">
-                        	<h3> <b>LBAW</b></h3>
-                    	</div>
-                	</a>
-                    <div class="panel-body">
-                        <p>
-                        	<h4> Name: Assignment 4 </h4>
-                        	<hr>
-                        	<h4> Date: 17/03/2016 </h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <a href="#"  >
-                    	<div class="panel-heading text-center btn-header">
-                        	<h3> <b>PPIN</b></h3>
-                    	</div>
-                	</a>
-                    <div class="panel-body">
-                        <p>
-                        	<h4> Name: Test 1 </h4>
-                        	<hr>
-                        	<h4> Date: 29/03/2016 </h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {/foreach}
         </div>
+        {/if}
         <!-- /.row -->
     </div>
     <!-- /.container -->
