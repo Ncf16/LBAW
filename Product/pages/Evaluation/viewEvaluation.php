@@ -4,6 +4,7 @@ include_once($BASE_DIR . 'database/unitOccurrence.php');
 include_once($BASE_DIR . 'database/class.php');
 include_once($BASE_DIR . 'database/evaluation.php');
 
+$hasPermission = false;
 if(!$_GET['evaluationID']){
   $_SESSION['error_messages'][] = 'evaluation not found!';
   header("Location: " . $BASE_URL . "index.php");
@@ -18,6 +19,8 @@ if(!$account_type || !($account_type == 'Admin' ||
     header("Location: " . $BASE_URL . "index.php");
     exit;
 }
+
+$hasPermission= $account_type == 'Admin' ||  ($account_type == 'Teacher' && hasTeacherEvaluationAccess($_SESSION['userID'],$_GET['evaluationID']));
 
 $type = getEvaluationType($_GET['evaluationID']);
 
@@ -36,6 +39,7 @@ if(!$evaluation){
 
 $evaluation['calendaryear'] = $evaluation['calendaryear'] . '/' . ($evaluation['calendaryear'] + 1);
 $smarty->assign('evaluation',$evaluation);
+$smarty->assign('permission',$hasPermission);
 $smarty->assign('accountType',$account_type);
 $smarty->display('evaluation/viewEvaluation.tpl');
 

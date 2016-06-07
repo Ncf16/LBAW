@@ -62,8 +62,10 @@ if ($person['persontype'] == 'Student') {
   $smarty->assign('courses', $courses);
  }
 }
+if ($_SESSION['account_type'] == 'Admin') {
+   $isCheckProgress = true;
+}
  
-
   $smarty->assign('privateDate',$privateDate);
   $smarty->assign('privatePhone',$privatePhone );
   $smarty->assign('privateNat', $privateNat);

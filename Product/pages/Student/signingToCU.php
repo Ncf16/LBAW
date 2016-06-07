@@ -4,9 +4,8 @@
   include_once($BASE_DIR . 'database/person.php'); 
   include_once($BASE_DIR . 'database/courseEnrollment.php'); 
   include_once($BASE_DIR . 'database/cuEnrollment.php'); 
-  //DO NOT FORGET TO CHANGE THE SHIT IN THE COURSE_ENROLLMENT.PHP FFS 
-  $_GET['student']=20164;
-       if(!$_GET['student'] ||  !$_SESSION['account_type'] || ( ($_GET['student']!== $_SESSION['username'] && $_SESSION['account_type'] !== 'Student') && 
+
+  if(!$_GET['student'] ||  !$_SESSION['account_type'] || ( ($_GET['student']!== $_SESSION['username'] && $_SESSION['account_type'] !== 'Student') && 
         $_SESSION['account_type'] !== 'Admin'  ) ){
        		header("Location: " . $BASE_URL . "index.php");
        		exit;

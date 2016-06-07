@@ -6,6 +6,7 @@
       <h1 class="page-header hidden-sm hidden-xs">{$unit.name}</h1>
      
     </div>
+    {if $hasPermission == true}
     <div class="col-sm-2">
       <div class="dropdown">
       <input hidden value="{$unit.cuoccurrenceid}" id="CUO_ID"/>
@@ -20,7 +21,7 @@
         </ul>
       </div>
     </div>
-    
+    {/if}
   </div>
 
       <hr>

@@ -5,7 +5,9 @@
   <div class="row">
     <div class="col-sm-10">
       <h1 class="page-header hidden-sm hidden-xs">Evaluation</h1>
-     
+     {if $permission == true}
+        <a href="{$BASE_URL}api/deleteEvaluation?eval={$evaluation.evaluationid}" class="btn btn-primary btn-primary">Delete Evaluation </a>
+     {/if}
     </div>
   </div>
 

@@ -30,8 +30,6 @@ function signUpHandler(event){
 			}  
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
-			// Handle errors here
-			// STOP LOADING SPINNER
 		}
 }); 
 }

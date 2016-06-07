@@ -9,7 +9,7 @@ if(!$_GET['uc']){
  header("Location: " . $BASE_URL);
  exit;
 }
-
+$hasPermission=false;
 if(!$account_type || !($account_type == 'Admin' || 
   ($account_type == 'Teacher' && hasTeacherUCOAccess($_SESSION['userID'],$_GET['uc'])) ||
   ($account_type == 'Student' && hasStudentUCOAccess($_SESSION['userID'],$_GET['uc'])) )){
@@ -17,7 +17,7 @@ if(!$account_type || !($account_type == 'Admin' ||
 header("Location: " . $BASE_URL . "index.php");
 exit;
 }
-
+$hasPermission= $account_type == 'Admin' ||  ($account_type == 'Teacher' && hasTeacherUCOAccess($_SESSION['userID'],$_GET['uc']));
 $uc = getUCO($_GET['uc']);
 if(!$uc){
  $_SESSION['error_messages'][] = 'unit occcurrence id not found!';
@@ -34,7 +34,7 @@ $uc['year'] = $uc['year'] . '/' . ($uc['year'] + 1);
 $uc['language'] = $languages[$uc['language']];
 
 
-
+$smarty->assign('hasPermission',$hasPermission);
 $smarty->assign('unit',$uc);
 $smarty->display('curricularUnit/viewUnitOccurrence.tpl');
 ?>

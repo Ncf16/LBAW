@@ -13,7 +13,9 @@
                {/if}
                {if $seeUnits == true}
                 <a href="{$BASE_URL}pages/Person/editPerson.php?personUsr={$person.username}" class="btn btn-xs btn-primary">Edit Page</a> 
+                 <a href="{$BASE_URL}pages/Student/signingToCU.php?student={$person.username}" class="btn btn-xs btn-primary">Sign up</a> 
                 {/if}
+
                   {if $person.persontype == 'Student' and $viewerType == 'Admin'}
                 <a  data-toggle="modal" href="#studentCourseEdit" class="btn btn-xs btn-primary">Change Student Course</a>
                 {/if}
