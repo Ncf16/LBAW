@@ -48,7 +48,6 @@ function updateUnitOccurrence($uco,$syllabus,$unit,$teacher,$bibliography,$compe
 		$competences,$curricularSemester,$curricularYear,$evaluations,
 		$links,$language,$programme,$requirements,$uco));
 }
-
 function countUnitOccurrences(){
 	global $conn;
 	$stmt = $conn->prepare("SELECT COUNT(*) total FROM CurricularUnitOccurrence WHERE visible=1");
