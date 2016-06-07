@@ -127,7 +127,7 @@
                 <span id="submitButtonPlace">
 
                 </span>
-                <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="closeBtn" type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
             </div>
         </div>
 
