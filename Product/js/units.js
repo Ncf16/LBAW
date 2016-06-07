@@ -13,10 +13,10 @@ $(document).ready(function() {
 
 function loadPage(){
 
-	var nbItemsPerPage = 10;
-	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage}, function(data){
+	 pagination.updateNbItemsPerPage(10);
+	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : pagination.nbItemsPerPage}, function(data){
 		addItens(data.units);
-		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+		pagination.addPagination(data.page,data.nbUnits,data.nbItemsPerPage);
 	}, 'json');
 };
 
@@ -34,7 +34,7 @@ function changePage(event){
 	$.post(BASE_URL + "api/units.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbUnits: nbItems}, function(data){
 		$('#units').html('');
 		addItens(data.units);
-		pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+		pagination.addPagination(data.page,data.nbUnits,data.nbItemsPerPage);
 	}, 'json');
 }
 
@@ -54,7 +54,7 @@ function deleteItem(event){
 			$('.pagination').html('');
 			$('#units').html('');
 			addItens(data.units);
-			pagination.addPagination(data.page,data.nbUnits,nbItemsPerPage);
+			pagination.addPagination(data.page,data.nbUnits,data.nbItemsPerPage);
 		}
 	}, 'json');
 }
