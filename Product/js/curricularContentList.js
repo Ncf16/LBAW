@@ -17,7 +17,6 @@ $(document).ready(function () {
 });
 
 function loadPage() {
-
     $('.contentsListBody').html('');
     $('.pagination').html('');
 
@@ -83,13 +82,11 @@ function deleteItem(event) {
         contentID: contentID,
     }, function (data) {
 
-            console.log(data);
             $('.pagination').html('');
-
-            loadPage();
 
     }, 'json');
 
+    setTimeout(loadPage,ACTION_REFRESH_TIMEOUT);
 
 }
 

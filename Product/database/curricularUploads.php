@@ -29,9 +29,10 @@ function deleteContentDB($contentID){
 	global $conn;
 
 	$stmt = $conn->prepare("DELETE FROM curricularuploads
-							WHERE uploadid = ?");
+							WHERE uploadid = ? RETURNING filepath");
 	try {
 		$stmt->execute(array($contentID));
+		return $stmt->fetch();
 	}catch(Exception $e){
 		return array('error' => 'Database failed deleting.' . $e->getMessage());
 	}
