@@ -19,6 +19,7 @@
             {/if}
          </h2>
       </div>
+       {if $hasPermission}
       <div class="col-sm-2">
 
           <div>
@@ -27,6 +28,7 @@
 
           </div>
       </div>
+       {/if}
     </div>
 
   <div class="row">

@@ -13,7 +13,7 @@ include_once($BASE_DIR . 'database/courseEnrollment.php');
 
   if (isLoginCorrect($username, $password)) {
     $user = getPersonInfoByUser($username);
-    $userCourse = getStudentCourse($user['academiccode'])['code'];
+    $userCourse = getStudentCourse($user['username'])['code'];
     $_SESSION['username'] = $username;
     $_SESSION['account_type'] = $user['persontype'];
     $_SESSION['userID'] = $user['academiccode'];

@@ -91,13 +91,6 @@
                 <li class="nav-brand">
                     <a href="{$BASE_URL}pages/Evaluation/evaluations.php?student={$USERID}">Evaluations</a>
                 </li>
-                {elseif $ACCOUNT_TYPE == 'Teacher'}
-                <li class="nav-brand">
-                    <a href="{$BASE_URL}pages/CurricularUnit/unitPage.php">My Curricular Units</a>
-                </li>
-                <li class="nav-brand">
-                    <a href="{$BASE_URL}pages/CurricularUnit/unitEvaluations.php">Evaluations</a>
-                </li>
                 {/if}
 
             </ul>

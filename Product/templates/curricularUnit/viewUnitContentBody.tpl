@@ -7,6 +7,7 @@
         </a>
 
     </th>
+    {if $ACCOUNT_TYPE != 'Student'}
     <td class="hue">
         <p>
             <a href="#" class="btn btn-danger btn-xs deleteContentBtn">
@@ -18,5 +19,6 @@
 
         </p>
     </td>
+    {/if}
 </tr>
 {/foreach}
