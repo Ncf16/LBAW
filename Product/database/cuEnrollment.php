@@ -71,16 +71,6 @@ function isEnrolledInCU($person,$CUO_ID,$course,$year,$CU_ID){
   else
     return true;
 }
-/*
-CREATE TABLE IF NOT EXISTS CurricularEnrollment(
-cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
-studentCode INTEGER REFERENCES Person(academicCode),
-finalGrade INTEGER,
-visible INTEGER DEFAULT 1,
-CHECK(finalGrade >= 0 AND finalGrade <= 20),
-PRIMARY KEY(cuOccurrenceID,studentCode)
-);
-*/
 function enrollInCU($person ,$CUO_ID ){
    global $conn;
 
@@ -90,12 +80,30 @@ function enrollInCU($person ,$CUO_ID ){
   $stmt->execute(array($CUO_ID,$person ));
   $return= $stmt->fetch();
 
-  var_dump($return);
 
   if($return['studentcode'] != $person || $return['cuoccurrenceid'] != $CUO_ID)
     return false;
   else
     return true;
 }
-  
+function getGradesStudentByCUO($CUO_ID,){
+   global $conn;
+$stmt = $conn->prepare("SELECT curricularenrollment.studentcode
+                            FROM CurricularEnrollment 
+                              WHERE  curricularenrollment.cuoccurrenceid = ? ;");
+
+  $stmt->execute(array($CUO_ID));
+  $return = $stmt->fetchAll();
+}
+  function updateGradeCUO($CUO_ID,$student,$grade){
+  global $conn;
+  $stmt = $conn->prepare("UPDATE CurricularEnrollment SET grade = ?
+    WHERE CurricularEnrollment.cuOccurrenceID  = ? AND CurricularEnrollment.studentCode = ? AND CurricularEnrollment.visible=1 RETURNING cuOccurrenceID,studentCode; ");
+   $stmt->execute(array($grade,$CUO_ID,$student));
+   $return = $stmt->fetch();
+    if($return['studentcode'] != $person || $return['cuoccurrenceid'] != $CUO_ID)
+    return false;
+  else
+    return true;
+}
 ?>

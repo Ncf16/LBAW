@@ -126,10 +126,11 @@ function deleteGrade($studentCode,$evaluation){
 function getGradesStudentByCU($studentcode,$year,$CU){
 
 	global $conn;
-	$stmt = $conn->prepare("SELECT Grade
+	$stmt = $conn->prepare("SELECT Person.academiccode,CurricularUnit.curricularid,CurricularUnitOccurrence.cuoccurrenceid,CurricularUnit.name,Evaluation.evaluationid,
+		Grade.grade*Evaluation.weight/100.0 AS evalGrade
 		FROM Grade,Evaluation,Person,CourseEnrollment,Syllabus,CurricularUnitOccurrence,CurricularUnit,CurricularEnrollment
 		WHERE Grade.studentcode = ? AND Grade.grade IS NOT NULL 
-		AND Person.academiccode = Grade.studentcode AND  CourseEnrollment.studentCode= Grade.studentcode AND Person.persontype = 'Student' 
+		AND Person.academiccode = Grade.studentcode AND  CourseEnrollment.studentCode= Grade.studentcode 
 		AND Grade.evaluationid = Evaluation.evaluationid AND Syllabus.courseCode = CourseEnrollment.courseID AND Syllabus.calendarYear = ? 
 		AND CurricularUnitOccurrence.syllabusID = Syllabus.syllabusID AND Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuOccurrenceID 
 	    AND CurricularEnrollment.studentCode  = Grade.studentcode AND CurricularUnit.curricularID = ? AND 
