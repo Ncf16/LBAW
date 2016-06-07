@@ -14,7 +14,6 @@ $(document).ready(function () {
 
     loadPage();
     $('.pagination').on('click', 'a', changePage);
-    $('#classes').on('click', 'a.btn-danger', deleteItem);
 });
 
 function loadPage() {
@@ -22,7 +21,7 @@ function loadPage() {
     $('.contentsListBody').html('');
     $('.pagination').html('');
 
-    pagination.updateNbItemsPerPage(3);
+    pagination.updateNbItemsPerPage(5);
     $.post(BASE_URL + "api/curricularContent.php", {
         action: 'list',
         itemsPerPage: pagination.nbItemsPerPage,
@@ -54,7 +53,6 @@ function changePage(event) {
         nbClasses: nbItems,
         occurrenceID: uc,
     }, function (data) {
-        $('#classes').html('');
         addItens(data.units);
         pagination.addPagination(data.page, data.nbUnits, data.nbItemsPerPage);
     }, 'json');
@@ -87,9 +85,8 @@ function deleteItem(event) {
 
             console.log(data);
             $('.pagination').html('');
-            $('#classes').html('');
 
-            setTimeout(loadPage, ACTION_REFRESH_TIMEOUT);
+            loadPage();
 
     }, 'json');
 

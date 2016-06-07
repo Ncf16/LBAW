@@ -87,7 +87,7 @@
                             <div class="input-group">
                                 <button id="pretendBtn" type="button" class="btn btn-file">Browse</button>
                                 <span id="filedescriptor"></span>
-                                <input id="fileupload" class="hidden" type="file" name="file" data-url="{$BASE_URL}actions/units/contentUpload.php">
+                                <input id="fileupload" class="hidden" type="file" name="file" data-url="{$BASE_URL}api/contentUpload.php">
                             </div>
                         </div>
                     </div>
