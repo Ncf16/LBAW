@@ -1,4 +1,5 @@
-﻿ SET SCHEMA 'proto';
+﻿ SET SCHEMA 'final';
+ 
 DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkTeacherType ON Class CASCADE;
@@ -6,6 +7,7 @@ DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
 DROP TRIGGER IF EXISTS createGrade ON Evaluation CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
+DROP TRIGGER IF EXISTS createAttendances ON Attendances CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CurricularEnrollment CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CourseEnrollment CASCADE;
@@ -21,6 +23,7 @@ DROP TRIGGER IF EXISTS tsvectorCuUpdate ON CurricularUnit;
 DROP TRIGGER IF EXISTS tsvectorCUOccurrenceUpdate ON CurricularUnitOccurrence;
 DROP TRIGGER IF EXISTS tsvectorAreaUpdate ON Area;
 DROP TRIGGER IF EXISTS checkStudentEnrolledInCorrectCourse ON CurricularEnrollment CASCADE;
+
 DROP FUNCTION IF EXISTS getStudentCurrentCourse(integer) CASCADE;
 DROP FUNCTION IF EXISTS person_search_trigger() CASCADE;
 DROP FUNCTION IF EXISTS course_search_trigger() CASCADE;
