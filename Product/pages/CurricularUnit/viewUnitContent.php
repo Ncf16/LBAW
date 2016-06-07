@@ -34,6 +34,6 @@ if(!$account_type || !($account_type == 'Admin' ||
 
 $hasPermission=$account_type == 'Admin'||  ($account_type == 'Teacher' && hasTeacherUCOAccess($_SESSION['userID'],$_GET['uc'])) ;
 $smarty->assign('hasPermission',$hasPermission);
-$smarty->display('CurricularUnit/viewUnitContent.tpl');
+$smarty->display('curricularUnit/viewUnitContent.tpl');
 
 ?>
