@@ -68,11 +68,9 @@
                     	</div>
                 	</a>
                     <div class="panel-body">
-                        <p>
                         	<h4>Type: {$evaluation.evaluationtype} </h4>
-                        	<hr>
+                        
                         	<h4>Date: {$evaluation.evaluationdate}</h4>
-                        </p>
                     </div>
                 </div>
             </div>
