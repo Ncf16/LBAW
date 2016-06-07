@@ -3,6 +3,7 @@
  <link href="{$BASE_URL}css/personList.css" rel="stylesheet">
 <link href="{$BASE_URL}css/search.css" rel="stylesheet">
 <script src="{$BASE_URL}js/search.js"></script>
+<script src="{$BASE_URL}js/pagination.js"></script>
 <script src="{$BASE_URL}js/personList.js"></script>
 
 <!-- CONTAINER -->

@@ -33,11 +33,9 @@
          <div class="col-sm-2 col-xs-4 text-center">
                <a href="{$BASE_URL}pages/Admin/addPerson.php" class="btn btn-primary btn-primary" >Create Accounts</a>
          </div>
+      
          <div class="col-sm-2 col-xs-4 text-center">
-            <a href="#" class="btn btn-primary btn-primary">Remove Accounts</a>
-         </div>
-         <div class="col-sm-2 col-xs-4 text-center">
-            <a href="#" class="btn btn-primary btn-primary">Create Course</a>
+            <a href="{$BASE_URL}pages/Course/course.php" class="btn btn-primary btn-primary">Create Course</a>
          </div>
          <div class="col-sm-2 col-xs-4 text-center">
             <a href="{$BASE_URL}pages/CurricularUnit/units.php" class="btn btn-primary btn-primary">Manage Curricular Units</a>
