@@ -13,6 +13,10 @@ $(document).ready(function() {
 	$('.pagination').on('click', 'a', changePage);
 	$('#grades').on('click','a.btn-danger',deleteItem);
 	$('#grades').on('click','button',setGrades);
+
+	if($("#deleteEval").length>0){
+		$("#deleteEval").click(deleteEval);
+	}
 });
 
 
@@ -25,6 +29,24 @@ function loadPage(){
 	}, 'json');
 };
 
+function deleteEval(event){
+
+	var eval = $("#deleteID").val();
+	$.ajax({
+		url: '../../api/deleteEvaluation.php',           //TODO: MIGHT HAVE TO FIX THIS
+		type: 'POST',
+		data: {eval: eval},
+		success: function(data, textStatus, jqXHR) {
+			if (typeof data.error === 'undefined') {
+			//	location.reload();
+			}  
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			// Handle errors here
+			// STOP LOADING SPINNER
+		}
+});
+}
 
 function changePage(event){
 

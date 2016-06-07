@@ -21,7 +21,6 @@ $(document).ready(function() {
 });
 
 function gradeAssignHandler(event){
-	console.log("Hello");
 	var cuoID = $("#CUO_ID").val();
 	$.ajax({
 		url: '../../api/cuGrades.php',           //TODO: MIGHT HAVE TO FIX THIS
@@ -33,7 +32,6 @@ function gradeAssignHandler(event){
 			 	//	 location.reload();
 				}
 				else {
-				//$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");
 				}
 			}  
 		},

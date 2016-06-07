@@ -13,7 +13,7 @@
          <h2 class="page-header">
             Unit Contents
             {if $classes.unitInformation}
-            <small>{$classes.unitInformation}</small>
+            <small><a href="{$BASE_URL}pages/CurricularUnit/viewUnitOccurrence.php?uc={$classes.unit}" > {$classes.unitInformation}</a></small>
             {elseif $classes.teacherInformation}
             <small>{$classes.teacherInformation}</small>
             {/if}
@@ -35,8 +35,9 @@
          <thead>
 
             <th class="col-md-3">File</th>
-
+            {if $hasPermission}
             <th class="col-md-1 col-md-offset-1">Delete</th>
+            {/if}
          </thead>
          <tbody class="contentsListBody">
          </tbody>

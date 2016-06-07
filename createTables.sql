@@ -1,4 +1,4 @@
-﻿DROP SCHEMA IF EXISTS proto CASCADE; 
+DROP SCHEMA IF EXISTS proto CASCADE; 
 CREATE SCHEMA proto; 
 SET SCHEMA 'proto';
 
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS CurricularUploads(
 	uploadID SERIAL PRIMARY KEY,
 	cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 	filePath TEXT NOT NULL,
-	fileName TEXT NOT NULL
+	filePresentationName TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Class(

@@ -207,9 +207,9 @@ function deleteTest($test){
 	$stmt = $conn->prepare("UPDATE Test SET visible=0
 		WHERE evaluationid =?");
 
-	$count = $stm->execute(array($test));
-	if($count > 0){
-		$conn->prepare("UPDATE Evaluation SET visible=0
+	$count = $stmt->execute(array($test));
+	if($count != false){
+	$stmt =	$conn->prepare("UPDATE Evaluation SET visible=0
 			WHERE evaluationid=?");
 		$stmt->execute(array($test));
 		$conn->commit();
@@ -225,9 +225,10 @@ function deleteExam($exam){
 	$stmt = $conn->prepare("UPDATE Exam SET visible=0
 		WHERE evaluationid =?");
 
-	$count = $stm->execute(array($exam));
-	if($count > 0){
-		$conn->prepare("UPDATE Evaluation SET visible=0
+	$count = $stmt->execute(array($exam));
+	if($count != false){
+
+	$stmt =	$conn->prepare("UPDATE Evaluation SET visible=0
 			WHERE evaluationid=?");
 		$stmt->execute(array($exam));
 		$conn->commit();
@@ -236,16 +237,35 @@ function deleteExam($exam){
 
 	$conn->rollBack();
 }
+function deleteEvaluation($evalID){
+	global $conn;
+	$type=getEvaluationType($evalID);
 
+	if($type ==false)
+		return false;
+	else{
+		if(strtolower($type['evaluationtype']) == 'groupwork'){
+			deleteGroupWork($evalID);
+		}
+		else if (strtolower($type['evaluationtype'] )=='exam' ) {
+			deleteExam($evalID);
+		}
+		else if (strtolower($type['evaluationtype']) == 'test') {
+		deleteTest($evalID);
+		}
+		return true;
+	}
+}
 function deleteGroupWork($groupWork){
 	global $conn;
 	$conn->beginTransaction();
 	$stmt = $conn->prepare("UPDATE GroupWork SET visible=0
 		WHERE evaluationid =?");
 
-	$count = $stm->execute(array($groupWork));
-	if($count > 0){
-		$conn->prepare("UPDATE Evaluation SET visible=0
+	$count = $stmt->execute(array($groupWork));
+	if($count != false){
+		echo "here";
+		$stmt =$conn->prepare("UPDATE Evaluation SET visible=0
 			WHERE evaluationid=?");
 		$stmt->execute(array($groupWork));
 		$conn->commit();
