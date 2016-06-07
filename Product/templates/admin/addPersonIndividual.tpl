@@ -74,7 +74,7 @@
 		<div class="col-md-8 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-				<input  name="birth_date" placeholder="Select your birth date." class="form-control" type="date" min="1900-01-01" max="2016-01-01" value="2000-01-01">
+				<input  name="birth_date" class="form-control" type="date" min="1900-01-01" max="2016-01-01" value="2000-01-01">
 
 			</div>
 		</div>
