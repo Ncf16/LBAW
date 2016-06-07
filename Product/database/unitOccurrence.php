@@ -101,7 +101,7 @@ function getUCOlist($nbItems,$offset){
 		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
 		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = Course.code
 		AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
-		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+		AND CurricularUnitOccurrence.visible=1 ORDER BY Course.name, CurricularUnit.name LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($nbItems,$offset));
 	return $stmt->fetchAll();
@@ -115,7 +115,7 @@ function getUCOlistCourse($course,$nbItems,$offset){
 		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
 		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = Course.code
 		AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND Course.code = ?
-		AND CurricularUnitOccurrence.visible=1 LIMIT ? OFFSET ?");
+		AND CurricularUnitOccurrence.visible=1 ORDER BY CurricularUnit.name LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($course,$nbItems,$offset));
 	return $stmt->fetchAll();
@@ -129,7 +129,7 @@ function getUCOlistYear($course,$year,$nbItems,$offset){
 		FROM CurricularUnitOccurrence, CurricularUnit, Syllabus, Course
 		WHERE CurricularUnitOccurrence.syllabusid = Syllabus.syllabusid AND Syllabus.coursecode = Course.code
 		AND Syllabus.calendarYear = ? AND CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid
-		AND CurricularUnitOccurrence.visible=1 AND Course.code = ? LIMIT ? OFFSET ?");
+		AND CurricularUnitOccurrence.visible=1 AND Course.code = ? ORDER BY CurricularUnit.name LIMIT ? OFFSET ?");
 
 	$stmt->execute(array($year,$course,$nbItems,$offset));
 	return $stmt->fetchAll();

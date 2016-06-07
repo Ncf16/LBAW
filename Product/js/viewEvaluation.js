@@ -20,7 +20,7 @@ function loadPage(){
 
 	var nbItemsPerPage = 10;
 	$.post(BASE_URL + "api/grades.php", {action: 'list', itemsPerPage : nbItemsPerPage, evaluationid : evaluationTbl}, function(data){
-		addItens(data.grades);
+		addItens(data.grades,data.account);
 		pagination.addPagination(data.page,data.nbGrades,nbItemsPerPage);
 	}, 'json');
 };
@@ -39,7 +39,7 @@ function changePage(event){
 	var nbItemsPerPage = pagination.nbItemsPerPage;
 	$.post(BASE_URL + "api/grades.php", {action: 'list', itemsPerPage : nbItemsPerPage, page: newPage, nbGrades: nbItems, evaluationid : evaluationTbl}, function(data){
 		$('#grades').html('');
-		addItens(data.grades);
+		addItens(data.grades,data,data.account);
 		pagination.addPagination(data.page,data.nbGrades,nbItemsPerPage);
 	}, 'json');
 }
@@ -59,7 +59,7 @@ function deleteItem(event){
 		if (data['success'] == 'Success'){
 			$('.pagination').html('');
 			$('#grades').html('');
-			addItens(data.grades);
+			addItens(data.grades,data.account);
 			pagination.addPagination(data.page,data.nbGrades,nbItemsPerPage);
 		}
 	}, 'json');
@@ -106,35 +106,44 @@ function setGrades(event){
 	}
 };
 
-function addItens(grades){
+function addItens(grades,account){
 
 	$.each(grades, function(i, grade){
 		var tr = $('<tr/>');
-		var btnEdit = $('<button/>',{
-			'grade' : grade.id
-		}).addClass('btn btn-info btn-xs').append($('<span class="glyphicon glyphicon-edit"></span>'));
 
-		var par = $('<p/>',{
-			'data-placement': 'top',
-			'data-toogle': 'tooltip',
-			'title': 'Delete'
-		});
-		var a = $('<a/>',{
-			'data-title': 'Delete',
-			'data-toggle': 'modal',
-			'grade' : grade.id
+		if(account != 'Student'){
+			var btnEdit = $('<button/>',{
+				'grade' : grade.id
+			}).addClass('btn btn-info btn-xs').append($('<span class="glyphicon glyphicon-edit"></span>'));
+		
 
-		}).addClass('btn btn-danger btn-xs');
-		var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
-		par.append(a);
-		a.append(glyRemove);
+			var par = $('<p/>',{
+				'data-placement': 'top',
+				'data-toogle': 'tooltip',
+				'title': 'Delete'
+			});
+			var a = $('<a/>',{
+				'data-title': 'Delete',
+				'data-toggle': 'modal',
+				'grade' : grade.id
 
-		tr.append($('<td/>',{
-			'grade' : grade.id
-		}).append(grade.grade));
-		tr.append($('<td/>').append(btnEdit));
+			}).addClass('btn btn-danger btn-xs');
+			var glyRemove = $('<span/>').addClass('glyphicon glyphicon-trash');
+			par.append(a);
+			a.append(glyRemove);
+
+
+			tr.append($('<td/>',{
+				'grade' : grade.id
+			}).append(grade.grade));
+			tr.append($('<td/>').append(btnEdit));
+		}
+		else tr.append($('<td colspan="2"/>',{
+				'grade' : grade.id
+			}).append(grade.grade));
 		tr.append($('<td/>').append(grade.name));
-		tr.append($('<td/>').append(par));
+		if(account != 'Student')
+			tr.append($('<td/>').append(par));
 		$('#grades').append(tr);
 	});
 };

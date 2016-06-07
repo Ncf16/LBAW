@@ -139,9 +139,9 @@ function createUpdateQuery($arrayValues,$id,$idName){
   }
   $res= $stmt->fetch();
   if($res!==false)
-    return true;
+    return 'true';
   else
-    return false;
+    return 'false';
  }
  
 function getPersonInfoByUser($username)

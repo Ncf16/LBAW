@@ -7,7 +7,7 @@
     echo "There are no curricular unit for this student.";    
     exit;
   }
-  $grades =getGradeCuStatus($_POST['student']);
+  $grades =getGradeCuStatus($_POST['student'],date("Y"));
 
   $grades['courseYears'] =  getCourseYears($_POST['course']);
   // Determine nr. years to show
@@ -22,11 +22,21 @@
 
     // Another time to push into them, so as to encapsulate everything
     for($i = 0; $i < sizeof($grades); $i++){
-    	array_push($gradesStudent[$grades[$i]['curricularyear']][$grades[$i]['curricularsemester']], $grades[$i]);
+      if(!ignoreNotDoneStatus($gradesStudent[$grades[$i]['curricularyear']][$grades[$i]['curricularsemester']],$grades[$i]))
+           array_push($gradesStudent[$grades[$i]['curricularyear']][$grades[$i]['curricularsemester']], $grades[$i]);
     }
 
+ /*var_dump(array_key_exists([5][1], $gradesStudent));
+ var_dump($gradesStudent[1][1]);*/
  
- //var_dump($gradesStudent[5][2][0]);
  $smarty->assign('curricularUnitGrades', $gradesStudent);
  $smarty->display('person/gradesPerson.tpl');
+
+ function ignoreNotDoneStatus($array,$toCheck){
+  foreach ($array as $key => $value) {
+    if($value['name'] == $toCheck['name'] && $toCheck['curricularstatus'] != "done")
+      return true;
+  }
+  return false;
+ }
 ?>

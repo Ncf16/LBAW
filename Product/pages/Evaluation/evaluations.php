@@ -7,7 +7,6 @@ if($_GET['unit']){
   include_once($BASE_DIR . 'database/unitOccurrence.php');
   include_once($BASE_DIR . 'database/evaluation.php');
 
-  //admin //student in uc  //teacher that teaches this uc //regent //courseDirector
   if(!$account_type || !($account_type == 'Admin' || 
     ($account_type == 'Teacher' && hasTeacherUCOAccess($_SESSION['userID'],$_GET['unit'])) ||
     ($account_type == 'Student' && hasStudentUCOAccess($_SESSION['userID'],$_GET['unit'])) )){
@@ -27,7 +26,7 @@ else if($_GET['student']){
   include_once($BASE_DIR . 'database/person.php');
   include_once($BASE_DIR . 'database/evaluation.php');
 
-  if(!$account_type || !($account_type == 'Admin' || $account_type == 'Student')){
+  if(!$account_type || !($account_type == 'Admin' || $_GET['student'] == $_SESSION['userID'])){
     $_SESSION['error_messages'][] = 'Unauthorized Access';
     header("Location: " . $BASE_URL . "index.php");
     exit;
@@ -47,4 +46,3 @@ else{
 
 $smarty->display('evaluation/evaluations.tpl');
 ?>
- 

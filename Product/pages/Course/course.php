@@ -8,7 +8,6 @@
     header("Location: " . $BASE_URL . "index.php");
  		exit;
 }
-    
   if (isset($_GET['courseID'])) {
       $infoToEdit=getCourseInfo($_GET['courseID']);
       $edit=true;

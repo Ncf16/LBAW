@@ -4,17 +4,26 @@
 function getStudentCourse($academicCode){
  global $conn;
 
- $stmt = $conn->prepare("SELECT course.code,max(startYear)
-						FROM Person, CourseEnrollment, Course
-							WHERE Person.academiccode = Courseenrollment.studentcode
-								AND Courseenrollment.courseid = course.code
-									AND Person.academiccode = ? AND CourseEnrollment.visible=1 AND course.visible=1
-                  						  GROUP BY course.code; ");
+ $stmt = $conn->prepare("SELECT Course.*,CourseEnrollment.curricularYear
+							FROM Course,Courseenrollment,Person
+								WHERE Course.code = Courseenrollment.courseid AND  Person.username = ?  AND CourseEnrollment.studentcode = Person.academiccode
+								 AND Person.persontype = 'Student'AND Course.visible=1 AND Person.visible=1 AND CourseEnrollment.visible = 1;");
   $stmt->execute(array($academicCode));
   return $stmt->fetch();
 
 }
 
+function getStudentCourseByUsername($username){
+
+ global $conn;
+
+ $stmt = $conn->prepare("SELECT Course.*,CourseEnrollment.curricularYear
+							FROM Course,Courseenrollment,Person
+								WHERE Course.code = Courseenrollment.courseid AND  Person.username = ?  AND CourseEnrollment.studentcode = Person.academiccode
+								 AND Person.persontype = 'Student'AND Course.visible=1 AND Person.visible=1 AND CourseEnrollment.visible = 1;");
+   $stmt->execute(array($username));
+  return $stmt->fetch();
+}
 function deleteCourseEnrollment($academiccode,$course){
 	 global $conn;
 
@@ -48,17 +57,17 @@ function isInactive($academiccode,$course){
   	else
   		return false;
 }
-function restartEnrollment($academiccode,$oldCourse,$newCourse,$startYear,$finishYear,$curricularYear){
+function restartEnrollment($academiccode,$oldCourse,$newCourse,$startYear,$finishYear){
 
 	 global $conn;
 	 $conn->beginTransaction();
 	 $returnUpdate = deleteCourseEnrollment($academiccode,$oldCourse);
 	if($returnUpdate['visible'] == 0){
-	 $stmt = $conn->prepare("UPDATE Courseenrollment SET visible =  1, startYear = ?, finishYear = ?, curricularYear = ?
+	 $stmt = $conn->prepare("UPDATE Courseenrollment SET visible =  1, startYear = ?, finishYear = ?
 							WHERE  Courseenrollment.studentcode = ?
 								AND Courseenrollment.courseid = ? RETURNING courseid,studentcode ");
 
-  	 $stmt->execute(array($startYear,$finishYear,$curricularYear,$academiccode,$newCourse));
+  	 $stmt->execute(array($startYear,$finishYear,$academiccode,$newCourse));
   	 $returnCreate=$stmt->fetch();
   	if( $returnCreate['studentcode'] == $academiccode && $returnCreate['courseid'] == $newCourse ){
 		$conn->commit();
