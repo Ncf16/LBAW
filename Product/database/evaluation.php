@@ -172,6 +172,21 @@ function getUCOEvaluations($uco){
 	return $stmt->fetchAll();
 }
 
+function getNextStudentEvaluations($student,$count){
+
+	global $conn;
+	$stmt = $conn->prepare("SELECT Evaluation.*, Curricularunit.name
+		FROM Evaluation, CurricularEnrollment, CurricularUnitOccurrence, Curricularunit
+		WHERE Evaluation.cuoccurrenceid = CurricularEnrollment.cuoccurrenceid AND
+		Evaluation.cuoccurrenceid = CurricularUnitOccurrence.cuoccurrenceid AND
+		CurricularUnitOccurrence.curricularunitid = CurricularUnit.curricularid AND
+		CurricularEnrollment.studentcode = ? AND Evaluation.evaluationdate > now()::timestamp AND
+		Evaluation.visible=1 ORDER BY evaluationdate LIMIT ?");
+
+	$stmt->execute(array($student,$count));
+	return $stmt->fetchAll();
+}
+
 function getStudentEvaluations($student){
 
 	global $conn;
