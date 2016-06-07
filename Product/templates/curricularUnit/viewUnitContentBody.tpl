@@ -1,8 +1,8 @@
 {foreach from=$contents item=content}
 <tr>
     <th scope="row">
-        <a class="btn center-block requestItem">
-            <a href="{$content.filepath}" target="_blank">Download:{$content.filepresentationname}</a>
+        <a class="center-block requestItem">
+            <a href="{$content.filepath}" target="_blank">Download:  {$content.filepresentationname}</a>
             <span class="hidden">{$content.filepath}</span>
         </a>
 
