@@ -29,7 +29,6 @@ function gradeAssignHandler(event){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
 				if(data.indexOf ('true')>-1){
-			 	//	 location.reload();
 				}
 				else {
 				}

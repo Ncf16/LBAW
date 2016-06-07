@@ -38,7 +38,7 @@ function deleteEval(event){
 		data: {eval: eval},
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
-			//	location.reload();
+			  location.reload();
 			}  
 		},
 		error: function(jqXHR, textStatus, errorThrown) {

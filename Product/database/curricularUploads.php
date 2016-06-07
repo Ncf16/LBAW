@@ -34,7 +34,7 @@ function deleteContentDB($contentID){
 		$stmt->execute(array($contentID));
 		return $stmt->fetch();
 	}catch(Exception $e){
-		return array('error' => 'Database failed deleting.' . $e->getMessage());
+		return array('error' => 'Failed deleting on database.');
 	}
 
 	return true;
@@ -58,7 +58,7 @@ function insertContentDB($cuOccurrenceID, $filepath, $filePresentationName){
 			return $result;
 		}
 	}catch(Exception $e){
-		return array('error' => 'Database failed inserting.' . $e->getMessage());
+		return array('error' => 'Failed inserting on database.');
 	}
 
 }

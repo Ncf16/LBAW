@@ -253,8 +253,10 @@ function onOpenChange(e) {
         displayErrorsMultiple(errors);
         //console.log("Invalid file type."); // put this on error stuffie
     }
-    // Display file name, if any
-    $('#file_name').html('<h4>'+ fileName + '</h4>');
+
+   // Display file name, if any
+    $('#file_name').html( fileName );
+
 
 }
 
@@ -341,6 +343,9 @@ function multipleCreationHandler(event) {
         //if it aint valid... too bad
 
     } else {
+        
+        fileName = '<h4>  No file selected</h4>';
+        $('#file_name').html(fileName);
         errors = ['No valid file loaded.'];
         displayErrorsMultiple(errors);
         return;
