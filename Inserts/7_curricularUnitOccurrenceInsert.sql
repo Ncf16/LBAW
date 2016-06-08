@@ -1,5 +1,5 @@
 ﻿-- Curricular Unit occurrence
- SET SCHEMA 'proto';
+ SET SCHEMA 'final';
 
  -- Course 1
 INSERT INTO CurricularUnitOccurrence(syllabusID,curricularUnitID,teacherCode,bibliography,competences,curricularSemester,curricularYear,evaluation,externalPage,language,programme,requirements)

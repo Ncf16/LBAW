@@ -1,5 +1,5 @@
 --CourseEnrollment
- SET SCHEMA 'proto';
+ SET SCHEMA 'final';
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (2,1,18.84,2,'2015');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (889,1,15.16,3,'2014');
 INSERT INTO CourseEnrollment(studentCode,courseID,courseGrade,curricularYear,startYear) VALUES (47,1,6.71,4,'2012');

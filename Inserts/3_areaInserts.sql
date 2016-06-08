@@ -1,5 +1,5 @@
 ﻿--Area
- SET SCHEMA 'proto';
+ SET SCHEMA 'final';
 INSERT INTO Area(area) VALUES ('History');
 INSERT INTO Area(area) VALUES ('Sociology');
 INSERT INTO Area(area) VALUES ('Science of Earth Systems');

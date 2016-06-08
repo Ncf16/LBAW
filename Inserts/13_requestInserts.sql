@@ -1,5 +1,5 @@
 ﻿--Request
- SET SCHEMA 'proto';
+ SET SCHEMA 'final';
 INSERT INTO Request(studentCode,adminCode,closed,approved,title,description,submitionDate) VALUES (51,3,TRUE,TRUE,'Generic Title','PrMbFPGxkj OqMUUhlAkYnCuQBtCFfpOa','2015-09-04 04:00:01');
 INSERT INTO Request(studentCode,adminCode,closed,approved,title,description,submitionDate) VALUES (2,3,TRUE,FALSE,'Generic Title','QjXLmwNKwsvnkfyWqrqCIbdDIoyUFWe mIgmCCywDHMgSpjHuXfxfREWkM YseoLwTpU','2015-09-03 11:00:01');
 INSERT INTO Request(studentCode,adminCode,closed,approved,title,description,submitionDate) VALUES (35,1,TRUE,FALSE,'Generic Title','z iZLi NYMjYeHwTuUlQQoJxSLwtkTcbYiNfoBWtWHvPMFoyUHMxbXjDRqJxlpZvXf WbchbZrRcQ','2015-09-02 00:42:01');
