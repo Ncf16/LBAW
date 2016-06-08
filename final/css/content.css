@@ -1,0 +1,187 @@
+#classesPage a[class="btn btn-primary btn-primary"]  {
+
+ 	color: black;
+ 	background-color: white;
+}
+#classesPage a[class="btn btn-primary btn-primary"]:active {
+background: #b33c00;
+}
+
+button.btn.btn-info {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+button.btn.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+button.btn.btn-danger {
+	color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+button.btn.btn-default {
+	color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+#summaryPanel{
+	padding-top: 60px;
+}
+
+table#attendancesTable {
+    margin-top: 30px;
+}
+
+div.panel-body{
+    padding: 0;
+}
+
+div.panel-body p{
+    padding: 15px;
+}
+
+.classInfo{
+    border: 2px solid black;
+}
+.classInfo td,
+.classInfo tr{
+    border-top: 2px solid black;
+}
+.classInfo td.border{
+    border-right: 2px solid black;
+}
+
+/* MODAL DECORATION */
+
+.btn-success{
+    font-weight: bold;
+    color: #000;
+    background-color: #13c713;
+    border-color:#000;
+    border-width: 3px;
+}
+
+.btn-danger{
+    font-weight: bold;
+    color: #000;
+    background-color: #ff471a;
+    border-color:#000;
+    border-width: 3px;
+}
+
+.btn-warning{
+    font-weight: bold;
+    color: #000;
+    background-color: #ffd722;
+    border-color:#000;
+}
+
+.modal-content{
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+
+.modal-header{
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+.modal-footer{
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+
+.modal-footer, .modal-header{
+    background-color: #fff8e7;
+    border-color: #000;
+}
+
+.modal-body{
+    background-color: #fffcf6;
+    border-color: #000;
+}
+
+/* CREATION MODAL */
+
+#creation_success{
+    color: #15e500;
+}
+
+#creation_failure{
+    color: #ea4b28;
+}
+
+#modal_upload_btn, #pretendBtn{
+   background-color: #0077bb;
+}
+
+#modal_upload_btn:hover, #pretendBtn:hover,#uploadSubmitBtn:hover, #closeBtn:hover{
+    background-color: #fff;
+}
+
+#pretendBtn{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#uploadSubmitBtn{
+    font-weight: bold;
+    background-color: #51cd4f;
+}
+
+#closeBtn{
+    background-color: #f88475;
+}
+
+#submitButtonPlace{
+    font-weight:bold;
+}
+
+.bar {
+    text-align:center;
+    font-weight: bold;
+    height: 18px;
+    background: #63dc44;
+    border-radius: 5px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.btn-danger{
+    background-color: #f88475;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}

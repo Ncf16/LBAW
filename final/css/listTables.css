@@ -1,0 +1,60 @@
+button.btn.btn-info {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+button.btn.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+button.btn.btn-danger {
+	color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+button.btn.btn-default {
+	color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+#summaryPanel{
+	padding-top: 60px;
+}
+
+table#attendancesTable {
+    margin-top: 30px;
+}
+
+div.panel-body{
+    padding: 0;
+}
+
+div.panel-body p{
+    padding: 15px;
+}
+
+.classInfo{
+    border: 2px solid black;
+}
+.classInfo td,
+.classInfo tr{
+    border-top: 2px solid black;
+}
+.classInfo td.border{
+    border-right: 2px solid black;
+}
+
+#mytable td.border,
+#mytable th.border{
+  border-right: 2px solid grey;
+}
+
+#mytable th{
+  color: #fffff9;
+  background-color: #b33c00;
+}

@@ -1,3 +1,4 @@
+
 ﻿DROP SCHEMA IF EXISTS final CASCADE; 
 CREATE SCHEMA final; 
 SET SCHEMA 'final';
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS CurricularUploads(
 	uploadID SERIAL PRIMARY KEY,
 	cuOccurrenceID INTEGER REFERENCES CurricularUnitOccurrence(cuOccurrenceID),
 	filePath TEXT NOT NULL,
-	fileName TEXT NOT NULL
+	filePresentationName TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Class(
