@@ -1,4 +1,4 @@
-﻿ SET SCHEMA 'proto';
+﻿ SET SCHEMA 'final';
 INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Admin','Xenos Maldonado Mejia Kane','60988  Bouvet Island St.','1922-08-29','Portugal',100000001,'$2y$10$ZUfhrl7zBNp2WYVM9cUt4e8rPnE9yC5U4YCuah8EdrElb7837Ix8O','8509166064');
 INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Student','Theodore Dickson Valenzuela Heath','71181 North Puerto Rico Ave.','2000-02-24','Japan',100000002,'$2y$10$ZUfhrl7zBNp2WYVM9cUt4e8rPnE9yC5U4YCuah8EdrElb7837Ix8O','33186001993');
 INSERT INTO Person (personType,name,address,birthdate,nationality,nif,password,phoneNumber) VALUES ('Admin','Rogan Carrillo Mcpherson Mcconnell','39068 North Congo Ln.','1930-03-23','Portugal',100000003,'$2y$10$ZUfhrl7zBNp2WYVM9cUt4e8rPnE9yC5U4YCuah8EdrElb7837Ix8O','210844227136');

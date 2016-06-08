@@ -1,33 +1,5 @@
-/* INDEX STUFF, MIGHT BE BROKEN */
- SET SCHEMA 'proto';
-DROP INDEX IF EXISTS tsv_person_idx;
-DROP INDEX IF EXISTS tsv_course_idx;
-DROP INDEX IF EXISTS tsv_curricularUnit_idx;
-
-DROP INDEX IF EXISTS username_idx;
-DROP INDEX IF EXISTS request_student_idx;
-DROP INDEX IF EXISTS request_admin_idx;
-
-DROP INDEX IF EXISTS syllabus_course_idx;
-DROP INDEX IF EXISTS cuEnroll_student_idx;
-DROP INDEX IF EXISTS grade_eval_idx;
-DROP INDEX IF EXISTS occurrence_curricular_idx;
-DROP INDEX IF EXISTS occurrence_syllabus_idx;
-DROP INDEX IF EXISTS occurrence_evaluation_idx;
-DROP INDEX IF EXISTS evaluation_weight_idx;
-DROP INDEX IF EXISTS grade_student_eval_idx;
-DROP INDEX IF EXISTS grade_grade_idx;
-DROP INDEX IF EXISTS group_elements_idx;
-DROP INDEX IF EXISTS test_duration_idx;
-DROP INDEX IF EXISTS exam_duration_idx;
-
-
-DROP INDEX IF EXISTS class_cuOccurrenceID_idx;
-DROP INDEX IF EXISTS courEnroll_currYear_idx;
-DROP INDEX IF EXISTS cuEnroll_finalGra_idx;
-DROP INDEX IF EXISTS cu_credits_idx;
-
-
+﻿SET SCHEMA 'final'
+;
  -- FULL TEXT INDEXES
 
 CREATE INDEX tsv_person_idx ON Person USING gin(tsv);

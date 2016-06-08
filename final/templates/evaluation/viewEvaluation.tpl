@@ -73,6 +73,6 @@
   </p>
 </div>
 
-<script src="{$BASE_URL}js/Pagination.js"></script>
+<script src="{$BASE_URL}js/pagination.js"></script>
 <script src="{$BASE_URL}js/viewEvaluation.js"></script>
 {include file='common/footer.tpl'}
