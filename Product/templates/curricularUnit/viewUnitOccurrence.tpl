@@ -15,8 +15,8 @@
         <ul class="dropdown-menu">
           <li><a href="{$BASE_URL}pages/Class/classes.php?uc={$unit.cuoccurrenceid}">Classes</a></li>
           <li><a href="{$BASE_URL}pages/CurricularUnit/viewUnitContent.php?uc={$unit.cuoccurrenceid}">Content</a></li>
+         <li><a href="{$BASE_URL}pages/Evaluation/evaluations.php?unit={$unit.cuoccurrenceid}">Evaluations</a></li>
           {if $hasPermission == true}
-          <li><a href="{$BASE_URL}pages/Evaluation/evaluations.php?unit={$unit.cuoccurrenceid}">Evaluations</a></li>
           <li><a href="{$BASE_URL}pages/Evaluation/evaluation.php?CUO={$unit.cuoccurrenceid}">Create Evaluation</a></li>  
           <li> <a href="#" id="gradeStudents">Grade Students</a></li>         
           {/if}

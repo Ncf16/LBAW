@@ -4,7 +4,7 @@
    <div class="row">
       <div class="col-md-12">
          <h2 class="page-header">{$student.name} Curricular Units To Sign Up </h2>
-         <input hidden id="url" name="url" value="{$BASE_URL} ">
+         <input hidden id="url" name="url" value="{$BASE_URL}">
          <form id="signUpForm" class="well form-horizontal" action="#" method="post">
             <input hidden id="pc" name="pCode" value="{$student.username}"/>
             <input hidden  id="cc" name="cCode"  value="{$course.code}"/>

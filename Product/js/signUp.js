@@ -22,9 +22,11 @@ function signUpHandler(event){
 		success: function(data, textStatus, jqXHR) {
 			if (typeof data.error === 'undefined') {
 			 	if(data.indexOf ('true')>-1){
-			 		  window.location.href =  BASE_URL + "pages/Course/coursePage.php?course="+$("#cc").val();
+			 		  window.location.href =  BASE_URL.concat("pages/Course/coursePage.php?course=".concat($("#cc").val()));
 				}
 				else {
+
+			 		  window.location.href =  BASE_URL.concat("pages/Course/coursePage.php?course=".concat($("#cc").val()));
 				$("#modalErrors").html( "<p id='returnError'> <br>"+data+"</p>");
 				} 
 			}  
