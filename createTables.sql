@@ -1,4 +1,5 @@
-
+DROP SCHEMA IF EXISTS 'final';
+CREATE SCHEMA 'final';
 SET SCHEMA 'final';
 
 DROP TABLE IF EXISTS Person CASCADE; 
