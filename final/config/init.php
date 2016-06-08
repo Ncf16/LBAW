@@ -1,13 +1,13 @@
 <?php
-    session_set_cookie_params(3600, '/LBAW/Product'); //FIXME
+  session_set_cookie_params(36000,'/LBAW/final');
   session_start();
 
-  error_reporting(E_ERROR | E_WARNING); // E_NOTICE by default
+  error_reporting(E_ERROR | E_WARNING);
 
-  $BASE_DIR = 'C:/Users/Filipe/Desktop/FEUP/XAMPP/htdocs/LBAW/Product/'; //FIXME
-  $BASE_URL = '/LBAW/Product/'; //FIXME
- 
-  $conn = new PDO('pgsql:host=localhost;dbname=work', 'postgres', '1'); //FIXME
+  $BASE_DIR = 'C:/xampp/htdocs/LBAW/final/';
+  $BASE_URL = '/LBAW/final/';
+
+  $conn = new PDO('pgsql:host=localhost;dbname=lbaw1562','lbaw1562','DX25Q9M1');
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

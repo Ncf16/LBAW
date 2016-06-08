@@ -244,10 +244,10 @@ DROP TRIGGER IF EXISTS checkDiretorType ON Course CASCADE;
 DROP TRIGGER IF EXISTS checkRegentType ON CurricularUnitOccurrence CASCADE;
 DROP TRIGGER IF EXISTS checkTeacherType ON Class CASCADE;
 DROP TRIGGER IF EXISTS checkAdminType ON Request CASCADE;
-DROP TRIGGER IF EXISTS createGrade ON Evaluation CASCADE;
+DROP TRIGGER IF EXISTS createGrades ON Evaluation CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Request CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Attendance CASCADE;
-DROP TRIGGER IF EXISTS createAttendances ON Attendances CASCADE;
+DROP TRIGGER IF EXISTS createAttendances ON Attendance CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON Grade CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CurricularEnrollment CASCADE;
 DROP TRIGGER IF EXISTS checkStudentType ON CourseEnrollment CASCADE;
@@ -755,8 +755,6 @@ ON Area FOR EACH ROW EXECUTE PROCEDURE area_search_trigger();
 
 -- INDEXES
 
-SET SCHEMA 'final'
-;
  -- FULL TEXT INDEXES
 
 CREATE INDEX tsv_person_idx ON Person USING gin(tsv);
